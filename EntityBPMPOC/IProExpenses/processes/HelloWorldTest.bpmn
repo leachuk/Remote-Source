@@ -40,6 +40,7 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="INITIATOR" name="humanTaskType"/>
+                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.SayHello2"/>
             </ns2:OracleExtensions>
@@ -175,5 +176,12 @@
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
+        <dataObject name="helloObj" id="helloObj">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="HelloWorldObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloWorldTypes/HelloWorldObject"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
     </process>
 </definitions>

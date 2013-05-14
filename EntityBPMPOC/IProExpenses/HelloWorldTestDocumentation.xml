@@ -11,16 +11,6 @@
                     <description locale="en">HelloWorldTest</description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="startEvent0">
-                <labels>
-                    <label locale="en">Start</label>
-                </labels>
-            </topicDocumentation>
-            <topicDocumentation name="endEvent0">
-                <labels>
-                    <label locale="en">End</label>
-                </labels>
-            </topicDocumentation>
             <topicDocumentation name="activity0">
                 <labels>
                     <label locale="en">RequestHello</label>
@@ -36,6 +26,16 @@
                 <descriptions>
                     <description locale="en"></description>
                 </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
             </topicDocumentation>
             <topicDocumentation name="sf18"/>
             <topicDocumentation name="sf20"/>
