@@ -102,7 +102,7 @@
             </ioSpecification>
             <performer name="IProConsultant" id="lane1"/>
         </userTask>
-        <serviceTask isForCompensation="false" name="Write Message" id="activity1">
+        <serviceTask operationRef="write" serviceRef="Services.Externals.MessageWriter" isForCompensation="false" name="Write Message" id="activity1">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
                     <ns2:Position y="104" x="381"/>
@@ -116,7 +116,32 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
-            <ioSpecification/>
+            <ioSpecification>
+                <dataInput name="helloWorldObject" id="helloWorldObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloWorldObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloWorldTypes/HelloWorldObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <inputSet id="activity1_uniqueInputSet">
+                    <dataInput name="helloWorldObject" id="helloWorldObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloWorldObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloWorldTypes/HelloWorldObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('helloObj')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('helloWorldObject')</to>
+                </assignment>
+                <sourceRef>helloObj</sourceRef>
+                <targetRef>helloWorldObject</targetRef>
+            </dataInputAssociation>
         </serviceTask>
         <startEvent isInterrupting="false" name="Start" id="startEvent0">
             <ns2:OracleExtensions>

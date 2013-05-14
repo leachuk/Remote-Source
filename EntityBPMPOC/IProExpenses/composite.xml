@@ -49,4 +49,8 @@
     <source.uri>HelloWorldTest/HumanTasks.SayHello2.reference</source.uri>
     <target.uri>SayHello2/TaskService</target.uri>
   </wire>
+  <wire>
+    <source.uri>HelloWorldTest/Services.Externals.MessageWriter.reference</source.uri>
+    <target.uri>MessageWriter</target.uri>
+  </wire>
 </composite>

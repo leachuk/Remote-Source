@@ -9,4 +9,8 @@
     <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
                     callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
   </reference>
+  <reference name="Services.Externals.MessageWriter.reference"
+             ui:wsdlLocation="MessageWriter.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter#wsdl.interface(Write_ptt)"/>
+  </reference>
 </componentType>
