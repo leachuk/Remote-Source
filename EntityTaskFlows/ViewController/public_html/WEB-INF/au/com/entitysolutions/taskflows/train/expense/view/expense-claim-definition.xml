@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="expense-claim-definition">
+    <default-activity id="__43">checkUserRole</default-activity>
+    <transaction id="__27">
+      <new-transaction/>
+    </transaction>
+    <data-control-scope id="__25">
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__12">
+      <managed-bean-name id="__13">msgs</managed-bean-name>
+      <managed-bean-class id="__11">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__10">pageFlow</managed-bean-scope>
+      <managed-property id="__15">
+        <property-name id="__16">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__14">au.com.entitysolutions.taskflows.train.expense.view.ExpenseMessageBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__36">
+      <managed-bean-name id="__33">trainBean</managed-bean-name>
+      <managed-bean-class id="__34">au.com.entitysolutions.taskflows.train.expense.view.ExpenseTrainBean</managed-bean-class>
+      <managed-bean-scope id="__35">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="summaryStop">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/summaryStop.jsff</page>
+      <train-stop id="__2">
+        <display-name id="__17">#{pageFlowScope.msgs.bundle['SUMMARY_TRAIN_STEP_NAME']}</display-name>
+      </train-stop>
+     
+    </view>
+    <view id="expenseDetailsStop">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/expenseDetailsStop.jsff</page>
+      <train-stop id="__5">
+        <display-name id="__18">#{pageFlowScope.msgs.bundle['CLAIM_TRAIN_STEP_NAME']}</display-name>
+        <outcome id="__60">createEmptyExpenseItem</outcome>
+      </train-stop>
+    </view>
+    <view id="additionalDetailsStop">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/additionalDetailsStop.jsff</page>
+      <train-stop id="__6">
+        <display-name id="__19">#{pageFlowScope.msgs.bundle['DECLARATION_TRAIN_STEP_NAME']}</display-name>
+        <outcome id="__54">getDetails</outcome>
+      </train-stop>
+    </view>
+    <view id="paymentStop">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/paymentStop.jsff</page>
+      <train-stop id="__7">
+        <display-name id="__20">#{pageFlowScope.msgs.bundle['PAYMENT_TRAIN_STEP_NAME']}</display-name>
+        <outcome id="__91">clearItemsPaymentStop</outcome>
+      </train-stop>
+    </view>
+    <view id="submitStop">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/submitStop.jsff</page>
+      <train-stop id="__8">
+        <display-name id="__21">#{pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']}</display-name>
+        <outcome id="__93">clearItemsSubmitStop</outcome>
+      </train-stop>
+    </view>
+    <method-call id="CreateExpenseInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome id="__32">
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="createEmptyExpenseItem">
+      <method>#{bindings.createEmptyExpense.execute}</method>
+      <outcome id="__44">
+        <fixed-outcome>returnCreate</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="getExpenseItemDetails">
+      <method>#{bindings.getExpenseItemDetails.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>getExpenseItemDetails</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="checkUserRole">
+      <case>
+        <expression>#{securityContext.userInRole['PremiumServiceUser']}</expression>
+        <outcome id="__53">authorized</outcome>
+      </case>
+      <default-outcome>noaccess</default-outcome>
+    </router>
+    <view id="noaccess">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/noaccess.jsff</page>
+    </view>
+    <view id="completeExpense">
+      <page>/au/com/entitysolutions/taskflows/train/expense/view/completeExpense.jsff</page>
+    </view>
+    <method-call id="clearExpenseItemPaymentStop">
+      <method>#{bindings.getExpenseItemDetails.execute}</method>
+      <outcome id="__74">
+        <fixed-outcome>getExpenseItemDetails</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="clearExpenseItemSubmitStop">
+      <method>#{bindings.getExpenseItemDetails.execute}</method>
+      <outcome id="__75">
+        <fixed-outcome>getExpenseItemDetails</fixed-outcome>
+      </outcome>
+    </method-call>
+    <train/>
+    <control-flow-rule id="__26">
+      <from-activity-id id="__28">*</from-activity-id>
+      <control-flow-case id="__29">
+        <from-outcome id="__31">cancel</from-outcome>
+        <to-activity-id id="__30">summaryStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__37">
+      <from-activity-id id="__38">CreateExpenseInsert</from-activity-id>
+      <control-flow-case id="__40">
+        <from-outcome id="__39">CreateInsert</from-outcome>
+        <to-activity-id id="__41">summaryStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__45">
+      <from-activity-id id="__46">createEmptyExpenseItem</from-activity-id>
+      <control-flow-case id="__49">
+        <from-outcome id="__47">returnCreate</from-outcome>
+        <to-activity-id id="__48">expenseDetailsStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__1">
+      <from-activity-id id="__3">*</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__52">getDetails</from-outcome>
+        <to-activity-id id="__9">getExpenseItemDetails</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__65">
+        <from-outcome id="__66">createEmptyExpenseItem</from-outcome>
+        <to-activity-id id="__64">createEmptyExpenseItem</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__86">
+        <from-outcome id="__90">clearItemsPaymentStop</from-outcome>
+        <to-activity-id id="__87">clearExpenseItemPaymentStop</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__89">
+        <from-outcome id="__92">clearItemsSubmitStop</from-outcome>
+        <to-activity-id id="__88">clearExpenseItemSubmitStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">getExpenseItemDetails</from-activity-id>
+      <control-flow-case id="__50">
+        <from-outcome id="__42">getExpenseItemDetails</from-outcome>
+        <to-activity-id id="__51">additionalDetailsStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__55">
+      <from-activity-id id="__56">checkUserRole</from-activity-id>
+      <control-flow-case id="__57">
+        <from-outcome id="__58">authorized</from-outcome>
+        <to-activity-id id="__59">CreateExpenseInsert</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__62">
+        <from-outcome id="__63">noaccess</from-outcome>
+        <to-activity-id id="__61">noaccess</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__67">
+      <from-activity-id id="__68">submitStop</from-activity-id>
+      <control-flow-case id="__70">
+        <from-outcome id="__71">finishExpense</from-outcome>
+        <to-activity-id id="__69">completeExpense</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__76">
+      <from-activity-id id="__77">clearExpenseItemPaymentStop</from-activity-id>
+      <control-flow-case id="__78">
+        <from-outcome id="__80">getExpenseItemDetails</from-outcome>
+        <to-activity-id id="__79">paymentStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__81">
+      <from-activity-id id="__82">clearExpenseItemSubmitStop</from-activity-id>
+      <control-flow-case id="__85">
+        <from-outcome id="__83">getExpenseItemDetails</from-outcome>
+        <to-activity-id id="__84">submitStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

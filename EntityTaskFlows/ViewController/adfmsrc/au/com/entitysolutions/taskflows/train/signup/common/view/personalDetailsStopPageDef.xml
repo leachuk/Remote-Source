@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="personalDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupPersonalDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupPersonalDetailsViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PortalSignupPersonalDetailsViewIterator"
+                     id="Surname">
+      <AttrNames>
+        <Item Value="Surname"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPersonalDetailsViewIterator"
+                     id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPersonalDetailsViewIterator"
+                     id="MiddleName">
+      <AttrNames>
+        <Item Value="MiddleName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPersonalDetailsViewIterator"
+                     id="PreferredName">
+      <AttrNames>
+        <Item Value="PreferredName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPersonalDetailsViewIterator"
+                     id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupPersonalDetailsViewIterator"
+          StaticList="false" Uses="LOV_Prefix" id="Prefix"
+          DTSupportsMRU="true"/>
+<action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

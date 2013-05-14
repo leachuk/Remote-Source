@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupIcCertificatesView"
+  Version="11.1.1.60.13"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <SQLQuery>
+    <![CDATA[SELECT PortalSignupIcCertificates.CERTIFICATES_ID, 
+       PortalSignupIcCertificates.USER_TF_ID, 
+       PortalSignupIcCertificates.INCORP_CERT_DOC_CNTNT_ID, 
+       PortalSignupIcCertificates.WRKRS_COMP_EXPIRY, 
+       PortalSignupIcCertificates.WRKRS_COMP_DOC_CNTNT_ID, 
+       PortalSignupIcCertificates.PROF_INDM_EXPIRY, 
+       PortalSignupIcCertificates.PROF_INDM_DOC_CNTNT_ID, 
+       PortalSignupIcCertificates.LAST_UPDATE_DATE, 
+       PortalSignupIcCertificates.LAST_UPDATED_BY, 
+       PortalSignupIcCertificates.CREATION_DATE, 
+       PortalSignupIcCertificates.CREATED_BY, 
+       PortalSignupIcCertificates.PUBL_LIAB_DOC_CNTNT_ID, 
+       PortalSignupIcCertificates.PUBL_LIAB_EXPIRY,
+       PortalSignupIcCertificates.SEND_OFFLINE,
+       doc_c1.doc_content_name incorp_cert_upl_name,
+       doc_c2.doc_content_name work_cmp_upl_name,
+       doc_c3.doc_content_name prof_idm_upl_name,
+       doc_c4.doc_content_name pub_liab_upl_name
+FROM PORTAL_SIGNUP_IC_CERTIFICATES PortalSignupIcCertificates
+,PORTAL_DOC_CONTENT doc_c1
+,PORTAL_DOC_CONTENT doc_c2
+,PORTAL_DOC_CONTENT doc_c3
+,PORTAL_DOC_CONTENT doc_c4
+WHERE doc_c1.doc_content_id(+) = PORTALSIGNUPICCERTIFICATES.INCORP_CERT_DOC_CNTNT_ID
+AND doc_c2.doc_content_id(+) = PORTALSIGNUPICCERTIFICATES.WRKRS_COMP_DOC_CNTNT_ID
+AND doc_c3.doc_content_id(+) = PORTALSIGNUPICCERTIFICATES.PROF_INDM_DOC_CNTNT_ID
+AND doc_c4.doc_content_id(+) = PORTALSIGNUPICCERTIFICATES.PUBL_LIAB_DOC_CNTNT_ID]]>
+  </SQLQuery>
+  <EntityUsage
+    Name="PortalSignupIcCertificates"
+    Entity="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates"/>
+  <ViewAttribute
+    Name="CertificatesId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CertificatesId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="CERTIFICATES_ID"/>
+  <ViewAttribute
+    Name="UserTfId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserTfId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="USER_TF_ID"/>
+  <ViewAttribute
+    Name="IncorpCertDocCntntId"
+    PrecisionRule="true"
+    EntityAttrName="IncorpCertDocCntntId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="INCORP_CERT_DOC_CNTNT_ID"/>
+  <ViewAttribute
+    Name="WrkrsCompExpiry"
+    PrecisionRule="true"
+    EntityAttrName="WrkrsCompExpiry"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="WRKRS_COMP_EXPIRY"/>
+  <ViewAttribute
+    Name="WrkrsCompDocCntntId"
+    PrecisionRule="true"
+    EntityAttrName="WrkrsCompDocCntntId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="WRKRS_COMP_DOC_CNTNT_ID"/>
+  <ViewAttribute
+    Name="ProfIndmExpiry"
+    PrecisionRule="true"
+    EntityAttrName="ProfIndmExpiry"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="PROF_INDM_EXPIRY"/>
+  <ViewAttribute
+    Name="ProfIndmDocCntntId"
+    PrecisionRule="true"
+    EntityAttrName="ProfIndmDocCntntId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="PROF_INDM_DOC_CNTNT_ID"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="PublLiabDocCntntId"
+    PrecisionRule="true"
+    EntityAttrName="PublLiabDocCntntId"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="PUBL_LIAB_DOC_CNTNT_ID"/>
+  <ViewAttribute
+    Name="PublLiabExpiry"
+    PrecisionRule="true"
+    EntityAttrName="PublLiabExpiry"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="PUBL_LIAB_EXPIRY"/>
+  <ViewAttribute
+    Name="SendOffline"
+    PrecisionRule="true"
+    EntityAttrName="SendOffline"
+    EntityUsage="PortalSignupIcCertificates"
+    AliasName="SEND_OFFLINE"/>
+  <ViewAttribute
+    Name="IncorpCertUplName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="INCORP_CERT_UPL_NAME"
+    Expression="INCORP_CERT_UPL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesView.IncorpCertUplName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WorkCmpUplName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WORK_CMP_UPL_NAME"
+    Expression="WORK_CMP_UPL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesView.WorkCmpUplName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ProfIdmUplName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PROF_IDM_UPL_NAME"
+    Expression="PROF_IDM_UPL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesView.ProfIdmUplName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PubLiabUplName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="PUB_LIAB_UPL_NAME"
+    Expression="PUB_LIAB_UPL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesView.PubLiabUplName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

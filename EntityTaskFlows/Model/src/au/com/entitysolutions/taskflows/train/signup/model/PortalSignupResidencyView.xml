@@ -1,0 +1,272 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupResidencyView"
+  Version="11.1.1.60.13"
+  SelectList="PortalSignupResidency.RESIDENCY_DETAILS_ID, 
+       PortalSignupResidency.USER_TF_ID, 
+       PortalSignupResidency.CONFIRM_TRUE_COPY, 
+       PortalSignupResidency.ALREADY_SUBMITTED, 
+       PortalSignupResidency.TRANSFORMED, 
+       PortalSignupResidency.CREATED_BY, 
+       PortalSignupResidency.CREATION_DATE, 
+       PortalSignupResidency.LAST_UPDATED_BY, 
+       PortalSignupResidency.LAST_UPDATE_DATE, 
+       PortalSignupResidency.DOC_CONTENT_ID_1, 
+       PortalSignupResidency.DOC_CONTENT_ID_2, 
+       PortalSignupResidency.DOC_CONTENT_ID_3, 
+       PortalSignupResidency.RESIDENCY_TYPE"
+  FromList="PORTAL_SIGNUP_RESIDENCY PortalSignupResidency"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="PortalDocSQLView_Proof1DocName"
+    ViewObjectName="au.com.entitysolutions.taskflows.train.model.PortalDocSQLView">
+    <ViewCriteriaUsage
+      Name="findByDocSubType"
+      FullName="au.com.entitysolutions.taskflows.train.model.PortalDocSQLView.findByDocSubType"/>
+    <ParameterMap>
+      <PIMap Variable="p_doc_type">
+        <TransientExpression><![CDATA["U"]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_user_tf_id">
+        <TransientExpression><![CDATA[UserTfId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_step_name">
+        <TransientExpression><![CDATA["Proof of Australian Residency or Citizenship"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="PortalDocSQLView_Proof2DocName"
+    ViewObjectName="au.com.entitysolutions.taskflows.train.model.PortalDocSQLView">
+    <ViewCriteriaUsage
+      Name="findByDocSubType"
+      FullName="au.com.entitysolutions.taskflows.train.model.PortalDocSQLView.findByDocSubType"/>
+    <ParameterMap>
+      <PIMap Variable="p_doc_type">
+        <TransientExpression><![CDATA["U"]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_user_tf_id">
+        <TransientExpression><![CDATA[UserTfId]]></TransientExpression>
+      </PIMap>
+      <PIMap Variable="p_step_name">
+        <TransientExpression><![CDATA["Proof of Australian Residency or Citizenship"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SharedAppModule_SysCommonLookupsView_ResiType"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView"
+    AMUsageName="SharedAppModule"
+    ViewInstanceName="SysCommonLookupsView">
+    <ViewCriteriaUsage
+      Name="QueryByLookupTypeViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView.QueryByLookupTypeViewCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_lookup_type">
+        <TransientExpression><![CDATA["PORTAL_RESIDENCY_TYPE"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_Proof1DocName"
+    ListVOName="PortalDocSQLView_Proof1DocName"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="SELECT_DOCUMENT_TYPE"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Proof1DocName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DocName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DocName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_Proof2DocName"
+    ListVOName="PortalDocSQLView_Proof2DocName"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="SELECT_DOCUMENT_TYPE"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="Proof2DocName"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="DocName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DocName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ResidencyType"
+    ListVOName="SharedAppModule_SysCommonLookupsView_ResiType"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_ResidencyType_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ResidencyType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PortalSignupResidency"
+    Entity="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupResidency"/>
+  <ViewAttribute
+    Name="ResidencyDetailsId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ResidencyDetailsId"
+    EntityUsage="PortalSignupResidency"
+    AliasName="RESIDENCY_DETAILS_ID"/>
+  <ViewAttribute
+    Name="UserTfId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserTfId"
+    EntityUsage="PortalSignupResidency"
+    AliasName="USER_TF_ID"/>
+  <ViewAttribute
+    Name="ConfirmTrueCopy"
+    PrecisionRule="true"
+    EntityAttrName="ConfirmTrueCopy"
+    EntityUsage="PortalSignupResidency"
+    AliasName="CONFIRM_TRUE_COPY"/>
+  <ViewAttribute
+    Name="AlreadySubmitted"
+    PrecisionRule="true"
+    EntityAttrName="AlreadySubmitted"
+    EntityUsage="PortalSignupResidency"
+    AliasName="ALREADY_SUBMITTED"/>
+  <ViewAttribute
+    Name="Transformed"
+    PrecisionRule="true"
+    EntityAttrName="Transformed"
+    EntityUsage="PortalSignupResidency"
+    AliasName="TRANSFORMED"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PortalSignupResidency"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PortalSignupResidency"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PortalSignupResidency"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PortalSignupResidency"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="DocContentId1"
+    PrecisionRule="true"
+    EntityAttrName="DocContentId1"
+    EntityUsage="PortalSignupResidency"
+    AliasName="DOC_CONTENT_ID_1"/>
+  <ViewAttribute
+    Name="DocContentId2"
+    PrecisionRule="true"
+    EntityAttrName="DocContentId2"
+    EntityUsage="PortalSignupResidency"
+    AliasName="DOC_CONTENT_ID_2"/>
+  <ViewAttribute
+    Name="DocContentId3"
+    PrecisionRule="true"
+    EntityAttrName="DocContentId3"
+    EntityUsage="PortalSignupResidency"
+    AliasName="DOC_CONTENT_ID_3"/>
+  <ViewAttribute
+    Name="Proof1DocName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Proof1DocName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Proof2DocName"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"
+    LOVName="LOV_Proof2DocName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ResidencyType"
+    PrecisionRule="true"
+    EntityAttrName="ResidencyType"
+    EntityUsage="PortalSignupResidency"
+    AliasName="RESIDENCY_TYPE"
+    LOVName="LOV_ResidencyType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="radio"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewLinkAccessor
+    Name="PortalSignupPersonalDetailsView"
+    ViewLink="au.com.entitysolutions.taskflows.train.signup.model.PortalResidencyVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="corplandingBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingBundle']}"/>
+  <af:panelGroupLayout id="pgl1" valign="top" layout="vertical">
+    <af:outputLabel value="#{corplandingBundle.IPROS_BY_STATE_TITLE}" id="ol1"
+                    styleClass="widgetHeader"/>
+    <dvt:pieGraph id="pieGraph1" value="#{bindings.IprosByState11.graphModel}"
+                  subType="PIE"
+                  shortDesc="#{corplandingBundle.IPROS_BY_STATE_DESC}"
+                  markerTooltipType="MTT_PERCENT_VAL_TEXT"
+                  inlineStyle="width:265.0px; height:265px">
+      <dvt:sliceLabel textType="LD_VALUE" autoPrecision="off" scaling="none">
+      </dvt:sliceLabel>
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPieFrame/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:pieLabel rendered="false"/>
+      <dvt:legendArea automaticPlacement="AP_NEVER" position="LAP_BOTTOM"/>
+    </dvt:pieGraph>
+  </af:panelGroupLayout>
+</jsp:root>

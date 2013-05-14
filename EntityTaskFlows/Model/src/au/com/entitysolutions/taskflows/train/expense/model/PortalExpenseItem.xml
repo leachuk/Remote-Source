@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalExpenseItem"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_EXPENSE_ITEM"
+  AliasName="PortalExpenseItem"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItemImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ItemId"
+    IsNotNull="true"
+    ColumnName="ITEM_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_EXPENSE_ITEM_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="ExpenseId"
+    ColumnName="EXPENSE_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ItemType"
+    Precision="10"
+    ColumnName="ITEM_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ItemDescription"
+    Precision="100"
+    ColumnName="ITEM_DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Amount"
+    Precision="11"
+    Scale="2"
+    ColumnName="AMOUNT"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PercentUse"
+    Precision="11"
+    Scale="2"
+    ColumnName="PERCENT_USE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocUploadId"
+    ColumnName="DOC_UPLOAD_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocFilePath"
+    Precision="200"
+    ColumnName="DOC_FILE_PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FormFilePath"
+    Precision="200"
+    ColumnName="FORM_FILE_PATH"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_EXPENSE_ITEM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PortalExpense"
+    Association="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItemAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItemAssoc.PortalExpense"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItemAssoc.PortalExpenseItem"
+    Type="au.com.entitysolutions.taskflows.model.CustomEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0016177">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016177"/>
+      <Attr Name="_checkCondition" Value='"ITEM_TYPE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0016178">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016178"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016179">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016179"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016180">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016180"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016181">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016181"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016182"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0016182"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.ItemId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016183">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0016176"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0016183"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.ExpenseId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0016184">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0013469"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0016184"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItem.DocUploadId"/>
+    </AttrArray>
+  </Key>
+</Entity>

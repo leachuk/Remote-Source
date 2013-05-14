@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="contactDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupContactDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupContactDetailsViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="TelephoneHome">
+      <AttrNames>
+        <Item Value="TelephoneHome"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="TelephoneWork">
+      <AttrNames>
+        <Item Value="TelephoneWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="TelephoneMobile">
+      <AttrNames>
+        <Item Value="TelephoneMobile"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="HomeAddressLine">
+      <AttrNames>
+        <Item Value="HomeAddressLine"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="HomeSuburb">
+      <AttrNames>
+        <Item Value="HomeSuburb"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupContactDetailsViewIterator"
+          StaticList="false" Uses="LOV_HomeState" id="HomeState"
+          DTSupportsMRU="false"/>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="HomePostCode">
+      <AttrNames>
+        <Item Value="HomePostCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="HomeCountry">
+      <AttrNames>
+        <Item Value="HomeCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupContactDetailsViewIterator"
+                     id="PortalEmailAddress">
+      <AttrNames>
+        <Item Value="PortalEmailAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

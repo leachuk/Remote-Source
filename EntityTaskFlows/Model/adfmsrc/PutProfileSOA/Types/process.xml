@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="process" Package="PutProfileSOA.Types"
+          BeanClass="PutProfileSOA.Types.process" isJavaBased="false">
+  <AccessorAttribute id="inputObject" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject"/>
+</JavaBean>

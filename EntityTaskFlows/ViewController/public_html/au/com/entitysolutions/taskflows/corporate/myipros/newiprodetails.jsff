@@ -1,0 +1,215 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate id="pt1"
+                   viewId="/au/com/entitysolutions/taskflows/corporate/myipros/newIproTrainTemplate.jspx"
+                   value="#{bindings.pt1}">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top"
+                           styleClass="AFStretchWidth">
+        <af:panelGroupLayout id="pgl9" layout="vertical">
+          <af:panelHeader text="#{myiprosBundle.PERSONAL_DETAILS_LBL}" id="ph2">
+            <af:panelFormLayout id="pfl3">
+              <af:inputText label="#{myiprosBundle.FIRST_NAME_LBL}" id="it1"
+                            value="#{pageFlowScope.NewIProManagedBean.firstname}"
+                            showRequired="true" required="true">
+              </af:inputText>
+              <af:inputText label="#{myiprosBundle.SURNAME_LBL}" id="it2"
+                            value="#{pageFlowScope.NewIProManagedBean.surname}"
+                            required="true" showRequired="true">
+              </af:inputText>
+              <af:inputDate label="#{myiprosBundle.DOB_LBL}" id="id1"
+                            value="#{pageFlowScope.NewIProManagedBean.dateOfBirth}"/>
+            </af:panelFormLayout>
+            <af:spacer width="10" height="10" id="s2"/>
+          </af:panelHeader>
+          <af:panelHeader text="#{myiprosBundle.ADDRESS_LBL}" id="ph3">
+            <af:panelFormLayout id="pfl4">
+              <af:inputText label="#{myiprosBundle.STREET_LBL}" id="it3"
+                            value="#{pageFlowScope.NewIProManagedBean.street}"/>
+              <af:inputText label="#{myiprosBundle.SUBURB_LBL}" id="it4"
+                            value="#{pageFlowScope.NewIProManagedBean.suburb}"/>
+              <af:selectOneChoice label="#{myiprosBundle.STATE_LBL}"
+                                  value="#{pageFlowScope.NewIProManagedBean.state}"
+                                  id="soc1">
+                <f:selectItems value="#{pageFlowScope.NewIProManagedBean.states}"
+                               id="si1"/>
+              </af:selectOneChoice>
+              <af:inputText label="#{myiprosBundle.POSTCODE_LBL}" id="it5"
+                            value="#{pageFlowScope.NewIProManagedBean.postcode}">
+                <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                             hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            <af:spacer width="10" height="10" id="s3"/>
+          </af:panelHeader>
+          <af:panelHeader text="#{myiprosBundle.CONTACT_DETAILS_LBL}" id="ph4">
+            <af:panelFormLayout id="pfl5">
+              <af:inputText label="#{myiprosBundle.MOBILE_LBL}" id="it6"
+                            value="#{pageFlowScope.NewIProManagedBean.mobile}">
+                <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                             hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+              </af:inputText>
+              <af:inputText label="#{myiprosBundle.LANDLINE_LBL}" id="it7"
+                            value="#{pageFlowScope.NewIProManagedBean.landline}">
+                <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                             hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+              </af:inputText>
+              <af:inputText label="#{myiprosBundle.EMAIL_LBL}" id="it8"
+                            value="#{pageFlowScope.NewIProManagedBean.email}">
+                <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                             hint="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                             messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            <af:spacer width="10" height="10" id="s4"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+        <af:spacer width="20" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl10" layout="vertical">
+          <af:panelHeader text="#{myiprosBundle.CONTRACT_DETAILS_LBL}" id="ph5">
+            <af:panelFormLayout id="pfl2">
+              <af:inputDate label="#{myiprosBundle.CONTRACT_START_LBL}" id="id2"
+                            value="#{pageFlowScope.NewIProManagedBean.contractStart}"/>
+              <af:inputDate label="#{myiprosBundle.CONTRACT_END_LBL}" id="id3"
+                            value="#{pageFlowScope.NewIProManagedBean.contractEnd}"/>
+              <af:panelLabelAndMessage label="#{myiprosBundle.TERMINATION_NOTICE_LBL}"
+                                       id="plam6" for="it9">
+                <af:panelGroupLayout id="pgl12" layout="horizontal">
+                  <af:inputText id="it9"
+                                value="#{pageFlowScope.NewIProManagedBean.terminationNoticePeriod}"
+                                simple="true" columns="12">
+                    <af:validateRegExp pattern="#{myiprosBundle.INTEGER_REGEX}" hint="#{myiprosBundle.TERMINATION_NOTICE_ERROR_MSG}"
+                                       messageDetailNoMatch="#{myiprosBundle.TERMINATION_NOTICE_ERROR_MSG}"/>
+                  </af:inputText>
+                  <af:selectOneChoice id="soc9"
+                                      value="#{pageFlowScope.NewIProManagedBean.terminationNoticeUnit}"
+                                      immediate="true" simple="true">
+                    <af:selectItem label="#{myiprosBundle.DAYS_LBL}"
+                                   value="#{myiprosBundle.DAYS_LBL}" id="si13"/>
+                    <af:selectItem label="#{myiprosBundle.WEEKS_LBL}"
+                                   value="#{myiprosBundle.WEEKS_LBL}"
+                                   id="si12"/>
+                    <af:selectItem label="#{myiprosBundle.MONTHS_LBL}"
+                                   value="#{myiprosBundle.MONTHS_LBL}"
+                                   id="si11"/>
+                  </af:selectOneChoice>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:inputText label="#{myiprosBundle.POSITION_LBL}"
+                            value="#{pageFlowScope.NewIProManagedBean.positionTitle}"
+                            id="it10"/>
+              <af:panelLabelAndMessage label="#{myiprosBundle.START_TIME_LBL}"
+                                       id="plam1">
+                <af:panelGroupLayout id="pgl4" layout="horizontal">
+                  <af:selectOneChoice label="#{myiprosBundle.HRS_LBL}"
+                                      value="#{pageFlowScope.NewIProManagedBean.startTimeHrs}"
+                                      id="soc2" simple="true">
+                    <f:selectItems value="#{pageFlowScope.NewIProManagedBean.hours}"
+                                   id="si2"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="#{myiprosBundle.MINS_LBL}"
+                                      value="#{pageFlowScope.NewIProManagedBean.startTimeMins}"
+                                      id="soc4" simple="true">
+                    <f:selectItems value="#{pageFlowScope.NewIProManagedBean.mins}"
+                                   id="si4"/>
+                  </af:selectOneChoice>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.END_TIME_LBL}"
+                                       id="plam2">
+                <af:panelGroupLayout id="pgl5" layout="horizontal">
+                  <af:selectOneChoice label="#{myiprosBundle.HRS_LBL}"
+                                      value="#{pageFlowScope.NewIProManagedBean.endTimeHrs}"
+                                      id="soc3" simple="true">
+                    <f:selectItems value="#{pageFlowScope.NewIProManagedBean.hours}"
+                                   id="si3"/>
+                  </af:selectOneChoice>
+                  <af:selectOneChoice label="#{myiprosBundle.MINS_LBL}"
+                                      value="#{pageFlowScope.NewIProManagedBean.endTimeMins}"
+                                      id="soc5" simple="true">
+                    <f:selectItems value="#{pageFlowScope.NewIProManagedBean.mins}"
+                                   id="si5"/>
+                  </af:selectOneChoice>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.RATE_LBL}"
+                                       id="plam3" for="soc6">
+                <af:panelGroupLayout id="pgl6" layout="horizontal">
+                  <af:selectOneChoice value="#{pageFlowScope.NewIProManagedBean.iproRateUnit}"
+                                      id="soc6" simple="true">
+                    <f:selectItems value="#{pageFlowScope.NewIProManagedBean.rateUnits}"
+                                   id="si6"/>
+                  </af:selectOneChoice>
+                  <af:inputText id="it11"
+                                value="#{pageFlowScope.NewIProManagedBean.iproRate}"
+                                simple="true" columns="11">
+                    <af:validateDoubleRange minimum="0.0"/>
+                  </af:inputText>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.MGMT_FEE_LBL}"
+                                       id="plam4" for="it12">
+                <af:panelGroupLayout id="pgl7" layout="horizontal">
+                  <af:inputText id="it12"
+                                value="#{pageFlowScope.NewIProManagedBean.mgmtFee}"
+                                simple="true">
+                    <af:validateDoubleRange minimum="0.0" maximum="100.0"/>
+                  </af:inputText>
+                  <!--<af:selectOneChoice value="0" id="soc7" readOnly="true"
+                                      simple="true" disabled="true">
+                    <af:selectItem label="%" value="0" id="si7"/>
+                    <af:selectItem label="$" value="1" id="si8"/>
+                  </af:selectOneChoice>-->
+                  <af:outputLabel value="%" id="outputLabel1"
+                                  styleClass="percentLabel"/>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.PAYROLL_TAX_LBL}"
+                                       id="plam5" for="it13">
+                <af:panelGroupLayout id="pgl8" layout="horizontal">
+                  <af:inputText id="it13"
+                                value="#{pageFlowScope.NewIProManagedBean.payrollTax}"
+                                simple="true">
+                    <af:validateDoubleRange minimum="0.0" maximum="100.0"/>
+                  </af:inputText>
+                  <af:outputLabel value="%" id="ol1"
+                                  styleClass="percentLabel"/>
+                  <!--<af:selectOneChoice value="%" id="soc8" readOnly="true"
+                                      simple="true" disabled="true">
+                    <af:selectItem label="%" value="%" id="si9"/>
+                    <af:selectItem label="$" value="$" id="si10"/>
+                  </af:selectOneChoice>-->
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:inputText label="#{myiprosBundle.TOTAL_BILLABLE_LBL}"
+                            id="it14"
+                            value="#{pageFlowScope.NewIProManagedBean.totalBillable}">
+                <af:validateDoubleRange minimum="0.0"/>
+              </af:inputText>
+              <af:inputText label="#{myiprosBundle.AWARD_LBL}" id="it15"
+                            value="#{pageFlowScope.NewIProManagedBean.award}"/>
+              <af:inputText label="#{myiprosBundle.CLASSIFICATION_LBL}"
+                            id="it16"
+                            value="#{pageFlowScope.NewIProManagedBean.classification}"/>
+            </af:panelFormLayout>
+            <af:spacer width="10" height="10" id="s5"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText" value="#{myiprosBundle.IPRO_DETAILS_LBL}"/>
+    <f:attribute name="stopName" value="#{myiprosBundle.IPRO_DETAILS_LBL}"/>
+    <f:attribute name="firstStop" value="#{true}"/>
+  </af:pageTemplate>
+</jsp:root>

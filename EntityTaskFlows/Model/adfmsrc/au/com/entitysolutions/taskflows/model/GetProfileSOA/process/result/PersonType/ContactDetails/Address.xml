@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Address"
+          Package="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.Address"
+          isJavaBased="false">
+  <Attribute Name="Line1" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="Line2" IsUpdateable="0" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="Suburb" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="State" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="PostCode" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="Country" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+  <AccessorAttribute id="BaseElement" IsCollection="false"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.BaseElement"/>
+</JavaBean>

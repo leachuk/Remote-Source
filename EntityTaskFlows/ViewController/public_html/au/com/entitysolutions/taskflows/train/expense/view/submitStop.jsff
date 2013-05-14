@@ -1,0 +1,129 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/expense/view/expenseStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:group id="g1">
+        <af:panelGroupLayout id="pgl1" layout="vertical">
+          <af:table value="#{bindings.PortalExpenseItemView2.collectionModel}"
+                    var="row"
+                    rows="#{bindings.PortalExpenseItemView2.rangeSize}"
+                    emptyText="#{bindings.PortalExpenseItemView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.PortalExpenseItemView2.rangeSize}"
+                    rowBandingInterval="0" id="ta1" varStatus="vs"
+                    styleClass="AFStretchWidth" autoHeightRows="6"
+                    columnStretching="last" width="100%">            
+            <af:column sortProperty="ItemDescription" sortable="false"
+                       headerText="Item Type" id="column1" width="230"
+                       noWrap="false">
+              <af:panelGroupLayout id="pgl2" layout="vertical"
+                                   inlineStyle="width:232px">
+                <af:outputText value="#{row.bindings.ExpenseMeaning.inputValue}#{empty row.bindings.ItemType.inputValue ? '' : ','} #{row.bindings.ItemDescription.inputValue}"
+                               id="outputText2"
+                               rendered="#{not empty row.bindings.ItemType.attributeValue}"/>
+              </af:panelGroupLayout>
+            </af:column>
+            <af:column sortProperty="Amount" sortable="false"
+                       headerText="$ Amount" id="c5" width="73">
+              <af:outputText value="#{row.Amount}" id="ot4">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PortalExpenseItemView2.hints.Amount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="PercentUse" sortable="false"
+                       headerText="% Business Use" id="c3" width="77">
+              <af:outputText value="#{row.PercentUse}" id="ot5">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.PortalExpenseItemView2.hints.PercentUse.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="DocFilePath" sortable="false"
+                       headerText="Declaration Form" id="column3" width="175"
+                       noWrap="false">
+              <af:outputText value="#{not empty row.FormFilePath ? (fn:startsWith(fn:replace(row.FormFilePath,'\\','/'), '/') ? fn:split(fn:replace(row.FormFilePath,'\\','/'), '/')[1] : fn:split(fn:replace(row.FormFilePath,'\\','/'), '/')[2]) : 'Not uploaded'}"
+                             id="outputText3"/>
+            </af:column>
+            <af:column sortProperty="DocFilePath" sortable="false"
+                       headerText="Proof of Payment" id="c4" width="175"
+                       noWrap="false">
+              <af:outputText value="#{not empty row.DocFilePath ? (fn:startsWith(fn:replace(row.DocFilePath,'\\','/'), '/') ? fn:split(fn:replace(row.DocFilePath,'\\','/'), '/')[1] : fn:split(fn:replace(row.DocFilePath,'\\','/'), '/')[2]) : 'Not uploaded'}"
+                             id="ot2"/>
+            </af:column>
+          </af:table>
+          <af:spacer width="10" height="30" id="s1"/>
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:selectBooleanCheckbox text="#{pageFlowScope.msgs.bundle['TERM1']}"
+                                      id="selectBooleanCheckbox3"
+                                      required="false" simple="true"
+                                      binding="#{pageFlowScope.trainBean.trainStops[pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']].checkboxTerm1}"
+                                      autoSubmit="false"/>
+            <af:spacer width="10" height="10" id="spacer1"/>
+            <af:selectBooleanCheckbox text="#{pageFlowScope.msgs.bundle['TERM2']}"
+                                      id="sbc1" required="false" simple="true"
+                                      binding="#{pageFlowScope.trainBean.trainStops[pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']].checkboxTerm2}"
+                                      autoSubmit="false"/>
+            <af:spacer width="10" height="10" id="spacer2"/>
+            <af:selectBooleanCheckbox text="#{pageFlowScope.msgs.bundle['TERM3']}"
+                                      id="selectBooleanCheckbox2"
+                                      required="false" simple="true"
+                                      binding="#{pageFlowScope.trainBean.trainStops[pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']].checkboxTerm3}"
+                                      autoSubmit="false"/>
+          </af:panelGroupLayout>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:outputText value="#{pageFlowScope.msgs.bundle['INSTRUCTION_STEP5_HTML_TEXT']}" id="ot1"
+                         escape="false"/>
+          <af:spacer width="10" height="10" id="s3"/>
+          <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                               valign="top">
+            <af:icon name="info" id="icon2"/>
+            <af:panelGroupLayout id="pgl1111" valign="top" layout="vertical">
+              <af:panelGroupLayout id="pgl123" valign="top" layout="horizontal">
+                <af:outputText value="#{pageFlowScope.msgs.bundle['PROCESS_SUMMARY_HTML_TEXT3']}"
+                               id="outputText1" escape="false"/>
+                <af:goLink id="goLink2" targetFrame="_blank"
+                           text="Tax Deduction Kit."
+                           destination="/ShowProperty?nodeId=%2FEntityUCM%2FTAXDEDUCTIONKIT%2F%2FidcPrimaryFile&amp;revision=latestreleased"
+                           styleClass="strongText"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <f:facet name="separator">
+              <af:spacer width="10" height="10" id="spacer3"/>
+            </f:facet>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+      </af:group>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_HEADERTEXT']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']}"/>
+    <f:attribute name="isShowTrainButtons" value="false"/>
+    <f:facet name="buttons">
+      <af:panelGroupLayout id="pgl21" layout="horizontal"
+                           halign="end">
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="pt_s12"/>
+        </f:facet>
+        <af:commandButton id="previous"
+                          text="#{pageFlowScope.msgs.bundle['PREV_BTN']}"
+                          action="#{pageFlowScope.trainBean.navigatePrevStop}"
+                          actionListener="#{pageFlowScope.trainBean.rollbackAndRequery}"
+                          immediate="true"
+                          rendered="#{!pageFlowScope.trainBean.firstStop}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <af:commandButton id="commandButton11"
+                          text="#{pageFlowScope.msgs.bundle['SUBMIT_BTN']}"
+                          action="#{pageFlowScope.trainBean.trainStops[pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']].submitExpense}"
+                          immediate="false">
+          <af:setPropertyListener from="#{pageFlowScope.msgs.bundle['SUBMIT_TRAIN_STEP_NAME']}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

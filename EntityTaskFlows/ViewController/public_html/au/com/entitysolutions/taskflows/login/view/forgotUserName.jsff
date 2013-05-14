@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.login.view.LoginTaskflowMessageBundle']}"/>          
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/> 
+  <af:panelHeader text="Please enter your registered email address" id="ph1" styleClass="unbranded">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelFormLayout id="pfl1" labelWidth="200px">
+      <f:facet name="footer">
+        <af:panelGroupLayout id="pgl1" layout="horizontal">
+          <af:commandButton text="#{viewcontrollerBundle.SUBMIT_BTN}" id="cb1"
+                            action="#{pageFlowScope.entityLoginBean.forgotUserName}">
+            <!--af:setActionListener from="#{pageFlowScope.entityLoginBean.fgtPwdEmailAddressField.value}"
+                                  to="#{pageFlowScope.queryEmailAddress}"/-->
+          </af:commandButton>
+          <af:commandButton text="#{viewcontrollerBundle.CANCEL_BTN}" id="cb2"
+                            immediate="true"
+                            action="#{pageFlowScope.entityLoginBean.cancelFgtUserIdAction}"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s2"/>
+          </f:facet>
+        </af:panelGroupLayout>
+      </f:facet>
+      <af:inputText label="#{viewcontrollerBundle.EMAIL_ADDRESS_LBL}" id="qryEmail"
+                    required="true"
+                    binding="#{pageFlowScope.entityLoginBean.fgtUserIdEmailAddressField}">
+            <af:validateRegExp messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                           pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"/>                    
+      </af:inputText>
+      <af:spacer width="10" height="10" id="s1"/>
+    </af:panelFormLayout>
+  </af:panelHeader>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:entityLoginBean-->
+</jsp:root>

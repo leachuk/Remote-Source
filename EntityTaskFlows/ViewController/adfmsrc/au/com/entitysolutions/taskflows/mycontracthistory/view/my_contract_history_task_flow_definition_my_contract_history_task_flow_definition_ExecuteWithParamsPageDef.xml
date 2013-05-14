@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="my_contract_history_task_flow_definition_my_contract_history_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.mycontracthistory.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="MyContractHistoryVO1" RangeSize="25"
+              DataControl="MyContractHistoryAppModuleDataControl"
+              id="MyContractHistoryVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="MyContractHistoryVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="personId" NDValue="#{pageFlowScope.personId}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

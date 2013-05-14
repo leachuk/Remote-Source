@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="contractStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup_ext.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalUserTFStepDownloadDocsView" RangeSize="10"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepDownloadDocsViewIterator"/>
+    <iterator Binds="PortalSignupContractExtView" RangeSize="10"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupContractExtViewIterator"/>
+    <iterator Binds="PortalUserTFStepUploadedDocsView" RangeSize="10"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepUploadedDocsViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentName">
+      <AttrNames>
+        <Item Value="DocContentName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentMime">
+      <AttrNames>
+        <Item Value="DocContentMime"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <list Uses="LOV_SendType" StaticList="false"
+          IterBinding="PortalSignupContractExtViewIterator" id="SendType"/>
+    <methodAction id="removeDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="removeDoc" IsViewObjectMethod="false"
+                  ReturnName="data.IProSignUpTrainAppModuleDataControl.methodResults.removeDoc_IProSignUpTrainAppModuleDataControl_dataProvider_removeDoc_result">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['CONTRACT_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="PortalUserTFStepUploadedDocsViewIterator"
+          id="PortalUserTFStepUploadedDocsView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepUploadedDocsView"
+                      Name="PortalUserTFStepUploadedDocsView0">
+        <AttrNames>
+          <Item Value="DocName"/>
+          <Item Value="DocContentName"/>
+          <Item Value="DocContentBytesize"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="uploadDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="uploadDoc" IsViewObjectMethod="false"
+                  ReturnName="data.IProSignUpTrainAppModuleDataControl.methodResults.uploadDoc_IProSignUpTrainAppModuleDataControl_dataProvider_uploadDoc_result">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['CONTRACT_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileContent" NDValue="#{requestScope.file_content}"
+                 NDType="oracle.jbo.domain.BlobDomain"/>
+      <NamedData NDName="fileMime" NDValue="#{requestScope.file_mime}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileLength" NDValue="#{requestScope.file_length}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileName" NDValue="#{requestScope.file_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="PortalUserTFStepUploadedDocsViewIterator"
+          id="PortalUserTFStepUploadedDocsView1">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepUploadedDocsView"
+                      Name="PortalUserTFStepUploadedDocsView10">
+        <AttrNames>
+          <Item Value="DocContentBytesize"/>
+          <Item Value="DocContentName"/>
+          <Item Value="DocName"/>
+          <Item Value="DocSubType"/>
+          <Item Value="DocContentMb"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

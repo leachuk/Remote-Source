@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalUserTFStepDocAssoc"
+  Version="11.1.1.60.13">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="PortalUserTFStep"
+    Cardinality="1"
+    Source="true"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="PortalUserTFStep"/>
+      <Attr Name="_foreignKey"
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.SysC0080800"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.UserTfStepId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="PortalUserTFStepDoc"
+    Cardinality="-1"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="PortalUserTFStepDoc"/>
+      <Attr Name="_foreignKey"
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.SysC0080804"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.UserTfStepId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

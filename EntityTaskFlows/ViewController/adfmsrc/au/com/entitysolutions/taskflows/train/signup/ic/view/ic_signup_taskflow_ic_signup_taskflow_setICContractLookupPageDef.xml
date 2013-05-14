@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ic_signup_taskflow_ic_signup_taskflow_setICContractLookupPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ic.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="setICContractLookup" RequiresUpdateModel="true"
+            Action="invokeMethod" MethodName="setICContractLookup"
+            IsViewObjectMethod="false"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

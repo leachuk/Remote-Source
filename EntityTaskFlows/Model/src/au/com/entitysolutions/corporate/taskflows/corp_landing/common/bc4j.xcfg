@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="CorpLandingAppModuleLocal" ApplicationName="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule"/>
+         <Custom JDBCDataSource="jdbc/CorporateDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="CorpLandingAppModuleShared" ApplicationName="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule" DeployPlatform="LOCAL" JDBCName="CorporateDS" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

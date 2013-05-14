@@ -1,0 +1,73 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>Node 'UserTask' has no implementation defined</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>Node 'ReviewExpenseClaim' has no implementation defined</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>Node 'Manager of Customer Executives' has no implementation defined</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>Node 'BRConsultant' has no implementation defined</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>The condition in Sequence Flow (ReviewExpenseClaim To UserTask) is empty.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>/processes/IProExpensesSubmit.bpmn</file>
+      <name>/processes/IProExpensesSubmit.bpmn</name>
+      <fix/>
+      <msg>The condition in Sequence Flow (AfterTime To Manager of Customer Executives) is empty.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>SayHello2.task</file>
+      <name>SayHello2.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+</Faults>

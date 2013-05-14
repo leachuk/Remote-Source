@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ipro_signup_ext_taskflow_ipro_signup_ext_taskflow_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup_ext.ipro.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTFStepDownloadDocsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepDownloadDocsViewIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+            id="GetContractDoc" RequiresUpdateModel="true"
+            Action="executeWithParams"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            InstanceName="IProSignUpTrainAppModuleDataControl.PortalUserTFStepDownloadDocsView">
+      <NamedData NDName="p_user_tf_id"
+                 NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_step_name"
+                 NDValue="#{pageFlowScope.msgs.bundle['CONTRACT_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_doc_sub_type"
+                 NDValue="#{pageFlowScope.msgs.bundle['CONTRACT_DOC_SUBTYPE']}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

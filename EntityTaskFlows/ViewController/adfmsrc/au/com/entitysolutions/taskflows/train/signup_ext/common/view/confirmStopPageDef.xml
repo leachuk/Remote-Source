@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="confirmStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup_ext.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalUserTFStepSQLView" RangeSize="10"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepSQLViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <methodAction id="completeTaskFlow"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeTaskFlow" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="welcomeStepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['WELCOME_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="reviewStepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="PortalUserTFStepSQLViewIterator"
+          id="PortalUserTFStepSQLView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepSQLView"
+                      Name="PortalUserTFStepSQLView0">
+        <AttrNames>
+          <Item Value="UserTfId"/>
+          <Item Value="IsCompleted"/>
+          <Item Value="StepId"/>
+          <Item Value="StepName"/>
+          <Item Value="StepOrder"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

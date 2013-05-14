@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="mybillingBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mybillingsummary.MyBillingBundle']}"/>
+  <af:panelGroupLayout id="pgl1">
+    <af:outputLabel value="#{mybillingBundle.QUARTERLY_BAR_CHART_TITLE}" id="ol1"
+                    styleClass="widgetHeader" inlineStyle="margin-left: 14px;"/>
+    <br/>
+    <af:spacer width="10" height="31" id="s1"/>
+    <dvt:barGraph id="barGraph1"
+                  value="#{bindings.QuarterlyInvoices1.graphModel}"
+                  subType="BAR_VERT_CLUST"
+                  inlineStyle="width:502px; height:300px;">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      <dvt:y1Title text="#{mybillingBundle.NUMBER_OF_INVOICES_LBL}"/>
+    </dvt:barGraph>
+  </af:panelGroupLayout>
+</jsp:root>

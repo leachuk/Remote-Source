@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="userTaskFlowStartPageDef"
+                Package="au.com.entitysolutions.taskflows.usertaskflows.view">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTaskFlowsView1" RangeSize="25"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTaskFlowsView1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PortalUserTaskFlowsView1Iterator" id="TfCode">
+      <AttrNames>
+        <Item Value="TfCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTaskFlowsView1Iterator"
+                     id="TfDescription">
+      <AttrNames>
+        <Item Value="TfDescription"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTaskFlowsView1Iterator" id="TfId">
+      <AttrNames>
+        <Item Value="TfId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTaskFlowsView1Iterator"
+                     id="UserTfId">
+      <AttrNames>
+        <Item Value="UserTfId"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="startTaskflow"
+                  InstanceName="TrainAppModuleDataControl.dataProvider"
+                  DataControl="TrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startTaskflow" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{requestScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userName" NDValue=" #{securityContext.userName}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="ipAddress"
+                 NDValue="#{facesContext.externalContext.request.remoteAddr}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <action id="Commit" InstanceName="TrainAppModuleDataControl"
+            DataControl="TrainAppModuleDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+    <attributeValues IterBinding="PortalUserTaskFlowsView1Iterator" id="TfName">
+      <AttrNames>
+        <Item Value="TfName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

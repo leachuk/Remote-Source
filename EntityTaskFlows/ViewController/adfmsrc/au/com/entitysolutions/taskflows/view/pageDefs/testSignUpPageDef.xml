@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="testSignUpPageDef"
+                Package="au.com.entitysolutions.taskflows.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="signuptaskflow1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/train/signup/view/sign-up-task-flow.xml#sign-up-task-flow"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <iterator Binds="PortalUserTFView" RangeSize="25"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTFViewIterator"/>
+    <iterator Binds="PortalUserTaskFlowsView" RangeSize="25"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTaskFlowsViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PortalUserTFViewIterator" id="PortalUserTFView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFView"
+                      Name="PortalUserTFView0">
+        <AttrNames>
+          <Item Value="UserTfId"/>
+          <Item Value="PersonId"/>
+          <Item Value="TfId"/>
+          <Item Value="Status"/>
+          <Item Value="IsActive"/>
+          <Item Value="CcPrimary"/>
+          <Item Value="CcSecondary"/>
+          <Item Value="DaysComplete"/>
+          <Item Value="StartDate"/>
+          <Item Value="FinishDate"/>
+          <Item Value="CreatedBy"/>
+          <Item Value="CreationDate"/>
+          <Item Value="LastUpdatedBy"/>
+          <Item Value="LastUpdateDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="PortalUserTaskFlowsViewIterator"
+          id="PortalUserTaskFlowsView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView"
+                      Name="PortalUserTaskFlowsView0">
+        <AttrNames>
+          <Item Value="TfId"/>
+          <Item Value="UserTfId"/>
+          <Item Value="IsActive"/>
+          <Item Value="Status"/>
+          <Item Value="PersonId"/>
+          <Item Value="TfCode"/>
+          <Item Value="UserName"/>
+          <Item Value="UserId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="PortalUserTaskFlowsViewIterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_user_name" NDValue="#{'KChanna'}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

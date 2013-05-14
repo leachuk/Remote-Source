@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="expenseDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.expense.view">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalExpenseItemView2" RangeSize="25"
+              DataControl="ExpenseTrainAppModuleDataControl"
+              id="PortalExpenseItemView2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PortalExpenseItemView2Iterator"
+          id="PortalExpenseItemView2">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.expense.model.PortalExpenseItemView"
+                      Name="PortalExpenseItemView20">
+        <AttrNames>
+          <Item Value="ItemType"/>
+          <Item Value="ItemDescription"/>
+          <Item Value="ItemId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <list IterBinding="PortalExpenseItemView2Iterator" StaticList="false"
+          Uses="LOV_ItemType" id="ItemType" DTSupportsMRU="false"/>
+    <action IterBinding="PortalExpenseItemView2Iterator" id="Execute"
+            InstanceName="ExpenseTrainAppModuleDataControl.PortalExpenseItemView2"
+            DataControl="ExpenseTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="iteratorExecute"/>
+  </bindings>
+</pageDefinition>

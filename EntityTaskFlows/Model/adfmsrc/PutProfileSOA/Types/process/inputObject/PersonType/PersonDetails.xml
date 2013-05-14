@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="PersonDetails"
+          Package="PutProfileSOA.Types.process.inputObject.PersonType"
+          BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.PersonDetails"
+          isJavaBased="false">
+  <Attribute Name="Number" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Gender" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Prefix" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="FirstName" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="MiddelName" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="SurName" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="PreferredName" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="DateOfBirth" IsNotNull="false" Type="java.sql.Date"/>
+</JavaBean>

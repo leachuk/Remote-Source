@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="weekly_forecast_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontracts"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="WeeklyForecastVO1" RangeSize="25"
+              DataControl="MyContractsAppModuleDataControl"
+              id="WeeklyForecastVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="WeeklyForecastVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="orgId" NDValue="#{pageFlowScope.orgId}"
+                 NDType="oracle.jbo.domain.Number"/>
+    </action>
+  </bindings>
+</pageDefinition>

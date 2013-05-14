@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:outputText value="#{bindings.TfName.inputValue}" id="ot1"
+                       inlineStyle="font-weight:bold;"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:outputText value="#{bindings.TfDescription.inputValue}" id="ot2"/>
+        <af:spacer width="10" height="10" id="s3"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['NEXT_BUTTON_LABEL']}" id="cb1"
+                          action="#{pageFlowScope.userTaskFlowsListBean.startSelectedTaskFlow}">
+          <af:setPropertyListener from="#{bindings.TfCode.inputValue}"
+                                  to="#{requestScope.portal_tf_code}"
+                                  type="action"/>
+            <af:setPropertyListener to="#{requestScope.portal_tf_id}"
+                                      from="#{bindings.TfId.inputValue}" type="action"/>
+            <af:setPropertyListener to="#{requestScope.portal_user_tf_id}"
+                                      from="#{bindings.UserTfId.inputValue}" type="action"/>                                  
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

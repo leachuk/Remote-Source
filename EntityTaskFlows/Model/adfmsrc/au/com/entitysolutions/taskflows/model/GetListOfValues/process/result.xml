@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="result"
+          Package="au.com.entitysolutions.taskflows.model.GetListOfValues.process"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result"
+          isJavaBased="false">
+  <AccessorAttribute id="Item" IsCollection="true"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result.Item"
+                     CollectionBeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result_Operations"/>
+</JavaBean>

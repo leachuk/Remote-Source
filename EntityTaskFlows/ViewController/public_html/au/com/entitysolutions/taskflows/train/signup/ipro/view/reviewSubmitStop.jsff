@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['REVIEW_SUBMIT_INFO']}"
+                            id="of1"/>
+        <af:spacer width="10" height="1" id="s1"/>
+        <af:iterator value="#{bindings.PortalUserTFStepSQLView.collectionModel}"
+                     id="iter1" var="row">
+          <af:outputText value="#{row.StepName} - Incomplete" id="ot1" rendered="false"
+                         inlineStyle="font-weight:bold;color: #4C5258;font-size: 108.3%;"/>
+          <af:commandLink text="#{row.StepName} - Incomplete" id="cl1" action="#{pageFlowScope.signUpBean.navigateToStopOrder}">
+            <af:setPropertyListener from="#{row.StepOrder}"
+                                    to="#{requestScope.stopOrder}"
+                                    type="action"/>
+          </af:commandLink>
+        </af:iterator>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="spacer1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['REVIEW_SUBMIT_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['REVIEW_SUBMIT_STEP_NAME']}"/>
+    <f:attribute name="isShowTrainButtons" value="false"/>
+    <f:facet name="buttons">
+      <af:panelGroupLayout id="pgl4" halign="end"
+                           layout="horizontal">
+        <af:commandButton 
+                          text="#{pageFlowScope.msgs.bundle['PREV_BTN']}"
+                          disabled="#{pageFlowScope.signUpBean.firstStop}"
+                          action="#{pageFlowScope.signUpBean.navigatePrevStop}"
+                          actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"
+                          immediate="true" id="cb2">
+          <af:setPropertyListener from="#{pageFlowScope.msgs.bundle['REVIEW_SUBMIT_STEP_NAME']}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['SUBMIT_BTN']}"
+                          id="cb1"
+                          action="completeTrain"
+                          disabled="#{bindings.PortalUserTFStepSQLView.estimatedRowCount gt 0}"
+                          actionListener="#{pageFlowScope.signUpBean.submitTaskflow}">
+          <af:setPropertyListener from="#{pageFlowScope.msgs.bundle['REVIEW_SUBMIT_STEP_NAME']}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s2"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="pivottablepocPageDef"
+                Package="au.com.entitysolutions.corporate.pivottablepoc">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="SamplePivotDataView1" RangeSize="-1"
+              DataControl="SamplePivotAppModuleDataControl"
+              id="SamplePivotDataView1Iterator"/>
+  </executables>
+  <bindings>
+    <pivotTable IterBinding="SamplePivotDataView1Iterator"
+                id="SamplePivotDataView1"
+                xmlns="http://xmlns.oracle.com/adfm/dvt">
+      <pivotTableDataMap>
+        <columns>
+          <data aggregateDuplicates="true" defaultAggregateType="SUM">
+            <item value="Name"/>
+            <item value="RaisedAmount"/>
+          </data>
+        </columns>
+        <rows>
+          <item value="State"/>
+        </rows>
+        <pages/>
+        <drills type="INSERT"/>
+        <hierarchies>
+          <item value="State" location="BEFORE">
+            <child value="Month" label="Month"/>
+          </item>
+        </hierarchies>
+      </pivotTableDataMap>
+    </pivotTable>
+  </bindings>
+</pageDefinition>

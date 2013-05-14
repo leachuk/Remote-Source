@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="mycontactsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontacts">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MyContactsVO1" RangeSize="25"
+              DataControl="MyContactsAppModuleDataControl"
+              id="MyContactsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="BRConsultantEmailWork">
+      <AttrNames>
+        <Item Value="BRConsultantEmailWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="BRConsultantTelephoneWork">
+      <AttrNames>
+        <Item Value="BRConsultantTelephoneWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="CustManagerEmailWork">
+      <AttrNames>
+        <Item Value="CustManagerEmailWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="CustManagerTelephoneWork">
+      <AttrNames>
+        <Item Value="CustManagerTelephoneWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="IproManagerEmailWork">
+      <AttrNames>
+        <Item Value="IproManagerEmailWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="IproManagerTelephoneWork">
+      <AttrNames>
+        <Item Value="IproManagerTelephoneWork"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="CustManagerFullName">
+      <AttrNames>
+        <Item Value="CustManagerFullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="IproManagerFullName">
+      <AttrNames>
+        <Item Value="IproManagerFullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="MyContactsVO1Iterator"
+                     id="BRConsultantFullName">
+      <AttrNames>
+        <Item Value="BRConsultantFullName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

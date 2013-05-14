@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100611"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="IProExpensesSubmit">
+        <topicDocumentations>
+            <topicDocumentation name="IProExpensesSubmit">
+                <labels>
+                    <label locale="en">IProExpensesSubmit</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">IPro Expenses Submit</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">UserTask</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">ReviewExpenseClaim</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">Review the Expense claim and either allow or reject the claim</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity2">
+                <labels>
+                    <label locale="en">Manager of Customer Executives</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway0">
+                <labels>
+                    <label locale="en">ReviewExpenseClaim</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity3">
+                <labels>
+                    <label locale="en">BRConsultant</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="catchEvent0">
+                <labels>
+                    <label locale="en">TimePassedEvent</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway1">
+                <labels>
+                    <label locale="en">AfterTime</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent1">
+                <labels>
+                    <label locale="en">EndManager</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf4"/>
+            <topicDocumentation name="sf6"/>
+            <topicDocumentation name="sf18"/>
+            <topicDocumentation name="sf21"/>
+            <topicDocumentation name="sf24"/>
+            <topicDocumentation name="sf27"/>
+            <topicDocumentation name="sf32"/>
+            <topicDocumentation name="sf42">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf45"/>
+            <topicDocumentation name="sf48"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>

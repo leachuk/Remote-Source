@@ -1,0 +1,222 @@
+<?xml version='1.0' encoding='windows-1252' ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+
+<JboProject
+   xmlns="http://xmlns.oracle.com/bc4j"
+   Name="Model"
+   Version="11.1.1.60.13"
+   SeparateXMLFiles="true"
+   PackageName="au.com.entitysolutions.taskflows.model">
+   <DesignTime>
+      <Attr Name="_appModuleNames12"
+         Value="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule"/>
+      <Attr Name="_appModuleNames11"
+         Value="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule"/>
+      <Attr Name="_appModuleNames10"
+         Value="au.com.entitysolutions.corporate.taskflows.corp_landing.CorpLandingAppModule"/>
+      <Attr Name="_NamedConnection" Value="Perci"/>
+      <Attr Name="_appModuleNames7"
+         Value="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule"/>
+      <Attr Name="_appModuleNames6"
+         Value="au.com.entitysolutions.taskflows.train.expense.model.ExpenseTrainAppModule"/>
+      <Attr Name="_appModuleNames9"
+         Value="au.com.entitysolutions.corporate.taskflows.poc.SamplePivotAppModule"/>
+      <Attr Name="_appModuleNames8"
+         Value="au.com.entitysolutions.taskflows.notification.NotificationAppModule"/>
+      <Attr Name="_appModuleNames3"
+         Value="au.com.entitysolutions.taskflows.train.model.TrainAppModule"/>
+      <Attr Name="_jprName" Value="../../../../../../Model.jpr"/>
+      <Attr Name="_appModuleNames2"
+         Value="au.com.entitysolutions.taskflows.system.model.SharedAppModule"/>
+      <Attr Name="_appModuleNames5"
+         Value="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule"/>
+      <Attr Name="_appModuleNames4"
+         Value="au.com.entitysolutions.taskflows.train.signup.model.IProSignUpTrainAppModule"/>
+      <Attr Name="_appModuleNames1"
+         Value="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule"/>
+      <Attr Name="_appModuleNames0"
+         Value="au.com.entitysolutions.taskflows.login.model.LoginAppModule"/>
+      <Attr Name="_appModuleNames13"
+         Value="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsAppModule"/>
+      <Attr Name="_appModuleNames14"
+         Value="au.com.entitysolutions.corporate.taskflows.mybillingsummary.MyBillingSummaryAppModule"/>
+      <Attr Name="_appModuleNames15"
+         Value="au.com.entitysolutions.taskflows.myearnings.model.MyEarningsAppModule"/>
+      <Attr Name="_appModuleNames16"
+         Value="au.com.entitysolutions.taskflows.mycontracthistory.model.MyContractHistoryAppModule"/>
+      <Attr Name="_appModuleNames17"
+         Value="au.com.entitysolutions.taskflows.myytd.model.MyYTDAppModule"/>
+   </DesignTime>
+   <Containee
+      Name="corp_landing"
+      PackageName="au.com.entitysolutions.corporate.taskflows.corp_landing"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="mybillingsummary"
+      PackageName="au.com.entitysolutions.corporate.taskflows.mybillingsummary"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="mycontacts"
+      PackageName="au.com.entitysolutions.corporate.taskflows.mycontacts"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="mycontracts"
+      PackageName="au.com.entitysolutions.corporate.taskflows.mycontracts"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="myipros"
+      PackageName="au.com.entitysolutions.corporate.taskflows.myipros"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="poc"
+      PackageName="au.com.entitysolutions.corporate.taskflows.poc"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.hr.person.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.login.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.mycontracthistory.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.myearnings.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.myytd.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="notification"
+      PackageName="au.com.entitysolutions.taskflows.notification"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.payslips.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.system.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.train.expense.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_AS" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.train.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_AS" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <Containee
+      Name="model"
+      PackageName="au.com.entitysolutions.taskflows.train.signup.model"
+      ObjectType="JboPackage">
+      <DesignTime>
+         <Attr Name="_EO" Value="true"/>
+         <Attr Name="_VO" Value="true"/>
+         <Attr Name="_AM" Value="true"/>
+         <Attr Name="_VL" Value="true"/>
+      </DesignTime>
+   </Containee>
+   <AppModuleUsage
+      Name="SharedAppModule"
+      FullName="au.com.entitysolutions.taskflows.system.model.SharedAppModule"
+      ConfigurationName="au.com.entitysolutions.taskflows.system.model.SharedAppModuleShared"
+      SharedScope="2"/>
+</JboProject>

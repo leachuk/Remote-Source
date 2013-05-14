@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="newIproTrainTemplatePageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.myipros">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="sendEmailWithAttachments"
+                  InstanceName="PortalCommonAppModuleDataControl.dataProvider"
+                  DataControl="PortalCommonAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="sendEmailWithAttachments"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.PortalCommonAppModuleDataControl.methodResults.sendEmailWithAttachments_PortalCommonAppModuleDataControl_dataProvider_sendEmailWithAttachments_result">
+      <NamedData NDName="to" NDValue="#{pageFlowScope.msgs.bundle['EMAIL_TO']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="cc" NDValue="#{pageFlowScope.msgs.bundle['EMAIL_CC']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="bcc" NDValue="" NDType="java.lang.String"/>
+      <NamedData NDName="subject"
+                 NDValue="#{pageFlowScope.msgs.bundle['EMAIL_SUBJECT']} - #{userSessionBean.organisationName}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="body"
+                 NDValue="User Logged In as: #{userSessionBean.userName}&lt;br/> Customer Organisation: #{userSessionBean.organisationName}&lt;br/>Date: #{pageFlowScope.NewIProManagedBean.currentDate}&lt;br/>Time: #{pageFlowScope.NewIProManagedBean.currentTime}&lt;br/>  New IPro Name: #{pageFlowScope.NewIProManagedBean.firstname} #{pageFlowScope.NewIProManagedBean.surname} "
+                 NDType="java.lang.String"/>
+      <NamedData NDName="attachmentPath"
+                 NDValue="#{pageFlowScope.NewIProManagedBean.emailFilename}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

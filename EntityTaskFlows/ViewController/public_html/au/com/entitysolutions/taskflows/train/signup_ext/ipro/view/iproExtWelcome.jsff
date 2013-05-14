@@ -1,0 +1,16 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <h:outputText value="Abish is lovely" id="ot1"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="buttons"/>
+    <f:attribute name="isShowTrainButtons" value="false"/>
+  </af:pageTemplate>
+</jsp:root>

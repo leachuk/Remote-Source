@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="monthlyinvoicesPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mybillingsummary">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MonthlyInvoicesVO1" RangeSize="-1"
+              DataControl="MyBillingSummaryAppModuleDataControl"
+              id="MonthlyInvoicesVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="MonthlyInvoicesVO1Iterator" id="MonthlyInvoicesVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="LINE_VERT_ABS">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="InvoicesPaidAmount"/>
+            <item value="InvoicesRaisedAmount"/>
+          </data>
+        </series>
+        <groups>
+          <item value="BillingMonth"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

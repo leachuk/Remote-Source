@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="user-taskflow-detailed-list-definition">
+    <default-activity id="__8">ExecuteWithParams</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__2">msgs</managed-bean-name>
+      <managed-bean-class id="__1">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+      <managed-property id="__7">
+        <property-name id="__6">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__5">au.com.entitysolutions.taskflows.usertaskflows.view.UserTaskFlowsBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__16">
+      <managed-bean-name id="__18">userTaskFlowsListBean</managed-bean-name>
+      <managed-bean-class id="__15">au.com.entitysolutions.taskflows.usertaskflows.view.UserTaskFlowsListBean</managed-bean-class>
+      <managed-bean-scope id="__17">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__9">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="userTaskFlowDetailedList">
+      <page>/au/com/entitysolutions/taskflows/usertaskflows/view/userTaskFlowDetailedList.jsff</page>
+    </view>
+    <task-flow-call id="ic-signup-ext-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/train/signup_ext/ic/view/ic-signup-ext-taskflow.xml</document>
+        <id>ic-signup-ext-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="__26">
+        <name>portal_user_tf_id</name>
+        <value>#{requestScope.portal_user_tf_id}</value>
+      </input-parameter>
+      <input-parameter id="__27">
+        <name>portal_tf_id</name>
+        <value>#{requestScope.portal_tf_id}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="ipro-signup-ext-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/train/signup_ext/ipro/view/ipro-signup-ext-taskflow.xml</document>
+        <id>ipro-signup-ext-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="__20">
+        <name>portal_tf_id</name>
+        <value>#{requestScope.portal_tf_id}</value>
+      </input-parameter>
+      <input-parameter id="__23">
+        <name>portal_user_tf_id</name>
+        <value>#{requestScope.portal_user_tf_id}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="ipro-signup-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/train/signup/ipro/view/ipro-signup-taskflow.xml</document>
+        <id>ipro-signup-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="__21">
+        <name>portal_tf_id</name>
+        <value>#{requestScope.portal_tf_id}</value>
+      </input-parameter>
+      <input-parameter id="__24">
+        <name>portal_user_tf_id</name>
+        <value>#{requestScope.portal_user_tf_id}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="ic-signup-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/train/signup/ic/view/ic-signup-taskflow.xml</document>
+        <id>ic-signup-taskflow</id>
+      </task-flow-reference>
+      <input-parameter id="__19">
+        <name>portal_tf_id</name>
+        <value>#{requestScope.portal_tf_id}</value>
+      </input-parameter>
+      <input-parameter id="__22">
+        <name>portal_user_tf_id</name>
+        <value>#{requestScope.portal_user_tf_id}</value>
+      </input-parameter>
+    </task-flow-call>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__12">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__14">userTaskFlowDetailedList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id id="__29">userTaskFlowDetailedList</from-activity-id>
+      <control-flow-case id="__31">
+        <from-outcome id="__32">IC_SIGNUP_EXT</from-outcome>
+        <to-activity-id id="__30">ic-signup-ext-taskflow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome id="__34">IPRO_SIGNUP_EXT</from-outcome>
+        <to-activity-id id="__33">ipro-signup-ext-taskflow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome id="__37">IPRO_FIRST_SIGNUP</from-outcome>
+        <to-activity-id id="__36">ipro-signup-taskflow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome id="__40">IC_FIRST_SIGNUP</from-outcome>
+        <to-activity-id id="__39">ic-signup-taskflow</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

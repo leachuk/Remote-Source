@@ -1,0 +1,187 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:panelFormLayout id="pfl1" labelWidth="150px">
+          <af:panelLabelAndMessage label="#{bindings.Tfn.hints.label}"
+                                   showRequired="#{bindings.Tfn.hints.mandatory}"
+                                   id="plam1">
+            <af:panelGroupLayout id="pgl4" layout="vertical">
+              <af:inputText value="#{bindings.Tfn.inputValue}"
+                            label="#{bindings.Tfn.hints.label}"
+                            required="#{bindings.Tfn.hints.mandatory}"
+                            columns="#{bindings.Tfn.hints.displayWidth}"
+                            maximumLength="#{bindings.Tfn.hints.precision}"
+                            shortDesc="#{bindings.Tfn.hints.tooltip}" id="it1"
+                            simple="true">
+                <f:validator binding="#{bindings.Tfn.validator}"/>
+                <af:validateRegExp pattern="#{commonBundle.TFN_PATTERN_REGEX}"
+                                   hint="#{commonBundle.TFN_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.TFN_PATTERN_ERROR}"/>
+              </af:inputText>
+              <af:selectOneRadio value="#{bindings.NoTfnReason.inputValue}"
+                                 label="#{bindings.NoTfnReason.label}"
+                                 required="#{bindings.NoTfnReason.hints.mandatory}"
+                                 shortDesc="#{bindings.NoTfnReason.hints.tooltip}"
+                                 id="sor1" simple="true" rendered="false">
+                <f:selectItems value="#{bindings.NoTfnReason.items}" id="si1"/>
+              </af:selectOneRadio>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+        </af:panelFormLayout>
+        <af:panelFormLayout id="pfl2" labelWidth="400">
+          <af:selectOneRadio value="#{bindings.AustResident.inputValue}"
+                             label="#{bindings.AustResident.label}"
+                             required="#{bindings.AustResident.hints.mandatory}"
+                             shortDesc="#{bindings.AustResident.hints.tooltip}"
+                             id="sor3" layout="horizontal">
+            <f:selectItems value="#{bindings.AustResident.items}" id="si5"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.TaxfreeThresholdClaimed.inputValue}"
+                             label="#{bindings.TaxfreeThresholdClaimed.label}"
+                             required="#{bindings.TaxfreeThresholdClaimed.hints.mandatory}"
+                             shortDesc="#{bindings.TaxfreeThresholdClaimed.hints.tooltip}"
+                             id="sor4" layout="horizontal">
+            <f:selectItems value="#{bindings.TaxfreeThresholdClaimed.items}"
+                           id="si4"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.HecsDebt.inputValue}"
+                             label="#{bindings.HecsDebt.label}"
+                             required="#{bindings.HecsDebt.hints.mandatory}"
+                             shortDesc="#{bindings.HecsDebt.hints.tooltip}"
+                             id="sor2" layout="horizontal">
+            <f:selectItems value="#{bindings.HecsDebt.items}" id="si2"/>
+          </af:selectOneRadio>
+          <af:selectOneRadio value="#{bindings.SupplementDebt.inputValue}"
+                             label="#{bindings.SupplementDebt.label}"
+                             required="#{bindings.SupplementDebt.hints.mandatory}"
+                             shortDesc="#{bindings.SupplementDebt.hints.tooltip}"
+                             id="sor5" rendered="false">
+            <f:selectItems value="#{bindings.SupplementDebt.items}" id="si3"/>
+          </af:selectOneRadio>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="20" id="s1"/>
+        <af:panelGroupLayout id="pgl7" layout="horizontal" valign="top">
+          <af:icon name="info" id="i1"/>
+          <af:outputText value="#{pageFlowScope.msgs.bundle['TAX_DTLS_ATO_INFO']}"
+                         id="ot1"
+                         inlineStyle="font-weight:bold;color: #4C5258;font-size: 108.3%;"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s5"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:panelFormLayout labelWidth="150px" id="pfl3">
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP1_LBL']}"
+                                   id="plam4">
+            <!--af:goButton id="gb1"
+                         text="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP1_BTN']}"
+                         targetFrame="_blank"
+                         destination="/ShowProperty?nodeId=%2FEntityUCM%2FTFN_DECLARATION_FORM%2F%2FidcPrimaryFile&amp;revision=latestreleased"/-->
+            <af:commandButton text="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP1_BTN']}"
+                              id="cb1" immediate="true">
+              <af:fileDownloadActionListener method="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']].downloadTFNDocument}"
+                                             contentType="#{bindings.DocContentMime.inputValue}"
+                                             filename="#{bindings.DocContentName.inputValue}"/>
+            </af:commandButton>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="10" id="s3"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP2_LBL']}"
+                                   id="plam2" labelStyle="vertical-align:top">
+            <af:panelGroupLayout layout="vertical" id="pgl6">
+              <af:outputText value="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP2_PROMPT']}"
+                             id="ot4"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="10" id="s4"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP3_LBL']}"
+                                   id="plam3" labelStyle="vertical-align:top">
+            <af:panelGroupLayout id="pgl5" layout="vertical">
+              <af:outputText value="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP3_PROMPT']}"
+                             id="ot5"/>
+              <af:outputText value="#{pageFlowScope.msgs.bundle['CONTRACT_DTLS_OVERWRITE_INFO']}"
+                             id="ot6"/>
+              <af:inputFile label="Signed TFN Form" id="if1" simple="true"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']].signedTFNFile}"
+                            binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']].signedTFNFileInput}"
+                            autoSubmit="true"/>
+                            <!--valueChangeListener="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']].signedTFNValueChange}"/ -->
+              <af:panelGroupLayout id="pgl8" layout="horizontal" valign="top">
+                <af:selectBooleanCheckbox value="#{bindings.TnfDocPostedOffline.inputValue}"
+                                          label="#{bindings.TnfDocPostedOffline.label}"
+                                          simple="true"
+                                          shortDesc="#{bindings.TnfDocPostedOffline.hints.tooltip}"
+                                          id="sbc1"/>
+                <af:outputText value="#{bindings.TnfDocPostedOffline.label}"
+                               id="ot2"/>
+                <f:facet name="separator">
+                  <af:spacer width="5" height="10" id="s7"/>
+                </f:facet>
+              </af:panelGroupLayout>
+              <af:outputText value="#{pageFlowScope.msgs.bundle['TAX_DTLS_CHECKBOX_NOTE']}" id="ot11"/>
+              <f:facet name="separator">
+                <af:spacer width="10" height="10" id="s6"/>
+              </f:facet>
+            </af:panelGroupLayout>
+            <!--af:outputText value="#{bindings.DocContentMime.inputValue}"
+                           id="ot2"/>
+            <af:outputText value="#{bindings.DocContentName.inputValue}"
+                           id="ot3"/-->
+          </af:panelLabelAndMessage>
+          <f:facet name="footer"/>
+        </af:panelFormLayout>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['TAX_DTLS_PREV_FILES_HDR']}"
+                       id="ot9" styleClass="headerOutputText"/>
+        <af:table value="#{bindings.PortalUserTFStepUploadedDocsView.collectionModel}"
+                  var="row" autoHeightRows="1" contentDelivery="immediate"
+                  rows="#{bindings.PortalUserTFStepUploadedDocsView.rangeSize}"
+                  columnStretching="column:DocContentName"
+                  styleClass="AFStretchWidth"
+                  emptyText="#{bindings.PortalUserTFStepUploadedDocsView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.PortalUserTFStepUploadedDocsView.rangeSize}"
+                  rowBandingInterval="0" id="t2">
+          <af:column sortProperty="DocName" sortable="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocName.label}"
+                     id="c1">
+            <af:outputText value="#{row.DocName}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="DocContentName" sortable="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentName.label}"
+                     id="DocContentName">
+            <af:outputText value="#{row.DocContentName}" id="ot3"/>
+          </af:column>
+          <af:column headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentMb.label}"
+                     id="c3">
+            <af:outputText value="#{row.DocContentMb}" id="ot10">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentMb.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="DocContentBytesize" sortable="false" visible="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentBytesize.label}"
+                     id="c2">
+            <af:outputText value="#{row.DocContentBytesize}" id="ot7">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentBytesize.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s8"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['TAX_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

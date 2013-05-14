@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate id="pt1"
+                   viewId="/au/com/entitysolutions/taskflows/corporate/myipros/newIproTrainTemplate.jspx"
+                   value="#{bindings.pt1}">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText label="#{myiprosBundle.CLIENT_NAME_LBL}" id="it1"
+                        value="#{pageFlowScope.NewIProManagedBean.clientName}"
+                        disabled="true"/>
+        </af:panelFormLayout>
+        <af:panelHeader text="#{myiprosBundle.REPORTING_MANAGER_LBL}" id="ph2">
+          <af:panelFormLayout id="pfl2">
+            <af:inputText label="#{myiprosBundle.NAME_LBL}" id="it2"
+                          value="#{pageFlowScope.NewIProManagedBean.managerName}"/>
+            <af:inputText label="#{myiprosBundle.EMAIL_LBL}" id="it3"
+                          value="#{pageFlowScope.NewIProManagedBean.managerEmail}">
+              <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                 hint="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                                 messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+            </af:inputText>
+            <af:inputText label="#{myiprosBundle.PHONE_LBL}" id="it4"
+                          value="#{pageFlowScope.NewIProManagedBean.managerPhone}">
+              <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                                 hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                                 messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="10" id="s1"/>
+        </af:panelHeader>
+        <af:panelHeader text="#{myiprosBundle.SECONDARY_MANAGER_LBL}" id="ph3">
+          <af:panelFormLayout id="pfl3">
+            <af:inputText label="#{myiprosBundle.NAME_LBL}" id="it5"
+                          value="#{pageFlowScope.NewIProManagedBean.secondaryManagerName}"/>
+            <af:inputText label="#{myiprosBundle.EMAIL_LBL}" id="it6"
+                          value="#{pageFlowScope.NewIProManagedBean.secondaryManagerEmail}">
+              <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                 hint="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                                 messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+            </af:inputText>
+            <af:inputText label="#{myiprosBundle.PHONE_LBL}" id="it7"
+                          value="#{pageFlowScope.NewIProManagedBean.secondaryManagerPhone}">
+              <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                                 hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                                 messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="10" id="s2"/>
+        </af:panelHeader>
+        <af:panelFormLayout id="pfl4">
+          <af:inputText label="#{myiprosBundle.INVOICE_INFO_LBL}" id="it8"
+                        value="#{pageFlowScope.NewIProManagedBean.invoiceInfo}"/>
+        </af:panelFormLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText" value="#{myiprosBundle.CLIENT_DETAILS_LBL}"/>
+    <f:attribute name="stopName" value="#{myiprosBundle.CLIENT_DETAILS_LBL}"/>
+  </af:pageTemplate>
+</jsp:root>

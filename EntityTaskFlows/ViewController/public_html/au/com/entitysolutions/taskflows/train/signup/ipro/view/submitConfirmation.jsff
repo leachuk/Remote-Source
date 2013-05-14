@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl2" layout="vertical" inlineStyle="float:left;"
+                       halign="start">
+    <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUBMIT_CONFIRM_TEXT']}"
+                   id="ot1"/>
+    <af:goLink targetFrame="_blank" destination="#{bindings.GlobalValue.inputValue}" text="Complete Survey" id="ot2"/>
+    <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right"
+                         styleClass="AFStretchWidth">
+      <af:commandButton text="#{pageFlowScope.msgs.bundle['OK_BTN']}" id="cb12"
+                        action="exitTaskflow"/>
+    </af:panelGroupLayout>
+    <f:facet name="separator">
+      <af:spacer width="10" height="10" id="s1"/>
+    </f:facet>
+  </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="file-uploader-definition">
+    <default-activity id="__1">fileUploader</default-activity>
+    <managed-bean id="__12">
+      <managed-bean-name id="__13">fileuploadBean</managed-bean-name>
+      <managed-bean-class id="__15">au.com.entitysolutions.taskflows.fileuploader.view.FileUploaderBean</managed-bean-class>
+      <managed-bean-scope id="__14">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__18">
+      <managed-bean-name id="__19">msgs</managed-bean-name>
+      <managed-bean-class id="__16">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__17">pageFlow</managed-bean-scope>
+      <managed-property id="__25">
+        <property-name id="__24">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__23">au.com.entitysolutions.taskflows.fileuploader.view.FileUploaderBundle</value>
+      </managed-property>
+    </managed-bean>
+    <view id="fileUploader">
+      <page>/au/com/entitysolutions/taskflows/fileuploader/view/fileUploader.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

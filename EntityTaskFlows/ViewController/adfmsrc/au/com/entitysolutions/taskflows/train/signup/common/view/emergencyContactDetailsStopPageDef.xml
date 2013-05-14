@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="emergencyContactDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupEmerContactView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupEmerContactViewIterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="PortalSignupEmerContactViewIterator"
+                     id="EmerContactName">
+      <AttrNames>
+        <Item Value="EmerContactName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupEmerContactViewIterator"
+                     id="EmerContactPhone">
+      <AttrNames>
+        <Item Value="EmerContactPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupEmerContactViewIterator"
+                     id="EmerContactRelationship">
+      <AttrNames>
+        <Item Value="EmerContactRelationship"/>
+      </AttrNames>
+    </attributeValues>
+<action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>    
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>            
+  </bindings>
+</pageDefinition>

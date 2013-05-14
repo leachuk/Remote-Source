@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="reviewSubmitStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ipro.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalUserTFStepSQLView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepSQLViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <tree IterBinding="PortalUserTFStepSQLViewIterator"
+          id="PortalUserTFStepSQLView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepSQLView"
+                      Name="PortalUserTFStepSQLView0">
+        <AttrNames>
+          <Item Value="UserTfId"/>
+          <Item Value="StepName"/>
+          <Item Value="StepOrder"/>
+          <Item Value="StepId"/>
+          <Item Value="IsCompleted"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="completeTaskFlow"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeTaskFlow" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+     <NamedData NDName="welcomeStepName" NDType="java.lang.String" NDValue="#{pageFlowScope.msgs.bundle['WELCOME_STEP_NAME']}"/>
+      <NamedData NDName="reviewStepName" NDType="java.lang.String" NDValue="#{requestScope.stopName}"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

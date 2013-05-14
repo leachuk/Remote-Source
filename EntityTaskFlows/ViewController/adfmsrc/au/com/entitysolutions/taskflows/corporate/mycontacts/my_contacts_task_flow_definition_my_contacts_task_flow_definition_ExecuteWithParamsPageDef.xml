@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="my_contacts_task_flow_definition_my_contacts_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontacts"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="MyContactsVO1" RangeSize="25"
+              DataControl="MyContactsAppModuleDataControl"
+              id="MyContactsVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="MyContactsVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="orgId" NDValue="#{pageFlowScope.orgId}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="personId" NDValue="#{pageFlowScope.personId}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="MyContactsAppModuleLocal" ApplicationName="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule"/>
+         <Custom JDBCDataSource="jdbc/CorporateDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="MyContactsAppModuleShared" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory" ApplicationName="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

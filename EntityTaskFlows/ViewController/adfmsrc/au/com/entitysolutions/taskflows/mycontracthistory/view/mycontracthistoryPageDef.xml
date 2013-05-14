@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="mycontracthistoryPageDef"
+                Package="au.com.entitysolutions.taskflows.mycontracthistory.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MyContractHistoryVO1" RangeSize="25"
+              DataControl="MyContractHistoryAppModuleDataControl"
+              id="MyContractHistoryVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="MyContractHistoryVO1Iterator" id="MyContractHistoryVO1">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.mycontracthistory.model.MyContractHistoryVO"
+                      Name="MyContractHistoryVO10">
+        <AttrNames>
+          <Item Value="AssignmentNumber"/>
+          <Item Value="BillingOrganisationName"/>
+          <Item Value="AssignmentStartDate"/>
+          <Item Value="LastPaymentDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="bankDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupPrimaryBankDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupPrimaryBankDetailsViewIterator"/>
+    <iterator Binds="PortalSignupSecondaryBankDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupSecondaryBankDetailsViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="PortalSignupPrimaryBankDetailsViewIterator"
+                     id="BankName">
+      <AttrNames>
+        <Item Value="BankName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPrimaryBankDetailsViewIterator"
+                     id="Bsb">
+      <AttrNames>
+        <Item Value="Bsb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPrimaryBankDetailsViewIterator"
+                     id="AccountNo">
+      <AttrNames>
+        <Item Value="AccountNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupPrimaryBankDetailsViewIterator"
+                     id="AccountName">
+      <AttrNames>
+        <Item Value="AccountName"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PortalSignupSecondaryBankDetailsViewIterator"
+          id="PortalSignupSecondaryBankDetailsView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupSecondaryBankDetailsView"
+                      Name="PortalSignupSecondaryBankDetailsView0">
+        <AttrNames>
+          <Item Value="AmountUnit"/>
+          <Item Value="Amount"/>
+          <Item Value="BankName"/>
+          <Item Value="Bsb"/>
+          <Item Value="AccountNo"/>
+          <Item Value="AccountName"/>
+          <Item Value="AmountDollar"/>
+          <Item Value="AmountPercentage"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="resetPrimaryAccountPriority"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="resetPrimaryAccountPriority"
+                  IsViewObjectMethod="false"/>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

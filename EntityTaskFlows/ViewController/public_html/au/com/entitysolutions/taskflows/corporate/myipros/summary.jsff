@@ -1,0 +1,234 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/corporate/myipros/newIproTrainTemplate.jspx"
+                   value="#{bindings.ptb1}" id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl1" layout="horizontal"
+                           styleClass="AFStretchWidth" valign="top">
+        <af:panelGroupLayout id="pgl4" layout="scroll">
+          <af:outputLabel value="#{myiprosBundle.IPRO_DETAILS_LBL}" id="ol1"
+                          styleClass="trainFormHeader"/>
+          <af:panelHeader text="#{myiprosBundle.PERSONAL_DETAILS_LBL}" id="ph2">
+            <af:panelLabelAndMessage label="#{myiprosBundle.FIRST_NAME_LBL}"
+                                     id="plam4">
+              <af:outputText value="#{pageFlowScope.NewIProManagedBean.firstname}"
+                             id="ot1"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{myiprosBundle.SURNAME_LBL}"
+                                     id="panelLabelAndMessage4">
+              <af:outputText value="#{pageFlowScope.NewIProManagedBean.surname}"
+                             id="outputText4"/>
+            </af:panelLabelAndMessage>
+            <af:panelLabelAndMessage label="#{myiprosBundle.DOB_LBL}"
+                                     id="panelLabelAndMessage5">
+              <af:outputText value="#{pageFlowScope.NewIProManagedBean.dateOfBirth}"
+                             id="outputText5"/>
+            </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s2"/>
+          </af:panelHeader>
+          <af:panelHeader text="#{myiprosBundle.ADDRESS_LBL}" id="ph3">
+              <af:panelLabelAndMessage label="#{myiprosBundle.STREET_LBL}"
+                                       id="panelLabelAndMessage1">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.street}"
+                               id="outputText1"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.SUBURB_LBL}"
+                                       id="panelLabelAndMessage6">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.suburb}"
+                               id="outputText6"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.STATE_LBL}"
+                                       id="panelLabelAndMessage7">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.state}"
+                               id="outputText7"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.POSTCODE_LBL}"
+                                       id="panelLabelAndMessage8">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.postcode}"
+                               id="outputText8"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s3"/>
+          </af:panelHeader>
+            <af:panelHeader text="#{myiprosBundle.CONTACT_DETAILS_LBL}" id="ph4">
+              <af:panelLabelAndMessage label="#{myiprosBundle.MOBILE_LBL}"
+                                       id="panelLabelAndMessage2">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.mobile}"
+                               id="outputText2"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.LANDLINE_LBL}"
+                                       id="panelLabelAndMessage9">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.landline}"
+                               id="outputText9"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.EMAIL_LBL}"
+                                       id="panelLabelAndMessage10">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.email}"
+                               id="outputText10"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s4"/>
+          </af:panelHeader>
+            <af:panelHeader text="#{myiprosBundle.CONTRACT_DETAILS_LBL}" id="ph5">
+              <af:panelLabelAndMessage label="#{myiprosBundle.CONTRACT_START_LBL}"
+                                       id="panelLabelAndMessage3">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.contractStart}"
+                               id="outputText3"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.CONTRACT_END_LBL}"
+                                       id="panelLabelAndMessage11">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.contractEnd}"
+                               id="outputText11"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.TERMINATION_NOTICE_LBL}"
+                                       id="panelLabelAndMessage12">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.terminationNoticePeriod} #{pageFlowScope.NewIProManagedBean.terminationNoticeUnit}"
+                               id="outputText12"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.POSITION_LBL}"
+                                       id="panelLabelAndMessage13">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.positionTitle}"
+                               id="outputText13"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.START_TIME_LBL}"
+                                       id="panelLabelAndMessage14">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.startTimeHrs}:#{pageFlowScope.NewIProManagedBean.startTimeMins}"
+                               id="outputText14"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.END_TIME_LBL}"
+                                       id="panelLabelAndMessage15">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.endTimeHrs}:#{pageFlowScope.NewIProManagedBean.endTimeMins}"
+                               id="outputText15"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.RATE_LBL}"
+                                       id="panelLabelAndMessage16">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.iproRate} (#{pageFlowScope.NewIProManagedBean.iproRateUnit})"
+                               id="outputText16"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.MGMT_FEE_LBL}"
+                                       id="panelLabelAndMessage17">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.mgmtFee}%"
+                               id="outputText17"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.PAYROLL_TAX_LBL}"
+                                       id="panelLabelAndMessage18">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.payrollTax}%"
+                               id="outputText18"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.TOTAL_BILLABLE_LBL}"
+                                       id="panelLabelAndMessage19">
+                <af:outputText value="$ #{pageFlowScope.NewIProManagedBean.totalBillable}"
+                               id="outputText19"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.AWARD_LBL}"
+                                       id="panelLabelAndMessage20">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.award}"
+                               id="outputText20"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.CLASSIFICATION_LBL}"
+                                       id="panelLabelAndMessage21">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.classification}"
+                               id="outputText21"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s5"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+        <af:spacer width="20" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl5" layout="scroll">
+          <af:outputLabel value="#{myiprosBundle.CLIENT_DETAILS_LBL}" id="ol2"
+                          styleClass="trainFormHeader"/>
+            <af:panelLabelAndMessage label="#{myiprosBundle.CLIENT_NAME_LBL}"
+                                     id="panelLabelAndMessage22">
+              <af:outputText value="#{pageFlowScope.NewIProManagedBean.clientName}"
+                             id="outputText22"/>
+            </af:panelLabelAndMessage>
+            <af:panelHeader text="#{myiprosBundle.REPORTING_MANAGER_LBL}" id="ph6">
+              <af:panelLabelAndMessage label="#{myiprosBundle.NAME_LBL}"
+                                       id="panelLabelAndMessage24">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.managerName}"
+                               id="outputText24"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.EMAIL_LBL}"
+                                       id="panelLabelAndMessage25">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.managerEmail}"
+                               id="outputText25"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.PHONE_LBL}"
+                                       id="panelLabelAndMessage26">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.managerPhone}"
+                               id="outputText26"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s6"/>
+          </af:panelHeader>
+            <af:panelHeader text="#{myiprosBundle.SECONDARY_MANAGER_LBL}" id="ph7">
+              <af:panelLabelAndMessage label="#{myiprosBundle.NAME_LBL}"
+                                       id="panelLabelAndMessage27">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.secondaryManagerName}"
+                               id="outputText27"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.EMAIL_LBL}"
+                                       id="panelLabelAndMessage28">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.secondaryManagerEmail}"
+                               id="outputText28"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.PHONE_LBL}"
+                                       id="panelLabelAndMessage29">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.secondaryManagerPhone}"
+                               id="outputText29"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s7"/>
+          </af:panelHeader>
+            <af:panelLabelAndMessage label="#{myiprosBundle.INVOICE_INFO_LBL}"
+                                     id="panelLabelAndMessage23">
+              <af:outputText value="#{pageFlowScope.NewIProManagedBean.invoiceInfo}"
+                             id="outputText23"/>
+            </af:panelLabelAndMessage>
+          <af:outputLabel value="#{myiprosBundle.END_USER_DETAILS_LBL}"
+                          id="ol3" styleClass="trainFormHeader"/>
+          <af:panelHeader text="#{myiprosBundle.PHYSICAL_WORK_LOC_LBL}" id="ph8">
+              <af:panelLabelAndMessage label="#{myiprosBundle.STREET_LBL}"
+                                       id="panelLabelAndMessage30">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.endUserStreet}"
+                               id="outputText30"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.SUBURB_LBL}"
+                                       id="panelLabelAndMessage31">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.endUserSuburb}"
+                               id="outputText31"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.STATE_LBL}"
+                                       id="panelLabelAndMessage32">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.endUserState}"
+                               id="outputText32"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.POSTCODE_LBL}"
+                                       id="panelLabelAndMessage33">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.endUserPostcode}"
+                               id="outputText33"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s8"/>
+          </af:panelHeader>
+            <af:panelHeader text="#{myiprosBundle.WORKCOVER_LBL}" id="ph9">
+              <af:panelLabelAndMessage label="#{myiprosBundle.WIC_CODE_LBL}"
+                                       id="panelLabelAndMessage34">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.wicCode}"
+                               id="outputText34"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="#{myiprosBundle.WIC_RATE_LBL}"
+                                       id="panelLabelAndMessage35">
+                <af:outputText value="#{pageFlowScope.NewIProManagedBean.wicRate}"
+                               id="outputText35"/>
+              </af:panelLabelAndMessage>
+            <af:spacer width="10" height="10" id="s9"/>
+          </af:panelHeader>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText" value="#{myiprosBundle.SUMMARY_LBL}"/>
+    <f:attribute name="stopName" value="#{myiprosBundle.SUMMARY_LBL}"/>
+    <f:attribute name="lastStop" value="#{true}"/>
+  </af:pageTemplate>
+</jsp:root>

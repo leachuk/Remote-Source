@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ContactDetails"
+          Package="PutProfileSOA.Types.process.inputObject.PersonType"
+          BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails"
+          isJavaBased="false">
+  <Attribute Name="HomeEmail" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="WorkEmail" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="EntityEmail" IsNotNull="false" Type="java.lang.String"/>
+  <AccessorAttribute id="BaseElement" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.BaseElement"/>
+  <AccessorAttribute id="Address" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.Address"/>
+  <AccessorAttribute id="OtherAddress" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.Address"/>
+  <AccessorAttribute id="HomeTelephone" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeTelephone"/>
+  <AccessorAttribute id="HomeFax" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeTelephone"/>
+  <AccessorAttribute id="WorkTelephone" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeTelephone"/>
+  <AccessorAttribute id="WorkFax" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeTelephone"/>
+  <AccessorAttribute id="HomeMobileTelephone" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeMobileTelephone"/>
+  <AccessorAttribute id="WorkMobileTelephone" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeMobileTelephone"/>
+</JavaBean>

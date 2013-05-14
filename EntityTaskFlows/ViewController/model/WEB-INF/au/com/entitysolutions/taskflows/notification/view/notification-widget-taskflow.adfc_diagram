@@ -1,0 +1,77 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">266.5</property>
+      <property
+         name="x">94.35156</property>
+   </OverallProperties>
+   <MethodCall
+      id="MethodCall2">
+      <property
+         name="activityId">ExecuteWithParams</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ExecuteWithParams&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">98.79883</property>
+      <property
+         name="x">94.35156</property>
+   </MethodCall>
+   <View
+      id="View3">
+      <property
+         name="activityId">notificationWidget</property>
+      <property
+         name="page">/au/com/entitysolutions/taskflows/notification/view/notificationWidget.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>notificationWidget&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">91.149414</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">276.06152</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="MethodCall2"
+      to="View3">
+      <property
+         name="fromOutcome">ExecuteWithParams</property>
+      <property
+         name="sdm:polyPoints">R50,135.35156,98.44824,233.88425,87.29883,L46</property>
+   </ControlFlowCase>
+   <UrlView
+      id="UrlView7">
+      <property
+         name="activityId">urlView1</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>urlView1&lt;/b>&lt;/p>&lt;p>Activity Type:  Url View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">264.39648</property>
+      <property
+         name="x">44.5</property>
+   </UrlView>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="View3"
+      to="UrlView7">
+      <property
+         name="fromOutcome">notification_list</property>
+      <property
+         name="sdm:polyPoints">L54,235.06152,94.29883,44.5,210.39648,T50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="GetListOfValues" Package="au.com.entitysolutions.taskflows.model"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues"
+          isJavaBased="false">
+  <MethodAccessor IsCollection="false"
+                  Type="au.com.entitysolutions.taskflows.model.GetListOfValues.process"
+                  BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process"
+                  id="process" ReturnNodeName="Return">
+    <ParameterInfo id="input" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+</JavaBean>

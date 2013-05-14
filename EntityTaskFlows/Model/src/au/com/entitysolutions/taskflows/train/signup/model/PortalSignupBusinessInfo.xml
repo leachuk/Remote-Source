@@ -1,0 +1,461 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupBusinessInfo"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_SIGNUP_BUSINESS_INFO"
+  AliasName="PortalSignupBusinessInfo"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfoImpl">
+  <DesignTime>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="BusinessInfoId"
+    IsNotNull="true"
+    ColumnName="BUSINESS_INFO_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_SIGNUP_BUSINESS_INFO_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    IsNotNull="true"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BusinessName"
+    Precision="200"
+    ColumnName="BUSINESS_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Abn"
+    Precision="30"
+    ColumnName="ABN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.Abn_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Acn"
+    Precision="30"
+    ColumnName="ACN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.Acn_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BusinessPhone"
+    Precision="10"
+    ColumnName="BUSINESS_PHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessPhone_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BusinessAddr"
+    Precision="200"
+    ColumnName="BUSINESS_ADDR"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessAddr_LABEL"/>
+        <DISPLAYWIDTH
+          Value="22"/>
+        <DISPLAYHEIGHT
+          Value="3"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BusinessSuburb"
+    Precision="50"
+    ColumnName="BUSINESS_SUBURB"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessSuburb_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BusinessState"
+    Precision="20"
+    ColumnName="BUSINESS_STATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="BusinessPostCode"
+    Precision="4"
+    ColumnName="BUSINESS_POST_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessPostCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="4"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="BusinessCountry"
+    Precision="30"
+    ColumnName="BUSINESS_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessCountry_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="GstRegistered"
+    Precision="1"
+    ColumnName="GST_REGISTERED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_BUSINESS_INFO">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PortalSignupBusinessInPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_IN_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessInfoId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoBusinessAddrCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_BU"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_ADDR" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessAddr"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoBusinessCountryCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_BU"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_COUNTRY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessCountry"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoBusinessPostCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_BU"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_POST_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessPostCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoBusinessStateCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_BU"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_STATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessState"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoBusinessSuburbCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_BU"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_SUBURB" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessSuburb"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInfoGstRegisteredCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_INFO_GS"/>
+      <Attr Name="_checkCondition" Value='"GST_REGISTERED" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.GstRegistered"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0087169">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0087169"/>
+      <Attr Name="_checkCondition" Value='"BUSINESS_INFO_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.BusinessInfoId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0087170">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0087170"/>
+      <Attr Name="_checkCondition" Value='"USER_TF_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090304">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090304"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090305">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090305"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090306">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090306"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090307">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090307"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupBusinessInFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PORTAL_SIGNUP_PERSONAL_DETA_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_BUSINESS_IN_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

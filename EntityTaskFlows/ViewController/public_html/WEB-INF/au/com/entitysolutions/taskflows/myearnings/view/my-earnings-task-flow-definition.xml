@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="my-earnings-task-flow-definition">
+    <default-activity id="__3">ExecuteWithParams</default-activity>
+    <input-parameter-definition id="__2">
+      <name id="__1">personId</name>
+      <value>#{pageFlowScope.personId}</value>
+      <class>java.lang.Object</class>
+      <required/>
+    </input-parameter-definition>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__4">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="myearnings">
+      <page>/au/com/entitysolutions/taskflows/myearnings/view/myearnings.jsff</page>
+    </view>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome id="__9">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__8">myearnings</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

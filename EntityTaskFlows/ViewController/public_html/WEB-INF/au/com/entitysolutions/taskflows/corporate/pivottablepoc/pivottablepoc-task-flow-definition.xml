@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="pivottablepoc-task-flow-definition">
+    <default-activity id="__1">pivottablepoc</default-activity>
+    <view id="pivottablepoc">
+      <page>/au/com/entitysolutions/taskflows/corporate/pivottablepoc/pivottablepoc.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

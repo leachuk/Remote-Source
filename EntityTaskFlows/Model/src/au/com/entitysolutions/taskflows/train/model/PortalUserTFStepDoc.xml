@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalUserTFStepDoc"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_USER_TF_STEP_DOC"
+  AliasName="PortalUserTFStepDoc"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="UserTfStepDocId"
+    IsNotNull="true"
+    ColumnName="USER_TF_STEP_DOC_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP_DOC"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserTfStepId"
+    ColumnName="USER_TF_STEP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP_DOC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocId"
+    ColumnName="DOC_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP_DOC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocContentId"
+    ColumnName="DOC_CONTENT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP_DOC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PortalUserTFStep"
+    Association="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc.PortalUserTFStep"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc.PortalUserTFStepDoc"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="PortalDocContent"
+    Association="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc.PortalDocContent"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc.DocContentIdPortalUserTFStepDoc"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="SysC0080803"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0080803"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.UserTfStepDocId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080804">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0080800"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0080804"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.UserTfStepId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080805">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0080779"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0080805"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.DocId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080806">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0080773"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0080806"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.DocContentId"/>
+    </AttrArray>
+  </Key>
+</Entity>

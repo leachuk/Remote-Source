@@ -1,0 +1,110 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:outputText value="#{pageFlowScope.msgs.bundle['BUSINESS_DTLS_INFO_1']}"
+                       id="ot4"/>
+        <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top">
+          <af:icon name="info" id="i1"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['BUSINESS_DTLS_INFO_2']}"
+                              id="of1"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s2"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:panelFormLayout id="pfl1" labelWidth="175px">
+          <af:inputText value="#{bindings.BusinessName.inputValue}" id="ot2"
+                        columns="#{bindings.BusinessName.hints.displayWidth}"
+                        disabled="true"
+                        label="#{bindings.BusinessName.hints.label}"/>
+          <af:inputText value="#{bindings.Abn.inputValue}" id="ot1"
+                        columns="#{bindings.Abn.hints.displayWidth}"
+                        label="#{bindings.Abn.hints.label}" disabled="true"/>
+          <af:inputText label="#{bindings.Acn.hints.label}"
+                        columns="#{bindings.Acn.hints.displayWidth}"
+                        value="#{bindings.Acn.inputValue}" id="ot3"
+                        disabled="true"/>
+          <af:inputText value="#{bindings.BusinessPhone.inputValue}"
+                        label="#{bindings.BusinessPhone.hints.label}"
+                        required="#{bindings.BusinessPhone.hints.mandatory}"
+                        columns="#{bindings.BusinessPhone.hints.displayWidth}"
+                        maximumLength="#{bindings.BusinessPhone.hints.precision}"
+                        shortDesc="#{bindings.BusinessPhone.hints.tooltip}"
+                        id="it2">
+            <f:validator binding="#{bindings.BusinessPhone.validator}"/>
+            <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                               hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                               messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BusinessAddr.inputValue}"
+                        label="#{bindings.BusinessAddr.hints.label}"
+                        required="#{bindings.BusinessAddr.hints.mandatory}"
+                        columns="#{bindings.BusinessAddr.hints.displayWidth}"
+                        maximumLength="#{bindings.BusinessAddr.hints.precision}"
+                        shortDesc="#{bindings.BusinessAddr.hints.tooltip}"
+                        id="it5" rows="3">
+            <f:validator binding="#{bindings.BusinessAddr.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BusinessSuburb.inputValue}"
+                        label="#{bindings.BusinessSuburb.hints.label}"
+                        required="#{bindings.BusinessSuburb.hints.mandatory}"
+                        columns="#{bindings.BusinessSuburb.hints.displayWidth}"
+                        maximumLength="#{bindings.BusinessSuburb.hints.precision}"
+                        shortDesc="#{bindings.BusinessSuburb.hints.tooltip}"
+                        id="it6">
+            <f:validator binding="#{bindings.BusinessSuburb.validator}"/>
+          </af:inputText>
+          <af:selectOneChoice value="#{bindings.BusinessState.inputValue}"
+                              label="#{bindings.BusinessState.label}"
+                              required="#{bindings.BusinessState.hints.mandatory}"
+                              shortDesc="#{bindings.BusinessState.hints.tooltip}"
+                              id="soc1">
+            <f:selectItems value="#{bindings.BusinessState.items}" id="si1"/>
+          </af:selectOneChoice>
+          <af:inputText value="#{bindings.BusinessPostCode.inputValue}"
+                        label="#{bindings.BusinessPostCode.hints.label}"
+                        required="#{bindings.BusinessPostCode.hints.mandatory}"
+                        columns="#{bindings.BusinessPostCode.hints.displayWidth}"
+                        maximumLength="#{bindings.BusinessPostCode.hints.precision}"
+                        shortDesc="#{bindings.BusinessPostCode.hints.tooltip}"
+                        id="it4">
+            <f:validator binding="#{bindings.BusinessPostCode.validator}"/>
+            <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                               hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                               messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.BusinessCountry.inputValue}"
+                        label="#{bindings.BusinessCountry.hints.label}"
+                        required="#{bindings.BusinessCountry.hints.mandatory}"
+                        columns="#{bindings.BusinessCountry.hints.displayWidth}"
+                        maximumLength="#{bindings.BusinessCountry.hints.precision}"
+                        shortDesc="#{bindings.BusinessCountry.hints.tooltip}"
+                        id="it1">
+            <f:validator binding="#{bindings.BusinessCountry.validator}"/>
+          </af:inputText>
+          <af:selectOneRadio value="#{bindings.GstRegistered.inputValue}"
+                             label="#{bindings.GstRegistered.label}"
+                             required="#{bindings.GstRegistered.hints.mandatory}"
+                             shortDesc="#{bindings.GstRegistered.hints.tooltip}"
+                             id="sor1" layout="horizontal">
+            <f:selectItems value="#{bindings.GstRegistered.items}" id="si2"/>
+          </af:selectOneRadio>
+        </af:panelFormLayout>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['BUSINESS_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['BUSINESS_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

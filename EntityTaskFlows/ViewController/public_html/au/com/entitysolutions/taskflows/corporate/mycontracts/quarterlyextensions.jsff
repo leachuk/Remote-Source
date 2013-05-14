@@ -1,0 +1,48 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="mycontractsBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsBundle']}"/>
+  <af:panelGroupLayout id="pgl5" valign="top">
+    <af:outputLabel value="#{mycontractsBundle.QTRLY_EXT_TITLE}" id="ol1" styleClass="widgetHeader"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical" halign="center"
+                         valign="top" styleClass="quarterlyForecastPGL">
+      <af:panelGroupLayout styleClass="currentMonth quarterlyBox"
+                           layout="vertical" id="pgl2" valign="middle"
+                           halign="center">
+        <af:outputText value="#{bindings.ThisMonth.inputValue}" id="ot1"
+                       styleClass="month"/>
+        <af:outputFormatted value="#{bindings.ThisValue.inputValue}" id="of1"
+                            styleClass="value">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.ThisValue.format}"/>
+        </af:outputFormatted>
+        <af:outputText value="#{mycontractsBundle.CONTRACTS_LBL}" id="ot4" styleClass="contracts"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout styleClass="nextMonth quarterlyBox" layout="vertical"
+                           id="pgl3" valign="middle" halign="center">
+        <af:outputText value="#{bindings.NextMonth.inputValue}" id="ot2"
+                       styleClass="month"/>
+        <af:outputFormatted value="#{bindings.NextValue.inputValue}" id="of2"
+                            styleClass="value">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.NextValue.format}"/>
+        </af:outputFormatted>
+        <af:outputText value="#{mycontractsBundle.CONTRACTS_LBL}" id="ot5" styleClass="contracts"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout styleClass="secondMonth quarterlyBox"
+                           layout="vertical" id="pgl4" valign="middle"
+                           halign="center">
+        <af:outputText value="#{bindings.SecondMonth.inputValue}" id="ot3"
+                       styleClass="month"/>
+        <af:outputFormatted value="#{bindings.SecondValue.inputValue}" id="of3"
+                            styleClass="value">
+          <af:convertNumber groupingUsed="false"
+                            pattern="#{bindings.SecondValue.format}"/>
+        </af:outputFormatted>
+        <af:outputText value="#{mycontractsBundle.CONTRACTS_LBL}" id="ot6" styleClass="contracts"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

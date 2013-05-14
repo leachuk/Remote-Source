@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="profile-task-flow-definition">
+    <default-activity id="__1">profile-view</default-activity>
+    <input-parameter-definition id="__16">
+      <name id="__15">user_name</name>
+      <value>#{pageFlowScope.user_name}</value>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__145">
+      <managed-bean-name id="__155">msgs</managed-bean-name>
+      <managed-bean-class id="__135">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__125">pageFlow</managed-bean-scope>
+      <managed-property id="__175">
+        <property-name id="__185">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__165">au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__17">
+      <managed-bean-name id="__18">PersonProfileManagedBean</managed-bean-name>
+      <managed-bean-class id="__20">au.com.entitysolutions.taskflows.personalprofile.PersonProfileManagedBean</managed-bean-class>
+      <managed-bean-scope id="__19">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__36">
+      <managed-bean-name id="__38">CommonFunctionBean</managed-bean-name>
+      <managed-bean-class id="__26">au.com.entitysolutions.corporate.taskflows.common.CommonFunctionsBean</managed-bean-class>
+      <managed-bean-scope id="__37">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="profile-view">
+      <page>/au/com/entitysolutions/taskflows/personalprofile/profile-view.jsff</page>
+    </view>
+    <view id="profile-edit">
+      <page>/au/com/entitysolutions/taskflows/personalprofile/profile-edit.jsff</page>
+    </view>
+    <router id="checkResponse">
+      <case>
+        <expression>#{data.au_com_entitysolutions_taskflows_view_profile_editPageDef.status.inputValue
+                    == 200}</expression>
+        <outcome id="__9">success</outcome>
+      </case>
+      <default-outcome>error</default-outcome>
+    </router>
+    <method-call id="showResponseError">
+      <method>#{pageFlowScope.CommonFunctionBean.showErrorMessage}</method>
+      <parameter>
+        <class>java.lang.String</class>
+        <value>#{data.au_com_entitysolutions_taskflows_view_profile_editPageDef.message.inputValue}</value>
+      </parameter>
+      <outcome id="__33">
+        <fixed-outcome>alertClosed</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="validateForm">
+      <case>
+        <expression>#{pageFlowScope.PersonProfileManagedBean.validPhoneNumbers
+                    eq true}</expression>
+        <outcome id="__55">validationSuccess</outcome>
+      </case>
+      <default-outcome>validationError</default-outcome>
+    </router>
+    <method-call id="showValidationError">
+      <method>#{pageFlowScope.CommonFunctionBean.showErrorMessage}</method>
+      <parameter>
+        <class>java.lang.String</class>
+        <value>#{pageFlowScope.msgs.bundle['CONTACT_DETAILS_REQUIRED_MSG']}</value>
+      </parameter>
+      <outcome id="__54">
+        <fixed-outcome>validationErrorClosed</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">profile-view</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome id="__6">edit</from-outcome>
+        <to-activity-id id="__5">profile-edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">profile-edit</from-activity-id>
+      <control-flow-case id="__12">
+        <from-outcome id="__14">back</from-outcome>
+        <to-activity-id id="__13">profile-view</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__57">
+        <from-outcome id="__58">save</from-outcome>
+        <to-activity-id id="__56">validateForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">checkResponse</from-activity-id>
+      <control-flow-case id="__21">
+        <from-outcome id="__23">error</from-outcome>
+        <to-activity-id id="__22">showResponseError</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__24">
+        <from-outcome id="__27">success</from-outcome>
+        <to-activity-id id="__25">profile-view</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__28">
+      <from-activity-id id="__29">showResponseError</from-activity-id>
+      <control-flow-case id="__30">
+        <from-outcome id="__32">alertClosed</from-outcome>
+        <to-activity-id id="__31">profile-edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id id="__42">validateForm</from-activity-id>
+      <control-flow-case id="__43">
+        <from-outcome id="__45">validationError</from-outcome>
+        <to-activity-id id="__44">showValidationError</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__47">
+        <from-outcome id="__48">validationSuccess</from-outcome>
+        <to-activity-id id="__46">checkResponse</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__49">
+      <from-activity-id id="__50">showValidationError</from-activity-id>
+      <control-flow-case id="__51">
+        <from-outcome id="__53">validationErrorClosed</from-outcome>
+        <to-activity-id id="__52">profile-edit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="certificatesStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ic.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupIcCertificatesView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupIcCertificatesViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="uploadDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="uploadDoc" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileContent" NDValue="#{requestScope.file_content}"
+                 NDType="oracle.jbo.domain.BlobDomain"/>
+      <NamedData NDName="fileMime" NDValue="#{requestScope.file_mime}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileLength" NDValue="#{requestScope.file_length}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileName" NDValue="#{requestScope.file_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="removeDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="removeDoc" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="IncorpCertDocCntntId">
+      <AttrNames>
+        <Item Value="IncorpCertDocCntntId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="WrkrsCompExpiry">
+      <AttrNames>
+        <Item Value="WrkrsCompExpiry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="WrkrsCompDocCntntId">
+      <AttrNames>
+        <Item Value="WrkrsCompDocCntntId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="ProfIndmExpiry">
+      <AttrNames>
+        <Item Value="ProfIndmExpiry"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="ProfIndmDocCntntId">
+      <AttrNames>
+        <Item Value="ProfIndmDocCntntId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="PublLiabDocCntntId">
+      <AttrNames>
+        <Item Value="PublLiabDocCntntId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupIcCertificatesViewIterator"
+                     id="PublLiabExpiry">
+      <AttrNames>
+        <Item Value="PublLiabExpiry"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="PortalSignupIcCertificatesViewIterator"
+          id="PortalSignupIcCertificatesView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesView"
+                      Name="PortalSignupIcCertificatesView0">
+        <AttrNames>
+          <Item Value="IncorpCertUplName"/>
+          <Item Value="WorkCmpUplName"/>
+          <Item Value="WrkrsCompExpiry"/>
+          <Item Value="ProfIdmUplName"/>
+          <Item Value="ProfIndmExpiry"/>
+          <Item Value="PubLiabUplName"/>
+          <Item Value="PublLiabExpiry"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <button IterBinding="PortalSignupIcCertificatesViewIterator"
+            id="SendOffline" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="SendOffline"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

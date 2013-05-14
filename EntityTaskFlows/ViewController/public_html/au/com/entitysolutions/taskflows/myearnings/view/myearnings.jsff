@@ -1,0 +1,30 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.view.ViewControllerBundle']}"/>
+  <af:panelGroupLayout id="pgl2" layout="vertical">
+    <af:outputLabel value="#{viewcontrollerBundle.MY_YTD_EARNINGS}"
+                    id="ol2" styleClass="landingHeading"/>
+    <af:spacer width="10" height="5" id="spacer1"/>
+    <af:outputText value="#{viewcontrollerBundle.MY_EARNINGS_DESC}" id="ot1" escape="false"/>
+    <af:spacer width="10" height="10" id="s2"/>
+    <dvt:lineGraph id="lineGraph1" value="#{bindings.MyEarningsVO1.graphModel}"
+                   subType="LINE_VERT_ABS"
+                   inlineStyle="width:380px; height:300.0px;">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER" position="LAP_BOTTOM"/>
+      <dvt:y1Title text="#{viewcontrollerBundle.EARNINGS_AMOUNT}"/>
+    </dvt:lineGraph>
+  </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"
+             id="__124">
+  <task-flow-definition id="ic-signup-taskflow">
+    <default-activity id="__1">FetchStagingData</default-activity>
+    <input-parameter-definition id="__14">
+      <name id="__13">portal_tf_id</name>
+      <value id="__29">#{pageFlowScope.portal_tf_id}</value>
+      <class id="__26">java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__70">
+      <name id="__69">portal_user_tf_id</name>
+      <value id="__83">#{pageFlowScope.portal_user_tf_id}</value>
+      <class id="__80">java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__18">
+      <managed-bean-name id="__17">signUpBean</managed-bean-name>
+      <managed-bean-class id="__16">au.com.entitysolutions.taskflows.train.signup.ic.view.ICNewSignUpBean</managed-bean-class>
+      <managed-bean-scope id="__15">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__47">
+      <managed-bean-name id="__46">msgs</managed-bean-name>
+      <managed-bean-class id="__27">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__45">pageFlow</managed-bean-scope>
+      <managed-property id="__48">
+        <property-name id="__49">resourceBundle</property-name>
+        <property-class id="__54">java.lang.String</property-class>
+        <value id="__50">au.com.entitysolutions.taskflows.train.signup.ic.view.ICSignUpBundle</value>
+      </managed-property>
+    </managed-bean>
+    <view id="iproWelcome">
+      <page id="__25">/au/com/entitysolutions/taskflows/train/signup/ipro/view/iproWelcome.jsff</page>
+      <train-stop id="__2">
+        <description id="__31">Displays the Process Summary</description>
+        <display-name id="__30">Process Summary</display-name>
+      </train-stop>
+    </view>
+    <view id="personalDetailsStop">
+      <page id="__34">/au/com/entitysolutions/taskflows/train/signup/common/view/personalDetailsStop.jsff</page>
+      <train-stop id="__64">
+        <description id="__39">Personal Details</description>
+        <display-name id="__40">Personal Details</display-name>
+      </train-stop>
+    </view>
+    <view id="contactDetailsStop">
+      <page id="__55">/au/com/entitysolutions/taskflows/train/signup/common/view/contactDetailsStop.jsff</page>
+      <train-stop id="__3">
+        <description id="__33">Contact Details</description>
+        <display-name id="__41">Contact Details</display-name>
+      </train-stop>
+    </view>
+    <view id="emergencyContactDetailsStop">
+      <page id="__60">/au/com/entitysolutions/taskflows/train/signup/common/view/emergencyContactDetailsStop.jsff</page>
+      <train-stop id="__4">
+        <description id="__36">Emergency Contact Details</description>
+        <display-name id="__42">Emergency Contact</display-name>
+      </train-stop>
+    </view>
+    <view id="contractStop">
+      <page id="__67">/au/com/entitysolutions/taskflows/train/signup/common/view/contractStop.jsff</page>
+      <train-stop id="__5">
+        <description id="__32">Contract</description>
+        <display-name id="__35">Contract</display-name>
+        <outcome id="__93">QueryContractDoc</outcome>
+      </train-stop>
+    </view>
+    <view id="bankDetailsStop">
+      <page id="__52">/au/com/entitysolutions/taskflows/train/signup/common/view/bankDetailsStop.jsff</page>
+      <train-stop id="__11">
+        <description id="__66">Bank Details</description>
+        <display-name id="__65">Bank Details</display-name>
+        <outcome id="__114">CreateSecBankAcc</outcome>
+      </train-stop>
+    </view>
+    <view id="businessInfoStop">
+      <page id="__180">/au/com/entitysolutions/taskflows/train/signup/ic/view/businessInfoStop.jsff</page>
+      <train-stop id="__128">
+       <description id="__129">Business Information</description>
+       <display-name id="__130">Business Information</display-name>
+      </train-stop>
+    </view>
+    <view id="certificatesStop">
+      <page id="__185">/au/com/entitysolutions/taskflows/train/signup/ic/view/certificatesStop.jsff</page>
+      <train-stop id="__133">
+        <description id="__134">Certificates</description>
+        <display-name id="__132">Certificates</display-name>
+        <outcome id="__167">QueryCertificateDocs</outcome>
+      </train-stop>
+    </view>
+    <view id="residencyCitizenshipDetailsStop">
+    <page id="__57">/au/com/entitysolutions/taskflows/train/signup/common/view/residencyCitizenshipDetailsStop.jsff</page>
+      <train-stop id="__9">
+        <description id="__68">Proof of Australian Residency/Citizenship</description>
+        <display-name id="__62">Working Rights</display-name>
+        <outcome id="__119">QueryResiDoc</outcome>
+      </train-stop>
+    </view>
+    <view id="policiesStop">
+      <page id="__56">/au/com/entitysolutions/taskflows/train/signup/common/view/policiesStop.jsff</page>
+      <train-stop id="__10">
+        <description id="__51">Policies</description>
+        <display-name id="__58">Policies</display-name>
+        <outcome id="__163">QueryPoliciesDoc</outcome>
+      </train-stop>
+    </view>
+    <view id="reviewSubmitStop">
+      <page id="__84">/au/com/entitysolutions/taskflows/train/signup/ipro/view/reviewSubmitStop.jsff</page>
+      <train-stop id="__12">
+        <description id="__63">Review, Confirm &amp; Submit</description>
+        <display-name id="__61">Submit</display-name>
+        <outcome id="__145">QueryIncompleteSteps</outcome>
+      </train-stop>
+    </view>
+    <task-flow-return id="returnFromICTaskflow">
+      <outcome id="__19">
+        <name id="__28">returnFromICTaskflow</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="FetchStagingData">
+      <method id="__78">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__71">
+        <fixed-outcome id="__79">ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetDownloadableContractDocs">
+      <method id="__81">#{bindings.GetContractDoc.execute}</method>
+      <outcome id="__94">
+        <fixed-outcome id="__77">downloadDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetUploadedContractDocs">
+      <method id="__38">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__85">
+        <fixed-outcome id="__127">uploadedDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="createSecBankAcc">
+      <method id="__37">#{bindings.createEmptySecondaryBankRecords.execute}</method>
+      <outcome id="__82">
+        <fixed-outcome id="__122">createSecBankAcc</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetUploadedResiDocs">
+      <method id="__53">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__104">
+        <fixed-outcome id="__59">uploadedDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="FetchIncompleteSteps">
+      <method id="__123">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__136">
+        <fixed-outcome id="__121">queryComplete</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="submitConfirmation">
+      <page id="__43">/au/com/entitysolutions/taskflows/train/signup/ipro/view/submitConfirmation.jsff</page>
+    </view>
+    <method-call id="GetDownloadablePolicyDocs">
+      <method id="__125">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__146">
+        <fixed-outcome id="__120">downloadDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetSurveyLinkFrmGlobalVar">
+      <method id="__44">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__22">
+        <fixed-outcome id="__126">ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetUploadedCertDocs">
+      <method id="__181">#{bindings.FetchUploadedCertificates.execute}</method>
+      <outcome id="__135">
+        <fixed-outcome id="__183">uploadedDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="setICContractLookup">
+      <method id="__182">#{bindings.setICContractLookup.execute}</method>
+      <outcome id="__6">
+        <fixed-outcome id="__184">setICContractLookup</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetUploadDocsDetails">
+      <method id="__200">#{bindings.GetUploadDocsDetails.execute}</method>
+      <outcome id="__186">
+        <fixed-outcome id="__198">GetUploadDocsDetails</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="setupRequiredDocuments">
+      <method id="__199">#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].setupRequiredDocuments}</method>
+      <outcome id="__187">
+        <fixed-outcome id="__201">setupRequiredDocuments</fixed-outcome>
+      </outcome>
+    </method-call>
+    <url-view id="urlView1">
+      <url id="__209">/portal/faces/homepage</url>
+    </url-view>
+    <train/>
+    <control-flow-rule id="__21">
+      <from-activity-id id="__20">*</from-activity-id>
+      <control-flow-case id="__96">
+        <from-outcome id="__97">QueryContractDoc</from-outcome>
+        <to-activity-id id="__95">GetDownloadableContractDocs</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__91">
+        <from-outcome id="__103">CreateSecBankAcc</from-outcome>
+        <to-activity-id id="__92">createSecBankAcc</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__106">
+        <from-outcome id="__107">QueryResiDoc</from-outcome>
+        <to-activity-id id="__105">GetUploadedResiDocs</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__143">
+        <from-outcome id="__144">QueryIncompleteSteps</from-outcome>
+        <to-activity-id id="__142">FetchIncompleteSteps</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__161">
+        <from-outcome id="__162">QueryPoliciesDoc</from-outcome>
+        <to-activity-id id="__160">GetDownloadablePolicyDocs</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__165">
+        <from-outcome id="__166">QueryCertificateDocs</from-outcome>
+        <to-activity-id id="__164">GetUploadedCertDocs</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__72">
+      <from-activity-id id="__73">FetchStagingData</from-activity-id>
+      <control-flow-case id="__74">
+        <from-outcome id="__76">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__75">iproWelcome</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__98">
+      <from-activity-id id="__99">GetDownloadableContractDocs</from-activity-id>
+      <control-flow-case id="__101">
+        <from-outcome id="__102">downloadDocs</from-outcome>
+        <to-activity-id id="__100">GetUploadedContractDocs</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__86">
+      <from-activity-id id="__87">GetUploadedContractDocs</from-activity-id>
+      <control-flow-case id="__88">
+        <from-outcome id="__90">uploadedDocs</from-outcome>
+        <to-activity-id id="__89">setICContractLookup</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__109">
+      <from-activity-id id="__110">createSecBankAcc</from-activity-id>
+      <control-flow-case id="__113">
+        <from-outcome id="__111">createSecBankAcc</from-outcome>
+        <to-activity-id id="__112">bankDetailsStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__108">
+      <from-activity-id id="__115">GetUploadedResiDocs</from-activity-id>
+      <control-flow-case id="__117">
+        <from-outcome id="__118">uploadedDocs</from-outcome>
+        <to-activity-id id="__116">residencyCitizenshipDetailsStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__137">
+      <from-activity-id id="__138">FetchIncompleteSteps</from-activity-id>
+      <control-flow-case id="__139">
+        <from-outcome id="__141">queryComplete</from-outcome>
+        <to-activity-id id="__140">reviewSubmitStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__150">
+      <from-activity-id id="__151">submitConfirmation</from-activity-id>
+      <control-flow-case id="__152">
+        <from-outcome id="__154">exitTaskflow</from-outcome>
+        <to-activity-id id="__153">urlView1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__155">
+      <from-activity-id id="__156">GetDownloadablePolicyDocs</from-activity-id>
+      <control-flow-case id="__159">
+        <from-outcome id="__158">downloadDocs</from-outcome>
+        <to-activity-id id="__157">policiesStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__168">
+      <from-activity-id id="__169">reviewSubmitStop</from-activity-id>
+      <control-flow-case id="__170">
+        <from-outcome id="__171">completeTrain</from-outcome>
+        <to-activity-id id="__172">GetSurveyLinkFrmGlobalVar</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">GetSurveyLinkFrmGlobalVar</from-activity-id>
+      <control-flow-case id="__148">
+        <from-outcome id="__149">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__147">submitConfirmation</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id id="__8">setICContractLookup</from-activity-id>
+      <control-flow-case id="__173">
+        <from-outcome id="__179">setICContractLookup</from-outcome>
+        <to-activity-id id="__131">contractStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__188">
+      <from-activity-id id="__189">GetUploadDocsDetails</from-activity-id>
+      <control-flow-case id="__190">
+        <from-outcome id="__192">GetUploadDocsDetails</from-outcome>
+        <to-activity-id id="__191">setupRequiredDocuments</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+
+    <control-flow-rule id="__193">
+      <from-activity-id id="__194">setupRequiredDocuments</from-activity-id>
+      <control-flow-case id="__195">
+        <from-outcome id="__196">setupRequiredDocuments</from-outcome>
+        <to-activity-id id="__197">certificatesStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__174">
+      <from-activity-id id="__175">GetUploadedCertDocs</from-activity-id>
+      <control-flow-case id="__178">
+        <from-outcome id="__177">uploadedDocs</from-outcome>
+        <to-activity-id id="__176">GetUploadDocsDetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="MyIProsAppModuleLocal" ApplicationName="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule"/>
+         <Custom JDBCDataSource="jdbc/CorporateDS"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="MyIProsAppModuleShared" ApplicationName="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.corporate.taskflows.myipros.MyIProsAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

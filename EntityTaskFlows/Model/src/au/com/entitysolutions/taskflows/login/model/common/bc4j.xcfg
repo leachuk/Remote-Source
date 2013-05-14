@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.login.model.LoginAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="LoginAppModuleLocal" ApplicationName="au.com.entitysolutions.taskflows.login.model.LoginAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.login.model.LoginAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="LoginAppModuleShared" ApplicationName="au.com.entitysolutions.taskflows.login.model.LoginAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.login.model.LoginAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

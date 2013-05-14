@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelHeader text="Portal Terms and Conditions" id="ph1" styleClass="unbranded" inlineStyle="width:700px">
+    <f:facet name="context"/>
+    <f:facet name="menuBar"/>
+    <f:facet name="toolbar"/>
+    <f:facet name="legend"/>
+    <f:facet name="info"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical">
+      <af:group id="g1">
+        <af:outputText value="By selecting the Continue button, you are indicating your acceptance to Entity Solution's "
+                       id="ot1"/>
+        <!--af:goLink text="Portal Terms and Conditions" id="gl1"/-->
+        <af:goLink id="goLink2" targetFrame="_blank"
+                      text="Portal Terms and Conditions"
+                      destination="/ShowProperty?nodeId=%2FEntityUCM%2FPORTALTERMS%2F%2FidcPrimaryFile&amp;revision=latestreleased"/>&amp;nbsp;        
+      </af:group>
+      <af:panelGroupLayout id="pgl2" halign="right" styleClass="AFStretchWidth"
+                           layout="horizontal">
+        <af:commandButton text="Continue" id="cb1"
+                          action="#{pageFlowScope.entityLoginBean.acceptTAndC}"/>
+      </af:panelGroupLayout>
+    </af:panelGroupLayout>
+  </af:panelHeader>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:entityLoginBean-->
+</jsp:root>

@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="widgets" bottomHeight="20px">
+    <f:facet name="center">
+      <!-- id="af_one_column_stretched"   -->
+      <af:panelGroupLayout id="pfl1" layout="vertical" >
+        <!--<af:outputLabel value="Notification Widget" id="ol1"/>-->
+        <af:iterator id="i1"
+                     value="#{bindings.PortalNotificationView1.collectionModel}"
+                     var="row" rows="3">
+          <af:panelGroupLayout id="pgl1" layout="vertical">   
+          <af:panelGroupLayout id="pgl3" layout="horizontal">
+            <af:switcher id="s1" facetName="#{row.Category}"
+                         defaultFacet="info">
+              <f:facet name="error">
+                <af:icon name="error" id="i2" styleClass="widgetIcon"/>
+              </f:facet>
+              <f:facet name="info">
+                <af:icon name="info" id="i3" styleClass="widgetIcon"/>
+              </f:facet>
+              <f:facet name="warning">
+                <af:icon name="warning" id="i4" styleClass="widgetIcon"/>
+              </f:facet>
+            </af:switcher>
+            
+            <af:commandLink text="#{row.Title}" id="cl2" action="notification_list" styleClass="embeddedLink"/>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="5" />
+            <af:outputText value="#{row.Brief}" id="ot1"/> 
+            <af:spacer width="10" height="10" />
+          </af:panelGroupLayout>
+        </af:iterator>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="bottom">
+      <af:panelGroupLayout halign="right" id="pgl2" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:commandLink rendered="#{bindings.PortalNotificationView1Iterator.estimatedRowCount gt 0}"
+                        text="more..." id="cl1" action="notification_list"
+                        styleClass="moreLink"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

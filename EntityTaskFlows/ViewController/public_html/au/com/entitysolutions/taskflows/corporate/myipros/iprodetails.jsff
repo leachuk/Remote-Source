@@ -1,0 +1,89 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <af:panelStretchLayout id="psl1" topHeight="180px" styleClass="detailsForm">
+    <f:facet name="center">
+        <af:group id="g1">
+          <af:outputLabel value="#{myiprosBundle.CONTRACT_ASSIGNMENTS_TITLE}" id="ol1"/>
+          <br/><af:spacer width="10" height="10" id="s2"/>
+          <af:table value="#{bindings.IproDetails1.collectionModel}" var="row"
+                    rows="#{bindings.IproDetails1.rangeSize}"
+                    emptyText="#{bindings.IproDetails1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    fetchSize="#{bindings.IproDetails1.rangeSize}"
+                    rowBandingInterval="0" id="t1" varStatus="vs"
+                    summary="#{myiprosBundle.DETAILS_TABLE_DESC}"
+                    contentDelivery="immediate" autoHeightRows="0"
+                    columnStretching="last" styleClass="AFStretchWidth">
+            <af:column headerText="#" id="c0" rowHeader="unstyled" width="20">
+              <af:outputText value="#{vs.index+1}" id="ot0"/>
+            </af:column>
+            <af:column sortProperty="StartDate" sortable="true"
+                       headerText="#{bindings.IproDetails1.hints.StartDate.label}" id="c4" width="70">
+              <af:outputText value="#{row.StartDate}" id="ot1">
+                <af:convertDateTime pattern="#{bindings.IproDetails1.hints.StartDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="EndDate" sortable="true"
+                       headerText="#{bindings.IproDetails1.hints.EndDate.label}" id="c3" width="70">
+              <af:outputText value="#{row.EndDate}" id="ot3">
+                <af:convertDateTime pattern="#{bindings.IproDetails1.hints.EndDate.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column sortProperty="EndUserOrgStateCode" sortable="true"
+                       headerText="#{bindings.IproDetails1.hints.EndUserOrgStateCode.label}" id="c1" width="40">
+              <af:outputText value="#{row.EndUserOrgStateCode}" id="ot4"/>
+            </af:column>
+            <af:column sortProperty="OrganisationName" sortable="true"
+                       headerText="#{bindings.IproDetails1.hints.OrganisationName.label}" id="c2">
+              <af:outputText value="#{row.OrganisationName}" id="ot2"/>
+            </af:column>
+          </af:table>
+        </af:group>
+    </f:facet>
+    <f:facet name="top">
+      <af:group id="g2">
+        <af:outputFormatted value="#{myiprosBundle.DETAILS_FORM_TITLE}" id="of8"
+                            styleClass="widgetHeader largerFont"/><br/>
+        <af:spacer width="10" height="15" id="s1"/>
+        <af:panelFormLayout id="pfl1" maxColumns="2">
+          <af:panelLabelAndMessage label="#{bindings.FullName.hints.label}" id="plam2">
+            <af:outputFormatted value="#{bindings.FullName.inputValue}"
+                                id="of2"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="#{bindings.DateOfBirth.hints.label}" id="plam3">
+            <af:outputFormatted value="#{bindings.DateOfBirth.inputValue}"
+                                id="of3">
+              <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
+            </af:outputFormatted>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="#{bindings.EmailPreferred.hints.label}" id="plam1">
+            <af:outputText value="#{bindings.EmailPreferred.inputValue}"
+                           id="of1" truncateAt="30"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="#{bindings.IproFirstAsgnStartDate.hints.label}" id="plam4">
+            <af:outputFormatted value="#{bindings.IproFirstAsgnStartDate.inputValue}"
+                                id="of4">
+              <af:convertDateTime pattern="#{bindings.IproFirstAsgnStartDate.format}"/>
+            </af:outputFormatted>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="#{bindings.IproLastPaymentDate.hints.label}" id="plam5">
+            <af:outputFormatted value="#{bindings.IproLastPaymentDate.inputValue}"
+                                id="of5">
+              <af:convertDateTime pattern="#{bindings.IproLastPaymentDate.format}"/>
+            </af:outputFormatted>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="#{bindings.IproLastInvoiceDate.hints.label}" id="plam6">
+            <af:outputFormatted value="#{bindings.IproLastInvoiceDate.inputValue}"
+                                id="of6">
+              <af:convertDateTime pattern="#{bindings.IproLastInvoiceDate.format}"/>
+            </af:outputFormatted>
+          </af:panelLabelAndMessage>
+        </af:panelFormLayout>
+      </af:group>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

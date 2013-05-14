@@ -1,0 +1,25 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.train.model.TrainAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="TrainAppModuleLocal" ApplicationName="au.com.entitysolutions.taskflows.train.model.TrainAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.train.model.TrainAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="TrainAppModuleShared" ApplicationName="au.com.entitysolutions.taskflows.train.model.TrainAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.train.model.TrainAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule">
+      <AppModuleConfig name="AbstractTrainTFAppModuleLocal"
+                       ApplicationName="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AbstractTrainTFAppModuleShared"
+                       ApplicationName="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.train.model.CommonTrainTFAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

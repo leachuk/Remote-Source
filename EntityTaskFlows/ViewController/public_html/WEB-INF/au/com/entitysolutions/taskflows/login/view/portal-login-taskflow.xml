@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="portal-login-taskflow">
+    <default-activity id="__1">loginFragment</default-activity>
+    <managed-bean id="__2">
+      <managed-bean-name id="__5">entityLoginBean</managed-bean-name>
+      <managed-bean-class id="__4">au.com.entitysolutions.taskflows.login.view.LoginFlowBean</managed-bean-class>
+      <managed-bean-scope id="__3">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="loginFragment">
+      <page>/au/com/entitysolutions/taskflows/login/view/loginFragment.jsff</page>
+    </view>
+    <view id="changePassword">
+      <page>/au/com/entitysolutions/taskflows/login/view/changePassword.jsff</page>
+    </view>
+    <view id="acceptTAndC">
+      <page>/au/com/entitysolutions/taskflows/login/view/acceptTAndC.jsff</page>
+    </view>
+    <view id="forgotUserName">
+      <page>/au/com/entitysolutions/taskflows/login/view/forgotUserName.jsff</page>
+    </view>
+    <view id="forgotPassword">
+     <page>/au/com/entitysolutions/taskflows/login/view/forgotPassword.jsff</page></view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__25">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="changePasswordConf">
+      <page>/au/com/entitysolutions/taskflows/login/view/changePasswordConf.jsff</page>
+    </view>
+    <parent-action id="parentAction1">
+      <parent-outcome>login_success</parent-outcome>
+    </parent-action>
+    <control-flow-rule id="__6">
+      <from-activity-id id="__7">loginFragment</from-activity-id>
+      <control-flow-case id="__9">
+        <from-outcome id="__10">changePassword</from-outcome>
+        <to-activity-id id="__8">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__11">
+        <from-outcome id="__13">acceptTAndC</from-outcome>
+        <to-activity-id id="__12">acceptTAndC</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome id="__21">forgotUserName</from-outcome>
+        <to-activity-id id="__19">forgotUserName</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__22">
+        <from-outcome id="__24">forgotPassword</from-outcome>
+        <to-activity-id id="__23">forgotPassword</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__26">
+      <from-activity-id id="__27">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__28">
+        <from-outcome id="__29">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__30">changePassword</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id id="__32">forgotUserName</from-activity-id>
+      <control-flow-case id="__33">
+        <from-outcome id="__35">cancel</from-outcome>
+        <to-activity-id id="__34">loginFragment</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__36">
+      <from-activity-id id="__37">forgotPassword</from-activity-id>
+      <control-flow-case id="__38">
+        <from-outcome id="__40">cancel</from-outcome>
+        <to-activity-id id="__39">loginFragment</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">changePasswordConf</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome id="__17">acceptTAndC</from-outcome>
+        <to-activity-id id="__18">acceptTAndC</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id id="__42">changePassword</from-activity-id>
+      <control-flow-case id="__43">
+        <from-outcome id="__45">confirmation</from-outcome>
+        <to-activity-id id="__44">changePasswordConf</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__47">
+      <from-activity-id id="__46">*</from-activity-id>
+      <control-flow-case id="__48">
+        <from-outcome id="__50">navigate_parent</from-outcome>
+        <to-activity-id id="__49">parentAction1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

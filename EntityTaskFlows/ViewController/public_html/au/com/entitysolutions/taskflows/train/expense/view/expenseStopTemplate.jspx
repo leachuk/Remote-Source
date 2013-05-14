@@ -1,0 +1,207 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:tr="http://myfaces.apache.org/trinidad">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>expenseStopTemplate</display-name>
+        <facet>
+          <facet-name>
+            content
+          </facet-name>
+        </facet>
+        <facet>
+          <facet-name>
+            buttons
+          </facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>
+            headerText
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+          <required>
+            true
+          </required>
+        </attribute>
+        <attribute xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+          <attribute-name>
+            stopName
+          </attribute-name>
+          <attribute-class>
+            java.lang.String
+          </attribute-class>
+          <required>
+            false
+          </required>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            isShowTrainButtons
+          </attribute-name>
+          <attribute-class>
+            java.lang.Boolean
+          </attribute-class>
+          <default-value>
+            true
+          </default-value>
+          <required>
+            true
+          </required>
+        </attribute>
+        <attribute>
+          <attribute-name>
+            isShowExit
+          </attribute-name>
+          <attribute-class>
+            java.lang.Boolean
+          </attribute-class>
+          <default-value>
+            true
+          </default-value>
+          <required>
+            false
+          </required>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelGroupLayout id="pgl11" layout="vertical" >
+      <af:outputFormatted value="#{pageFlowScope.msgs.bundle['EXPENSE_CLAIM_DESC']}"
+                                        id="expense_claim_of1"/>
+                    <af:spacer width="10" height="10" id="expense_claim_s2"/>
+      <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                var="trainNode" id="t1">
+        <f:facet name="nodeStamp">
+          <af:commandNavigationItem text="#{trainNode.textAndAccessKey}"
+                                    id="cni1" visited="#{trainNode.visited}"
+                                    immediate="true"
+                                    action="#{trainNode.action}"
+                                    disabled="#{trainNode.disabled}">
+            <af:setPropertyListener from="#{attrs.stopName}"
+                                    to="#{requestScope.stopName}"
+                                    type="action"/>
+          </af:commandNavigationItem>
+        </f:facet>
+      </af:train>
+      <af:spacer width="10" height="20" id="pt_s4"/>
+      <af:panelHeader text="#{attrs.headerText}" id="ph1">
+        <f:facet name="context"/>
+        <f:facet name="menuBar"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+        <af:spacer width="10" height="20" id="pt_s3"/>
+        <af:facetRef facetName="content"/>
+      </af:panelHeader>
+      <af:spacer width="10" height="10" id="pt_s1"/>
+      <af:panelGroupLayout id="pgl2" layout="horizontal" halign="end"
+                           rendered="#{attrs.isShowTrainButtons}">
+        <!--af:trainButtonBar var="node" varStatus=""
+                           value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                           id="tbb1">
+          <f:facet name="nodeStamp">
+            <af:commandNavigationItem action="#{node.action}"
+                                      disabled="#{node.disabled}"
+                                      immediate="#{node.immediate}"
+                                      actionListener="#{pageFlowScope.signUpBean.validateAndCommit}"
+                                      textAndAccessKey="#{node.textAndAccessKey}"
+                                      visited="#{node.visited}" id="cn1">
+              <af:setPropertyListener from="#{node}"
+                                      to="#{requestScope.stopName}"
+                                      type="action"/>
+            </af:commandNavigationItem>
+          </f:facet>
+        </af:trainButtonBar-->
+        <af:commandButton id="commandButton1"
+                          text="#{pageFlowScope.msgs.bundle['EXIT_BTN']}"
+                          immediate="true">
+          <af:showPopupBehavior popupId="pt_p1" triggerType="action"/>
+        </af:commandButton>
+        <af:commandButton id="back"
+                          text="#{pageFlowScope.msgs.bundle['PREV_BTN']}"
+                          action="#{pageFlowScope.trainBean.navigatePrevStop}"
+                          actionListener="#{pageFlowScope.trainBean.rollbackAndRequery}"
+                          immediate="true"
+                          rendered="#{!pageFlowScope.trainBean.firstStop}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <af:commandButton id="pt_cb11"
+                          text="#{pageFlowScope.msgs.bundle['SAVE_NEXT_BTN']}"
+                          disabled="#{pageFlowScope.trainBean.lastStop}"
+                          immediate="false"
+                          rendered="#{!pageFlowScope.trainBean.lastStop}"
+                          action="#{pageFlowScope.trainBean.validateAndNavigateNext}"
+                          actionListener="#{pageFlowScope.trainBean.validateAndCommit}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="pt_s2"/>
+        </f:facet>
+      </af:panelGroupLayout>
+      <af:facetRef facetName="buttons"/>
+      <af:commandButton text="Home Portal" id="hiddenFinish"
+                        actionListener="#{navigationContext.processAction}"
+                        binding="#{pageFlowScope.trainBean.hiddenHome}"
+                        visible="false" immediate="false">
+        <f:attribute name="node"
+                     value="#{navigationContext.defaultNavigationModel.node['iproSignupHome']}"/>
+      </af:commandButton>
+      <af:popup id="pt_p1">
+        <af:dialog id="pt_d1" type="yesNo" title="Confirm"
+                   dialogListener="#{pageFlowScope.trainBean.onDialogAction}">
+          <af:outputText value="#{pageFlowScope.msgs.bundle['CONFIRM_CANCEL']}" id="pt_ot1"/>
+        </af:dialog>
+        <af:trainButtonBar id="pt_tbb1"
+                           value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                           rendered="false"/>
+      </af:popup>
+    </af:panelGroupLayout>
+    <af:popup id="clockPopup" animate="false" clientComponent="true"
+              contentDelivery="immediate">
+      <af:dialog id="d1" type="none" resize="off" closeIconVisible="false"
+                 title="Uploading file"
+                 titleIconSource="/images/processWind_ena.png">
+        <af:panelGroupLayout id="pgl5" layout="horizontal">
+          <af:image source="/images/process_animation.gif" id="i2"
+                    inlineStyle="font-weight:bold;"/>
+          <af:spacer width="10" height="10" id="s6"/>
+          <af:outputText value="Processing" id="ot3333"/>
+        </af:panelGroupLayout>
+      </af:dialog>
+    </af:popup>
+    <af:resource type="javascript">
+      var globalPopup; function showPopupFromAction(actionEvent) {
+       eventSource=actionEvent.getSource();    
+      registerOnChangeForInput(eventSource.getClientId()); 
+      }
+      
+      function registerPopup(actionEvent){
+          eventSource=actionEvent.getSource(); 
+          globalPopup= eventSource.findComponent("clockPopup");     
+      } 
+      
+      function closePopup(){
+        globalPopup.hide();
+      }
+      
+      
+      function  registerOnChangeForInput(inputFileId) {
+       domInput=document.getElementById(inputFileId+'::content');
+        if(domInput.parentNode.nodeName.toLowerCase()!='td') {
+          if(domInput.addEventListener){
+          domInput.addEventListener("change", function(){globalPopup.show();},
+          true); }else{ domInput.attachEvent("onchange",
+          function(){globalPopup.show();}); }
+        }         
+      }
+    </af:resource>
+  </af:pageTemplateDef>
+</jsp:root>

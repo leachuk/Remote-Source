@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="iprodetailsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.myipros">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="IproDetails1" RangeSize="25"
+              DataControl="MyIProsAppModuleDataControl"
+              id="IproDetails1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="IproDetails1Iterator" id="IproDetails1">
+      <nodeDefinition DefName="au.com.entitysolutions.corporate.taskflows.myipros.IproDetails"
+                      Name="IproDetails10">
+        <AttrNames>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="EndUserOrgStateCode"/>
+          <Item Value="OrganisationName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="IproDetails1Iterator" id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IproDetails1Iterator" id="EmailPreferred">
+      <AttrNames>
+        <Item Value="EmailPreferred"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IproDetails1Iterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IproDetails1Iterator"
+                     id="IproFirstAsgnStartDate">
+      <AttrNames>
+        <Item Value="IproFirstAsgnStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IproDetails1Iterator"
+                     id="IproLastPaymentDate">
+      <AttrNames>
+        <Item Value="IproLastPaymentDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="IproDetails1Iterator"
+                     id="IproLastInvoiceDate">
+      <AttrNames>
+        <Item Value="IproLastInvoiceDate"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

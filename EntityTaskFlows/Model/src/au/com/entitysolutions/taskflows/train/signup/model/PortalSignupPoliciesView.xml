@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupPoliciesView"
+  Version="11.1.1.60.13"
+  SelectList="PortalSignupPolicies.POLICY_DETAILS_ID, 
+       PortalSignupPolicies.USER_TF_ID, 
+       PortalSignupPolicies.ACEEPT_POLICIES, 
+       PortalSignupPolicies.TRANSFORMED, 
+       PortalSignupPolicies.CREATED_BY, 
+       PortalSignupPolicies.CREATION_DATE, 
+       PortalSignupPolicies.LAST_UPDATED_BY, 
+       PortalSignupPolicies.LAST_UPDATE_DATE"
+  FromList="PORTAL_SIGNUP_POLICIES PortalSignupPolicies"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <EntityUsage
+    Name="PortalSignupPolicies"
+    Entity="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupPolicies"/>
+  <ViewAttribute
+    Name="PolicyDetailsId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="PolicyDetailsId"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="POLICY_DETAILS_ID"/>
+  <ViewAttribute
+    Name="UserTfId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserTfId"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="USER_TF_ID"/>
+  <ViewAttribute
+    Name="AceeptPolicies"
+    PrecisionRule="true"
+    EntityAttrName="AceeptPolicies"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="ACEEPT_POLICIES"/>
+  <ViewAttribute
+    Name="Transformed"
+    PrecisionRule="true"
+    EntityAttrName="Transformed"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="TRANSFORMED"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PortalSignupPolicies"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewLinkAccessor
+    Name="PortalSignupPersonalDetailsView"
+    ViewLink="au.com.entitysolutions.taskflows.train.signup.model.PortalPoliciesVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

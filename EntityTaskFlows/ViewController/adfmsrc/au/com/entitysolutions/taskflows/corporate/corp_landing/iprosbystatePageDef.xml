@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="iprosbystatePageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.corp_landing">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="IprosByState1" RangeSize="-1"
+              DataControl="CorpLandingAppModuleDataControl"
+              id="IprosByState1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="IprosByState1Iterator" id="IprosByState11"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="PIE">
+      <graphDataMap leafOnly="true">
+        <series>
+          <item value="State"/>
+        </series>
+        <groups>
+          <data>
+            <item value="IprosCount"/>
+          </data>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="mybillinglistPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mybillingsummary">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InvoicesListVO1" RangeSize="25"
+              DataControl="MyBillingSummaryAppModuleDataControl"
+              id="InvoicesListVO1Iterator"/>
+    <iterator Binds="InvoiceDetailsVO1" RangeSize="25"
+              DataControl="MyBillingSummaryAppModuleDataControl"
+              id="InvoiceDetailsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InvoicesListVO1Iterator" id="InvoicesListVO1">
+      <nodeDefinition DefName="au.com.entitysolutions.corporate.taskflows.mybillingsummary.InvoicesListVO"
+                      Name="InvoicesListVO10">
+        <AttrNames>
+          <Item Value="InvoiceDate"/>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="TotalBillableExclGstAmt"/>
+          <Item Value="GstAmt"/>
+          <Item Value="TotalBillableAmt"/>
+          <Item Value="DueDate"/>
+          <Item Value="InvoiceStatusScreenLabel"/>
+          <Item Value="PaidDate"/>
+          <Item Value="InvoiceStatusCode"/>
+          <Item Value="OrderStatusCode"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="InvoiceDetailsVO1Iterator" id="InvoiceDetailsVO1">
+      <nodeDefinition DefName="au.com.entitysolutions.corporate.taskflows.mybillingsummary.InvoiceDetailsVO"
+                      Name="InvoiceDetailsVO10">
+        <AttrNames>
+          <Item Value="InvoiceNumber"/>
+          <Item Value="IproFullName"/>
+          <Item Value="Reference"/>
+          <Item Value="BillableAmount"/>
+          <Item Value="EndUserOrgStateCode"/>
+          <Item Value="CostCentre"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="InvoicesListVO1Iterator" id="InvoiceDate">
+      <AttrNames>
+        <Item Value="InvoiceDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvoicesListVO1Iterator" id="InvoiceNumber">
+      <AttrNames>
+        <Item Value="InvoiceNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvoicesListVO1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvoicesListVO1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvoicesListVO1Iterator" id="GstAmt">
+      <AttrNames>
+        <Item Value="GstAmt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="InvoicesListVO1Iterator"
+                     id="TotalBillableAmt">
+      <AttrNames>
+        <Item Value="TotalBillableAmt"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

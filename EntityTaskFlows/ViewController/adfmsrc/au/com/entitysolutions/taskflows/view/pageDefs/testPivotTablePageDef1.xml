@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="testPivotTablePageDef1"
+                Package="au.com.entitysolutions.taskflows.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="iprosbystatetaskflowdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/corporate/corp_landing/ipros-by-state-task-flow-definition.xml#ipros-by-state-task-flow-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="orgId" value="3402"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

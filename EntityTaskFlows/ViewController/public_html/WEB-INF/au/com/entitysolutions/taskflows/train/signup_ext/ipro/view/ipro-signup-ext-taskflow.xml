@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ipro-signup-ext-taskflow">
+    <default-activity id="__1">iproWelcome</default-activity>
+    <data-control-scope id="__58">
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__19">
+      <name id="__20">portal_tf_id</name>
+      <value>#{pageFlowScope.portal_tf_id}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <input-parameter-definition id="__21">
+      <name id="__22">portal_user_tf_id</name>
+      <value>#{pageFlowScope.portal_user_tf_id}</value>
+      <class>java.lang.String</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__8">
+      <managed-bean-name id="__5">msgs</managed-bean-name>
+      <managed-bean-class id="__7">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__6">pageFlow</managed-bean-scope>
+      <managed-property id="__9">
+        <property-name id="__11">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__10">au.com.entitysolutions.taskflows.train.signup_ext.ipro.view.IProSignupExtBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__17">
+      <managed-bean-name id="__15">signUpBean</managed-bean-name>
+      <managed-bean-class id="__18">au.com.entitysolutions.taskflows.train.signup_ext.ipro.view.IProNewSignUpExtBean</managed-bean-class>
+      <managed-bean-scope id="__16">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="iproWelcome">
+      <page>/au/com/entitysolutions/taskflows/train/signup/ipro/view/iproWelcome.jsff</page>
+      <train-stop id="__2">
+        <display-name id="__12">Process Summary</display-name>
+      </train-stop>
+    </view>
+    <view id="contractExtStop">
+      <page>/au/com/entitysolutions/taskflows/train/signup_ext/common/view/contractStop.jsff</page>
+      <train-stop id="__3">
+        <display-name id="__13">Contract Execution</display-name>
+        <outcome id="__57">QueryContractDoc</outcome>
+      </train-stop>
+    </view>
+    <view id="confirmExtStop">
+      <page>/au/com/entitysolutions/taskflows/train/signup_ext/common/view/confirmStop.jsff</page>
+      <train-stop id="__4">
+        <display-name id="__14">Submit Confirmation</display-name>
+        <outcome id="__43">QueryIncompleteSteps</outcome>
+      </train-stop>
+    </view>
+    <task-flow-return id="returnFromIproExt">
+      <outcome id="__23">
+        <name>returnFromIproExt</name>
+      </outcome>
+    </task-flow-return>
+    <method-call id="FetchIncompleteSteps">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__39">
+        <fixed-outcome>queryComplete</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetDownloadableContractDocs">
+      <method>#{bindings.GetContractDoc.execute}</method>
+      <outcome id="__45">
+        <fixed-outcome>downloadDocs</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="fetchExtContract">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__56">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <method-call id="GetUploadedContractDocs">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__40">
+        <fixed-outcome>fetchContract</fixed-outcome>
+      </outcome>
+    </method-call>
+    <url-view id="urlView1">
+      <url id="__59">/portal/faces/homepage</url>
+    </url-view>
+    <train/>
+    <control-flow-rule id="__24">
+      <from-activity-id id="__25">confirmExtStop</from-activity-id>
+      <control-flow-case id="__27">
+        <from-outcome id="__28">exitTaskflow</from-outcome>
+        <to-activity-id id="__26">urlView1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__30">
+      <from-activity-id id="__29">*</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome id="__33">QueryIncompleteSteps</from-outcome>
+        <to-activity-id id="__31">FetchIncompleteSteps</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__46">
+        <from-outcome id="__48">QueryContractDoc</from-outcome>
+        <to-activity-id id="__47">GetDownloadableContractDocs</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id id="__35">FetchIncompleteSteps</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__38">queryComplete</from-outcome>
+        <to-activity-id id="__36">confirmExtStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__63">
+      <from-activity-id id="__64">fetchExtContract</from-activity-id>
+      <control-flow-case id="__65">
+        <from-outcome id="__67">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__66">contractExtStop</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__41">
+      <from-activity-id id="__42">GetUploadedContractDocs</from-activity-id>
+      <control-flow-case id="__44">
+        <from-outcome id="__49">fetchContract</from-outcome>
+        <to-activity-id id="__50">fetchExtContract</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__51">
+      <from-activity-id id="__52">GetDownloadableContractDocs</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__55">downloadDocs</from-outcome>
+        <to-activity-id id="__54">GetUploadedContractDocs</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="mycontractlistanddetailsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontracts">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MyContractsListVO1" RangeSize="25"
+              DataControl="MyContractsAppModuleDataControl"
+              id="MyContractsListVO1Iterator" ChangeEventPolicy="ppr"/>
+    <iterator Binds="AssignmentDetailsVO1" RangeSize="25"
+              DataControl="MyContractsAppModuleDataControl"
+              id="AssignmentDetailsVO1Iterator" ChangeEventPolicy="ppr"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="MyContractsListVO1Iterator" id="MyContractsListVO1">
+      <nodeDefinition DefName="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsListVO"
+                      Name="MyContractsListVO10">
+        <AttrNames>
+          <Item Value="AssignmentId"/>
+          <Item Value="FullName"/>
+          <Item Value="PositionTitle"/>
+          <Item Value="EndUserOrgStateCode"/>
+          <Item Value="StartDate"/>
+          <Item Value="EndDate"/>
+          <Item Value="CostCentre"/>
+          <Item Value="IproNbrAsgnBeyondEndDate"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator" id="FullName">
+      <AttrNames>
+        <Item Value="FullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator"
+                     id="IproFirstAsgnStartDate">
+      <AttrNames>
+        <Item Value="IproFirstAsgnStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator" id="StartDate">
+      <AttrNames>
+        <Item Value="StartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator" id="EndDate">
+      <AttrNames>
+        <Item Value="EndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator"
+                     id="TerminationNotice">
+      <AttrNames>
+        <Item Value="TerminationNotice"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator"
+                     id="OrganisationName">
+      <AttrNames>
+        <Item Value="OrganisationName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator"
+                     id="EuOrgCntPersonFullName">
+      <AttrNames>
+        <Item Value="EuOrgCntPersonFullName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AssignmentDetailsVO1Iterator"
+                     id="EndUserOrgStateCode">
+      <AttrNames>
+        <Item Value="EndUserOrgStateCode"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

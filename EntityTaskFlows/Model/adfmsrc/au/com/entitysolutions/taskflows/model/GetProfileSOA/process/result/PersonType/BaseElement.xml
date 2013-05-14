@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="BaseElement"
+          Package="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.BaseElement"
+          isJavaBased="false">
+  <Attribute Name="id" IsUpdateable="0" IsNotNull="false"
+             Type="java.lang.String"/>
+</JavaBean>

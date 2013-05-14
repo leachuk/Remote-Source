@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="my-ipros-task-flow-definition">
+    <default-activity id="__4">ExecuteWithParams</default-activity>
+    <input-parameter-definition id="__3">
+      <name id="__2">orgId</name>
+      <value>#{pageFlowScope.orgId}</value>
+      <class>oracle.jbo.domain.Number</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__17">
+      <managed-bean-name id="__16">MyIprosManagedBean</managed-bean-name>
+      <managed-bean-class id="__18">au.com.entitysolutions.corporate.taskflows.myipros.MyIprosManagedBean</managed-bean-class>
+      <managed-bean-scope id="__15">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__38">
+      <managed-bean-name id="__32">CommonFunctionsBean</managed-bean-name>
+      <managed-bean-class id="__31">au.com.entitysolutions.corporate.taskflows.common.CommonFunctionsBean</managed-bean-class>
+      <managed-bean-scope id="__33">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="myIpros">
+      <page>/au/com/entitysolutions/taskflows/corporate/myipros/myIpros.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__1">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="checkDates">
+      <case>
+        <expression>#{pageFlowScope.MyIprosManagedBean.fromDate &lt;=
+                    pageFlowScope.MyIprosManagedBean.toDate}</expression>
+        <outcome id="__19">success</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.MyIprosManagedBean.fromDate &gt;
+                    pageFlowScope.MyIprosManagedBean.toDate}</expression>
+        <outcome id="__25">error</outcome>
+      </case>
+      <default-outcome>success</default-outcome>
+    </router>
+    <method-call id="showErrorMessage">
+      <method>#{pageFlowScope.CommonFunctionsBean.showErrorMessage}</method>
+      <parameter>
+        <class>java.lang.String</class>
+        <value>Invalid Input Dates.</value>
+      </parameter>
+      <outcome id="__30">
+        <fixed-outcome>showMessage</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__5">
+      <from-activity-id id="__6">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome id="__9">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__8">myIpros</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__10">
+      <from-activity-id id="__11">myIpros</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__14">search</from-outcome>
+        <to-activity-id id="__12">checkDates</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__20">
+      <from-activity-id id="__21">checkDates</from-activity-id>
+      <control-flow-case id="__22">
+        <from-outcome id="__24">success</from-outcome>
+        <to-activity-id id="__23">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__26">
+        <from-outcome id="__28">error</from-outcome>
+        <to-activity-id id="__27">showErrorMessage</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__34">
+      <from-activity-id id="__35">showErrorMessage</from-activity-id>
+      <control-flow-case id="__37">
+        <from-outcome id="__29">showMessage</from-outcome>
+        <to-activity-id id="__36">myIpros</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

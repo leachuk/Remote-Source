@@ -1,0 +1,81 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="mycontactsBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsBundle']}"/>
+  <af:panelStretchLayout id="psl1" bottomHeight="20px">
+    <f:facet name="center">
+      <af:panelGroupLayout layout="scroll"
+                           xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                           id="pgl1" styleClass="widgets">
+        <af:panelGroupLayout id="pgl3" layout="vertical"
+                             styleClass="myContactsWidgetBlock"
+                             rendered="#{bindings.CustManagerFullName.inputValue != null &amp;&amp; bindings.CustManagerFullName.inputValue != ''}">
+          <af:outputText value="#{bindings.CustManagerFullName.inputValue}"
+                              id="of4" styleClass="widgetHeader" truncateAt="30"/>
+          <af:spacer width="10" height="5" id="s3"/>
+          <af:outputFormatted value="#{mycontactsBundle.CUST_MANAGER_LBL}" id="of11"/>
+          <af:goLink id="gl2"
+                     destination="mailto:#{bindings.CustManagerEmailWork.inputValue}">
+            <af:outputText value="#{bindings.CustManagerEmailWork.inputValue}" id="ot2"
+                           truncateAt="30"/>
+          </af:goLink>
+          <af:outputFormatted value="#{bindings.CustManagerTelephoneWork.inputValue}"
+                              id="of6"/>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s2"
+                   rendered="#{bindings.CustManagerFullName.inputValue != null &amp;&amp; bindings.CustManagerFullName.inputValue != ''}"/>
+        <af:panelGroupLayout id="pgl4" layout="vertical"
+                             styleClass="myContactsWidgetBlock"
+                             rendered="#{bindings.IproManagerFullName.inputValue != null &amp;&amp; bindings.IproManagerFullName.inputValue != ''}">
+          <af:outputText value="#{bindings.IproManagerFullName.inputValue}"
+                              id="of7" styleClass="widgetHeader" truncateAt="30"/>
+          <af:spacer width="10" height="5" id="s4"/>
+          <af:outputFormatted value="#{mycontactsBundle.IPRO_MANAGER_LBL}" id="of12"/>
+          <af:goLink id="gl3" destination="mailto:#{bindings.IproManagerEmailWork.inputValue}">
+            <af:outputText value="#{bindings.IproManagerEmailWork.inputValue}" id="ot1" truncateAt="30"/>
+          </af:goLink>
+          <af:outputFormatted value="#{bindings.IproManagerTelephoneWork.inputValue}"
+                              id="of9"/>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s1"
+                   rendered="#{bindings.IproManagerFullName.inputValue != null &amp;&amp; bindings.IproManagerFullName.inputValue != ''}"/>
+        <af:panelGroupLayout id="pgl2" layout="vertical"
+                             styleClass="myContactsWidgetBlock"
+                             rendered="#{bindings.BRConsultantFullName.inputValue != null &amp;&amp; bindings.BRConsultantFullName.inputValue != ''}">
+          <af:outputText value="#{bindings.BRConsultantFullName.inputValue}"
+                              id="of1" styleClass="widgetHeader" truncateAt="30"/>
+          <af:spacer width="10" height="5" id="s5"/>
+          <af:outputFormatted value="#{mycontactsBundle.BR_MANAGER_LBL}"
+                              id="of10"/>
+          <af:goLink id="gl1"
+                     destination="mailto:#{bindings.BRConsultantEmailWork.inputValue}">
+            <af:outputText value="#{bindings.BRConsultantEmailWork.inputValue}" id="ot3"
+                           truncateAt="30"/>
+          </af:goLink>
+          <af:outputFormatted value="#{bindings.BRConsultantTelephoneWork.inputValue}"
+                              id="of3"/>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="spacer2"
+                   rendered="#{pageFlowScope.orgId eq null}"/>
+        <af:panelGroupLayout id="panelGroupLayout1" layout="vertical"
+                             styleClass="myContactsWidgetBlock"
+                             rendered="#{pageFlowScope.orgId eq null}">
+          <!--<af:commandLink text="#{mycontactsBundle.CONTACT_US_LINK}" id="cb1"
+                          styleClass="landingLink widgetHeader"
+                          actionListener="#{navigationContext.processAction}">
+            <f:attribute name="node"
+                         value="#{navigationContext.defaultNavigationModel.node['contactus']}"/>
+          </af:commandLink>-->
+          <!--<af:goLink text="#{mycontactsBundle.CONTACT_US_LINK}" id="gl4" targetFrame="_blank"
+                     destination="/faces/oracle/webcenter/portalapp/pages/contactUs.jspx"
+                     styleClass="landingLink"/>-->
+          <!--<af:commandLink text="#{mycontactsBundle.CONTACT_US_LINK}" id="cl1" styleClass="landingLink"
+                          action="to_contact_us"/>-->
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

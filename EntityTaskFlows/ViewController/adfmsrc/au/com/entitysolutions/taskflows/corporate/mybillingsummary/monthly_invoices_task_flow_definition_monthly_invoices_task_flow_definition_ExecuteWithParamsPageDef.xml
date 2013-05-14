@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="monthly_invoices_task_flow_definition_monthly_invoices_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mybillingsummary"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="MonthlyInvoicesVO1" RangeSize="25"
+              DataControl="MyBillingSummaryAppModuleDataControl"
+              id="MonthlyInvoicesVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="MonthlyInvoicesVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="orgId" NDValue="#{pageFlowScope.orgId}"
+                 NDType="oracle.jbo.domain.Number"/>
+      <NamedData NDName="fromDate"
+                 NDValue="#{pageFlowScope.BillingSummaryBean.fromDate}"
+                 NDType="oracle.jbo.domain.Date"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="ipro-ytd-task-flow-definition">
+    <default-activity id="__5">ExecuteWithParams</default-activity>
+    <input-parameter-definition id="__1">
+      <name id="__2">person_id</name>
+      <value id="__125">#{pageFlowScope.person_id}</value>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__9">
+      <managed-bean-name id="__6">IProYtdManagedBean</managed-bean-name>
+      <managed-bean-class id="__8">au.com.entitysolutions.taskflows.iproytd.view.IProYtdManagedBean</managed-bean-class>
+      <managed-bean-scope id="__7">backingBean</managed-bean-scope>
+    </managed-bean>
+    <view id="iproytd">
+      <page id="__126">/au/com/entitysolutions/taskflows/iproytd/view/iproytd.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method id="__123">#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__10">
+        <fixed-outcome id="__124">ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__12">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__13">
+        <from-outcome id="__15">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__14">iproytd</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__16">
+      <from-activity-id id="__17">iproytd</from-activity-id>
+      <control-flow-case id="__19">
+        <from-outcome id="__20">go</from-outcome>
+        <to-activity-id id="__18">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

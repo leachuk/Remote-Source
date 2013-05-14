@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="QuarterlyInvoices"
+  Version="11.1.1.60.13"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.corporate.taskflows.mybillingsummary.QuarterlyInvoices_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="orgId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery>
+    <![CDATA[with ds as (select
+
+nbr_inv_received_current_mth,
+nbr_inv_received_previous_mth,
+nbr_inv_received_two_mth_ago,
+
+nbr_inv_paid_current_mth,
+nbr_inv_paid_previous_mth,
+nbr_inv_paid_two_mth_ago,
+
+nbr_inv_overdue_current_mth,
+nbr_inv_overdue_previous_mth,
+nbr_inv_overdue_two_mth_ago
+
+from edw_corp_rep.apl_my_billing_companies
+
+where billing_organisation_id = :orgId)
+select nbr_inv_received_two_mth_ago as invoices_received, nbr_inv_paid_two_mth_ago as invoiced_paid, nbr_inv_overdue_two_mth_ago as invoiced_overdue, to_char(add_months(sysdate, -2), 'MON') as billing_month from ds
+
+union all
+
+select nbr_inv_received_previous_mth as invoices_received, nbr_inv_paid_previous_mth as invoiced_paid, nbr_inv_overdue_previous_mth as invoiced_overdue, to_char(add_months(sysdate, -1), 'MON') as billing_month from ds
+
+union all
+
+select nbr_inv_received_current_mth as invoices_received, nbr_inv_paid_current_mth as invoiced_paid, nbr_inv_overdue_current_mth as invoiced_overdue, to_char(sysdate, 'MON') as billing_month from ds]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="InvoicesReceived"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="INVOICES_RECEIVED"
+    Expression="INVOICES_RECEIVED"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.mybillingsummary.QuarterlyInvoices.InvoicesReceived_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvoicedPaid"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="INVOICED_PAID"
+    Expression="INVOICED_PAID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.mybillingsummary.QuarterlyInvoices.InvoicedPaid_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="InvoicedOverdue"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="INVOICED_OVERDUE"
+    Expression="INVOICED_OVERDUE"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.mybillingsummary.QuarterlyInvoices.InvoicedOverdue_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BillingMonth"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="12"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BILLING_MONTH"
+    Expression="BILLING_MONTH"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="12"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.mybillingsummary.QuarterlyInvoices.BillingMonth_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="BillingMonth"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

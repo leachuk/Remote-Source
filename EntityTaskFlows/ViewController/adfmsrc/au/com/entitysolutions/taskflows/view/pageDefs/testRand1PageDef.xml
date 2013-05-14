@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="testRand1PageDef"
+                Package="au.com.entitysolutions.taskflows.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="usertaskflowlistdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/usertaskflows/view/user-taskflow-list-definition.xml#user-taskflow-list-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="usertaskflowsdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/usertaskflows/view/user-taskflows-definition.xml#user-taskflows-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="usertaskflowlistdefinition2"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/usertaskflows/view/user-task-flow-list-definition.xml#user-task-flow-list-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

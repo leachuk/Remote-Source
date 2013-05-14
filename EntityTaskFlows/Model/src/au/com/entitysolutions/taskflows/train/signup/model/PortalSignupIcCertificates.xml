@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupIcCertificates"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_SIGNUP_IC_CERTIFICATES"
+  AliasName="PortalSignupIcCertificates"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificatesImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="CertificatesId"
+    IsNotNull="true"
+    ColumnName="CERTIFICATES_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_SIGNUP_IC_CERTIFICATE_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    IsNotNull="true"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IncorpCertDocCntntId"
+    ColumnName="INCORP_CERT_DOC_CNTNT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WrkrsCompExpiry"
+    ColumnName="WRKRS_COMP_EXPIRY"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.WrkrsCompExpiry_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.WrkrsCompExpiry_FMT_FORMAT"/>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.WrkrsCompExpiry_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="WrkrsCompDocCntntId"
+    ColumnName="WRKRS_COMP_DOC_CNTNT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProfIndmExpiry"
+    ColumnName="PROF_INDM_EXPIRY"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.ProfIndmExpiry_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.ProfIndmExpiry_FMT_FORMAT"/>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.ProfIndmExpiry_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="ProfIndmDocCntntId"
+    ColumnName="PROF_INDM_DOC_CNTNT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PublLiabExpiry"
+    ColumnName="PUBL_LIAB_EXPIRY"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.PublLiabExpiry_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.PublLiabExpiry_FMT_FORMAT"/>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.PublLiabExpiry_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PublLiabDocCntntId"
+    ColumnName="PUBL_LIAB_DOC_CNTNT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SendOffline"
+    Precision="1"
+    ColumnName="SEND_OFFLINE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_IC_CERTIFICATES">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.SendOffline_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Key
+    Name="PortalSignupIcCertifiChk1">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_IC_CERTIFI_CHK1"/>
+      <Attr Name="_checkCondition" Value="SEND_OFFLINE IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.SendOffline"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupIcCertificPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_IC_CERTIFIC_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.CertificatesId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090708">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090708"/>
+      <Attr Name="_checkCondition" Value='"CERTIFICATES_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.CertificatesId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090709">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090709"/>
+      <Attr Name="_checkCondition" Value='"USER_TF_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090712">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090712"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090713">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090713"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090714">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090714"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0090715">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0090715"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupIcCertificFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PORTAL_SIGNUP_PERSONAL_DETA_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_IC_CERTIFIC_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupIcCertificates.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

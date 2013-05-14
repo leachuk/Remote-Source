@@ -1,0 +1,640 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="EntityUCM" className="oracle.vcr.jam.JamRepository" xmlns="">
+      <Factory className="oracle.vcr.jam.JamRepositoryFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="oracle.vcr.jam.factoryClassName">
+            <Contents>oracle.jcr.OracleRepositoryFactory</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.vcr.jam.repositoryClassName">
+            <Contents>javax.jcr.Repository</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.vcr.jam.repositoryTypeID">
+            <Contents>oracle.stellent.jcr</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.vcr.jam.authenticationMethod">
+            <Contents>IDENTITY_PROPAGATION</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.jcr.framework.version">
+            <Contents>11.1.0.0.0</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.jcr.configuration.className">
+            <Contents>oracle.stellent.jcr.IdcRepositoryConfiguration</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.jcr.configuration.factoryClassName">
+            <Contents>oracle.stellent.jcr.IdcRepositoryConfigurationFactory</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="jcr.repository.version">
+            <Contents>10.1.3.2.0</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.stellent.jcr.configuration.cis.config.socket.type">
+            <Contents>socket</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.stellent.jcr.configuration.server.host">
+            <Contents>entipx-wcp1.entitysolutions.local</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oracle.stellent.jcr.configuration.server.port">
+            <Contents>4444</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="CorporateDS" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="CorporateDS" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>DEV</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1522</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>ENTMEL-OR1.ENTITYSOLUTIONS.LOCAL</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>edw_corp_rep</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="Perci" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="Perci" xmlns="">
+      <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="sid">
+            <Contents>DEV</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="subtype">
+            <Contents>oraJDBC</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="port">
+            <Contents>1522</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="hostname">
+            <Contents>10.0.3.88</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>PERCI_TEST</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>true</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="oraDriverType">
+            <Contents>thin</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="GetProfileSOA" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/PersonProfile/get_person_profile_client_ep?WSDL" service="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profile_client_ep">
+                  <model name="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profile" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType" xsdType="string" pattern="\+{0,1}[0-9]{1,3}" xmlns=""/>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneAreaCodeType" xsdType="string" pattern="[0-9]{1,3}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="CountryCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType"/>
+                              </part>
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="Address" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews"/>
+                              </part>
+                              <part name="OtherAddress" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews"/>
+                              </part>
+                              <part name="HomeTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="HomeFax" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="HomeEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="WorkTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkFax" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="EntityEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="HomeMobileTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkMobileTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="CountryCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType"/>
+                              </part>
+                              <part name="AreaCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneAreaCodeType"/>
+                              </part>
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType" xsdType="string" pattern="[0-9]{3,4}( )?[0-9]{3,5}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="id" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmergencyContactType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="PersonName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Relationship" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="ContactDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <enumeration namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="GenderType" xsdType="string" xmlns="">
+                           <value value="M"/>
+                           <value value="F"/>
+                        </enumeration>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="Line1" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Line2" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Suburb" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="State" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="PostCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Country" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType" xsdType="string" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonDetailsType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Gender" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="GenderType"/>
+                              </part>
+                              <part name="Prefix" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonPrefixType"/>
+                              </part>
+                              <part name="FirstName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="MiddelName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="SurName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="PreferredName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="DateOfBirth" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="date"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="PersonDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonDetailsType" prefix="ews"/>
+                              </part>
+                              <part name="ContactDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews"/>
+                              </part>
+                              <part name="EmergencyContact" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmergencyContactType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <enumeration namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonPrefixType" xsdType="string" xmlns="">
+                           <value value="Unknown"/>
+                           <value value="Mr."/>
+                           <value value="Dr."/>
+                           <value value="Ms."/>
+                           <value value="Mrs."/>
+                           <value value="Miss."/>
+                        </enumeration>
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profile_client_ep">
+                        <port name="get_person_profile_pt" binding="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profileBinding" portType="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profile">
+                           <soap addressUrl="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/PersonProfile/get_person_profile_client_ep" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="process">
+                              <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="" message="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profileRequestMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile" localPart="process" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="input" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </input>
+                              <output name="" message="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile}get_person_profileResponseMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile" localPart="processResponse" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="result" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile" elementQualified="true">
+                                                   <type>
+                                                      <complexType elementQualified="true">
+                                                         <sequence minOccurs="1" maxOccurs="1">
+                                                            <part name="PersonType" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile" elementQualified="true">
+                                                               <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonType" prefix="ews"/>
+                                                            </part>
+                                                         </sequence>
+                                                      </complexType>
+                                                   </type>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </output>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="PutProfileSOA" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/PersonProfile/update_person_profile_client_ep?WSDL" service="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profile_client_ep">
+                  <model name="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profile" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType" xsdType="string" pattern="\+{0,1}[0-9]{1,3}" xmlns=""/>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneAreaCodeType" xsdType="string" pattern="[0-9]{1,3}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="CountryCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType"/>
+                              </part>
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="Address" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews"/>
+                              </part>
+                              <part name="OtherAddress" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews"/>
+                              </part>
+                              <part name="HomeTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="HomeFax" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="HomeEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="WorkTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkFax" required="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="EntityEmail" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType"/>
+                              </part>
+                              <part name="HomeMobileTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews"/>
+                              </part>
+                              <part name="WorkMobileTelephone" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="MobilePhoneNumberType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="LandlinePhoneNumberType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="CountryCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneCountryCodeType"/>
+                              </part>
+                              <part name="AreaCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneAreaCodeType"/>
+                              </part>
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="TelephoneNumberType" xsdType="string" pattern="[0-9]{3,4}( )?[0-9]{3,5}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="id" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmergencyContactType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="PersonName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Relationship" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="ContactDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <enumeration namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="GenderType" xsdType="string" xmlns="">
+                           <value value="M"/>
+                           <value value="F"/>
+                        </enumeration>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="AddressType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="Line1" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Line2" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Suburb" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="State" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="PostCode" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Country" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <simpleType namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmailAddressType" xsdType="string" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" xmlns=""/>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonDetailsType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="Number" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Gender" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="GenderType"/>
+                              </part>
+                              <part name="Prefix" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonPrefixType"/>
+                              </part>
+                              <part name="FirstName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="MiddelName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="SurName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="PreferredName" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="DateOfBirth" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="date"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonType" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="BaseElement" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="BaseElementType" prefix="ews"/>
+                              </part>
+                              <part name="PersonDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonDetailsType" prefix="ews"/>
+                              </part>
+                              <part name="ContactDetails" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ContactDetailsType" prefix="ews"/>
+                              </part>
+                              <part name="EmergencyContact" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="EmergencyContactType" prefix="ews"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <enumeration namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonPrefixType" xsdType="string" xmlns="">
+                           <value value="Unknown"/>
+                           <value value="Mr."/>
+                           <value value="Dr."/>
+                           <value value="Ms."/>
+                           <value value="Mrs."/>
+                           <value value="Miss."/>
+                        </enumeration>
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profile_client_ep">
+                        <port name="update_person_profile_pt" binding="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profileBinding" portType="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profile">
+                           <soap addressUrl="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/PersonProfile/update_person_profile_client_ep" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="process">
+                              <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <output name="" message="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profileResponseMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" localPart="processResponse" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="status" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="integer"/>
+                                                </part>
+                                                <part name="message" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </output>
+                              <input name="" message="{http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile}update_person_profileRequestMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" localPart="process" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="inputId" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                                <part name="inputObject" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" elementQualified="true">
+                                                   <type>
+                                                      <complexType elementQualified="true">
+                                                         <sequence minOccurs="1" maxOccurs="1">
+                                                            <part name="PersonType" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile" elementQualified="true">
+                                                               <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="PersonType" prefix="ews"/>
+                                                            </part>
+                                                         </sequence>
+                                                      </complexType>
+                                                   </type>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </input>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="GetListOfValues" className="oracle.adf.model.connection.webservice.impl.WebServiceConnectionImpl" xmlns="">
+      <Factory className="oracle.adf.model.connection.webservice.api.WebServiceConnectionFactory"/>
+      <RefAddresses>
+         <XmlRefAddr addrType="WebServiceConnection">
+            <Contents>
+               <wsconnection description="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/ListOfValues/get_list_of_values_client_ep?WSDL" service="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_values_client_ep">
+                  <model name="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_values" xmlns="http://oracle.com/ws/model">
+                     <types xmlns="http://oracle.com/oracle/webservices/mdds">
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ListOfValuesItem" prefix="ews" xmlns="">
+                           <all minOccurs="1" maxOccurs="1">
+                              <part name="order" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                              <part name="Name" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                              </part>
+                           </all>
+                        </complexType>
+                        <complexType elementQualified="true" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="Lov" prefix="ews" xmlns="">
+                           <sequence minOccurs="1" maxOccurs="1">
+                              <part name="Item" required="false" namespace="http://www.entitysolutions.com.au/ews/XMLSchema" elementQualified="true">
+                                 <array dimensions="1" type="2">
+                                    <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="ListOfValuesItem" prefix="ews"/>
+                                 </array>
+                              </part>
+                           </sequence>
+                        </complexType>
+                        <types-in-elements/>
+                     </types>
+                     <service name="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_values_client_ep">
+                        <port name="get_list_of_values_pt" binding="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_valuesBinding" portType="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_values">
+                           <soap addressUrl="http://entipx-wcp1.entitysolutions.local:8001/soa-infra/services/default/ListOfValues/get_list_of_values_client_ep" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                           <operation name="process">
+                              <soap soapAction="process" xmlns="http://schemas.xmlsoap.org/wsdl/soap/"/>
+                              <input name="" message="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_valuesRequestMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values" localPart="process" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="input" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values" elementQualified="true">
+                                                   <type namespace="http://www.w3.org/2001/XMLSchema" localPart="string"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </input>
+                              <output name="" message="{http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values}get_list_of_valuesResponseMessage">
+                                 <message style="2" use="1" soapVersion="1" encodingStyle="" docLitWrapped="true" namespace="http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values" localPart="processResponse" xmlns="http://oracle.com/oracle/webservices/mdds">
+                                    <part name="payload" required="true" xmlns="">
+                                       <type>
+                                          <complexType elementQualified="true">
+                                             <sequence minOccurs="1" maxOccurs="1">
+                                                <part name="result" required="true" namespace="http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values" elementQualified="true">
+                                                   <type namespace="http://www.entitysolutions.com.au/ews/XMLSchema" localPart="Lov" prefix="ews"/>
+                                                </part>
+                                             </sequence>
+                                          </complexType>
+                                       </type>
+                                    </part>
+                                 </message>
+                              </output>
+                           </operation>
+                        </port>
+                     </service>
+                  </model>
+               </wsconnection>
+            </Contents>
+         </XmlRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

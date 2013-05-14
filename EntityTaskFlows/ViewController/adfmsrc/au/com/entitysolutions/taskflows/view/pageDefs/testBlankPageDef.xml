@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="testBlankPageDef"
+                Package="au.com.entitysolutions.taskflows.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="fileuploaderdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/fileuploader/view/file-uploader-definition.xml#file-uploader-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="expenseclaimdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/train/expense/view/expense-claim-definition.xml#expense-claim-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="expenseclaimdefinition2"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/train/expense/view/expense-claim-definition.xml#expense-claim-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

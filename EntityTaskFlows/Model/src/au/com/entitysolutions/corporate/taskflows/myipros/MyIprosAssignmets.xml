@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="MyIprosAssignmets"
+  Version="11.1.1.60.13"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false"
+  OrderBy="full_name asc">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="orgId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <Variable
+    Name="fromDate"
+    Kind="where"
+    Type="oracle.jbo.domain.Date"/>
+  <Variable
+    Name="toDate"
+    Kind="where"
+    Type="oracle.jbo.domain.Date"/>
+  <SQLQuery>
+    <![CDATA[select 
+person_id, 
+full_name, 
+position_title, 
+end_user_organisation_name as organisation_name, 
+end_user_org_state_code,
+first_active_asgn_start_date as start_date,
+first_active_asgn_end_date as end_date
+
+from
+EDW_CORP_REP.APL_MY_DEFAULT_IPROS
+
+where
+:fromDate = trunc(sysdate) AND :toDate = trunc(sysdate) AND 
+billing_organisation_id = :orgId
+
+union all
+
+select
+person_id,
+full_name,
+position_title,
+min(myasn.organisation_name) KEEP (DENSE_RANK LAST ORDER BY (myasn.start_date)) organisation_name, 
+min(end_user_org_state_code) KEEP (DENSE_RANK LAST ORDER BY (myasn.start_date)) end_user_org_state_code,
+min(myasn.start_date) start_date,
+min(myasn.end_date) KEEP (DENSE_RANK LAST ORDER BY (myasn.start_date)) end_date
+
+from 
+EDW_CORP_REP.apl_my_ipro_assignments myasn
+
+where 
+NOT (:fromDate = trunc(sysdate) AND :toDate = trunc(sysdate))
+AND (myasn.end_date >= :fromDate) 
+AND (myasn.start_date <= :toDate) 
+AND myasn.billing_organisation_id = :orgId
+
+group by 
+billing_organisation_id,
+person_id,
+full_name,
+date_of_birth,
+position_title,
+email_preferred,
+myasn.ipro_first_asgn_start_date,
+myasn.ipro_last_payment_date,
+myasn.ipro_last_invoice_date]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="PersonId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="PERSON_ID"
+    Expression="PERSON_ID"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="FullName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1064"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FULL_NAME"
+    Expression="FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1064"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.FullName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="PositionTitle"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="POSITION_TITLE"
+    Expression="POSITION_TITLE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.PositionTitle_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="OrganisationName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ORGANISATION_NAME"
+    Expression="ORGANISATION_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.OrganisationName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndUserOrgStateCode"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="30"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="END_USER_ORG_STATE_CODE"
+    Expression="END_USER_ORG_STATE_CODE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.EndUserOrgStateCode_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="StartDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="START_DATE"
+    Expression="START_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.StartDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="EndDate"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    AliasName="END_DATE"
+    Expression="END_DATE"
+    SQLType="DATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.myipros.MyIprosAssignmets.EndDate_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="PersonId"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

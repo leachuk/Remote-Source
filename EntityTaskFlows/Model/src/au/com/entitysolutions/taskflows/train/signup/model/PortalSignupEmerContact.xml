@@ -1,0 +1,307 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupEmerContact"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_SIGNUP_EMER_CONTACT"
+  AliasName="PortalSignupEmerContact"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContactImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="EmerContactId"
+    IsNotNull="true"
+    ColumnName="EMER_CONTACT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_SIGNUP_EMER_CONTACT_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    IsNotNull="true"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="EmerContactName"
+    Precision="150"
+    ColumnName="EMER_CONTACT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactName_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="EmerContactPhone"
+    Precision="10"
+    ColumnName="EMER_CONTACT_PHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactPhone_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="EmerContactRelationship"
+    Precision="30"
+    ColumnName="EMER_CONTACT_RELATIONSHIP"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactRelationship_LABEL"/>
+        <DISPLAYWIDTH
+          Value="20"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Transformed"
+    Precision="1"
+    ColumnName="TRANSFORMED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_EMER_CONTACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PortalSignupEmerContacPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_EMER_CONTAC_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupEmerContactEmerContactNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_EMER_CONTACT_EME"/>
+      <Attr Name="_checkCondition" Value='"EMER_CONTACT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupEmerContactEmerContactPhoneCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_EMER_CONTACT_EME"/>
+      <Attr Name="_checkCondition" Value='"EMER_CONTACT_PHONE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactPhone"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupEmerContactEmerContactRelationshipCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_EMER_CONTACT_EME"/>
+      <Attr Name="_checkCondition"
+        Value='"EMER_CONTACT_RELATIONSHIP" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactRelationship"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081032">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081032"/>
+      <Attr Name="_checkCondition" Value='"EMER_CONTACT_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.EmerContactId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081033">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081033"/>
+      <Attr Name="_checkCondition" Value='"USER_TF_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081034">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081034"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081035">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081035"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081036">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081036"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081037">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081037"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupEmerContactFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PORTAL_SIGNUP_PERSONAL_DETA_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_EMER_CONTACT_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupEmerContact.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

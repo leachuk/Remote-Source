@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="sign_up_task_flow_sign_up_task_flow_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTaskFlowsView" RangeSize="25"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTaskFlowsViewIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalUserTaskFlowsViewIterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_user_name" NDValue="#{securityContext.userName}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

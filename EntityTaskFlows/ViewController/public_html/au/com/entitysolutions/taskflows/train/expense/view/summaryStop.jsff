@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/expense/view/expenseStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl4" styleClass="AFStretchWidth"
+                           layout="vertical">
+        <af:outputFormatted id="of1"
+                            value="#{pageFlowScope.msgs.bundle['PROCESS_SUMMARY_HTML_TEXT1']}"/>
+        <af:panelGroupLayout id="pgl7" layout="horizontal" valign="top">
+          <af:icon name="info" id="i1"/>
+          <af:outputText value="#{pageFlowScope.msgs.bundle['PROCESS_SUMMARY_HTML_TEXT2']}"
+                         id="ot1" escape="false"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s5"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <f:facet name="separator">
+          <af:spacer width="10" height="15" id="s51"/>
+        </f:facet>
+        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                             valign="top">
+          <af:icon name="info" id="icon2"/>
+          <af:panelGroupLayout id="pgl1111" valign="top" layout="vertical">
+            <af:panelGroupLayout id="pgl123" valign="top" layout="horizontal">
+              <af:outputText value="#{pageFlowScope.msgs.bundle['PROCESS_SUMMARY_HTML_TEXT3']}"
+                             id="outputText2" escape="false"/>
+              <af:goLink id="goLink2" targetFrame="_blank"
+                         text="Tax Deduction Kit."
+                         destination="/ShowProperty?nodeId=%2FEntityUCM%2FTAXDEDUCTIONKIT%2F%2FidcPrimaryFile&amp;revision=latestreleased"
+                         styleClass="strongText"/>
+            </af:panelGroupLayout>
+            <af:outputText value="#{pageFlowScope.msgs.bundle['PROCESS_SUMMARY_HTML_TEXT4']}"
+                           id="ot2" escape="false"/>
+          </af:panelGroupLayout>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="spacer1"/>
+          </f:facet>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="buttons">
+      <af:panelGroupLayout id="pgl21" layout="horizontal"
+                           halign="end">
+        <af:commandButton id="pt_cb111"
+                          text="#{pageFlowScope.msgs.bundle['NEXT_BTN']}"
+                          disabled="#{pageFlowScope.trainBean.lastStop}"
+                          immediate="false"
+                          action="#{pageFlowScope.trainBean.validateAndNavigateNext}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="pt_s12"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['SUMMARY_TRAIN_STEP_HEADERTEXT']}"/>
+    <f:attribute name="isShowTrainButtons" value="false"/>
+  </af:pageTemplate>
+</jsp:root>

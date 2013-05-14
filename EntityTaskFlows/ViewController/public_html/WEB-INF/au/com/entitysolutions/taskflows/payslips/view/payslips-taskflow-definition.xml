@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="payslips-taskflow-definition">
+    <default-activity id="__7">ExecuteWithParams</default-activity>
+    <managed-bean id="__8">
+      <managed-bean-name id="__10">payslipBean</managed-bean-name>
+      <managed-bean-class id="__9">au.com.entitysolutions.taskflows.payslips.view.PayslipBean</managed-bean-class>
+      <managed-bean-scope id="__11">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__14">
+      <managed-bean-name id="__15">msgs</managed-bean-name>
+      <managed-bean-class id="__13">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__12">pageFlow</managed-bean-scope>
+      <managed-property id="__17">
+        <property-name id="__18">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__16">au.com.entitysolutions.taskflows.payslips.view.PayslipBundle</value>
+      </managed-property>
+    </managed-bean>
+    <view id="payslipsList">
+      <page>/au/com/entitysolutions/taskflows/payslips/view/payslipsList.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__1">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__3">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome id="__4">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__5">payslipsList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

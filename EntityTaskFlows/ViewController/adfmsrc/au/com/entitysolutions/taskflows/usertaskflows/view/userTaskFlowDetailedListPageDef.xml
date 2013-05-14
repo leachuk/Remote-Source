@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="userTaskFlowDetailedListPageDef"
+                Package="au.com.entitysolutions.taskflows.usertaskflows.view">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTaskFlowsView" RangeSize="10"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTaskFlowsViewIterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PortalUserTaskFlowsViewIterator"
+          id="PortalUserTaskFlowsView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView"
+                      Name="PortalUserTaskFlowsView0">
+        <AttrNames>
+          <Item Value="TfId"/>
+          <Item Value="IsActive"/>
+          <Item Value="PersonId"/>
+          <Item Value="Status"/>
+          <Item Value="TfCode"/>
+          <Item Value="TfDescription"/>
+          <Item Value="TfName"/>
+          <Item Value="UserId"/>
+          <Item Value="UserName"/>
+          <Item Value="UserTfId"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action id="Commit" InstanceName="TrainAppModuleDataControl"
+            DataControl="TrainAppModuleDataControl" RequiresUpdateModel="true"
+            Action="commitTransaction"/>
+    <methodAction id="startTaskflow"
+                  InstanceName="TrainAppModuleDataControl.dataProvider"
+                  DataControl="TrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="startTaskflow" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{requestScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="userName" NDValue="#{securityContext.userName}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="ipAddress"
+                 NDValue="#{facesContext.externalContext.request.remoteAddr}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

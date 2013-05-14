@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalUserTFStepDocContentAssoc"
+  Version="11.1.1.60.13">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="DocContentIdPortalUserTFStepDoc"
+    Cardinality="1"
+    Source="true"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc"
+    LockLevel="NONE">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="DocContentIdPortalUserTFStepDoc"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_minCardinality" Value="1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDoc.DocContentId"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="PortalDocContent"
+    Cardinality="-1"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalDocContent">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+      <Attr Name="_finderName" Value="PortalDocContent"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalDocContent.DocContentId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

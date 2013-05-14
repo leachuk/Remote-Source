@@ -1,0 +1,377 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical"
+                           styleClass="AFStretchWidth"
+                           partialTriggers="sor1 sor2 sor3">
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_PROMPT']}"
+                            id="of1"/>
+        <af:selectOneRadio value="#{bindings.SuperChoice.inputValue}"
+                           label="#{bindings.SuperChoice.label}"
+                           required="#{bindings.SuperChoice.hints.mandatory}"
+                           shortDesc="#{bindings.SuperChoice.hints.tooltip}"
+                           id="sor1" simple="true" autoSubmit="true"
+                           immediate="true">
+          <f:selectItems value="#{bindings.SuperChoice.items}" id="si1"/>
+        </af:selectOneRadio>
+        <af:panelGroupLayout visible="#{bindings.SuperChoice.attributeValue eq 'OWN_CHOICE'}"
+                             layout="vertical" id="pgl6">
+          <af:panelFormLayout id="pfl1" labelWidth="200"
+                              partialTriggers="sor1 sor2">
+            <af:panelLabelAndMessage label="#{bindings.SuperFundType.label}"
+                                     showRequired="true" id="plam2">
+              <af:panelGroupLayout id="pgl9" layout="vertical">
+                <af:selectOneRadio value="#{bindings.SuperFundType.inputValue}"
+                                   autoSubmit="true"
+                                   label="#{bindings.SuperFundType.label}"
+                                   showRequired="true" simple="true"
+                                   shortDesc="#{bindings.SuperFundType.hints.tooltip}"
+                                   id="sor2" layout="horizontal"
+                                   immediate="true">
+                  <f:selectItems value="#{bindings.SuperFundType.items}"
+                                 id="si2"/>
+                </af:selectOneRadio>
+                <af:goLink targetFrame="_blank"
+                           destination="/ShowProperty?nodeId=%2FEntityUCM%2FSUPER_DETAILS_INFO%2F%2FidcPrimaryFile&amp;revision=latestreleased"
+                           text="#{pageFlowScope.msgs.bundle['SUPER_DTLS_INFO_LINK_PROMPT']}"
+                           id="cl1"/>
+                <f:facet name="separator">
+                  <af:spacer width="10" height="5" id="s9"/>
+                </f:facet>
+              </af:panelGroupLayout>
+            </af:panelLabelAndMessage>
+            <af:group rendered="#{not empty bindings.SuperFundType.attributeValue}"
+                      id="g1">
+              <af:inputText value="#{bindings.SuperFundName.inputValue}"
+                            label="#{bindings.SuperFundName.hints.label}"
+                            showRequired="true"
+                            columns="#{bindings.SuperFundName.hints.displayWidth}"
+                            maximumLength="#{bindings.SuperFundName.hints.precision}"
+                            partialTriggers="sor2"
+                            shortDesc="#{bindings.SuperFundName.hints.tooltip}"
+                            id="it1">
+                <f:validator binding="#{bindings.SuperFundName.validator}"/>
+              </af:inputText>
+              <af:panelLabelAndMessage label="#{bindings.SuperFundSpin.hints.label}"
+                                       visible="#{bindings.SuperFundType.attributeValue eq 'INDUSTRY_CORPORATE'}"
+                                       id="plam3" showRequired="true">
+                <af:panelGroupLayout id="pgl10" layout="horizontal">
+                  <af:inputText value="#{bindings.SuperFundSpin.inputValue}"
+                                label="#{bindings.SuperFundSpin.hints.label}"
+                                partialTriggers="sor2" showRequired="true"
+                                simple="true"
+                                columns="#{bindings.SuperFundSpin.hints.displayWidth}"
+                                maximumLength="#{bindings.SuperFundSpin.hints.precision}"
+                                shortDesc="#{bindings.SuperFundSpin.hints.tooltip}"
+                                id="it2">
+                    <af:validateRegExp pattern="#{commonBundle.SPIN_PATTERN_REGEX}"
+                                       hint="#{commonBundle.SPIN_PATTERN_HINT}"
+                                       messageDetailNoMatch="#{commonBundle.SPIN_PATTERN_ERROR}"/>
+                    <f:validator binding="#{bindings.SuperFundSpin.validator}"/>
+                  </af:inputText>
+                  <af:commandLink text="#{pageFlowScope.msgs.bundle['SUPER_DTLS_SPIN_LINK_PROMPT']}"
+                                  id="commandLink1">
+                    <af:showPopupBehavior popupId="p1" triggerType="action"
+                                          align="endBefore"
+                                          alignId="commandLink1"/>
+                  </af:commandLink>
+                  <f:facet name="separator">
+                    <af:spacer width="10" height="10" id="s10"/>
+                  </f:facet>
+                </af:panelGroupLayout>
+              </af:panelLabelAndMessage>
+              <af:popup id="p1">
+                <af:panelHeader text="#{pageFlowScope.msgs.bundle['SUPER_DTLS_SPIN_LINK_PROMPT']}"
+                                id="ph2">
+                  <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_SPIN_INFO']}"
+                                      id="ot1"/>
+                </af:panelHeader>
+              </af:popup>
+              <af:inputText value="#{bindings.SuperFundAbn.inputValue}"
+                            label="#{bindings.SuperFundAbn.hints.label}"
+                            partialTriggers="sor2" showRequired="true"
+                            visible="#{bindings.SuperFundType.attributeValue eq 'SELF_MANAGED'}"
+                            columns="#{bindings.SuperFundAbn.hints.displayWidth}"
+                            maximumLength="#{bindings.SuperFundAbn.hints.precision}"
+                            shortDesc="#{bindings.SuperFundAbn.hints.tooltip}"
+                            id="it3">
+                <af:validateRegExp pattern="#{commonBundle.ABN_PATTERN_REGEX}"
+                                   hint="#{commonBundle.ABN_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.ABN_PATTERN_ERROR}"/>
+                <f:validator binding="#{bindings.SuperFundAbn.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.SuperMemberName.inputValue}"
+                            label="#{bindings.SuperMemberName.hints.label}"
+                            showRequired="true" partialTriggers="sor2"
+                            columns="#{bindings.SuperMemberName.hints.displayWidth}"
+                            maximumLength="#{bindings.SuperMemberName.hints.precision}"
+                            shortDesc="#{bindings.SuperMemberName.hints.tooltip}"
+                            id="it4">
+                <f:validator binding="#{bindings.SuperMemberName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.SuperMemberNumber.inputValue}"
+                            label="#{bindings.SuperMemberNumber.hints.label}"
+                            showRequired="#{bindings.SuperFundType.attributeValue eq 'INDUSTRY_CORPORATE'}"
+                            columns="#{bindings.SuperMemberNumber.hints.displayWidth}"
+                            partialTriggers="sor2"
+                            maximumLength="#{bindings.SuperMemberNumber.hints.precision}"
+                            shortDesc="#{bindings.SuperMemberNumber.hints.tooltip}"
+                            id="it5">
+                <af:validateRegExp pattern="#{commonBundle.SUPER_MEM_NO_PATTERN_REGEX}"
+                                   hint="#{commonBundle.SUPER_MEM_NO_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.SUPER_MEM_NO_PATTERN_ERROR}"/>
+                <f:validator binding="#{bindings.SuperMemberNumber.validator}"/>
+              </af:inputText>
+            </af:group>
+          </af:panelFormLayout>
+          <af:panelGroupLayout id="pgl4" layout="vertical"
+                               visible="#{bindings.SuperFundType.attributeValue eq 'SELF_MANAGED'}"
+                               partialTriggers="sor2">
+            <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_SLF_MGD_PROMPT']}"
+                                id="of4"/>
+            <af:panelFormLayout id="pfl3" labelWidth="150">
+              <af:selectOneRadio value="#{bindings.SuperPaymentType.inputValue}"
+                                 label="#{bindings.SuperPaymentType.label}"
+                                 autoSubmit="true" immediate="true"
+                                 showRequired="true"
+                                 shortDesc="#{bindings.SuperPaymentType.hints.tooltip}"
+                                 rendered="#{bindings.SuperFundType.attributeValue eq 'SELF_MANAGED'}"
+                                 id="sor3" layout="horizontal">
+                <f:selectItems value="#{bindings.SuperPaymentType.items}"
+                               id="si3"/>
+              </af:selectOneRadio>
+            </af:panelFormLayout>
+            <af:panelFormLayout id="pfEFT" rows="3" maxColumns="4"
+                                partialTriggers="sor3"
+                                visible="#{bindings.SuperPaymentType.attributeValue eq 'EFT'}"
+                                labelWidth="150">
+              <af:inputText value="#{bindings.EftAccountName.inputValue}"
+                            label="#{bindings.EftAccountName.hints.label}"
+                            showRequired="true"
+                            columns="#{bindings.EftAccountName.hints.displayWidth}"
+                            maximumLength="#{bindings.EftAccountName.hints.precision}"
+                            shortDesc="#{bindings.EftAccountName.hints.tooltip}"
+                            id="it6">
+                <f:validator binding="#{bindings.EftAccountName.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.EftAccountNo.inputValue}"
+                            label="#{bindings.EftAccountNo.hints.label}"
+                            showRequired="true"
+                            columns="#{bindings.EftAccountNo.hints.displayWidth}"
+                            maximumLength="#{bindings.EftAccountNo.hints.precision}"
+                            shortDesc="#{bindings.EftAccountNo.hints.tooltip}"
+                            id="it7">
+                <f:validator binding="#{bindings.EftAccountNo.validator}"/>
+                <af:validateRegExp pattern="#{commonBundle.BANKACC_PATTERN_REGEX}"
+                                   hint="#{commonBundle.BANKACC_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.BANKACC_PATTERN_ERROR}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.EftBsb.inputValue}"
+                            label="#{bindings.EftBsb.hints.label}"
+                            showRequired="true"
+                            columns="#{bindings.EftBsb.hints.displayWidth}"
+                            maximumLength="#{bindings.EftBsb.hints.precision}"
+                            shortDesc="#{bindings.EftBsb.hints.tooltip}"
+                            id="it8">
+                <f:validator binding="#{bindings.EftBsb.validator}"/>
+                <af:validateRegExp pattern="#{commonBundle.BSB_PATTERN_REGEX}"
+                                   hint="#{commonBundle.BSB_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.BSB_PATTERN_ERROR}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.EftEmail.inputValue}"
+                            label="#{bindings.EftEmail.hints.label}"
+                            showRequired="true"
+                            columns="#{bindings.EftEmail.hints.displayWidth}"
+                            maximumLength="#{bindings.EftEmail.hints.precision}"
+                            shortDesc="#{bindings.EftEmail.hints.tooltip}"
+                            id="it9">
+                <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                   hint=""
+                                   messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+                <f:validator binding="#{bindings.EftEmail.validator}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            <af:panelGroupLayout id="pgBpay" layout="vertical"
+                                 partialTriggers="sor3"
+                                 visible="#{bindings.SuperPaymentType.attributeValue eq 'BPAY'}">
+              <af:panelFormLayout id="pfBpay" rows="1" maxColumns="4"
+                                  labelWidth="200">
+                <af:inputText value="#{bindings.BpayBillerCode.inputValue}"
+                              label="#{bindings.BpayBillerCode.hints.label}"
+                              showRequired="true"
+                              columns="#{bindings.BpayBillerCode.hints.displayWidth}"
+                              maximumLength="#{bindings.BpayBillerCode.hints.precision}"
+                              shortDesc="#{bindings.BpayBillerCode.hints.tooltip}"
+                              id="it10">
+                  <af:validateRegExp pattern="#{commonBundle.BPAY_BILLER_CODE_PATTERN_REGEX}"
+                                     hint="#{commonBundle.BPAY_BILLER_CODE_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.BPAY_BILLER_CODE_PATTERN_ERROR}"/>
+                  <f:validator binding="#{bindings.BpayBillerCode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.BpayRefNo.inputValue}"
+                              label="#{bindings.BpayRefNo.hints.label}"
+                              showRequired="true"
+                              required="#{bindings.BpayRefNo.hints.mandatory}"
+                              columns="#{bindings.BpayRefNo.hints.displayWidth}"
+                              maximumLength="#{bindings.BpayRefNo.hints.precision}"
+                              shortDesc="#{bindings.BpayRefNo.hints.tooltip}"
+                              id="it11">
+                  <af:validateRegExp pattern="#{commonBundle.BPAY_BILLER_REF_PATTERN_REGEX}"
+                                     hint="#{commonBundle.BPAY_BILLER_REF_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.BPAY_BILLER_REF_PATTERN_ERROR}"/>
+                  <f:validator binding="#{bindings.BpayRefNo.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+              <af:spacer width="10" height="10" id="s3"/>
+              <af:outputText value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_SAL_SAC_NOTE']}"
+                             id="ot22"/>
+              <af:panelFormLayout id="pfl2" maxColumns="4" rows="1"
+                                  labelWidth="200">
+                <af:inputText value="#{bindings.SacBpayBillerCode.inputValue}"
+                              label="#{bindings.SacBpayBillerCode.hints.label}"
+                              required="#{bindings.SacBpayBillerCode.hints.mandatory}"
+                              columns="#{bindings.SacBpayBillerCode.hints.displayWidth}"
+                              maximumLength="#{bindings.SacBpayBillerCode.hints.precision}"
+                              shortDesc="#{bindings.SacBpayBillerCode.hints.tooltip}"
+                              id="it12">
+                  <af:validateRegExp pattern="#{commonBundle.BPAY_BILLER_CODE_PATTERN_REGEX}"
+                                     hint="#{commonBundle.BPAY_BILLER_CODE_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.BPAY_BILLER_CODE_PATTERN_ERROR}"/>
+                  <f:validator binding="#{bindings.SacBpayBillerCode.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.SacBpayRefNo.inputValue}"
+                              label="#{bindings.SacBpayRefNo.hints.label}"
+                              required="#{bindings.SacBpayRefNo.hints.mandatory}"
+                              columns="#{bindings.SacBpayRefNo.hints.displayWidth}"
+                              maximumLength="#{bindings.SacBpayRefNo.hints.precision}"
+                              shortDesc="#{bindings.SacBpayRefNo.hints.tooltip}"
+                              id="it13">
+                  <af:validateRegExp pattern="#{commonBundle.BPAY_BILLER_REF_PATTERN_REGEX}"
+                                     hint="#{commonBundle.BPAY_BILLER_REF_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.BPAY_BILLER_REF_PATTERN_ERROR}"/>
+                  <f:validator binding="#{bindings.SacBpayRefNo.validator}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelGroupLayout>
+            <af:panelFormLayout id="pfChq" rows="4" maxColumns="4"
+                                partialTriggers="sor3"
+                                visible="#{bindings.SuperPaymentType.attributeValue eq 'CHEQUE'}"
+                                labelWidth="100">
+              <af:inputText value="#{bindings.ChqPayTo.inputValue}"
+                            label="#{bindings.ChqPayTo.hints.label}"
+                            showRequired="true"
+                            required="#{bindings.ChqPayTo.hints.mandatory}"
+                            columns="#{bindings.ChqPayTo.hints.displayWidth}"
+                            maximumLength="#{bindings.ChqPayTo.hints.precision}"
+                            shortDesc="#{bindings.ChqPayTo.hints.tooltip}"
+                            id="it14">
+                <f:validator binding="#{bindings.ChqPayTo.validator}"/>
+              </af:inputText>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:spacer width="10" height="10" id="s5"/>
+              <af:spacer width="10" height="10" id="s51"/>
+              <af:inputText value="#{bindings.ChqAddress.inputValue}"
+                            label="#{bindings.ChqAddress.hints.label}"
+                            required="#{bindings.ChqAddress.hints.mandatory}"
+                            showRequired="true"
+                            columns="#{bindings.ChqAddress.hints.displayWidth}"
+                            maximumLength="#{bindings.ChqAddress.hints.precision}"
+                            shortDesc="#{bindings.ChqAddress.hints.tooltip}"
+                            id="it15" rows="3">
+                <f:validator binding="#{bindings.ChqAddress.validator}"/>
+              </af:inputText>
+              <af:inputText value="#{bindings.ChqSuburb.inputValue}"
+                            label="#{bindings.ChqSuburb.hints.label}"
+                            showRequired="true"
+                            required="#{bindings.ChqSuburb.hints.mandatory}"
+                            columns="#{bindings.ChqSuburb.hints.displayWidth}"
+                            maximumLength="#{bindings.ChqSuburb.hints.precision}"
+                            shortDesc="#{bindings.ChqSuburb.hints.tooltip}"
+                            id="it16">
+                <f:validator binding="#{bindings.ChqSuburb.validator}"/>
+              </af:inputText>
+              <af:selectOneChoice value="#{bindings.ChqState.inputValue}"
+                                  label="#{bindings.ChqState.label}"
+                                  showRequired="true"
+                                  required="#{bindings.ChqState.hints.mandatory}"
+                                  shortDesc="#{bindings.ChqState.hints.tooltip}"
+                                  id="soc1">
+                <f:selectItems value="#{bindings.ChqState.items}" id="si4"/>
+              </af:selectOneChoice>
+              <af:inputText value="#{bindings.ChqPostcode.inputValue}"
+                            label="#{bindings.ChqPostcode.hints.label}"
+                            required="#{bindings.ChqPostcode.hints.mandatory}"
+                            showRequired="true"
+                            columns="#{bindings.ChqPostcode.hints.displayWidth}"
+                            maximumLength="#{bindings.ChqPostcode.hints.precision}"
+                            shortDesc="#{bindings.ChqPostcode.hints.tooltip}"
+                            id="it17">
+                <f:validator binding="#{bindings.ChqPostcode.validator}"/>
+                <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                                   hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                                   messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+              </af:inputText>
+            </af:panelFormLayout>
+            <f:facet name="separator">
+              <af:spacer width="10" height="10" id="s2"/>
+            </f:facet>
+          </af:panelGroupLayout>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_CLR_NOTE']}"
+                              id="of2"
+                              visible="#{bindings.SuperFundType.attributeValue eq 'INDUSTRY_CORPORATE'}"
+                              partialTriggers="sor2"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_CONF_INFO_NOTE']}"
+                              id="of3"/>
+          <af:panelGroupLayout id="pgl8" layout="horizontal" valign="top">
+            <af:selectBooleanCheckbox value="#{bindings.ConfirmSuperCompliance.inputValue}"
+                                      label="#{bindings.ConfirmSuperCompliance.label}"
+                                      simple="true"
+                                      shortDesc="#{bindings.ConfirmSuperCompliance.hints.tooltip}"
+                                      id="sbc1"/>
+            <af:outputLabel value="#{bindings.ConfirmSuperCompliance.label}"
+                            for="sbc1" id="ol1"/>
+            <f:facet name="separator">
+              <af:spacer width="10" height="10" id="s8"/>
+            </f:facet>
+          </af:panelGroupLayout>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s6"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:panelGroupLayout id="pgl7"
+                             visible="#{bindings.SuperChoice.attributeValue eq 'ENTITY_DEFAULT'}"
+                             layout="vertical">
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_1']}"
+                              id="of5"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_2']}"
+                              id="of6"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_3']}"
+                              id="of7"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_4']}"
+                              id="of8"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_5']}"
+                              id="of9"/>
+         <af:outputFormatted value="#{pageFlowScope.msgs.bundle['SUPER_ENT_DEF_TEXT_6']}"
+                              id="of10"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s7"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['SUPER_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

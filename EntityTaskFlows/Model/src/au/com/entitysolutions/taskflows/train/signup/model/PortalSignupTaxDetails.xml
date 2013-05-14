@@ -1,0 +1,411 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupTaxDetails"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_SIGNUP_TAX_DETAILS"
+  AliasName="PortalSignupTaxDetails"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetailsImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="TaxDetailsId"
+    IsNotNull="true"
+    ColumnName="TAX_DETAILS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_SIGNUP_TAX_DETAILS_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    IsNotNull="true"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Tfn"
+    Precision="9"
+    ColumnName="TFN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="9"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.Tfn_LABEL"/>
+        <DISPLAYWIDTH
+          Value="9"/>
+      </SchemaBasedProperties>
+    </Properties>
+    <validation:MethodValidationBean
+      Name="Tfn_Rule_0"
+      ResId="TNF_NUMBER_ALGORITHM_ERROR"
+      MethodName="validateTfn">
+      <validation:OnCondition><![CDATA[Tfn != null]]></validation:OnCondition>
+    </validation:MethodValidationBean>
+  </Attribute>
+  <Attribute
+    Name="NoTfnReason"
+    Precision="20"
+    ColumnName="NO_TFN_REASON"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="AustResident"
+    Precision="1"
+    ColumnName="AUST_RESIDENT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.AustResident_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TaxfreeThresholdClaimed"
+    Precision="1"
+    ColumnName="TAXFREE_THRESHOLD_CLAIMED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.TaxfreeThresholdClaimed_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HecsDebt"
+    Precision="1"
+    ColumnName="HECS_DEBT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.HecsDebt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="SupplementDebt"
+    Precision="1"
+    ColumnName="SUPPLEMENT_DEBT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.SupplementDebt_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="DocumentContentId"
+    ColumnName="DOCUMENT_CONTENT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Transformed"
+    Precision="1"
+    ColumnName="TRANSFORMED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TnfDocPostedOffline"
+    Precision="1"
+    ColumnName="TNF_DOC_POSTED_OFFLINE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_TAX_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.TnfDocPostedOffline_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Key
+    Name="PortalSignupTaxDetailsAustResidentCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_AUST"/>
+      <Attr Name="_checkCondition" Value='"AUST_RESIDENT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.AustResident"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsHecsDebtCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_HECS"/>
+      <Attr Name="_checkCondition" Value='"HECS_DEBT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.HecsDebt"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.TaxDetailsId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsSupplementDebtCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_SUPP"/>
+      <Attr Name="_checkCondition" Value='"SUPPLEMENT_DEBT" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsTaxfreeThresholdClaimedCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_TAXF"/>
+      <Attr Name="_checkCondition"
+        Value='"TAXFREE_THRESHOLD_CLAIMED" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.TaxfreeThresholdClaimed"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsTfnCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_TFN_"/>
+      <Attr Name="_checkCondition" Value='"TFN" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupTaxDetails.Tfn"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PrtSgnTaxDetailsChk2">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PRT_SGN_TAX_DETAILS_CHK2"/>
+      <Attr Name="_checkCondition"
+        Value="TNF_DOC_POSTED_OFFLINE IN ('Y', 'N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081081">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081081"/>
+      <Attr Name="_checkCondition" Value='"TAX_DETAILS_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081082">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081082"/>
+      <Attr Name="_checkCondition" Value='"USER_TF_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081083">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081083"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081084">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081084"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081085">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081085"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="SysC0081086">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081086"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <Key
+    Name="PortalSignupTaxDetailsFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PORTAL_SIGNUP_PERSONAL_DETA_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_TAX_DETAILS_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes"/>
+  </Key>
+  <!--validation:ExpressionValidationBean
+    Name="PortalSignupTaxDetails_Rule_0"
+    OperandType="EXPR"
+    Inverse="false">
+    <validation:OnCondition><![CDATA[false]]></validation:OnCondition>
+    <validation:MsgIds>
+      <validation:Item
+        Value="TAXFREE_FOR_NON_RESIDENT_ERROR"/>
+    </validation:MsgIds>
+    <validation:TransientExpression><![CDATA[(AustResident == 'Y') || (AustResident == 'N' && TaxfreeThresholdClaimed == 'N')]]></validation:TransientExpression>
+  </validation:ExpressionValidationBean-->
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

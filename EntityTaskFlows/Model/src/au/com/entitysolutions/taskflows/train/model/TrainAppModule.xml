@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="TrainAppModule"
+  Version="11.1.1.60.13"
+  ClearCacheOnRollback="true"
+  Extends="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule"
+  ComponentClass="au.com.entitysolutions.taskflows.train.model.TrainAppModuleImpl"
+  ComponentInterface="au.com.entitysolutions.taskflows.train.model.common.TrainAppModule"
+  ClientProxyName="au.com.entitysolutions.taskflows.train.model.client.TrainAppModuleClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewUsage
+    Name="PortalUserTaskFlowsView"
+    ViewObjectName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView">
+    <ViewCriteriaUsage
+      Name="ActiveTFByUserId"
+      FullName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView.ActiveTFByUserId"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PortalUserTFView"
+    ViewObjectName="au.com.entitysolutions.taskflows.train.model.PortalUserTFView">
+    <ViewCriteriaUsage
+      Name="findByUserTFId"
+      FullName="au.com.entitysolutions.taskflows.train.model.PortalUserTFView.findByUserTFId"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="PortalUserTaskFlowsView1"
+    ViewObjectName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView">
+    <ViewCriteriaUsage
+      Name="ActiveTFByUserIdAndUserTFId"
+      FullName="au.com.entitysolutions.taskflows.train.model.PortalUserTaskFlowsView.ActiveTFByUserIdAndUserTFId"/>
+  </ViewUsage>
+  <ClientInterface>
+    <Method
+      Name="startTaskflow">
+      <Return
+        Type="void"/>
+      <Parameter
+        Name="userTFId"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="userName"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="ipAddress"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

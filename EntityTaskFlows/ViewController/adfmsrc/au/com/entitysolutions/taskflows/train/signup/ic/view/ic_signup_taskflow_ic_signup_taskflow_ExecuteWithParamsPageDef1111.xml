@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ic_signup_taskflow_ic_signup_taskflow_ExecuteWithParamsPageDef1111"
+                Package="au.com.entitysolutions.taskflows.train.signup.ic.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTFStepDocSQLView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepDocSQLViewIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalUserTFStepDocSQLViewIterator"
+            id="GetUploadDocsDetails" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="p_doc_name" NDValue="#{''}" NDType="java.lang.String"/>
+      <NamedData NDName="p_step_name"
+                 NDValue="#{pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_user_tf_id"
+                 NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_doc_type" NDValue="#{'U'}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_doc_sub_type" NDValue="#{''}" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

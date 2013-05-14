@@ -1,0 +1,478 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupContactDetails"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_SIGNUP_CONTACT_DETAILS"
+  AliasName="PortalSignupContactDetails"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetailsImpl"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="ContactDetailsId"
+    IsNotNull="true"
+    ColumnName="CONTACT_DETAILS_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_SIGNUP_CONTACT_DTLS_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    IsNotNull="true"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TelephoneHome"
+    Precision="10"
+    ColumnName="TELEPHONE_HOME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.TelephoneHome_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TelephoneMobile"
+    Precision="10"
+    ColumnName="TELEPHONE_MOBILE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.TelephoneMobile_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="TelephoneWork"
+    Precision="10"
+    ColumnName="TELEPHONE_WORK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.TelephoneWork_LABEL"/>
+        <DISPLAYWIDTH
+          Value="10"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HomeAddressLine"
+    Precision="200"
+    ColumnName="HOME_ADDRESS_LINE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeAddressLine_LABEL"/>
+        <CONTROLTYPE
+          Value="edit"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+        <DISPLAYHEIGHT
+          Value="2"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HomeSuburb"
+    Precision="50"
+    ColumnName="HOME_SUBURB"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeSuburb_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HomeState"
+    Precision="30"
+    ColumnName="HOME_STATE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeState_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HomePostCode"
+    Precision="4"
+    ColumnName="HOME_POST_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="30"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomePostCode_LABEL"/>
+        <DISPLAYWIDTH
+          Value="4"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="HomeCountry"
+    Precision="50"
+    ColumnName="HOME_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    DefaultValue="Australia"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeCountry_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="PortalEmailAddress"
+    Precision="100"
+    ColumnName="PORTAL_EMAIL_ADDRESS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS"
+    IsNotNull="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.PortalEmailAddress_LABEL"/>
+        <DISPLAYWIDTH
+          Value="30"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Transformed"
+    Precision="1"
+    ColumnName="TRANSFORMED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    IsNotNull="true"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_SIGNUP_CONTACT_DETAILS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="PortalSignupContactDetPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DET_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.ContactDetailsId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsHomeAddressLineCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"HOME_ADDRESS_LINE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeAddressLine"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsHomeCountryCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"HOME_COUNTRY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeCountry"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsHomePostCodeCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"HOME_POST_CODE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomePostCode"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsHomeStateCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"HOME_STATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeState"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsHomeSuburbCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"HOME_SUBURB" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.HomeSuburb"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetailsPortalEmailAddressCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAILS_"/>
+      <Attr Name="_checkCondition" Value='"PORTAL_EMAIL_ADDRESS" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.PortalEmailAddress"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081060">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081060"/>
+      <Attr Name="_checkCondition" Value='"CONTACT_DETAILS_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.ContactDetailsId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081061">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081061"/>
+      <Attr Name="_checkCondition" Value='"USER_TF_ID" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081062">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081062"/>
+      <Attr Name="_checkCondition" Value='"CREATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.CreatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081063">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081063"/>
+      <Attr Name="_checkCondition" Value='"CREATION_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.CreationDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081064">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081064"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATED_BY" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.LastUpdatedBy"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0081065">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0081065"/>
+      <Attr Name="_checkCondition" Value='"LAST_UPDATE_DATE" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.LastUpdateDate"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="PortalSignupContactDetaiFk">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PORTAL_SIGNUP_PERSONAL_DETA_UK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="PORTAL_SIGNUP_CONTACT_DETAI_FK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContactDetails.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <validation:MethodValidationBean
+    Name="PortalSignupContactDetails_Rule_0"
+    ResId="ONE_PHONE_NUMBER_REQUIRED"
+    MethodName="validatePhoneNumbers"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</Entity>

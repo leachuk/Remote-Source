@@ -1,0 +1,199 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgr2" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:outputText value="#{pageFlowScope.msgs.bundle['BANK_DTLS_PRIMARY_ACC_HDR']}"
+                       id="ot5" styleClass="headerOutputText"/>
+        <af:spacer width="10" height="8" id="spc1"/>
+        <af:panelFormLayout id="pfl1" labelWidth="200px">
+          <af:inputText value="#{bindings.BankName.inputValue}"
+                        label="#{bindings.BankName.hints.label}" required="true"
+                        columns="#{bindings.BankName.hints.displayWidth}"
+                        maximumLength="#{bindings.BankName.hints.precision}"
+                        shortDesc="#{bindings.BankName.hints.tooltip}" id="it4">
+            <f:validator binding="#{bindings.BankName.validator}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.Bsb.inputValue}"
+                        label="#{bindings.Bsb.hints.label}" required="true"
+                        columns="#{bindings.Bsb.hints.displayWidth}"
+                        maximumLength="#{bindings.Bsb.hints.precision}"
+                        shortDesc="#{bindings.Bsb.hints.tooltip}" id="it1">
+            <f:validator binding="#{bindings.Bsb.validator}"/>
+            <af:validateRegExp pattern="#{commonBundle.BSB_PATTERN_REGEX}"
+                               hint="#{commonBundle.BSB_PATTERN_HINT}"
+                               messageDetailNoMatch="#{commonBundle.BSB_PATTERN_ERROR}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.AccountNo.inputValue}"
+                        label="#{bindings.AccountNo.hints.label}"
+                        required="true"
+                        columns="#{bindings.AccountNo.hints.displayWidth}"
+                        maximumLength="9"
+                        shortDesc="#{bindings.AccountNo.hints.tooltip}"
+                        id="it2">
+            <f:validator binding="#{bindings.AccountNo.validator}"/>
+            <af:validateRegExp pattern="#{commonBundle.BANKACC_PATTERN_REGEX}"
+                               hint="#{commonBundle.BANKACC_PATTERN_HINT}"
+                               messageDetailNoMatch="#{commonBundle.BANKACC_PATTERN_ERROR}"/>
+          </af:inputText>
+          <af:inputText value="#{bindings.AccountName.inputValue}"
+                        label="#{bindings.AccountName.hints.label}"
+                        required="true"
+                        columns="#{bindings.AccountName.hints.displayWidth}"
+                        maximumLength="#{bindings.AccountName.hints.precision}"
+                        shortDesc="#{bindings.AccountName.hints.tooltip}"
+                        id="it3">
+            <f:validator binding="#{bindings.AccountName.validator}"/>
+          </af:inputText>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="40" id="spc2"/>
+        <af:panelGroupLayout id="pgr3" layout="horizontal">
+          <af:outputText value="#{pageFlowScope.msgs.bundle['BANK_DTLS_SEC_ACC_HDR']}"
+                         id="ot6" styleClass="headerOutputText"/>
+          <af:goLink id="cl1"
+                     destination="/ShowProperty?nodeId=%2FEntityUCM%2FSECONDARYBANKACCOUNTS%2F%2FidcPrimaryFile&amp;revision=latestreleased"
+                     targetFrame="_blank"
+                     text="#{pageFlowScope.msgs.bundle['BANK_DTLS_SEC_ACC_INFO']}"/>
+          <f:facet name="separator">
+            <af:spacer width="50" height="10" id="s1"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="20" id="s3"/>
+        <!--af:panelCollection id="pc1" styleClass="AFStretchWidth"-->
+        <af:table value="#{bindings.PortalSignupSecondaryBankDetailsView.collectionModel}"
+                  var="row" autoHeightRows="3" styleClass="AFStretchWidth"
+                  partialTriggers="soc1"
+                  rows="#{bindings.PortalSignupSecondaryBankDetailsView.rangeSize}"
+                  emptyText="#{bindings.PortalSignupSecondaryBankDetailsView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.PortalSignupSecondaryBankDetailsView.rangeSize}"
+                  columnStretching="last" rowBandingInterval="0" id="t2">
+          <af:column sortProperty="BankName" sortable="false"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.label}"
+                     id="c1">
+            <af:inputText value="#{row.bindings.BankName.inputValue}"
+                          label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.label}"
+                          required="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.mandatory}"
+                          columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.displayWidth}"
+                          maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.precision}"
+                          shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.BankName.tooltip}"
+                          id="it9">
+              <f:validator binding="#{row.bindings.BankName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="AccountName" sortable="false"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountName.label}"
+                     id="c4">
+            <af:inputText value="#{row.bindings.AccountName.inputValue}"
+                          label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountName.label}"
+                          columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountName.displayWidth}"
+                          maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountName.precision}"
+                          shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountName.tooltip}"
+                          id="it6">
+              <f:validator binding="#{row.bindings.AccountName.validator}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="Bsb" sortable="false"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Bsb.label}"
+                     id="c5">
+            <af:inputText value="#{row.bindings.Bsb.inputValue}"
+                          label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Bsb.label}"
+                          columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Bsb.displayWidth}"
+                          maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Bsb.precision}"
+                          shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Bsb.tooltip}"
+                          id="it10">
+              <f:validator binding="#{row.bindings.Bsb.validator}"/>
+              <af:validateRegExp pattern="#{commonBundle.BSB_PATTERN_REGEX}"
+                                 hint="#{commonBundle.BSB_PATTERN_HINT}"
+                                 messageDetailNoMatch="#{commonBundle.BSB_PATTERN_ERROR}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="AccountNo" sortable="false"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountNo.label}"
+                     id="c3">
+            <af:inputText value="#{row.bindings.AccountNo.inputValue}"
+                          label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountNo.label}"
+                          columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountNo.displayWidth}"
+                          maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountNo.precision}"
+                          shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AccountNo.tooltip}"
+                          id="it5">
+              <f:validator binding="#{row.bindings.AccountNo.validator}"/>
+              <af:validateRegExp pattern="#{commonBundle.BANKACC_PATTERN_REGEX}"
+                                 hint="#{commonBundle.BANKACC_PATTERN_HINT}"
+                                 messageDetailNoMatch="#{commonBundle.BANKACC_PATTERN_ERROR}"/>
+            </af:inputText>
+          </af:column>
+          <af:column sortProperty="AmountUnit" sortable="false"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AmountUnit.label}"
+                     id="c2">
+            <af:selectOneChoice label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AmountUnit.label}"
+                                id="soc1" unselectedLabel=""
+                                value="#{row.bindings.AmountUnit.inputValue}"
+                                autoSubmit="true"
+                                shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.AmountUnit.tooltip}">                                
+              <af:selectItem label="$" value="A" id="si1"/>
+              <af:selectItem label="%" value="P" id="si2"/>
+            </af:selectOneChoice>
+          </af:column>
+          <af:column sortProperty="Amount" sortable="false"
+                     partialTriggers="soc1"
+                     headerText="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.label}"
+                     id="c6">
+            <af:switcher id="s5"
+                         facetName="#{row.bindings.AmountUnit.inputValue}">
+              <f:facet name="A">
+                <af:inputText value="#{row.bindings.AmountDollar.inputValue}"
+                              label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.label}"
+                              required="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.mandatory}"
+                              columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.displayWidth}"
+                              maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.precision}"
+                              shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.tooltip}"
+                              id="it7">
+                  <af:validateRegExp pattern="#{commonBundle.AMOUNT_PATTERN_REGEX}"
+                                     messageDetailNoMatch="#{commonBundle.AMOUNT_PATTERN_ERROR}"/>
+                  <f:validator binding="#{row.bindings.AmountDollar.validator}"/>
+                </af:inputText>
+              </f:facet>
+              <f:facet name="P">
+                <af:inputText value="#{row.bindings.AmountPercentage.inputValue}"
+                              label="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.label}"
+                              required="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.mandatory}"
+                              columns="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.displayWidth}"
+                              maximumLength="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.precision}"
+                              shortDesc="#{bindings.PortalSignupSecondaryBankDetailsView.hints.Amount.tooltip}"
+                              id="it8">
+                  <f:validator binding="#{row.bindings.AmountPercentage.validator}"/>
+                  <af:validateRegExp pattern="#{commonBundle.PERCENTAGE_PATTERN_REGEX}"
+                                     messageDetailNoMatch="#{commonBundle.PERCENTAGE_PATTERN_ERROR}"/>
+                </af:inputText>
+              </f:facet>
+            </af:switcher>
+          </af:column>
+        </af:table>
+        <!--/af:panelCollection-->
+        <af:spacer width="10" height="5" id="s2"/>
+        <af:panelGroupLayout id="pgl3" layout="horizontal" valign="top">
+          <af:icon name="info" id="i1"/>
+          <!--af:outputText value="#{pageFlowScope.msgs.bundle['BANK_DTLS_PAYRUN_NOTE']}"
+                         id="ot1"/-->
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['BANK_DTLS_PAYRUN_NOTE']}"
+                              id="ot1"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s4"/>
+          </f:facet>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="buttons"/>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['BANK_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['BANK_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

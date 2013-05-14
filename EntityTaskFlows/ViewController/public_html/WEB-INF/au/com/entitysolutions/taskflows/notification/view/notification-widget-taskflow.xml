@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="notification-widget-taskflow">
+   <default-activity id="__1">ExecuteWithParams</default-activity>
+    <view id="notificationWidget">
+      <page>/au/com/entitysolutions/taskflows/notification/view/notificationWidget.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__12">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <url-view id="urlView1">
+      <url id="__6">/portal/faces/homepage</url>
+      <url-parameter id="__19">
+        <name id="__3">widgetType</name>
+        <value id="__4">NOT</value>
+      </url-parameter>
+    </url-view>
+    <train/>
+    <control-flow-rule id="__2">
+      <from-activity-id id="__8">notificationWidget</from-activity-id>
+      <control-flow-case id="__10">
+        <from-outcome id="__11">notification_list</from-outcome>
+        <to-activity-id id="__9">urlView1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__15">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__16">notificationWidget</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

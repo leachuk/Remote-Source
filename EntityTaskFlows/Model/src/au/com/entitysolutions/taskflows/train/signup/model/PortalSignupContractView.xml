@@ -1,0 +1,176 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupContractView"
+  Version="11.1.1.60.13"
+  SelectList="PortalSignupContract.CONTRACT_DETAILS_ID, 
+       PortalSignupContract.USER_TF_ID, 
+       PortalSignupContract.SEND_TYPE, 
+       PortalSignupContract.DOCUMENT_CONTENT_ID, 
+       PortalSignupContract.TRANSFORMED, 
+       PortalSignupContract.CREATED_BY, 
+       PortalSignupContract.CREATION_DATE, 
+       PortalSignupContract.LAST_UPDATED_BY, 
+       PortalSignupContract.LAST_UPDATE_DATE"
+  FromList="PORTAL_SIGNUP_CONTRACT PortalSignupContract"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="SharedAppModule_SysCommonLookupsView_SendType"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView"
+    AMUsageName="SharedAppModule"
+    ViewInstanceName="SysCommonLookupsView">
+    <ViewCriteriaUsage
+      Name="QueryByLookupTypeViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView.QueryByLookupTypeViewCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_lookup_type">
+        <TransientExpression><![CDATA["PORTAL_CONTRACT_SEND_TYPE"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SharedAppModule_SysCommonLookupsView_SendTypeIC"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView"
+    AMUsageName="SharedAppModule"
+    ViewInstanceName="SysCommonLookupsView">
+    <ViewCriteriaUsage
+      Name="QueryByLookupTypeViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView.QueryByLookupTypeViewCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_lookup_type">
+        <TransientExpression><![CDATA["PORTAL_IC_CONTRACT_SEND_TYPE"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_SendType"
+    ListVOName="SharedAppModule_SysCommonLookupsView_SendType"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_SendType_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SendType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_SendType_IC"
+    ListVOName="SharedAppModule_SysCommonLookupsView_SendTypeIC"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_SendType_IC_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="SendType"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PortalSignupContract"
+    Entity="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupContract"/>
+  <ViewAttribute
+    Name="ContractDetailsId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ContractDetailsId"
+    EntityUsage="PortalSignupContract"
+    AliasName="CONTRACT_DETAILS_ID"/>
+  <ViewAttribute
+    Name="UserTfId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserTfId"
+    EntityUsage="PortalSignupContract"
+    AliasName="USER_TF_ID"/>
+  <ViewAttribute
+    Name="SendType"
+    PrecisionRule="true"
+    EntityAttrName="SendType"
+    EntityUsage="PortalSignupContract"
+    AliasName="SEND_TYPE"
+    LOVName="LOV_SendType"
+    LOVFinder="SendTypeLOV">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="radio"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DocumentContentId"
+    PrecisionRule="true"
+    EntityAttrName="DocumentContentId"
+    EntityUsage="PortalSignupContract"
+    AliasName="DOCUMENT_CONTENT_ID"/>
+  <ViewAttribute
+    Name="Transformed"
+    PrecisionRule="true"
+    EntityAttrName="Transformed"
+    EntityUsage="PortalSignupContract"
+    AliasName="TRANSFORMED"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PortalSignupContract"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PortalSignupContract"
+    AliasName="CREATION_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PortalSignupContract"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PortalSignupContract"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="SendTypeLOV"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewLinkAccessor
+    Name="PortalSignupPersonalDetailsView"
+    ViewLink="au.com.entitysolutions.taskflows.train.signup.model.PortalContractDetailsVL"
+    Type="oracle.jbo.Row"
+    Reversed="true"
+    IsUpdateable="false"/>
+</ViewObject>

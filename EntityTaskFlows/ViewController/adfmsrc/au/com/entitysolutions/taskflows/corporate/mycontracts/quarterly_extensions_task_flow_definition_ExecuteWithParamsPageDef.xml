@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="quarterly_extensions_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontracts"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="QuarterlyExtensionsVO1" RangeSize="25"
+              DataControl="MyContractsAppModuleDataControl"
+              id="QuarterlyExtensionsVO1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="QuarterlyExtensionsVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="orgId" NDValue="#{pageFlowScope.orgId}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,182 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:tr="http://myfaces.apache.org/trinidad"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGroupLayout id="pfl1" layout="vertical">
+      <af:panelGroupLayout id="panelGroupLayout3" layout="horizontal"
+                           halign="start">
+        <af:spacer width="173" height="10" id="s5"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['FILE_DESCRIPTION_HEADER']}" id="ot2"
+                       inlineStyle="font-weight:bold;"/>
+        <af:spacer width="200" height="10" id="spacer4"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['FILE_UPLOAD_HEADER']}"
+                       id="outputText11" inlineStyle="font-weight:bold;"/>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="pgl3" layout="horizontal"
+                           >
+        <af:inputText id="f1"
+                      maximumLength="#{pageFlowScope.msgs.bundle['MAX_CHARACTER_DESCRIPTION']}"
+                      binding="#{pageFlowScope.fileuploadBean.file1}"
+                      partialTriggers="fu1" columns="64" styleClass="noLabel"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:inputFile id="fu1"
+                      binding="#{pageFlowScope.fileuploadBean.fileUpload1}"
+                      value="#{pageFlowScope.fileuploadBean.uploadedFile1}"
+                      valueChangeListener="#{pageFlowScope.fileuploadBean.fileUpdate}"
+                      autoSubmit="true" columns="42" simple="true">
+        <af:clientListener method="showPopupFromAction" type="click"/>
+      </af:inputFile>
+        <af:spacer width="10" height="10" id="spacer6"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['CLEAR_TEXT_BUTTON']}" id="cb3"
+                          actionListener="#{pageFlowScope.fileuploadBean.resetForm}"
+                          immediate="true">
+          <af:setPropertyListener from="0" type="action"
+                                  to="#{requestScope.fileUploadIndex}"/>
+        </af:commandButton>
+    </af:panelGroupLayout>
+      <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal">
+        <af:inputText id="f2"
+                      maximumLength="#{pageFlowScope.msgs.bundle['MAX_CHARACTER_DESCRIPTION']}"
+                      binding="#{pageFlowScope.fileuploadBean.file2}"
+                      columns="64" styleClass="noLabel"/>
+        <af:spacer width="10" height="10" id="spacer1"/>
+        <af:inputFile id="fu2"
+                      binding="#{pageFlowScope.fileuploadBean.fileUpload2}"
+                      value="#{pageFlowScope.fileuploadBean.uploadedFile2}"
+                      valueChangeListener="#{pageFlowScope.fileuploadBean.fileUpdate}"
+                      autoSubmit="true" columns="42" simple="true"
+                      clientComponent="true">
+        <af:clientListener method="showPopupFromAction" type="click"/>
+      </af:inputFile>
+        <af:spacer width="10" height="10" id="spacer5"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['CLEAR_TEXT_BUTTON']}"
+                          id="commandButton111"
+                          actionListener="#{pageFlowScope.fileuploadBean.resetForm}"
+                          immediate="true">
+          <af:setPropertyListener from="1" type="action"
+                                  to="#{requestScope.fileUploadIndex}"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+      <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal">
+        <af:inputText id="f3"
+                      maximumLength="#{pageFlowScope.msgs.bundle['MAX_CHARACTER_DESCRIPTION']}"
+                      binding="#{pageFlowScope.fileuploadBean.file3}"
+                      columns="64" styleClass="noLabel"/>
+        <af:spacer width="10" height="10" id="spacer2"/>
+        <af:inputFile id="fu3"
+                      binding="#{pageFlowScope.fileuploadBean.fileUpload3}"
+                      value="#{pageFlowScope.fileuploadBean.uploadedFile3}"
+                      valueChangeListener="#{pageFlowScope.fileuploadBean.fileUpdate}"
+                      autoSubmit="true" columns="42" simple="true"
+                      clientComponent="true">
+        <af:clientListener method="showPopupFromAction" type="click"/>
+      </af:inputFile>
+        <af:spacer width="10" height="10" id="spacer7"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['CLEAR_TEXT_BUTTON']}"
+                          id="commandButton21"
+                          actionListener="#{pageFlowScope.fileuploadBean.resetForm}"
+                          immediate="true">
+          <af:setPropertyListener from="2" type="action"
+                                  to="#{requestScope.fileUploadIndex}"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+      <af:spacer width="10" height="10" id="s4"/>
+    <af:panelGroupLayout id="pgl1" layout="horizontal">
+      <af:icon name="info" id="i1"/>
+      <af:outputLabel value="Notes:" id="ot1"/>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="5" id="spacer3"/>
+    <af:panelList id="pl1" inlineStyle="line-height:150%">
+      <af:outputText value="The file and the related description are compulsory for each file upload row."
+                      id="ot111"/>
+      <af:outputText value="After you have entered all the required details, please click Upload button to initiate the file upload."
+                      id="ot12"/>
+      <af:outputText value="The Update button allows you to change the file whilst maintaining the file description."
+                      id="ol1"/>
+      <af:outputText value="The Clear button will remove both file and file description in each row."
+                      id="ol2"/>
+      <af:outputText value="You can click Clear All button to clear all the entered values in this page."
+                      id="ol3"/>
+      <af:outputText value="Once the file upload is successful, you will receive a confirmation email containing the files you have uploaded."
+                     id="outputText1"/>
+      <af:outputText value="	The maximum size of the upload file is 5MB."
+                     id="ot6"/>
+    </af:panelList>
+      <af:spacer width="10" height="10" id="s2"/>
+      <af:panelGroupLayout id="pgl4" layout="vertical" valign="middle"
+                           halign="center">
+        <af:panelGroupLayout id="pgl2" layout="horizontal">
+          <af:commandButton text="#{pageFlowScope.msgs.bundle['UPLOAD_TEXT_BUTTON']}"
+                            id="cb1"
+                            action="#{pageFlowScope.fileuploadBean.upload}">
+          <af:clientListener type="click" method="showPopupByButton"/>
+        </af:commandButton>
+          <af:spacer width="10" height="10" id="s3"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['CLEAR_ALL_TEXT_BUTTON']}"
+                            id="cb2"
+                            actionListener="#{pageFlowScope.fileuploadBean.resetForm}">
+          <af:resetActionListener/>
+          </af:commandButton>
+        </af:panelGroupLayout>       
+      </af:panelGroupLayout>
+    <af:resource type="javascript">
+    
+     var globalPopup;
+    
+      function showPopupFromAction(actionEvent)
+      {
+      eventSource=actionEvent.getSource();
+   
+      globalPopup= eventSource.findComponent("clockPopup");
+       var fu1 = eventSource.findComponent("fu1");
+       var fu2 = eventSource.findComponent("fu2");
+       var fu3 = eventSource.findComponent("fu3");    
+      
+        registerOnChangeForInput(fu1.getClientId());
+        registerOnChangeForInput(fu2.getClientId());
+        registerOnChangeForInput(fu3.getClientId());    
+      }
+      
+      function registerOnChangeForInput(inputFileId) {
+     
+        domInput=document.getElementById(inputFileId+'::content');  
+   
+        if(domInput.parentNode.nodeName.toLowerCase()!='td') {
+               if(domInput.addEventListener){
+              domInput.addEventListener("change", function(){globalPopup.show();}, true);
+            }else{
+               domInput.attachEvent("onchange", function(){globalPopup.show();});
+              
+            }
+        }
+       
+        
+       
+      }    
+      
+      function showPopupByButton(actionEvent){
+        eventSource=actionEvent.getSource();
+        globalPopup= eventSource.findComponent("clockPopup");
+        globalPopup.show();
+      }
+      
+    </af:resource>
+  </af:panelGroupLayout>
+    <af:popup id="clockPopup" binding="#{pageFlowScope.fileuploadBean.popupProgress}"
+              animate="false" clientComponent="true"
+              contentDelivery="immediate">
+      <af:dialog id="d1" type="none" resize="off" closeIconVisible="false"
+                 title="Uploading file"
+                 titleIconSource="/images/processWind_ena.png">
+      <af:panelGroupLayout id="pgl5" layout="horizontal">
+        <af:image source="/images/process_animation.gif" id="i2"
+                  inlineStyle="font-weight:bold;"/>
+        <af:spacer width="10" height="10" id="s6"/>
+        <af:outputText value="Processing" id="ot3"/>
+      </af:panelGroupLayout>
+    </af:dialog>
+    </af:popup>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:fileuploadBean-->
+</jsp:root>

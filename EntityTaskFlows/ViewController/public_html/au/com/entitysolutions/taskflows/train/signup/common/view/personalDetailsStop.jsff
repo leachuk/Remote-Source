@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelFormLayout id="pfl1" labelWidth="200px">
+        <af:selectOneChoice value="#{bindings.Prefix.inputValue}"
+                            label="#{bindings.Prefix.label}"
+                            required="#{bindings.Prefix.hints.mandatory}"
+                            shortDesc="#{bindings.Prefix.hints.tooltip}"
+                            id="soc1">
+          <f:selectItems value="#{bindings.Prefix.items}" id="si1"/>
+        </af:selectOneChoice>
+        <af:inputText value="#{bindings.Surname.inputValue}"
+                      label="#{bindings.Surname.hints.label}"
+                      required="#{bindings.Surname.hints.mandatory}"
+                      columns="#{bindings.Surname.hints.displayWidth}"
+                      maximumLength="#{bindings.Surname.hints.precision}"
+                      shortDesc="#{bindings.Surname.hints.tooltip}" id="it2">
+          <f:validator binding="#{bindings.Surname.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.FirstName.inputValue}"
+                      label="#{bindings.FirstName.hints.label}"
+                      required="#{bindings.FirstName.hints.mandatory}"
+                      columns="#{bindings.FirstName.hints.displayWidth}"
+                      maximumLength="#{bindings.FirstName.hints.precision}"
+                      shortDesc="#{bindings.FirstName.hints.tooltip}" id="it5">
+          <f:validator binding="#{bindings.FirstName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.MiddleName.inputValue}"
+                      label="#{bindings.MiddleName.hints.label}"
+                      required="#{bindings.MiddleName.hints.mandatory}"
+                      columns="#{bindings.MiddleName.hints.displayWidth}"
+                      maximumLength="#{bindings.MiddleName.hints.precision}"
+                      shortDesc="#{bindings.MiddleName.hints.tooltip}" id="it3">
+          <f:validator binding="#{bindings.MiddleName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.PreferredName.inputValue}"
+                      label="#{bindings.PreferredName.hints.label}"
+                      required="#{bindings.PreferredName.hints.mandatory}"
+                      columns="#{bindings.PreferredName.hints.displayWidth}"
+                      maximumLength="#{bindings.PreferredName.hints.precision}"
+                      shortDesc="#{bindings.PreferredName.hints.tooltip}"
+                      id="it6">
+          <f:validator binding="#{bindings.PreferredName.validator}"/>
+        </af:inputText>
+        <af:inputDate value="#{bindings.DateOfBirth.inputValue}"
+                      label="#{bindings.DateOfBirth.hints.label}"
+                      required="#{bindings.DateOfBirth.hints.mandatory}"
+                      shortDesc="#{bindings.DateOfBirth.hints.tooltip}"
+                      id="id1">
+          <f:validator binding="#{bindings.DateOfBirth.validator}"/>
+          <af:convertDateTime pattern="#{bindings.DateOfBirth.format}"/>
+        </af:inputDate>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['PERSONAL_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['PERSONAL_DTLS_STEP_NAME']}"/>                 
+  </af:pageTemplate>
+</jsp:root>

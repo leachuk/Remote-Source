@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"
+             id="__16">
+  <view id="testPage">
+    <page id="__15">/testPage.jspx</page>
+  </view>
+  <view id="testSignUp">
+    <page id="__18">/testSignUp.jspx</page>
+  </view>
+  <view id="testRand">
+    <page id="__17">/testRand.jspx</page>
+  </view>
+  <view id="dummyUploader">
+    <page>/dummyUploader.jspx</page>
+  </view>
+  <view id="testTFList">
+    <page>/testTFList.jspx</page>
+  </view>
+  <view id="testTFDetails">
+    <page>/testTFDetails.jspx</page>
+  </view>
+  <view id="testPayslips">
+    <page>/testPayslips.jspx</page>
+  </view>
+  <control-flow-rule id="__5">
+    <from-activity-id id="__6">testPage</from-activity-id>
+    <control-flow-case id="__8">
+      <from-outcome id="__9">login_success</from-outcome>
+      <to-activity-id id="__7">testSignUp</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <control-flow-rule id="__10">
+    <from-activity-id id="__11">testSignUp</from-activity-id>
+    <control-flow-case id="__12">
+      <from-outcome id="__14">testAction</from-outcome>
+      <to-activity-id id="__13">testRand</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__23">
+      <from-outcome id="__25">testTFList</from-outcome>
+      <to-activity-id id="__24">testTFList</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__26">
+      <from-outcome id="__28">testTFDetails</from-outcome>
+      <to-activity-id id="__27">testTFDetails</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__35">
+      <from-outcome id="__36">testPayslip</from-outcome>
+      <to-activity-id id="__34">testPayslips</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
+  <managed-bean id="__4">
+    <managed-bean-name id="__2">userSessionBean</managed-bean-name>
+    <managed-bean-class id="__1">au.com.entitysolutions.taskflows.common.view.UserBean</managed-bean-class>
+    <managed-bean-scope id="__3">session</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__21">
+    <managed-bean-name id="__20">DummyUploaderBean</managed-bean-name>
+    <managed-bean-class id="__22">dummy.DummyUploadBean</managed-bean-class>
+    <managed-bean-scope id="__19">pageFlow</managed-bean-scope>
+  </managed-bean>
+  <managed-bean id="__32">
+    <managed-bean-name id="__31">NewIProManagedBean</managed-bean-name>
+    <managed-bean-class id="__30">au.com.entitysolutions.corporate.taskflows.myipros.NewIProManagedBean</managed-bean-class>
+    <managed-bean-scope id="__29">pageFlow</managed-bean-scope>
+  </managed-bean>
+</adfc-config>

@@ -1,0 +1,156 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgr1" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:panelGroupLayout id="pgr11" layout="vertical">
+          <af:outputText value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_TYPE_INFO']}" id="ot8"/>
+          <af:spacer width="10" height="15" id="spcx1"/>
+        <af:panelGroupLayout id="pgx1" layout="horizontal" valign="top">
+          <af:icon name="info" id="ix1"/>
+          <af:outputFormatted value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_IMP_INFO']}" id="of01"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="sx5"/>
+          </f:facet>
+        </af:panelGroupLayout>          
+          
+          <af:spacer width="10" height="15" id="spacer1"/>
+          <af:selectOneRadio value="#{bindings.ResidencyType.inputValue}"
+                             label="#{bindings.ResidencyType.label}" 
+                             required="#{bindings.ResidencyType.hints.mandatory}"
+                             shortDesc="#{bindings.ResidencyType.hints.tooltip}"
+                             id="sor1" layout="vertical" autoSubmit="true">
+            <f:selectItems value="#{bindings.ResidencyType.items}" id="si3"/>
+          </af:selectOneRadio>
+          <af:spacer width="10" height="15" id="s6"/>
+          <af:outputFormatted partialTriggers="sor1"
+                              visible="#{bindings.ResidencyType.attributeValue eq 'AUSTRALIAN_CITIZEN'}"
+                              value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_AUS_CITIZEN_INFO']}"
+                              id="of1"/>
+          <af:outputFormatted partialTriggers="sor1"
+                              visible="#{(bindings.ResidencyType.attributeValue eq 'AUSTRALIAN_PR') or (bindings.ResidencyType.attributeValue eq 'NEW_ZEALAND_CITIZEN') or (bindings.ResidencyType.attributeValue eq 'OVERSEAS_CITIZEN_WITH_WORKING_RIGHTS')}"
+                              value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_OTHER_TYPE_INFO']}"
+                              id="of2"/>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s7"/>
+        <af:panelFormLayout id="pfl1" labelWidth="100px">
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP1_LBL']}"
+                                   id="plam1">
+            <af:panelGroupLayout id="pgl6">
+              <af:outputText value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP1_PROMPT']}"
+                             id="ot0"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP2_LBL']}"
+                                   id="plam2" labelStyle="vertical-align:top">
+            <af:panelGroupLayout id="pgl3" layout="vertical">
+              <af:outputText value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP2_PROMPT']}"
+                             id="ot6"/>
+              <af:spacer width="10" height="10" id="s5"/>
+              <af:panelGroupLayout id="pgl7" layout="horizontal"
+                                   valign="bottom">
+                <af:inputFile label="Document 1" id="if1"
+                              value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']].proof1File}"
+                              binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']].proof1FileInput}"
+                              clientComponent="false" autoSubmit="true"/>
+                <af:selectOneChoice value="#{bindings.Proof1DocName.inputValue}"
+                                    label="#{bindings.Proof1DocName.label}"
+                                    required="#{bindings.Proof1DocName.hints.mandatory}"
+                                    shortDesc="#{bindings.Proof1DocName.hints.tooltip}"
+                                    id="soc1" simple="true">
+                  <f:selectItems value="#{bindings.Proof1DocName.items}"
+                                 id="si1"/>
+                </af:selectOneChoice>
+              </af:panelGroupLayout>
+              <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal"
+                                   valign="bottom">
+                <af:inputFile label="Document 2" id="if2"
+                              value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']].proof2File}"
+                              binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']].proof2FileInput}"
+                              autoSubmit="true"/>
+                <af:selectOneChoice value="#{bindings.Proof2DocName.inputValue}"
+                                    label="#{bindings.Proof2DocName.label}"
+                                    required="#{bindings.Proof2DocName.hints.mandatory}"
+                                    shortDesc="#{bindings.Proof2DocName.hints.tooltip}"
+                                    id="soc2" simple="true">
+                  <f:selectItems value="#{bindings.Proof2DocName.items}"
+                                 id="si2"/>
+                </af:selectOneChoice>
+              </af:panelGroupLayout>
+              <af:spacer width="10" height="10" id="s4"/>
+              <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top">
+                <af:selectBooleanCheckbox value="#{bindings.ConfirmTrueCopy.inputValue}"
+                                          label="#{bindings.ConfirmTrueCopy.label}"
+                                          shortDesc="#{bindings.ConfirmTrueCopy.hints.tooltip}"
+                                          id="sbc1" simple="true"/>
+                <af:outputText value="#{bindings.ConfirmTrueCopy.label}"
+                               id="ot4"/>
+              </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:spacer width="10" height="10" id="s3"/>
+          </af:panelLabelAndMessage>
+          <af:panelLabelAndMessage label="OR" id="plam3">
+            <af:panelGroupLayout id="pgl5" layout="horizontal" valign="top">
+              <af:selectBooleanCheckbox value="#{bindings.AlreadySubmitted.inputValue}"
+                                        label="#{bindings.AlreadySubmitted.label}"
+                                        shortDesc="#{bindings.AlreadySubmitted.hints.tooltip}"
+                                        id="sbc2" simple="true"/>
+              <af:outputText value="#{bindings.AlreadySubmitted.label}"
+                             id="ot7"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <f:facet name="footer"/>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10" id="spacer2"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_PREV_FILES_HDR']}"
+                       id="ot5" styleClass="headerOutputText"/>
+        <af:table value="#{bindings.PortalUserTFStepUploadedDocsView.collectionModel}"
+                  var="row" autoHeightRows="2" contentDelivery="immediate"
+                  columnStretching="column:fileName" styleClass="AFStretchWidth"
+                  rows="#{bindings.PortalUserTFStepUploadedDocsView.rangeSize}"
+                  emptyText="#{bindings.PortalUserTFStepUploadedDocsView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.PortalUserTFStepUploadedDocsView.rangeSize}"
+                  rowBandingInterval="0" id="t2">
+          <af:column sortProperty="DocName" sortable="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocName.label}"
+                     id="c3">
+            <af:outputText value="#{row.DocName}" id="ot2"/>
+          </af:column>
+          <af:column sortProperty="DocContentName" sortable="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentName.label}"
+                     id="fileName">
+            <af:outputText value="#{row.DocContentName}" id="ot1"/>
+          </af:column>
+          <af:column headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentMb.label}"
+                     id="c4">
+            <af:outputText value="#{row.DocContentMb}" id="ot9"
+                           rendered="true">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentMb.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="DocContentBytesize" sortable="false" visible="false"
+                     headerText="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentBytesize.label}"
+                     id="c2">
+            <af:outputText value="#{row.DocContentBytesize}" id="ot3">
+              <af:convertNumber groupingUsed="false"
+                                pattern="#{bindings.PortalUserTFStepUploadedDocsView.hints.DocContentBytesize.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

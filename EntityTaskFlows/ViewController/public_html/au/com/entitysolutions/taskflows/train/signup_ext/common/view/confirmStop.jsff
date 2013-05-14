@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical"
+                           styleClass="AFStretchWidth">
+        <af:outputFormatted id="of1"
+                            value="#{pageFlowScope.msgs.bundle['STEP3_THANK_TEXT']}"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="buttons">
+      <af:panelGroupLayout id="pgl4" layout="horizontal" halign="end"
+                           >
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['PREV_BTN']}" id="cb2"
+                          actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"
+                          action="#{pageFlowScope.signUpBean.navigatePrevStop}"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['OK_BUTTON']}" id="cb1"
+                          action="exitTaskflow"
+                          actionListener="#{pageFlowScope.signUpBean.submitTaskflow}"
+                          disabled="#{bindings.PortalUserTFStepSQLView.estimatedRowCount gt 0}">
+          <af:setPropertyListener from="#{pageFlowScope.msgs.bundle['CONFIRM_STEP_NAME']}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="isShowTrainButtons" value="false"/>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['STEP3_HEADER']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['CONFIRM_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

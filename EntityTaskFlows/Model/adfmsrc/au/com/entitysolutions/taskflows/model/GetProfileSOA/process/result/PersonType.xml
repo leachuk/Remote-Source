@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="PersonType"
+          Package="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType"
+          isJavaBased="false">
+  <AccessorAttribute id="BaseElement"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.BaseElement"
+                     IsCollection="false"/>
+  <AccessorAttribute id="PersonDetails" IsCollection="false"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.PersonDetails"/>
+  <AccessorAttribute id="ContactDetails" IsCollection="false"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails"/>
+  <AccessorAttribute id="EmergencyContact" IsCollection="false"
+                     BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.EmergencyContact"/>
+</JavaBean>

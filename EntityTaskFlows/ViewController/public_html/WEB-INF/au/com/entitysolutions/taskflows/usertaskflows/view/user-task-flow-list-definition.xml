@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="user-task-flow-list-definition">
+    <default-activity id="__1">ExecuteWithParams</default-activity>
+    <managed-bean id="__11">
+      <managed-bean-name id="__10">msgs</managed-bean-name>
+      <managed-bean-class id="__9">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__8">pageFlow</managed-bean-scope>
+      <managed-property id="__13">
+        <property-name id="__14">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__12">au.com.entitysolutions.taskflows.usertaskflows.view.UserTaskFlowsBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__23">
+      <managed-bean-name id="__20">userTaskFlowsListBean</managed-bean-name>
+      <managed-bean-class id="__21">au.com.entitysolutions.taskflows.usertaskflows.view.UserTaskFlowsListBean</managed-bean-class>
+      <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__2">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="userTaskFlowList">
+      <page>/au/com/entitysolutions/taskflows/usertaskflows/view/userTaskFlowList.jsff</page>
+    </view>
+    <url-view id="urlView1">
+      <url>/portal/faces/homepage</url>
+      <url-parameter>
+        <name>widgetType</name>
+        <value>TASF</value>
+      </url-parameter>
+    </url-view>
+    <url-view id="urlView2">
+      <url id="__61">/portal/faces/homepage</url>
+      <url-parameter id="__60">
+        <name id="__51">widgetType</name>
+        <value id="__50">TASI</value>
+      </url-parameter>
+      <url-parameter id="__58">
+        <name id="__59">widgetId</name>
+        <value id="__49">#{requestScope.portal_user_tf_id}</value>
+      </url-parameter>
+    </url-view>
+    <control-flow-rule id="__3">
+      <from-activity-id id="__4">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome id="__6">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__5">userTaskFlowList</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id id="__16">userTaskFlowList</from-activity-id>
+      <control-flow-case id="__18">
+        <from-outcome id="__19">launchTaskFlowDetailedList</from-outcome>
+        <to-activity-id id="__17">urlView1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__25">
+        <from-outcome id="__26">launchSelectedTaskFlow</from-outcome>
+        <to-activity-id id="__24">urlView2</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

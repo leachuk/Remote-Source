@@ -1,0 +1,69 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.view.ViewControllerBundle']}"/>
+  <c:set var="mybillingBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mybillingsummary.MyBillingBundle']}"/>
+  <af:panelGroupLayout id="pgl2" layout="vertical">
+    <af:outputLabel value="#{mybillingBundle.MONTHLY_INVOICES_TITLE}"
+                    id="ol2" styleClass="widgetHeader"/>
+    <af:spacer width="10" height="10" id="s2"/>
+    <af:panelGroupLayout id="pgl1" layout="horizontal">
+      <af:outputLabel value="#{mybillingBundle.DATE_LABEL}"
+                      id="ol1" for="soc1"/>
+      <af:selectOneChoice id="soc1"
+                          value="#{pageFlowScope.BillingSummaryBean.month}">
+        <af:selectItem label="#{mybillingBundle.JAN_LBL}" value="1"
+                       id="si10"/>
+        <af:selectItem label="#{mybillingBundle.FEB_LBL}" value="2"
+                       id="si5"/>
+        <af:selectItem label="#{mybillingBundle.MAR_LBL}" value="3"
+                       id="si7"/>
+        <af:selectItem label="#{mybillingBundle.APR_LBL}" value="4"
+                       id="si9"/>
+        <af:selectItem label="#{mybillingBundle.MAY_LBL}" value="5"
+                       id="si12"/>
+        <af:selectItem label="#{mybillingBundle.JUN_LBL}" value="6"
+                       id="si8"/>
+        <af:selectItem label="#{mybillingBundle.JUL_LBL}" value="7"
+                       id="si2"/>
+        <af:selectItem label="#{mybillingBundle.AUG_LBL}" value="8"
+                       id="si3"/>
+        <af:selectItem label="#{mybillingBundle.SEP_LBL}" value="9"
+                       id="si6"/>
+        <af:selectItem label="#{mybillingBundle.OCT_LBL}"
+                       value="10" id="si1"/>
+        <af:selectItem label="#{mybillingBundle.NOV_LBL}"
+                       value="11" id="si4"/>
+        <af:selectItem label="#{mybillingBundle.DEC_LBL}"
+                       value="12" id="si11"/>
+      </af:selectOneChoice>
+      <af:inputNumberSpinbox id="ins1"
+                             minimum="#{pageFlowScope.BillingSummaryBean.minYear}"
+                             value="#{pageFlowScope.BillingSummaryBean.year}"
+                             maximum="#{pageFlowScope.BillingSummaryBean.maxYear}"/>
+      <af:spacer width="10" height="10" id="s1"/>
+      <af:commandButton text="#{viewcontrollerBundle.GO_BTN}" id="cb1"
+                        action="go"/>
+    </af:panelGroupLayout>
+    <dvt:lineGraph id="lineGraph1"
+                   value="#{bindings.MonthlyInvoicesVO1.graphModel}"
+                   subType="LINE_VERT_ABS"
+                   inlineStyle="width:502px; height:300px;">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      <dvt:y1Title text="#{mybillingBundle.INVOICE_AMT_LBL}"/>
+    </dvt:lineGraph>
+  </af:panelGroupLayout>
+</jsp:root>

@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="mycontractsBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:outputLabel value="#{mycontractsBundle.FORECAST_EXT_TREND_TITLE}" id="ol1" styleClass="widgetHeader"
+                    inlineStyle="margin-left: 14px;"/>
+    <dvt:lineGraph id="lineGraph1"
+                   value="#{bindings.WeeklyForecastVO1.graphModel}"
+                   subType="LINE_VERT_ABS"
+                   inlineStyle="width:400.0px; height:350.0px">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      <dvt:y1Title text="#{mycontractsBundle.NO_OF_CONTRACTS_LBL}"/>
+    </dvt:lineGraph>
+  </af:panelGroupLayout>
+</jsp:root>

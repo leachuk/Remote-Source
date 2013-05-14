@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="SharedAppModule"
+  Version="11.1.1.60.13"
+  ComponentClass="au.com.entitysolutions.taskflows.system.model.SharedAppModuleImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="au.com.entitysolutions.taskflows.system.model.common.SharedAppModule"
+  ClientProxyName="au.com.entitysolutions.taskflows.system.model.client.SharedAppModuleClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.taskflows.system.model.SharedAppModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="SysCommonLookupsView"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView">
+    <ViewCriteriaUsage
+      Name="QueryByLookupTypeViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView.QueryByLookupTypeViewCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="SysGlobalVariablesView"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysGlobalVariablesView">
+    <ViewCriteriaUsage
+      Name="QueryByGlobalNameViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysGlobalVariablesView.QueryByGlobalNameViewCriteria"/>
+  </ViewUsage>
+  <ViewUsage
+    Name="SysYesNoLookup"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysYesNoLookup"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+  <ClientInterface>
+    <Method
+      Name="getGlobalVariable">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="globalVariable"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ClientInterface>
+    <Method
+      Name="getGlobalVariable">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="globalVariable"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ClientInterface>
+    <Method
+      Name="getGlobalVariable">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="globalVariable"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+  <ClientInterface>
+    <Method
+      Name="getGlobalVariable">
+      <Return
+        Type="java.lang.String"/>
+      <Parameter
+        Name="globalVariable"
+        Type="java.lang.String"/>
+    </Method>
+  </ClientInterface>
+</AppModule>

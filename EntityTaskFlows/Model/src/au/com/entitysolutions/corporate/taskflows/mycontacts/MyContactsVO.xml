@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="MyContactsVO"
+  Version="11.1.1.60.13"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.corporate.taskflows.mycontacts.MyContactsVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="orgId"
+    Kind="where"
+    Type="java.lang.String"/>
+  <Variable
+    Name="personId"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery>
+    <![CDATA[SELECT
+NULLIF(CUST_MANAGER_FULL_NAME,' ') as CUST_MANAGER_FULL_NAME,
+CUST_MANAGER_TELEPHONE_WORK,
+CUST_MANAGER_EMAIL_WORK,
+NULLIF(IPRO_MANAGER_FULL_NAME,' ') as IPRO_MANAGER_FULL_NAME,
+IPRO_MANAGER_TELEPHONE_WORK,
+IPRO_MANAGER_EMAIL_WORK,
+NULLIF(B_R_CONSULTANT_FULL_NAME,' ') as B_R_CONSULTANT_FULL_NAME,
+B_R_CONSULTANT_TELEPHONE_WORK,
+B_R_CONSULTANT_EMAIL_WORK
+
+FROM
+edw_corp_rep.APL_MY_BILLING_COMPANIES
+
+WHERE
+BILLING_ORGANISATION_ID = :orgId
+
+union all
+
+SELECT
+NULLIF(CUST_MANAGER_FULL_NAME,' ') as CUST_MANAGER_FULL_NAME,
+CUST_MANAGER_TELEPHONE_WORK,
+CUST_MANAGER_EMAIL_WORK,
+NULLIF(IPRO_MANAGER_FULL_NAME,' ') as IPRO_MANAGER_FULL_NAME,
+IPRO_MANAGER_TELEPHONE_WORK,
+IPRO_MANAGER_EMAIL_WORK,
+NULLIF(B_R_CONSULTANT_FULL_NAME,' ') as B_R_CONSULTANT_FULL_NAME,
+B_R_CONSULTANT_TELEPHONE_WORK,
+B_R_CONSULTANT_EMAIL_WORK
+
+FROM
+edw_corp_rep.APL_IPRO_MY_IPROS
+
+WHERE
+PERSON_ID = :personId and :orgId IS NULL]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="CustManagerFullName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1064"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_MANAGER_FULL_NAME"
+    Expression="CUST_MANAGER_FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1064"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustManagerTelephoneWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_MANAGER_TELEPHONE_WORK"
+    Expression="CUST_MANAGER_TELEPHONE_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CustManagerEmailWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CUST_MANAGER_EMAIL_WORK"
+    Expression="CUST_MANAGER_EMAIL_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IproManagerFullName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1064"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IPRO_MANAGER_FULL_NAME"
+    Expression="IPRO_MANAGER_FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1064"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IproManagerTelephoneWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IPRO_MANAGER_TELEPHONE_WORK"
+    Expression="IPRO_MANAGER_TELEPHONE_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="IproManagerEmailWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="IPRO_MANAGER_EMAIL_WORK"
+    Expression="IPRO_MANAGER_EMAIL_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BRConsultantFullName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="1064"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="B_R_CONSULTANT_FULL_NAME"
+    Expression="B_R_CONSULTANT_FULL_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1064"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BRConsultantTelephoneWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="B_R_CONSULTANT_TELEPHONE_WORK"
+    Expression="B_R_CONSULTANT_TELEPHONE_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BRConsultantEmailWork"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="100"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="B_R_CONSULTANT_EMAIL_WORK"
+    Expression="B_R_CONSULTANT_EMAIL_WORK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

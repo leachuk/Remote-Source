@@ -1,0 +1,63 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.train.signup.view.SignUpBundle']}"/>
+    <af:resource type="css">
+    .txt1 > b > font {color:#FF7A00;}
+    </af:resource>
+  <af:panelGroupLayout id="pgt" layout="vertical">
+    <af:outputFormatted value="#{viewcontrollerBundle.GENERIC_PORTAL_TEXT_1}" styleClass="txt1"    
+                        id="ott"/>
+    <af:panelGroupLayout id="pgl1" layout="vertical"
+                         inlineStyle="display: inline;">
+      <!--af:forEach items="#{bindings.PortalUserTaskFlowsView.allRowsInRange}"
+                 var="row">
+      <af:commandButton text="Start FE" id="cb1" clientComponent="true" 
+                        action="#{pageFlowScope.trainLauncherBean.launchTrain}"
+                        actionListener="#{pageFlowScope.trainLauncherBean.testActionListener}"/>       
+    </af:forEach-->
+      <af:iterator value="#{bindings.PortalUserTaskFlowsView.collectionModel}"
+                   id="iter1" var="row">
+        <af:panelGroupLayout id="pgl2" layout="vertical"
+                             inlineStyle="float:left" halign="start">
+          <af:outputText value="#{viewcontrollerBundle.LANDING_SIGNUP_TEXT_1}"
+                         id="ot1"/>
+          <af:outputText value="#{viewcontrollerBundle.LANDING_SIGNUP_TEXT_2}"
+                         id="ot2"/>
+          <af:panelGroupLayout id="pgl3" layout="horizontal" halign="right"
+                               styleClass="AFStretchWidth">
+            <af:commandButton text="#{viewcontrollerBundle.START_BTN}" id="cb12"
+                              clientComponent="true"
+                              action="#{pageFlowScope.trainLauncherBean.launchTrain}"
+                              actionListener="#{pageFlowScope.trainLauncherBean.testActionListener}">
+              <af:setPropertyListener to="#{requestScope.portal_tf_code}"
+                                      from="#{row.TfCode}" type="action"/>
+              <af:setPropertyListener to="#{requestScope.portal_tf_id}"
+                                      from="#{row.TfId}" type="action"/>
+              <af:setPropertyListener to="#{requestScope.portal_user_tf_id}"
+                                      from="#{row.UserTfId}" type="action"/>
+            </af:commandButton>
+          </af:panelGroupLayout>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s1"/>
+          </f:facet>
+        </af:panelGroupLayout>
+      </af:iterator>
+      <!--af:commandButton text="Start NonIter" id="cb123" clientComponent="true" 
+                        action="#{pageFlowScope.trainLauncherBean.launchTrain}"
+                        actionListener="#{pageFlowScope.trainLauncherBean.testActionListener}"/-->
+    </af:panelGroupLayout>
+    <af:panelGroupLayout layout="vertical" inlineStyle="clear:both" id="pgl4">
+        <af:outputFormatted inlineStyle="display:block" value="#{viewcontrollerBundle.GENERIC_PORTAL_TEXT_2}"
+                   id="ott2"/>
+     </af:panelGroupLayout>
+    <f:facet name="separator">
+      <af:spacer width="10" height="10" id="s2"/>
+    </f:facet>
+  </af:panelGroupLayout>
+  <!--oracle-jdev-comment:preferred-managed-bean-name:trainLauncherBean-->
+</jsp:root>

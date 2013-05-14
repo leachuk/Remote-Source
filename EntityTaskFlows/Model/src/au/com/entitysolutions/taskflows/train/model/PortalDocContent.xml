@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalDocContent"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_DOC_CONTENT"
+  AliasName="PortalDocContent"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.model.PortalDocContentImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="DocContentId"
+    IsNotNull="true"
+    ColumnName="DOC_CONTENT_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_DOC_CONTENT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <TransientExpression><![CDATA[adf.object.nextSeqVal('PORTAL_DOC_CONTENT_S')]]></TransientExpression>
+  </Attribute>
+  <Attribute
+    Name="DocContentName"
+    IsNotNull="true"
+    Precision="200"
+    ColumnName="DOC_CONTENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_DOC_CONTENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocContentMime"
+    Precision="200"
+    ColumnName="DOC_CONTENT_MIME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_DOC_CONTENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocContentBytesize"
+    ColumnName="DOC_CONTENT_BYTESIZE"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_DOC_CONTENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DocContent"
+    IsQueriable="false"
+    IsNotNull="true"
+    ColumnName="DOC_CONTENT"
+    SQLType="BLOB"
+    Type="oracle.jbo.domain.BlobDomain"
+    ColumnType="BLOB"
+    TableName="PORTAL_DOC_CONTENT"/>
+  <AccessorAttribute
+    Name="DocContentIdPortalUserTFStepDoc"
+    Association="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc.DocContentIdPortalUserTFStepDoc"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocContentAssoc.PortalDocContent"
+    Type="au.com.entitysolutions.taskflows.model.CustomEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="SysC0080772">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0080772"/>
+      <Attr Name="_checkCondition" Value='"DOC_CONTENT_NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalDocContent.DocContentName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080773"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0080773"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalDocContent.DocContentId"/>
+    </AttrArray>
+  </Key>
+</Entity>

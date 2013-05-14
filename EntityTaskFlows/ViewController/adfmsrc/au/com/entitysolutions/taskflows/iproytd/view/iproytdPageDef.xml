@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="iproytdPageDef"
+                Package="au.com.entitysolutions.taskflows.iproytd">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MyYtdVO1" RangeSize="25"
+              DataControl="MyYTDAppModuleDataControl" id="MyYtdVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="MyYtdVO1Iterator" id="MyYtdVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="BAR_VERT_CLUST">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="Amount"/>
+          </data>
+        </series>
+        <groups>
+          <item value="BalType"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

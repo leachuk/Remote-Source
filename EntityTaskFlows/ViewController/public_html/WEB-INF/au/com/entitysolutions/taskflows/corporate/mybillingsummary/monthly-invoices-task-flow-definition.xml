@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="monthly-invoices-task-flow-definition">
+    <default-activity id="__1">ExecuteWithParams</default-activity>
+    <input-parameter-definition id="__2">
+      <name id="__3">orgId</name>
+      <value>#{pageFlowScope.orgId}</value>
+      <class>oracle.jbo.domain.Number</class>
+      <required/>
+    </input-parameter-definition>
+    <managed-bean id="__5">
+      <managed-bean-name id="__6">BillingSummaryBean</managed-bean-name>
+      <managed-bean-class id="__4">au.com.entitysolutions.corporate.taskflows.mybillingsummary.MonthlyInvoicesManagedBean</managed-bean-class>
+      <managed-bean-scope id="__7">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__22">
+      <managed-bean-name id="__21">CommonFunctionsBean</managed-bean-name>
+      <managed-bean-class id="__20">au.com.entitysolutions.corporate.taskflows.common.CommonFunctionsBean</managed-bean-class>
+      <managed-bean-scope id="__19">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="monthlyinvoices">
+      <page>/au/com/entitysolutions/taskflows/corporate/mybillingsummary/monthlyinvoices.jsff</page>
+    </view>
+    <method-call id="ExecuteWithParams">
+      <method>#{bindings.ExecuteWithParams.execute}</method>
+      <outcome id="__8">
+        <fixed-outcome>ExecuteWithParams</fixed-outcome>
+      </outcome>
+    </method-call>
+    <router id="checkDate">
+      <case>
+        <expression>#{! pageFlowScope.BillingSummaryBean.validDates}</expression>
+        <outcome id="__38">error</outcome>
+      </case>
+      <default-outcome>success</default-outcome>
+    </router>
+    <method-call id="showErrorMessage">
+      <method>#{pageFlowScope.CommonFunctionsBean.showErrorMessage}</method>
+      <parameter>
+        <class>java.lang.String</class>
+        <value>Input date cannot be before DEC/2002</value>
+      </parameter>
+      <outcome id="__36">
+        <fixed-outcome>showMessage</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__9">
+      <from-activity-id id="__10">ExecuteWithParams</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome id="__13">ExecuteWithParams</from-outcome>
+        <to-activity-id id="__12">monthlyinvoices</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__14">
+      <from-activity-id id="__15">monthlyinvoices</from-activity-id>
+      <control-flow-case id="__17">
+        <from-outcome id="__18">go</from-outcome>
+        <to-activity-id id="__16">checkDate</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__23">
+      <from-activity-id id="__24">checkDate</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__27">error</from-outcome>
+        <to-activity-id id="__25">showErrorMessage</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome id="__30">success</from-outcome>
+        <to-activity-id id="__28">ExecuteWithParams</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__31">
+      <from-activity-id id="__32">showErrorMessage</from-activity-id>
+      <control-flow-case id="__34">
+        <from-outcome id="__35">showMessage</from-outcome>
+        <to-activity-id id="__33">monthlyinvoices</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

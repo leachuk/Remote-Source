@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="monthlybillingPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.corp_landing">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MonthlyBillingVO1" RangeSize="-1"
+              DataControl="CorpLandingAppModuleDataControl"
+              id="MonthlyBillingVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="MonthlyBillingVO1Iterator" id="MonthlyBillingVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt"/>
+    <graph IterBinding="MonthlyBillingVO1Iterator" id="MonthlyBillingVO11"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="BAR_VERT_CLUST">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="BilledAmount"/>
+          </data>
+        </series>
+        <groups>
+          <item value="Month"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

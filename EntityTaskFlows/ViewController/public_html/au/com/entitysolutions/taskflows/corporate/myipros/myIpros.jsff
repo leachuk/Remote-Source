@@ -1,0 +1,90 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.view.ViewControllerBundle']}"/>
+  <af:panelStretchLayout id="psl1" endWidth="378px" styleClass="AFStretchWidth"
+                         inlineStyle="min-height: 500px;" topHeight="30px">
+    <f:facet name="center">
+      <af:table value="#{bindings.MyIprosAssignmets1.collectionModel}" var="row"
+                rows="#{bindings.MyIprosAssignmets1.rangeSize}"
+                emptyText="#{bindings.MyIprosAssignmets1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                fetchSize="#{bindings.MyIprosAssignmets1.rangeSize}"
+                rowBandingInterval="0"
+                filterModel="#{bindings.MyIprosAssignmets1Query.queryDescriptor}"
+                queryListener="#{bindings.MyIprosAssignmets1Query.processQuery}"
+                varStatus="vs"
+                selectedRowKeys="#{bindings.MyIprosAssignmets1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.MyIprosAssignmets1.collectionModel.makeCurrent}"
+                rowSelection="single" id="table1"
+                summary="#{myiprosBundle.MAIN_TABLE_DESC}" filterVisible="true"
+                columnStretching="last" contentDelivery="immediate"
+                autoHeightRows="25" styleClass="AFStretchWidth">
+        <af:column sortProperty="FullName" sortable="true"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.FullName.label}"
+                   id="column1" rowHeader="unstyled" width="140">
+          <af:outputText value="#{row.FullName}" id="outputText1"/>
+        </af:column>
+        <af:column sortProperty="PositionTitle" sortable="true"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.PositionTitle.label}"
+                   id="column2" width="80">
+          <af:outputText value="#{row.PositionTitle}" id="outputText2"/>
+        </af:column>
+        <af:column sortProperty="StartDate" sortable="true"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.StartDate.label}"
+                   id="column3" width="80">
+          <af:outputText value="#{row.StartDate}" id="outputText3">
+            <af:convertDateTime pattern="#{bindings.MyIprosAssignmets1.hints.StartDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="EndDate" sortable="true"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.EndDate.label}"
+                   id="column4" width="80">
+          <af:outputText value="#{row.EndDate}" id="outputText4">
+            <af:convertDateTime pattern="#{bindings.MyIprosAssignmets1.hints.EndDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column sortProperty="OrganisationName" sortable="false"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.OrganisationName.label}"
+                   id="column5">
+          <af:outputText value="#{row.OrganisationName}" id="outputText5"/>
+        </af:column>
+        <af:column sortProperty="EndUserOrgStateCode" sortable="true"
+                   headerText="#{bindings.MyIprosAssignmets1.hints.EndUserOrgStateCode.label}"
+                   id="column6" width="60">
+          <af:outputText value="#{row.EndUserOrgStateCode}" id="outputText6"/>
+        </af:column>
+      </af:table>
+    </f:facet>
+    <f:facet name="end">
+      <af:region value="#{bindings.iprodetailstaskflowdefinition1.regionModel}"
+                 id="region1" partialTriggers="::table1 ::commandButton1"
+                 immediate="true"/>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal"
+                           styleClass="AFStretchWidth">
+        <af:inputDate label="#{viewcontrollerBundle.DATE_FROM_LBL}" id="inputDate1"
+                      value="#{pageFlowScope.MyIprosManagedBean.fromDate}"
+                      minValue="#{pageFlowScope.CommonFunctionsBean.minDate}"/>
+        <af:spacer width="10" height="10" id="spacer1"/>
+        <af:inputDate label="#{viewcontrollerBundle.DATE_TO_LBL}" id="inputDate2"
+                      value="#{pageFlowScope.MyIprosManagedBean.toDate}"
+                      maxValue="#{pageFlowScope.CommonFunctionsBean.maxDate}"/>
+        <af:spacer width="10" height="10" id="spacer2"/>
+        <af:commandButton text="#{viewcontrollerBundle.SEARCH_BTN}" id="commandButton1" action="search"/>
+        <af:spacer width="10" height="10" id="spacer3"/>
+        <af:commandButton id="commandButton2" text="#{viewcontrollerBundle.DOWNLOAD_CSV_BTN}"
+                          immediate="true">
+          <af:fileDownloadActionListener contentType="text/csv; charset=utf-8"
+                                         filename="#{pageFlowScope.MyIprosManagedBean.filename}"
+                                         method="#{pageFlowScope.MyIprosManagedBean.exportCSV}"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

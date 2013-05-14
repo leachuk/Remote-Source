@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="process_Result"
+          Package="au.com.entitysolutions.taskflows.model.PutProfileSOA"
+          BeanClass="au.com.entitysolutions.taskflows.model.PutProfileSOA.process_Result"
+          isJavaBased="false">
+  <Attribute Name="status" IsUpdateable="0" Type="java.lang.Integer"/>
+  <Attribute Name="message" IsUpdateable="0" Type="java.lang.String"/>
+</JavaBean>

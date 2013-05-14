@@ -1,0 +1,26 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+       <af:panelGroupLayout id="pgl111" layout="vertical">
+       <af:outputText value="Notifications"
+                           id="outputText1" styleClass="widgetTitle"
+                           truncateAt="0"/>
+            <af:spacer width="10" height="20" id="s1"/>
+    <af:iterator id="i1"
+                 value="#{bindings.PortalNotificationView1.collectionModel}"
+                 var="row">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelGroupLayout id="pgl11" layout="horizontal">
+          <af:icon name="#{row.Category}" id="i2"/>
+          <af:outputText value="#{row.Title}" id="ot1"
+                         inlineStyle="font-weight:bold;"/>
+        </af:panelGroupLayout>
+        <af:outputText value="#{row.Brief}" id="ot3"/>
+        <af:outputText value="#{row.Description}" id="ot2"/>
+        <af:spacer width="10" height="15" id="s2"/>
+      </af:panelGroupLayout>
+    </af:iterator>
+      </af:panelGroupLayout>
+
+</jsp:root>

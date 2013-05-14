@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="HomeMobileTelephone"
+          Package="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.HomeMobileTelephone"
+          isJavaBased="false">
+  <Attribute Name="CountryCode" IsUpdateable="0" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="Number" IsUpdateable="2" IsNotNull="false"
+             Type="java.lang.String"/>
+</JavaBean>

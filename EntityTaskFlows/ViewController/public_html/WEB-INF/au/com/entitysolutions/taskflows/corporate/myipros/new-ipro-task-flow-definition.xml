@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="new-ipro-task-flow-definition">
+    <default-activity id="__1">iprodetails</default-activity>
+    <managed-bean id="__14">
+      <managed-bean-name id="__15">msgs</managed-bean-name>
+      <managed-bean-class id="__13">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__12">pageFlow</managed-bean-scope>
+      <managed-property id="__17">
+        <property-name id="__18">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__16">au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__6">
+      <managed-bean-name id="__23">NewIProManagedBean</managed-bean-name>
+      <managed-bean-class id="__5">au.com.entitysolutions.corporate.taskflows.myipros.NewIProManagedBean</managed-bean-class>
+      <managed-bean-scope id="__22">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__40">
+      <managed-bean-name id="__41">CommonFunctionsBean</managed-bean-name>
+      <managed-bean-class id="__39">au.com.entitysolutions.corporate.taskflows.common.CommonFunctionsBean</managed-bean-class>
+      <managed-bean-scope id="__42">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="iprodetails">
+      <page>/au/com/entitysolutions/taskflows/corporate/myipros/newiprodetails.jsff</page>
+      <train-stop id="__2">
+        <display-name id="__7">#{pageFlowScope.msgs.bundle['IPRO_DETAILS_LBL']}</display-name>
+      </train-stop>
+    </view>
+    <view id="clientdetails">
+      <page>/au/com/entitysolutions/taskflows/corporate/myipros/clientdetails.jsff</page>
+      <train-stop id="__3">
+        <display-name id="__8">#{pageFlowScope.msgs.bundle['CLIENT_DETAILS_LBL']}</display-name>
+        <outcome id="__38">checkContactInfo</outcome>
+      </train-stop>
+    </view>
+    <view id="enduserdetails">
+      <page>/au/com/entitysolutions/taskflows/corporate/myipros/enduserdetails.jsff</page>
+      <train-stop id="__4">
+        <display-name id="__9">#{pageFlowScope.msgs.bundle['END_USER_DETAILS_LBL']}</display-name>
+      </train-stop>
+    </view>
+    <router id="isValidInfo">
+      <case>
+        <expression>#{pageFlowScope.NewIProManagedBean.validInfo}</expression>
+        <outcome id="__37">true</outcome>
+      </case>
+      <default-outcome>false</default-outcome>
+    </router>
+    <method-call id="showAllErrors">
+      <method>#{pageFlowScope.CommonFunctionsBean.showErrorMessages}</method>
+      <parameter>
+        <class>java.util.ArrayList</class>
+        <value>#{pageFlowScope.NewIProManagedBean.errorMessages}</value>
+      </parameter>
+      <outcome id="__48">
+        <fixed-outcome>showErrors</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="summary">
+      <page>/au/com/entitysolutions/taskflows/corporate/myipros/summary.jsff</page>
+      <train-stop id="__49">
+        <display-name id="__60">#{pageFlowScope.msgs.bundle['SUMMARY_LBL']}</display-name>
+      </train-stop>
+    </view>
+    <method-call id="resetForm">
+      <method>#{pageFlowScope.NewIProManagedBean.resetForm}</method>
+      <outcome id="__55">
+        <fixed-outcome>backtodetails</fixed-outcome>
+      </outcome>
+    </method-call>
+    <parent-action id="parentAction1">
+      <root-outcome>myipros</root-outcome>
+    </parent-action>
+    <train/>
+    <control-flow-rule id="__11">
+      <from-activity-id id="__10">*</from-activity-id>
+      <control-flow-case id="__32">
+        <from-outcome id="__33">checkContactInfo</from-outcome>
+        <to-activity-id id="__34">isValidInfo</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__20">
+        <from-outcome id="__21">cancel</from-outcome>
+        <to-activity-id id="__19">parentAction1</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__35">
+        <from-outcome id="__56">reset</from-outcome>
+        <to-activity-id id="__36">resetForm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__24">
+      <from-activity-id id="__25">isValidInfo</from-activity-id>
+      <control-flow-case id="__26">
+        <from-outcome id="__28">false</from-outcome>
+        <to-activity-id id="__27">showAllErrors</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__29">
+        <from-outcome id="__31">true</from-outcome>
+        <to-activity-id id="__30">clientdetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__43">
+      <from-activity-id id="__44">showAllErrors</from-activity-id>
+      <control-flow-case id="__45">
+        <from-outcome id="__47">showErrors</from-outcome>
+        <to-activity-id id="__46">iprodetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__50">
+      <from-activity-id id="__51">resetForm</from-activity-id>
+      <control-flow-case id="__53">
+        <from-outcome id="__54">backtodetails</from-outcome>
+        <to-activity-id id="__52">iprodetails</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

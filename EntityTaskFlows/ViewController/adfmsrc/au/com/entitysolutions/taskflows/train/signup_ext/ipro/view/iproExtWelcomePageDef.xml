@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="iproExtWelcomePageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup_ext.ipro.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+  </executables>
+  <bindings>
+    <methodAction id="completeStep" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="completeStep"
+                  IsViewObjectMethod="false"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+<c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>                    
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx" id="pt1">
+    <f:facet name="content">
+      <af:panelFormLayout id="pfl1" labelWidth="200px">
+        <af:inputText value="#{bindings.EmerContactName.inputValue}"
+                      label="#{bindings.EmerContactName.hints.label}"
+                      required="#{bindings.EmerContactName.hints.mandatory}"
+                      columns="#{bindings.EmerContactName.hints.displayWidth}"
+                      maximumLength="#{bindings.EmerContactName.hints.precision}"
+                      shortDesc="#{bindings.EmerContactName.hints.tooltip}"
+                      id="it1">
+          <f:validator binding="#{bindings.EmerContactName.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.EmerContactPhone.inputValue}"
+                      label="#{bindings.EmerContactPhone.hints.label}"
+                      required="#{bindings.EmerContactPhone.hints.mandatory}"
+                      columns="#{bindings.EmerContactPhone.hints.displayWidth}"
+                      maximumLength="#{bindings.EmerContactPhone.hints.precision}"
+                      shortDesc="#{bindings.EmerContactPhone.hints.tooltip}"
+                      id="it3">
+          <f:validator binding="#{bindings.EmerContactPhone.validator}"/>
+          <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}" hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>          
+        </af:inputText>
+        <af:inputText value="#{bindings.EmerContactRelationship.inputValue}"
+                      label="#{bindings.EmerContactRelationship.hints.label}"
+                      required="#{bindings.EmerContactRelationship.hints.mandatory}"
+                      columns="#{bindings.EmerContactRelationship.hints.displayWidth}"
+                      maximumLength="#{bindings.EmerContactRelationship.hints.precision}"
+                      shortDesc="#{bindings.EmerContactRelationship.hints.tooltip}"
+                      id="it2">
+          <f:validator binding="#{bindings.EmerContactRelationship.validator}"/>
+        </af:inputText>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['EMER_CONTACT_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['EMER_CONTACT_DTLS_STEP_NAME']}"/>                 
+  </af:pageTemplate>
+</jsp:root>

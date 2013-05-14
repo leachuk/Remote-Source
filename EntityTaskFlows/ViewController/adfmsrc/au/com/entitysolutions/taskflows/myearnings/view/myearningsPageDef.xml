@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="myearningsPageDef"
+                Package="au.com.entitysolutions.taskflows.myearnings.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="MyEarningsVO1" RangeSize="-1"
+              DataControl="MyEarningsAppModuleDataControl"
+              id="MyEarningsVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="MyEarningsVO1Iterator" id="MyEarningsVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="LINE_VERT_ABS">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="TaxableAmount"/>
+            <item value="BankAmount"/>
+            <item value="SuperAmount"/>
+            <item value="TaxAmount"/>
+          </data>
+        </series>
+        <groups>
+          <item value="EarningsMonthLbl"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

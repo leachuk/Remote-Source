@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalUserTFStep"
+  Version="11.1.1.60.13"
+  DBObjectType="table"
+  DBObjectName="PORTAL_USER_TF_STEP"
+  AliasName="PortalUserTFStep"
+  BindingStyle="OracleName"
+  UseGlueCode="false"
+  RowClass="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access"/>
+    <AttrArray Name="_publishEvents"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Attribute
+    Name="UserTfStepId"
+    IsNotNull="true"
+    ColumnName="USER_TF_STEP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserTfId"
+    ColumnName="USER_TF_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StepId"
+    ColumnName="STEP_ID"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IsCompleted"
+    Precision="1"
+    ColumnName="IS_COMPLETED"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreatedBy"
+    ColumnName="CREATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreationDate"
+    ColumnName="CREATION_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdatedBy"
+    ColumnName="LAST_UPDATED_BY"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LastUpdateDate"
+    ColumnName="LAST_UPDATE_DATE"
+    SQLType="TIMESTAMP"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="PORTAL_USER_TF_STEP">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="7"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="PortalUserTF"
+    Association="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepAssoc.PortalUserTF"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepAssoc.PortalUserTFStep"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="PortalUserTFStepDoc"
+    Association="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc"
+    AssociationEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc.PortalUserTFStepDoc"
+    AssociationOtherEnd="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc.PortalUserTFStep"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="ChkIsCompleted">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CHK_IS_COMPLETED"/>
+      <Attr Name="_checkCondition" Value="IS_COMPLETED IN ('Y','N')"/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.IsCompleted"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080800"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="SYS_C0080800"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.UserTfStepId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080801">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0080792"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0080801"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.UserTfId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="SysC0080802">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="SYS_C0080770"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="SYS_C0080802"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStep.StepId"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:outputText value="#{pageFlowScope.msgs.bundle['DETAILED_TASKFLOW_LIST_PAGE_TITLE']}" id="ot1"
+                       styleClass="widgetTitle"/>
+        <af:spacer width="10" height="20" id="s3"/>
+        <af:iterator value="#{bindings.PortalUserTaskFlowsView.collectionModel}"
+                   id="iter1" var="row">
+          <af:panelGroupLayout id="pgl2" layout="vertical">
+            <af:outputText value="#{row.TfName}" id="ot4"
+                           inlineStyle="font-weight:bold;"/>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:outputText value="#{row.TfDescription}" id="ot2"/>
+            <af:spacer width="10" height="10" id="s5"/>
+            <af:commandButton text="#{pageFlowScope.msgs.bundle['START_NOW_BUTTON']}" id="cb1"
+                              action="#{pageFlowScope.userTaskFlowsListBean.startSelectedTaskFlow}">
+                <af:setPropertyListener to="#{requestScope.portal_tf_code}"
+                                      from="#{row.TfCode}" type="action"/>
+                <af:setPropertyListener to="#{requestScope.portal_tf_id}"
+                                      from="#{row.TfId}" type="action"/>
+                <af:setPropertyListener to="#{requestScope.portal_user_tf_id}"
+                                      from="#{row.UserTfId}" type="action"/>
+            </af:commandButton>
+            <af:spacer width="10" height="20" id="s2"/>
+          </af:panelGroupLayout>
+        </af:iterator>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

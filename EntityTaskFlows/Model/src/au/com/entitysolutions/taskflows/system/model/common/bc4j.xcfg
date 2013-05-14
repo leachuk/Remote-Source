@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="PortalCommonAppModuleLocal" ApplicationName="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Diagnostic jbo.logging.trace.threshold="9"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="PortalCommonAppModuleShared" ApplicationName="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.system.model.PortalCommonAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.system.model.SharedAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="SharedAppModuleLocal" ApplicationName="au.com.entitysolutions.taskflows.system.model.SharedAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.system.model.SharedAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="SharedAppModuleShared" ApplicationName="au.com.entitysolutions.taskflows.system.model.SharedAppModule">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1" jbo.ampool.resetnontransactionalstate="false"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.system.model.SharedAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

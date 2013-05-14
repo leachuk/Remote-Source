@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="MyContractsTestPageDef"
+                Package="au.com.entitysolutions.taskflows.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="mycontractslistanddetailstaskflowdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/corporate/mycontracts/my-contracts-list-and-details-task-flow-definition.xml#my-contracts-list-and-details-task-flow-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="orgId" value="3402"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

@@ -1,0 +1,65 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl4" styleClass="AFStretchWidth"
+                           layout="vertical">
+        <af:activeOutputText value="#{pageFlowScope.msgs.bundle['POLICY_DTLS_INFO_TEXT']}"
+                             id="aot1" styleClass="newline"/>
+        <!--af:goButton id="gb1" text="View Policies" targetFrame="_blank"
+            destination="/ShowProperty?nodeId=%2FEntityUCM%2FOHS_SH_EEO_POLICIES%2F%2FidcPrimaryFile&amp;revision=latestreleased"/-->
+        <af:panelGroupLayout id="pgl5" layout="horizontal">
+          <af:commandButton text="#{pageFlowScope.msgs.bundle['POLICY_DTLS_DLOAD_BTN']}"
+                            id="cb2" immediate="true">
+            <af:clientListener type="click" method="enablePolicyCheckbox"/> 
+            <af:fileDownloadActionListener method="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['POLICY_DTLS_STEP_NAME']].downloadPolicies}"
+                                           contentType="#{bindings.DocContentMime.inputValue}"
+                                           filename="#{bindings.DocContentName.inputValue}"/>
+            
+          </af:commandButton>
+
+          <af:outputText value="#{pageFlowScope.msgs.bundle['POLICY_DTLS_CLICK_VIEW_INFO']}" id="ot2"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s3"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s4"/>
+        <af:panelGroupLayout id="pgl3" layout="horizontal" valign="top">
+          <af:selectBooleanCheckbox value="#{bindings.AceeptPolicies.inputValue}"
+                                    label="#{bindings.AceeptPolicies.label}"
+                                    shortDesc="#{bindings.AceeptPolicies.hints.tooltip}"
+                                    id="sbc1" simple="true"
+                                    disabled="#{not pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['POLICY_DTLS_STEP_NAME']].policyViewed}"
+                                    clientComponent="true" />
+          <af:outputText value="#{bindings.AceeptPolicies.label}" id="ot1"/>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s2"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="s1"/>
+        </f:facet>
+        <af:resource type="javascript">
+        
+      function enablePolicyCheckbox(actionEvent)
+      {     
+      var eventSource = actionEvent.getSource();
+      var chkbox = eventSource.findComponent("sbc1");     
+      ob=document.getElementById(chkbox.getClientId()+'::content');    
+      ob.removeAttribute('disabled');
+      ob.disabled=false;
+      }
+        
+        
+        </af:resource>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['POLICY_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['POLICY_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

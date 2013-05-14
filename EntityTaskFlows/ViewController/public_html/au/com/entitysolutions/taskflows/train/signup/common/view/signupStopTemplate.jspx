@@ -1,0 +1,112 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:h="http://java.sun.com/jsf/html"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <af:pageTemplateDef var="attrs">
+    <af:xmlContent>
+      <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+        <display-name>signupStopTemplate</display-name>
+        <facet>
+          <facet-name>content</facet-name>
+        </facet>
+        <facet>
+          <facet-name>buttons</facet-name>
+        </facet>
+        <attribute>
+          <attribute-name>headerText</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+          <required>true</required>
+        </attribute>
+        <attribute>
+          <attribute-name>stopName</attribute-name>
+          <attribute-class>java.lang.String</attribute-class>
+        </attribute>
+        <attribute>
+          <attribute-name>isShowTrainButtons</attribute-name>
+          <attribute-class>java.lang.Boolean</attribute-class>
+          <default-value>#{true}</default-value>
+        </attribute> 
+        <attribute>
+          <attribute-name>isShowSkip</attribute-name>
+          <attribute-class>java.lang.Boolean</attribute-class>
+          <default-value>#{true}</default-value>
+        </attribute>
+      </component>
+    </af:xmlContent>
+    <af:panelGroupLayout id="pgl1" layout="vertical" >
+      <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                var="trainNode" id="t1">
+        <f:facet name="nodeStamp">
+          <af:commandNavigationItem text="#{trainNode.textAndAccessKey}"
+                                    id="cni1" visited="#{trainNode.visited}"
+                                    immediate="true"
+                                    action="#{trainNode.action}"
+                                    actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"
+                                    disabled="#{trainNode.disabled}">
+            <af:setPropertyListener from="#{attrs.stopName}"
+                                    to="#{requestScope.stopName}"
+                                    type="action"/>
+          </af:commandNavigationItem>
+        </f:facet>
+      </af:train>
+      <af:spacer width="10" height="20" id="pt_s4"/>
+      <af:panelHeader text="#{attrs.headerText}" id="ph1">
+        <f:facet name="context"/>
+        <f:facet name="menuBar"/>
+        <f:facet name="toolbar"/>
+        <f:facet name="legend"/>
+        <f:facet name="info"/>
+        <af:spacer width="10" height="20" id="pt_s3"/>
+        <af:facetRef facetName="content"/>
+      </af:panelHeader>
+      <af:spacer width="10" height="10" id="pt_s1"/>
+      <af:panelGroupLayout id="pgl2" layout="horizontal" rendered="#{attrs.isShowTrainButtons}"
+                           halign="end">
+        <!--af:trainButtonBar var="node" varStatus=""
+                           value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                           id="tbb1">
+          <f:facet name="nodeStamp">
+            <af:commandNavigationItem action="#{node.action}"
+                                      disabled="#{node.disabled}"
+                                      immediate="#{node.immediate}"
+                                      actionListener="#{pageFlowScope.signUpBean.validateAndCommit}"
+                                      textAndAccessKey="#{node.textAndAccessKey}"
+                                      visited="#{node.visited}" id="cn1">
+              <af:setPropertyListener from="#{node}"
+                                      to="#{requestScope.stopName}"
+                                      type="action"/>
+            </af:commandNavigationItem>
+          </f:facet>
+        </af:trainButtonBar-->
+        <af:commandButton id="back" text="#{pageFlowScope.msgs.bundle['PREV_BTN']}" disabled="#{pageFlowScope.signUpBean.firstStop}"
+                          action="#{pageFlowScope.signUpBean.navigatePrevStop}"
+                          actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"
+                          immediate="true">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <af:commandButton id="skip" text="#{pageFlowScope.msgs.bundle['SKIP_BTN']}" disabled="#{pageFlowScope.signUpBean.lastStop}"
+                          action="#{pageFlowScope.signUpBean.navigateNextStop}"
+                          actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"
+                          immediate="true" rendered="#{attrs.isShowSkip}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>        
+        <af:commandButton id="next" text="#{pageFlowScope.msgs.bundle['SAVE_NXT_BTN']}" disabled="#{pageFlowScope.signUpBean.lastStop}"
+                          action="#{pageFlowScope.signUpBean.navigateNextStop}"
+                          actionListener="#{pageFlowScope.signUpBean.validateAndCommit}">
+          <af:setPropertyListener from="#{attrs.stopName}"
+                                  to="#{requestScope.stopName}" type="action"/>
+        </af:commandButton>
+        <af:commandButton text="#{pageFlowScope.msgs.bundle['EXIT_BTN']}" rendered="false" id="cbExit" action="#{pageFlowScope.signUpBean.exitTrain}" immediate="true" 
+                          actionListener="#{pageFlowScope.signUpBean.rollbackAndRequery}"/>                   
+        <f:facet name="separator">
+          <af:spacer width="10" height="10" id="pt_s2"/>
+        </f:facet>
+      </af:panelGroupLayout>
+      <af:facetRef facetName="buttons"/>
+    </af:panelGroupLayout>
+  </af:pageTemplateDef>
+</jsp:root>

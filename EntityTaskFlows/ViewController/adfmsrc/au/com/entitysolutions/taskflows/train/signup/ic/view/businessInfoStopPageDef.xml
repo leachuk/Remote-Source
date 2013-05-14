@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="businessInfoStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ic.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupBusinessInfoView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupBusinessInfoViewIterator"/>
+  </executables>
+  <bindings>
+  <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>  
+<methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessName">
+      <AttrNames>
+        <Item Value="BusinessName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="Abn">
+      <AttrNames>
+        <Item Value="Abn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="Acn">
+      <AttrNames>
+        <Item Value="Acn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessPhone">
+      <AttrNames>
+        <Item Value="BusinessPhone"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessAddr">
+      <AttrNames>
+        <Item Value="BusinessAddr"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessSuburb">
+      <AttrNames>
+        <Item Value="BusinessSuburb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessPostCode">
+      <AttrNames>
+        <Item Value="BusinessPostCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupBusinessInfoViewIterator"
+                     id="BusinessCountry">
+      <AttrNames>
+        <Item Value="BusinessCountry"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupBusinessInfoViewIterator" StaticList="false"
+          Uses="LOV_BusinessState" id="BusinessState" DTSupportsMRU="true"/>
+    <list IterBinding="PortalSignupBusinessInfoViewIterator" StaticList="false"
+          Uses="LOV_GstRegistered" id="GstRegistered" DTSupportsMRU="false"/>
+  </bindings>
+</pageDefinition>

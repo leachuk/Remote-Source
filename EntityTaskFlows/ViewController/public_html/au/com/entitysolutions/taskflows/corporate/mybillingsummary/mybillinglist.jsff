@@ -1,0 +1,201 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.view.ViewControllerBundle']}"/>
+  <c:set var="mybillingBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mybillingsummary.MyBillingBundle']}"/>
+  <af:panelStretchLayout id="psl1" endWidth="400px" styleClass="AFStretchWidth"
+                         topHeight="30px">
+    <f:facet name="center">
+      <af:table id="md1" rows="#{bindings.InvoicesListVO1.rangeSize}"
+                fetchSize="#{bindings.InvoicesListVO1.rangeSize}"
+                emptyText="#{(pageFlowScope.MyBillingListManagedBean.fromDate == null and pageFlowScope.MyBillingListManagedBean.toDate == null)? 'There are no current Received or Overdue Invoices, please select a time period to view invoice history':'No Data to display'}"
+                var="row" value="#{bindings.InvoicesListVO1.collectionModel}"
+                rowBandingInterval="0"
+                selectedRowKeys="#{bindings.InvoicesListVO1.collectionModel.selectedRow}"
+                selectionListener="#{bindings.InvoicesListVO1.collectionModel.makeCurrent}"
+                rowSelection="single" autoHeightRows="-1"
+                columnStretching="column:c1" styleClass="AFStretchWidth">
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.InvoiceDate.label}"
+                   sortProperty="InvoiceDate" sortable="true" id="c2"
+                   width="70">
+          <af:outputText value="#{row.InvoiceDate}" id="ot7">
+            <af:convertDateTime pattern="#{bindings.InvoicesListVO1.hints.InvoiceDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.InvoiceNumber.label}"
+                   sortProperty="InvoiceNumber" sortable="true" id="c1"
+                   width="70">
+          <af:outputText value="#{row.InvoiceNumber}" id="ot6"/>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.StartDate.label}"
+                   sortProperty="StartDate" sortable="true" id="c14" width="70">
+          <af:outputText value="#{row.StartDate}" id="ot2">
+            <af:convertDateTime pattern="#{bindings.InvoicesListVO1.hints.StartDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.EndDate.label}"
+                   sortProperty="EndDate" sortable="true" id="c5" width="70">
+          <af:outputText value="#{row.EndDate}" id="ot5">
+            <af:convertDateTime pattern="#{bindings.InvoicesListVO1.hints.EndDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.TotalBillableAmt.label}"
+                   sortProperty="TotalBillableAmt" sortable="true" id="c7"
+                   width="70" styleClass="moneyCell">
+          <af:outputText value="$ #{row.TotalBillableAmt}" id="ot13">
+            <af:convertNumber groupingUsed="false"
+                              pattern="#{bindings.InvoicesListVO1.hints.TotalBillableAmt.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.DueDate.label}"
+                   sortProperty="DueDate" sortable="true" id="c9" width="70">
+          <af:outputText value="#{row.DueDate}" id="ot12">
+            <af:convertDateTime pattern="#{bindings.InvoicesListVO1.hints.DueDate.format}"/>
+          </af:outputText>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.InvoiceStatusScreenLabel.label}"
+                   sortProperty="InvoiceStatusScreenLabel" sortable="true"
+                   id="c15" width="50">
+          <af:outputText value="#{row.InvoiceStatusScreenLabel}" id="ot15"/>
+        </af:column>
+        <af:column headerText="#{bindings.InvoicesListVO1.hints.PaidDate.label}"
+                   sortProperty="PaidDate" sortable="true" id="c13" width="70">
+          <af:outputText value="#{row.PaidDate}" id="ot1">
+            <af:convertDateTime pattern="#{bindings.InvoicesListVO1.hints.PaidDate.format}"/>
+          </af:outputText>
+        </af:column>
+      </af:table>
+    </f:facet>
+    <f:facet name="end">
+      <af:panelStretchLayout id="psl2" topHeight="90px"
+                             styleClass="detailsForm">
+        <f:facet name="center">
+        <af:table partialTriggers="::md1"
+                    rows="#{bindings.InvoiceDetailsVO1.rangeSize}"
+                    fetchSize="#{bindings.InvoiceDetailsVO1.rangeSize}"
+                    emptyText="#{bindings.InvoiceDetailsVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                    var="row"
+                    value="#{bindings.InvoiceDetailsVO1.collectionModel}"
+                    rowBandingInterval="0"
+                    selectedRowKeys="#{bindings.InvoiceDetailsVO1.collectionModel.selectedRow}"
+                    selectionListener="#{bindings.InvoiceDetailsVO1.collectionModel.makeCurrent}" id="t1"
+                    columnStretching="column:c10" autoHeightRows="0"
+                    contentDelivery="immediate" styleClass="AFStretchWidth">
+            <af:column headerText="#{bindings.InvoiceDetailsVO1.hints.IproFullName.label}"
+                       sortProperty="IproFullName" sortable="true" id="c10"
+                       rowHeader="unstyled">
+              <af:outputText value="#{row.IproFullName}" id="ot10"/>
+            </af:column>
+            <af:column headerText="#{bindings.InvoiceDetailsVO1.hints.Reference.label}"
+                       sortProperty="Reference" sortable="true" id="c6"
+                       width="70">
+              <af:outputText value="#{row.Reference}" id="ot8"/>
+            </af:column>
+            <af:column headerText="#{bindings.InvoiceDetailsVO1.hints.BillableAmount.label}"
+                       sortProperty="BillableAmount" sortable="true" id="c3"
+                       width="50" styleClass="moneyCell">
+              <af:outputText value="$ #{row.BillableAmount}" id="ot18">
+                <af:convertNumber groupingUsed="false"
+                                  pattern="#{bindings.InvoiceDetailsVO1.hints.BillableAmount.format}"/>
+              </af:outputText>
+            </af:column>
+            <af:column headerText="#{bindings.InvoiceDetailsVO1.hints.EndUserOrgStateCode.label}"
+                       sortProperty="EndUserOrgStateCode" sortable="true"
+                       id="c8" width="40">
+              <af:outputText value="#{row.EndUserOrgStateCode}" id="ot17"/>
+            </af:column>
+            <af:column headerText="#{bindings.InvoiceDetailsVO1.hints.CostCentre.label}"
+                       sortProperty="CostCentre" sortable="true" id="c18"
+                       width="40">
+              <af:outputText value="#{row.CostCentre}" id="ot16"/>
+            </af:column>
+          </af:table>
+        </f:facet>
+        <f:facet name="top">
+          <af:group id="g1">
+            <af:outputFormatted value="#{mybillingBundle.INVOICE_DETAIL_REPORT_LBL}"
+                                id="of8" styleClass="widgetHeader largerFont"/>
+            <br/>
+            <af:spacer width="10" height="15" id="s1"/>
+            <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top"
+                                 styleClass="AFStretchWidth">
+              <af:panelFormLayout id="pfl1">
+                <af:panelLabelAndMessage label="#{bindings.InvoiceDate.hints.label}"
+                                         id="plam1" partialTriggers="md1">
+                  <af:outputFormatted value="#{bindings.InvoiceDate.inputValue}"
+                                      id="of1">
+                    <af:convertDateTime pattern="#{bindings.InvoiceDate.format}"/>
+                  </af:outputFormatted>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.InvoiceNumber.hints.label}"
+                                         id="plam2" partialTriggers="md1">
+                  <af:outputFormatted value="#{bindings.InvoiceNumber.inputValue}"
+                                      id="of2"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.StartDate.hints.label}"
+                                         id="plam3" partialTriggers="md1"
+                                         rendered="false">
+                  <af:outputFormatted value="#{bindings.StartDate.inputValue}"
+                                      id="of3">
+                    <af:convertDateTime pattern="#{bindings.StartDate.format}"/>
+                  </af:outputFormatted>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.EndDate.hints.label}"
+                                         id="plam4" partialTriggers="md1"
+                                         rendered="false">
+                  <af:outputFormatted value="#{bindings.EndDate.inputValue}"
+                                      id="of4">
+                    <af:convertDateTime pattern="#{bindings.EndDate.format}"/>
+                  </af:outputFormatted>
+                </af:panelLabelAndMessage>
+              </af:panelFormLayout>
+              <af:panelFormLayout id="pfl2">
+                <af:panelLabelAndMessage label="#{bindings.GstAmt.hints.label}"
+                                         id="plam5" partialTriggers="md1">
+                  <af:outputFormatted value="$ #{bindings.GstAmt.inputValue}"
+                                      id="of5">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.GstAmt.format}"/>
+                  </af:outputFormatted>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="#{bindings.TotalBillableAmt.hints.label}"
+                                         id="plam6" partialTriggers="md1">
+                  <af:outputFormatted value="$ #{bindings.TotalBillableAmt.inputValue}"
+                                      id="of6">
+                    <af:convertNumber groupingUsed="false"
+                                      pattern="#{bindings.TotalBillableAmt.format}"/>
+                  </af:outputFormatted>
+                </af:panelLabelAndMessage>
+              </af:panelFormLayout>
+            </af:panelGroupLayout>
+          </af:group>
+        </f:facet>
+      </af:panelStretchLayout>
+    </f:facet>
+    <f:facet name="top">
+      <af:panelGroupLayout id="pgl2" layout="horizontal">
+        <af:inputDate label="#{viewcontrollerBundle.DATE_FROM_LBL}" id="id1"
+                      value="#{pageFlowScope.MyBillingListManagedBean.fromDate}"
+                      minValue="#{pageFlowScope.CommonFunctionsBean.minDate}"/>
+        <af:spacer width="10" height="10" id="s5"/>
+        <af:inputDate label="#{viewcontrollerBundle.DATE_TO_LBL}" id="id2"
+                      value="#{pageFlowScope.MyBillingListManagedBean.toDate}"
+                      maxValue="#{pageFlowScope.CommonFunctionsBean.maxDate}"/>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:commandButton text="#{viewcontrollerBundle.SEARCH_BTN}" id="cb1"
+                          action="search"/>
+        <af:spacer width="10" height="10" id="s3"/>
+        <af:commandButton text="#{viewcontrollerBundle.DOWNLOAD_CSV_BTN}"
+                          id="cb2" immediate="true">
+          <af:fileDownloadActionListener contentType="text/csv; charset=utf-8"
+                                         filename="#{pageFlowScope.MyBillingListManagedBean.filename}"
+                                         method="#{pageFlowScope.MyBillingListManagedBean.exportCSV}"/>
+        </af:commandButton>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

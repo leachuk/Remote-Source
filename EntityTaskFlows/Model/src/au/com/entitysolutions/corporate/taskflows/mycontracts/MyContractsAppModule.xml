@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="MyContractsAppModule"
+  Version="11.1.1.60.13"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsAppModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="QuarterlyExtensionsVO1"
+    ViewObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.QuarterlyExtensionsVO"/>
+  <ViewUsage
+    Name="ActiveContractsVO1"
+    ViewObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.ActiveContractsVO"/>
+  <ViewUsage
+    Name="WeeklyForecastVO1"
+    ViewObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.WeeklyForecastVO"/>
+  <ViewUsage
+    Name="MyContractsListVO1"
+    ViewObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsListVO"/>
+  <ViewUsage
+    Name="AssignmentDetailsVO1"
+    ViewObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.AssignmentDetailsVO"/>
+  <ViewLinkUsage
+    Name="ContractsListAssignmentDetailsVL"
+    ViewLinkObjectName="au.com.entitysolutions.corporate.taskflows.mycontracts.ContractsListAssignmentDetailsVL"
+    SrcViewUsageName="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsAppModule.MyContractsListVO1"
+    DstViewUsageName="au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsAppModule.AssignmentDetailsVO1"
+    Reversed="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

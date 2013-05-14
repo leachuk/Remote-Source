@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2"
+             id="__25">
+  <task-flow-definition id="landing-prelogin-taskflow">
+    <default-activity id="__511">router1</default-activity>
+    <input-parameter-definition id="__1">
+      <name id="__2">widgetType</name>
+      <value id="__26">#{pageFlowScope.widgetType}</value>
+      <class id="__29">java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__3">
+      <name id="__4">widgetId</name>
+      <value id="__19">#{pageFlowScope.widgetId}</value>
+      <class id="__22">java.lang.String</class>
+    </input-parameter-definition>
+    <managed-bean id="__411">
+      <managed-bean-name id="__5121">msgs</managed-bean-name>
+      <managed-bean-class id="__3711">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__2711">pageFlow</managed-bean-scope>
+      <managed-property id="__1071">
+        <property-name id="__1171">resourceBundle</property-name>
+        <property-class id="__5">java.lang.String</property-class>
+        <value id="__12">au.com.entitysolutions.taskflows.landing.view.LandingBundle</value>
+      </managed-property>
+    </managed-bean>
+    <view id="landingReturnUser">
+      <page id="__9">/au/com/entitysolutions/taskflows/landing/landingReturnUser.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__27">
+        <expression id="__24">#{pageFlowScope.widgetType eq 'NOT'}</expression>
+        <outcome id="__10">NOT</outcome>
+      </case>
+      <case id="__30">
+        <expression id="__23">#{pageFlowScope.widgetType eq 'TASF'}</expression>
+        <outcome id="__11">TASF</outcome>
+      </case>
+       <case id="__17">
+        <expression id="__18">#{pageFlowScope.widgetType eq 'TASI'}</expression>
+        <outcome id="__111">TASI</outcome>
+      </case>
+      <case>
+        <expression>#{pageFlowScope.widgetType eq 'CHNP'}</expression>
+        <outcome id="__41">CHNP</outcome>
+      </case>
+      <default-outcome id="__21">LANR</default-outcome>
+    </router>
+    <task-flow-call id="user-taskflow-detailed-list-definition">
+      <task-flow-reference>
+        <document id="__20">/WEB-INF/au/com/entitysolutions/taskflows/usertaskflows/view/user-taskflow-detailed-list-definition.xml</document>
+        <id id="__28">user-taskflow-detailed-list-definition</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="usertaskflow-selected-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/usertaskflows/view/usertaskflow-selected-taskflow.xml</document>
+        <id>usertaskflow-selected-taskflow</id>
+      </task-flow-reference>      
+      <input-parameter id="__42">
+        <name>portal_user_tf_id</name>
+        <value>#{pageFlowScope.widgetId}</value>
+      </input-parameter>
+    </task-flow-call>
+    <task-flow-call id="notification-list-taskflow">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/notification/view/notification-list-taskflow.xml</document>
+        <id>notification-list-taskflow</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <task-flow-call id="change-pwd-flow-definition">
+      <task-flow-reference>
+        <document>/WEB-INF/au/com/entitysolutions/taskflows/changepassword/view/change-pwd-flow-definition.xml</document>
+        <id>change-pwd-flow-definition</id>
+      </task-flow-reference>
+    </task-flow-call>
+    <control-flow-rule id="__1212">
+      <from-activity-id id="__13">router1</from-activity-id>
+      <control-flow-case id="__15">
+        <from-outcome id="__16">LANR</from-outcome>
+        <to-activity-id id="__14">landingReturnUser</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome id="__8">TASF</from-outcome>
+        <to-activity-id id="__6">user-taskflow-detailed-list-definition</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__34">
+        <from-outcome id="__35">TASI</from-outcome>
+        <to-activity-id id="__33">usertaskflow-selected-taskflow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__38">
+        <from-outcome id="__36">NOT</from-outcome>
+        <to-activity-id id="__37">notification-list-taskflow</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__40">
+        <from-outcome id="__32">CHNP</from-outcome>
+        <to-activity-id id="__39">change-pwd-flow-definition</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

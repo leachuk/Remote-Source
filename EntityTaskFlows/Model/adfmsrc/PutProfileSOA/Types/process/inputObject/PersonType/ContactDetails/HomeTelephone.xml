@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="HomeTelephone"
+          Package="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails"
+          BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.HomeTelephone"
+          isJavaBased="false">
+  <Attribute Name="CountryCode" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="AreaCode" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Number" IsNotNull="false" Type="java.lang.String"/>
+</JavaBean>

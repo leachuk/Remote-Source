@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="notificationWidgetPageDef"
+                Package="au.com.entitysolutions.notification">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalNotificationView1" RangeSize="10"
+              DataControl="NotificationAppModuleDataControl"
+              id="PortalNotificationView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PortalNotificationView1Iterator"
+          id="PortalNotificationView1">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.notification.PortalNotificationView"
+                      Name="PortalNotificationView10">
+        <AttrNames>
+          <Item Value="Brief"/>
+          <Item Value="Category"/>
+          <Item Value="Title"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

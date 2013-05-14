@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.60.13" id="DataControls"
+                    Package="au.com.entitysolutions.taskflows.model">
+  <AdapterDataControl id="FeedReader"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDefinition"
+                      SupportsTransactions="false" SupportsSortCollection="true"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true"
+                      Definition="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+                      BeanClass="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <CreatableTypes>
+      <TypeInfo FullName="au.com.entitysolutions.taskflows.rss.model.Feed"/>
+      <TypeInfo FullName="au.com.entitysolutions.taskflows.rss.model.FeedReader"/>
+    </CreatableTypes>
+    <Source>
+      <bean-definition BeanClass="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+                       xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="GetProfileSOA"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition"
+                      SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false"
+                      SupportsRangesize="false" SupportsFindMode="false"
+                      SupportsUpdates="true"
+                      Definition="au.com.entitysolutions.taskflows.model.GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice"
+                  name="GetProfileSOA" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.0.3.26:8001/soa-infra/services/default/PersonProfile/get_person_profile_client_ep?WSDL">
+        <service name="get_person_profile_client_ep"
+                 namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/get_person_profile"
+                 connection="GetProfileSOA">
+          <port name="get_person_profile_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="PutProfileSOA"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition"
+                      SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false"
+                      SupportsRangesize="false" SupportsFindMode="false"
+                      SupportsUpdates="true"
+                      Definition="au.com.entitysolutions.taskflows.model.PutProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.PutProfileSOA"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice"
+                  name="PutProfileSOA" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.0.3.26:8001/soa-infra/services/default/PersonProfile/update_person_profile_client_ep?WSDL">
+        <service name="update_person_profile_client_ep"
+                 namespace="http://xmlns.oracle.com/SOA_Composites/PersonProfile/update_person_profile"
+                 connection="PutProfileSOA">
+          <port name="update_person_profile_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="GetListOfValues"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.adfinternal.model.adapter.webservice.WSDefinition"
+                      SupportsTransactions="false"
+                      SupportsSortCollection="false" SupportsResetState="false"
+                      SupportsRangesize="false" SupportsFindMode="false"
+                      SupportsUpdates="true"
+                      Definition="au.com.entitysolutions.taskflows.model.GetListOfValues"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <definition xmlns="http://xmlns.oracle.com/adfm/adapter/webservice"
+                  name="GetListOfValues" version="1.0"
+                  provider="oracle.adfinternal.model.adapter.webservice.provider.soap.SOAPProvider"
+                  wsdl="http://10.0.3.26:8001/soa-infra/services/default/ListOfValues/get_list_of_values_client_ep?WSDL">
+        <service name="get_list_of_values_client_ep"
+                 namespace="http://xmlns.oracle.com/SOA_Composites/ListOfValues/get_list_of_values"
+                 connection="GetListOfValues">
+          <port name="get_list_of_values_pt">
+            <operation name="process"/>
+          </port>
+        </service>
+      </definition>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

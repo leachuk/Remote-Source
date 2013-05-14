@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ipro_signup_taskflow_ipro_signup_taskflow_ExecuteWithParamsPageDef1111111"
+                Package="au.com.entitysolutions.taskflows.train.signup.ipro.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="SysGlobalVariablesView" RangeSize="25"
+              DataControl="SharedAppModuleDataControl"
+              id="SysGlobalVariablesViewIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="SysGlobalVariablesViewIterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_global_name" NDValue="#{'PORTAL_SIGNUP_SURVEY_LINK'}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

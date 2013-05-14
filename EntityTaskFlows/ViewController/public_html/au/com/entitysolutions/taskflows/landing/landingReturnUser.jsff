@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelGroupLayout id="pgl2" layout="horizontal">
+      <af:outputText value="#{pageFlowScope.msgs.bundle['HEADER_TITLE']}"
+                     id="ot1" styleClass="landingTitle"/>
+      <af:outputText value="#{sessionScope.userSessionBean.displayName}"
+                     id="outputText7" styleClass="landingTitle" truncateAt="0"/>
+    </af:panelGroupLayout>
+    <af:outputFormatted value="#{pageFlowScope.msgs.bundle['FIRST_LINE']}"
+                        id="of1"/>
+    <af:panelGroupLayout id="pgl5" layout="vertical">
+      <af:panelList id="pl1">
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['NOTIFICATION']} #{pageFlowScope.msgs.bundle['NOTIFICATION_DESC']}" id="ot2"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['TASK_FLOW']} #{pageFlowScope.msgs.bundle['TASK_FLOW_DESC']}" id="ot3"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['MY_PROFILE']} #{pageFlowScope.msgs.bundle['MY_PROFILE_DESC']}" id="ot4"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['MY_DOCUMENTS']} #{pageFlowScope.msgs.bundle['MY_DOCUMENTS_DESC']}" id="ot5"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['MY_PAYSLIPS']} #{pageFlowScope.msgs.bundle['MY_PAYSLIPS_DESC']}" id="ot6"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['FORMS']} #{pageFlowScope.msgs.bundle['FORMS_DESC']}" id="ot7"/>
+        <af:outputFormatted value="#{pageFlowScope.msgs.bundle['EXPENSE_CLAIM']} #{pageFlowScope.msgs.bundle['EXPENSE_CLAIM_DESC']}" id="ot8"/>
+      </af:panelList>
+    </af:panelGroupLayout>
+    <af:spacer width="10" height="10" id="s1"/>
+    <af:panelGroupLayout id="pgl4" layout="horizontal" valign="top"
+                         styleClass="AFStretchWidth">
+      <af:region value="#{bindings.myearningstaskflowdefinition1.regionModel}"
+                 id="r1" inlineStyle="width:385px;"/>
+      <af:region value="#{bindings.mycontracthistorytaskflowdefinition1.regionModel}"
+                 id="r2" inlineStyle="width:385px; height: 320px;"/>
+    </af:panelGroupLayout>
+    <af:outputText value="#{pageFlowScope.msgs.bundle['SUPPORT']}"
+                   id="outputText9" styleClass="landingHeading"/>
+    <af:panelGroupLayout id="panelGroupLayout8" layout="vertical"
+                         styleClass="padBott12">
+      <af:outputFormatted value="#{pageFlowScope.msgs.bundle['MY_CONTACTS_DESC']}"
+                          id="outputFormatted8"/>
+      <af:outputFormatted value="#{pageFlowScope.msgs.bundle['LATEST_DESC']}"
+                          id="outputFormatted23"/>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

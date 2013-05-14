@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ipro_signup_taskflow_ipro_signup_taskflow_ExecuteWithParamsPageDef11"
+                Package="au.com.entitysolutions.taskflows.train.signup.ipro.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTFStepUploadedDocsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepUploadedDocsViewIterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalUserTFStepUploadedDocsViewIterator"
+            id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+       <NamedData NDName="p_user_tf_id"
+                 NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_step_name"
+                 NDValue="#{pageFlowScope.msgs.bundle['RESIDENCY_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

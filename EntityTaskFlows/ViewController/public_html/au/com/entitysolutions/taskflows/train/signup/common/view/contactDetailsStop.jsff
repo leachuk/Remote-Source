@@ -1,0 +1,121 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelFormLayout id="pfl1" labelWidth="200px">
+        <af:inputText value="#{bindings.TelephoneHome.inputValue}"
+                      label="#{bindings.TelephoneHome.hints.label}"
+                      required="#{bindings.TelephoneHome.hints.mandatory}"
+                      columns="#{bindings.TelephoneHome.hints.displayWidth}"
+                      maximumLength="#{bindings.TelephoneHome.hints.precision}"
+                      shortDesc="#{bindings.TelephoneHome.hints.tooltip}"
+                      id="it3">
+          <f:validator binding="#{bindings.TelephoneHome.validator}"/>
+          <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                             hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.TelephoneWork.inputValue}"
+                      label="#{bindings.TelephoneWork.hints.label}"
+                      required="#{bindings.TelephoneWork.hints.mandatory}"
+                      columns="#{bindings.TelephoneWork.hints.displayWidth}"
+                      maximumLength="#{bindings.TelephoneWork.hints.precision}"
+                      shortDesc="#{bindings.TelephoneWork.hints.tooltip}"
+                      id="it8">
+          <f:validator binding="#{bindings.TelephoneWork.validator}"/>
+          <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                             hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.TelephoneMobile.inputValue}"
+                      label="#{bindings.TelephoneMobile.hints.label}"
+                      required="#{bindings.TelephoneMobile.hints.mandatory}"
+                      columns="#{bindings.TelephoneMobile.hints.displayWidth}"
+                      maximumLength="#{bindings.TelephoneMobile.hints.precision}"
+                      shortDesc="#{bindings.TelephoneMobile.hints.tooltip}"
+                      id="it5">
+          <f:validator binding="#{bindings.TelephoneMobile.validator}"/>
+          <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                             hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.HomeAddressLine.inputValue}"
+                      label="#{bindings.HomeAddressLine.hints.label}"
+                      required="#{bindings.HomeAddressLine.hints.mandatory}"
+                      columns="#{bindings.HomeAddressLine.hints.displayWidth}"
+                      maximumLength="#{bindings.HomeAddressLine.hints.precision}"
+                      shortDesc="#{bindings.HomeAddressLine.hints.tooltip}"
+                      id="it1" rows="2">
+          <f:validator binding="#{bindings.HomeAddressLine.validator}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.HomeSuburb.inputValue}"
+                      label="#{bindings.HomeSuburb.hints.label}"
+                      required="#{bindings.HomeSuburb.hints.mandatory}"
+                      columns="#{bindings.HomeSuburb.hints.displayWidth}"
+                      maximumLength="#{bindings.HomeSuburb.hints.precision}"
+                      shortDesc="#{bindings.HomeSuburb.hints.tooltip}" id="it7">
+          <f:validator binding="#{bindings.HomeSuburb.validator}"/>
+        </af:inputText>
+        <af:selectOneChoice value="#{bindings.HomeState.inputValue}"
+                            label="#{bindings.HomeState.label}"
+                            required="#{bindings.HomeState.hints.mandatory}"
+                            shortDesc="#{bindings.HomeState.hints.tooltip}"
+                            id="soc1">
+          <f:selectItems value="#{bindings.HomeState.items}" id="si1"/>
+        </af:selectOneChoice>
+        <af:inputText value="#{bindings.HomePostCode.inputValue}"
+                      label="#{bindings.HomePostCode.hints.label}"
+                      required="#{bindings.HomePostCode.hints.mandatory}"
+                      columns="#{bindings.HomePostCode.hints.displayWidth}"
+                      maximumLength="#{bindings.HomePostCode.hints.precision}"
+                      shortDesc="#{bindings.HomePostCode.hints.tooltip}"
+                      id="it6">
+          <f:validator binding="#{bindings.HomePostCode.validator}"/>
+          <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                             hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                             messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+        </af:inputText>
+        <af:inputText value="#{bindings.HomeCountry.inputValue}"
+                      label="#{bindings.HomeCountry.hints.label}"
+                      required="#{bindings.HomeCountry.hints.mandatory}"
+                      columns="#{bindings.HomeCountry.hints.displayWidth}"
+                      maximumLength="#{bindings.HomeCountry.hints.precision}"
+                      shortDesc="#{bindings.HomeCountry.hints.tooltip}"
+                      id="it2">
+          <f:validator binding="#{bindings.HomeCountry.validator}"/>
+        </af:inputText>
+        <af:panelLabelAndMessage label="#{bindings.PortalEmailAddress.hints.label}"
+                                 showRequired="#{bindings.PortalEmailAddress.hints.mandatory}"
+                                 id="plam1">
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:inputText value="#{bindings.PortalEmailAddress.inputValue}"
+                          label="#{bindings.PortalEmailAddress.hints.label}"
+                          required="#{bindings.PortalEmailAddress.hints.mandatory}"
+                          simple="true"
+                          columns="#{bindings.PortalEmailAddress.hints.displayWidth}"
+                          maximumLength="#{bindings.PortalEmailAddress.hints.precision}"
+                          shortDesc="#{bindings.PortalEmailAddress.hints.tooltip}"
+                          id="it4">
+              <f:validator binding="#{bindings.PortalEmailAddress.validator}"/>
+              <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                 messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+            </af:inputText>            
+            <f:facet name="separator">
+              <af:spacer width="10" height="5" id="s1"/>
+            </f:facet>
+          </af:panelGroupLayout>
+        </af:panelLabelAndMessage>
+      </af:panelFormLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['CONTACT_DTLS_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['CONTACT_DTLS_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

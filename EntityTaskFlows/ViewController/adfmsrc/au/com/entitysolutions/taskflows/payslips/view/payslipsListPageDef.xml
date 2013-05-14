@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="payslipsListPageDef"
+                Package="au.com.entitysolutions.taskflows.payslips.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PaylsipsView1" RangeSize="25"
+              DataControl="PayslipsAppModuleDataControl"
+              id="PaylsipsView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="PaylsipsView1Iterator" id="PaylsipsView1">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.payslips.model.PaylsipsView"
+                      Name="PaylsipsView10">
+        <AttrNames>
+          <Item Value="PayslipId"/>
+          <Item Value="NetAmount"/>
+          <Item Value="PayslipDate"/>
+          <Item Value="PayslipDescription"/>
+          <Item Value="PeriodFromDate"/>
+          <Item Value="PeriodToDate"/>
+          <Item Value="PersonNumber"/>
+          <Item Value="DateFrmted"/>
+          <Item Value="MonthFrmted"/>
+          <Item Value="PayslipContent"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

@@ -1,0 +1,52 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1">
+      <property
+         name="y">266.5</property>
+      <property
+         name="x">94.35156</property>
+   </OverallProperties>
+   <View
+      id="View2">
+      <property
+         name="activityId">monthlybilling</property>
+      <property
+         name="page">/au/com/entitysolutions/taskflows/corporate/corp_landing/monthlybilling.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>monthlybilling&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">138.625</property>
+      <property
+         name="x">446.0547</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">ExecuteWithParams</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ExecuteWithParams&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">146.39648</property>
+      <property
+         name="x">131.35156</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View2">
+      <property
+         name="fromOutcome">ExecuteWithParams</property>
+      <property
+         name="sdm:polyPoints">R50,172.35156,146.0459,405.0547,138.27441,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,22 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:outputText value="#{pageFlowScope.msgs.bundle['NO_ACCESS_TEXT1']}" id="ot1"
+                   escape="false"/>
+    <af:panelGroupLayout id="panelGroupLayout8" layout="horizontal"
+                         styleClass="padBott12" valign="top">
+      <af:outputText value="#{pageFlowScope.msgs.bundle['NO_ACCESS_TEXT2']} "
+                     id="outputFormatted8"/>
+      <af:commandLink text="#{pageFlowScope.msgs.bundle['NO_ACCESS_TEXT3']}"
+                      id="commandLink4" styleClass="landingLink"
+                      actionListener="#{navigationContext.processAction}">
+        <f:attribute name="node"
+                     value="#{navigationContext.defaultNavigationModel.node['contactus']}"/>
+      </af:commandLink>
+      <af:outputText value="#{pageFlowScope.msgs.bundle['NO_ACCESS_TEXT4']}"
+                     id="outputFormatted23"/>
+    </af:panelGroupLayout>
+  </af:panelGroupLayout>
+</jsp:root>

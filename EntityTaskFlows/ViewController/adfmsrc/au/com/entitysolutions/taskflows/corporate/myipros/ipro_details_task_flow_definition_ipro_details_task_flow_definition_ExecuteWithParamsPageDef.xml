@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ipro_details_task_flow_definition_ipro_details_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.myipros"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="IproDetails1" RangeSize="25"
+              DataControl="MyIProsAppModuleDataControl"
+              id="IproDetails1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="IproDetails1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="orgId" NDValue="#{pageFlowScope.orgId}"
+                 NDType="oracle.jbo.domain.Number"/>
+      <NamedData NDName="personId" NDValue="#{pageFlowScope.personId}"
+                 NDType="oracle.jbo.domain.Number"/>
+    </action>
+  </bindings>
+</pageDefinition>

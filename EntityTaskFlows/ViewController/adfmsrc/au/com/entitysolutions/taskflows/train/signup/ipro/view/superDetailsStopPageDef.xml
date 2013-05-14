@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="superDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ipro.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupSuperDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupSuperDetailsViewIterator"/>
+  </executables>
+  <bindings>
+<action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>  
+<methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="PortalSignupSuperDetailsViewIterator" StaticList="false"
+          Uses="LOV_SuperChoice" id="SuperChoice" DTSupportsMRU="false"/>
+    <list IterBinding="PortalSignupSuperDetailsViewIterator" StaticList="false"
+          Uses="LOV_SuperFundType" id="SuperFundType" DTSupportsMRU="false"/>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SuperFundName">
+      <AttrNames>
+        <Item Value="SuperFundName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SuperFundSpin">
+      <AttrNames>
+        <Item Value="SuperFundSpin"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SuperFundAbn">
+      <AttrNames>
+        <Item Value="SuperFundAbn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SuperMemberName">
+      <AttrNames>
+        <Item Value="SuperMemberName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SuperMemberNumber">
+      <AttrNames>
+        <Item Value="SuperMemberNumber"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupSuperDetailsViewIterator" StaticList="false"
+          Uses="LOV_SuperPaymentType" id="SuperPaymentType"
+          DTSupportsMRU="false"/>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="EftAccountName">
+      <AttrNames>
+        <Item Value="EftAccountName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="EftAccountNo">
+      <AttrNames>
+        <Item Value="EftAccountNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="EftBsb">
+      <AttrNames>
+        <Item Value="EftBsb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="EftEmail">
+      <AttrNames>
+        <Item Value="EftEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="resetSuperDetails"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="resetSuperDetails" IsViewObjectMethod="false"/>
+    <methodAction id="resetSuperFundType"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="resetSuperFundType" IsViewObjectMethod="false"/>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="BpayBillerCode">
+      <AttrNames>
+        <Item Value="BpayBillerCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="BpayRefNo">
+      <AttrNames>
+        <Item Value="BpayRefNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SacBpayBillerCode">
+      <AttrNames>
+        <Item Value="SacBpayBillerCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="SacBpayRefNo">
+      <AttrNames>
+        <Item Value="SacBpayRefNo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="ChqPayTo">
+      <AttrNames>
+        <Item Value="ChqPayTo"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="ChqAddress">
+      <AttrNames>
+        <Item Value="ChqAddress"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="ChqSuburb">
+      <AttrNames>
+        <Item Value="ChqSuburb"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupSuperDetailsViewIterator" StaticList="false"
+          Uses="LOV_ChqState" id="ChqState" DTSupportsMRU="true"/>
+    <attributeValues IterBinding="PortalSignupSuperDetailsViewIterator"
+                     id="ChqPostcode">
+      <AttrNames>
+        <Item Value="ChqPostcode"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="PortalSignupSuperDetailsViewIterator"
+            id="ConfirmSuperCompliance" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="ConfirmSuperCompliance"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

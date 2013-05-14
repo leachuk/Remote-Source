@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="rssFeedReaderPageDef"
+                Package="au.com.entitysolutions.taskflows.rss.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="processFeed.result" DataControl="FeedReader"
+                    RangeSize="25"
+                    BeanClass="au.com.entitysolutions.taskflows.rss.model.Feed"
+                    id="processFeedIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="processFeed" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="processFeed"
+                  IsViewObjectMethod="false" DataControl="FeedReader"
+                  InstanceName="FeedReader.dataProvider"
+                  ReturnName="data.FeedReader.methodResults.processFeed_FeedReader_dataProvider_processFeed_result">
+      <NamedData NDName="arg"
+                 NDValue="#{pageFlowScope.msgs.bundle['ENTITY_RSS_URL']}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="processFeedIterator" id="Feed">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.rss.model.Feed"
+                      Name="Feed0">
+        <AttrNames>
+          <Item Value="titleHead"/>
+          <Item Value="titleDesc"/>
+          <Item Value="title"/>
+          <Item Value="link"/>
+          <Item Value="description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

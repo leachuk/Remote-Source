@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Item"
+          Package="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result"
+          BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result.Item"
+          isJavaBased="false">
+  <Attribute Name="order" IsUpdateable="0" IsNotNull="false"
+             Type="java.lang.String"/>
+  <Attribute Name="Name" IsUpdateable="0" IsNotNull="false"
+             Type="java.lang.String"/>
+</JavaBean>

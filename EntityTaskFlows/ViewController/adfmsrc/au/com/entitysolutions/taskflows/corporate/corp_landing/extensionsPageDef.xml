@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="extensionsPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.corp_landing">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="ExtensionsVO1" RangeSize="1"
+              DataControl="CorpLandingAppModuleDataControl"
+              id="ExtensionsVO1Iterator"/>
+    <iterator Binds="ExtensionsVO1" RangeSize="1"
+              DataControl="CorpLandingAppModuleDataControl"
+              id="ExtensionsVO1Iterator1"/>
+  </executables>
+  <bindings>
+    <gauge IterBinding="ExtensionsVO1Iterator" id="ExtensionsVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="STATUSMETER">
+      <gaugeDataMap>
+        <thresholds>
+          <item value="0" valueType="literal"/>
+          <item value="30" valueType="literal"/>
+          <item value="60" valueType="literal"/>
+        </thresholds>
+        <item type="metric" value="ThisWeek"/>
+        <item type="minimum" value="0" valueType="literal"/>
+        <item type="bottomLabel" value="ThisWeek"/>
+        <item type="maximum" value="MaxThisWeek"/>
+      </gaugeDataMap>
+    </gauge>
+    <gauge IterBinding="ExtensionsVO1Iterator1" id="ExtensionsVO11"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="STATUSMETER">
+      <gaugeDataMap>
+        <thresholds>
+          <item value="0" valueType="literal"/>
+          <item value="30" valueType="literal"/>
+          <item value="60" valueType="literal"/>
+        </thresholds>
+        <item type="metric" value="NextMonth"/>
+        <item type="minimum" value="0" valueType="literal"/>
+        <item type="bottomLabel" value="NextMonth"/>
+        <item type="maximum" value="MaxNextMonth"/>
+      </gaugeDataMap>
+    </gauge>
+  </bindings>
+</pageDefinition>

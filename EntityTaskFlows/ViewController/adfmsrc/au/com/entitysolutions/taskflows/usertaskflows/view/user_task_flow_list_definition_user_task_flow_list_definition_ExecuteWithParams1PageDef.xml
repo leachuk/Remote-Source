@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="user_task_flow_list_definition_user_task_flow_list_definition_ExecuteWithParams1PageDef"
+                Package="au.com.entitysolutions.taskflows.usertaskflows.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalUserTaskFlowsView1" RangeSize="25"
+              DataControl="TrainAppModuleDataControl"
+              id="PortalUserTaskFlowsView1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalUserTaskFlowsView1Iterator"
+            id="ExecuteWithParams" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="p_user_name" NDValue="#{userSessionBean.userName}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="p_user_tf_id"
+                 NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

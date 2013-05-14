@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="FeedReader" Package="au.com.entitysolutions.taskflows.rss.model"
+          BeanClass="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+          isJavaBased="true">
+  <MethodAccessor IsCollection="true"
+                  Type="au.com.entitysolutions.taskflows.rss.model.Feed"
+                  BeanClass="au.com.entitysolutions.taskflows.rss.model.Feed"
+                  id="processFeed" ReturnNodeName="Feed"
+                  CollectionBeanClass="UpdateableCollection">
+    <ParameterInfo id="arg" Type="java.lang.String" isStructured="false"/>
+  </MethodAccessor>
+  <MethodAccessor IsCollection="false" Type="void" id="addEntry"
+                  ReturnNodeName="Return">
+    <ParameterInfo id="titleHead" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="titleDesc" Type="java.lang.String" isStructured="false"/>
+    <ParameterInfo id="entry" Type="com.sun.syndication.feed.synd.SyndEntry"
+                   isStructured="true"/>
+  </MethodAccessor>
+  <ConstructorMethod IsCollection="true"
+                     Type="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+                     BeanClass="au.com.entitysolutions.taskflows.rss.model.FeedReader"
+                     id="FeedReader"/>
+</JavaBean>

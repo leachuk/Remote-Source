@@ -1,0 +1,215 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalSignupBusinessInfoView"
+  Version="11.1.1.60.13"
+  SelectList="PortalSignupBusinessInfo.BUSINESS_INFO_ID, 
+       PortalSignupBusinessInfo.USER_TF_ID, 
+       PortalSignupBusinessInfo.BUSINESS_NAME, 
+       PortalSignupBusinessInfo.ABN, 
+       PortalSignupBusinessInfo.ACN, 
+       PortalSignupBusinessInfo.BUSINESS_PHONE, 
+       PortalSignupBusinessInfo.BUSINESS_ADDR, 
+       PortalSignupBusinessInfo.BUSINESS_SUBURB, 
+       PortalSignupBusinessInfo.BUSINESS_STATE, 
+       PortalSignupBusinessInfo.BUSINESS_POST_CODE, 
+       PortalSignupBusinessInfo.BUSINESS_COUNTRY, 
+       PortalSignupBusinessInfo.GST_REGISTERED, 
+       PortalSignupBusinessInfo.LAST_UPDATE_DATE, 
+       PortalSignupBusinessInfo.LAST_UPDATED_BY, 
+       PortalSignupBusinessInfo.CREATED_BY, 
+       PortalSignupBusinessInfo.CREATION_DATE"
+  FromList="PORTAL_SIGNUP_BUSINESS_INFO PortalSignupBusinessInfo"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|VarAccess"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="SharedAppModule_SysCommonLookupsView_BusiState"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView"
+    AMUsageName="SharedAppModule"
+    ViewInstanceName="SysCommonLookupsView">
+    <ViewCriteriaUsage
+      Name="QueryByLookupTypeViewCriteria"
+      FullName="au.com.entitysolutions.taskflows.system.model.SysCommonLookupsView.QueryByLookupTypeViewCriteria"/>
+    <ParameterMap>
+      <PIMap Variable="p_lookup_type">
+        <TransientExpression><![CDATA["STATES"]]></TransientExpression>
+      </PIMap>
+    </ParameterMap>
+  </ViewAccessor>
+  <ViewAccessor
+    Name="SharedAppModule_SysYesNoLookup_GST"
+    ViewObjectName="au.com.entitysolutions.taskflows.system.model.SysYesNoLookup"
+    AMUsageName="SharedAppModule"
+    ViewInstanceName="SysYesNoLookup"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_BusinessState"
+    ListVOName="SharedAppModule_SysCommonLookupsView_BusiState"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_BusinessState_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="BusinessState"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_GstRegistered"
+    ListVOName="SharedAppModule_SysYesNoLookup_GST"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    NullValueId="LOV_GstRegistered_LOVUIHints_NullValueId"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="GstRegistered"/>
+    </AttrArray>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="LookupCode"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Meaning"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <EntityUsage
+    Name="PortalSignupBusinessInfo"
+    Entity="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfo"/>
+  <ViewAttribute
+    Name="BusinessInfoId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="BusinessInfoId"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_INFO_ID"/>
+  <ViewAttribute
+    Name="UserTfId"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserTfId"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="USER_TF_ID"/>
+  <ViewAttribute
+    Name="BusinessName"
+    PrecisionRule="true"
+    EntityAttrName="BusinessName"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_NAME"/>
+  <ViewAttribute
+    Name="Abn"
+    PrecisionRule="true"
+    EntityAttrName="Abn"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="ABN"/>
+  <ViewAttribute
+    Name="Acn"
+    PrecisionRule="true"
+    EntityAttrName="Acn"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="ACN"/>
+  <ViewAttribute
+    Name="BusinessPhone"
+    PrecisionRule="true"
+    EntityAttrName="BusinessPhone"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_PHONE"/>
+  <ViewAttribute
+    Name="BusinessAddr"
+    PrecisionRule="true"
+    EntityAttrName="BusinessAddr"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_ADDR"/>
+  <ViewAttribute
+    Name="BusinessSuburb"
+    PrecisionRule="true"
+    EntityAttrName="BusinessSuburb"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_SUBURB"/>
+  <ViewAttribute
+    Name="BusinessState"
+    PrecisionRule="true"
+    EntityAttrName="BusinessState"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_STATE"
+    LOVName="LOV_BusinessState">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="BusinessPostCode"
+    PrecisionRule="true"
+    EntityAttrName="BusinessPostCode"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_POST_CODE"/>
+  <ViewAttribute
+    Name="BusinessCountry"
+    PrecisionRule="true"
+    EntityAttrName="BusinessCountry"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="BUSINESS_COUNTRY"/>
+  <ViewAttribute
+    Name="GstRegistered"
+    PrecisionRule="true"
+    EntityAttrName="GstRegistered"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="GST_REGISTERED"
+    LOVName="LOV_GstRegistered">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.taskflows.train.signup.model.PortalSignupBusinessInfoView.GstRegistered_LABEL"/>
+        <CONTROLTYPE
+          Value="radio"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LastUpdateDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdateDate"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="LAST_UPDATE_DATE"/>
+  <ViewAttribute
+    Name="LastUpdatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="LastUpdatedBy"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="LAST_UPDATED_BY"/>
+  <ViewAttribute
+    Name="CreatedBy"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreatedBy"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="CREATED_BY"/>
+  <ViewAttribute
+    Name="CreationDate"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="CreationDate"
+    EntityUsage="PortalSignupBusinessInfo"
+    AliasName="CREATION_DATE"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="policiesStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.common.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupPoliciesView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupPoliciesViewIterator"/>
+    <iterator Binds="PortalUserTFStepDownloadDocsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepDownloadDocsViewIterator"/>              
+  </executables>
+  <bindings>
+<action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>  
+<methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentMime">
+      <AttrNames>
+        <Item Value="DocContentMime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentName">
+      <AttrNames>
+        <Item Value="DocContentName"/>
+      </AttrNames>
+    </attributeValues>    
+    <button IterBinding="PortalSignupPoliciesViewIterator" id="AceeptPolicies"
+            DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="AceeptPolicies"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+  </bindings>
+</pageDefinition>

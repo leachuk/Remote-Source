@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="notification_widget_taskflow_notification_widget_taskflow_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.notification"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="PortalNotificationView1" RangeSize="25"
+              DataControl="NotificationAppModuleDataControl"
+              id="PortalNotificationView1Iterator" Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="PortalNotificationView1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="p_user_name" NDValue="#{userSessionBean.userName}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

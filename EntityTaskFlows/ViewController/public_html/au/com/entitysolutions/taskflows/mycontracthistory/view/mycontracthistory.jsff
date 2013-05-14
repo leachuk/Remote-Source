@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:c="http://java.sun.com/jsp/jstl/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <c:set var="viewcontrollerBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.view.ViewControllerBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="AFStretchWidth">
+    <af:outputLabel value="#{viewcontrollerBundle.MY_CONTRACT_HISTORY}"
+                    id="outputLabel1" styleClass="landingHeading"
+                    inlineStyle="text-align: left;"/>
+    <af:spacer width="10" height="5" id="s1"/>
+    <af:outputText value="#{viewcontrollerBundle.MY_CONTRACT_HISTORY_DESC}"
+                   id="ot5" escape="false"/>
+    <af:spacer width="10" height="10" id="s2"/>
+    <af:panelStretchLayout id="psl1"
+                           inlineStyle="width:380px; height:285px">
+      <f:facet name="center">
+        <af:table value="#{bindings.MyContractHistoryVO1.collectionModel}"
+                  var="row" rows="#{bindings.MyContractHistoryVO1.rangeSize}"
+                  emptyText="#{bindings.MyContractHistoryVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.MyContractHistoryVO1.rangeSize}"
+                  rowBandingInterval="0"
+                  selectedRowKeys="#{bindings.MyContractHistoryVO1.collectionModel.selectedRow}"
+                  selectionListener="#{bindings.MyContractHistoryVO1.collectionModel.makeCurrent}"
+                  rowSelection="single" id="t1" columnStretching="column:c3"
+                  contentDelivery="immediate" autoHeightRows="0"
+                  styleClass="AFStretchWidth">
+          <af:column sortProperty="AssignmentNumber" sortable="true"
+                     headerText="#{bindings.MyContractHistoryVO1.hints.AssignmentNumber.label}"
+                     id="c4" rowHeader="unstyled">
+            <af:outputText value="#{row.AssignmentNumber}" id="ot1"/>
+          </af:column>
+          <af:column sortProperty="BillingOrganisationName" sortable="true"
+                     headerText="#{bindings.MyContractHistoryVO1.hints.BillingOrganisationName.label}"
+                     id="c3">
+            <af:outputText value="#{row.BillingOrganisationName}" id="ot4"/>
+          </af:column>
+          <af:column sortProperty="AssignmentStartDate" sortable="true"
+                     headerText="#{bindings.MyContractHistoryVO1.hints.AssignmentStartDate.label}"
+                     id="c2" width="70">
+            <af:outputText value="#{row.AssignmentStartDate}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.MyContractHistoryVO1.hints.AssignmentStartDate.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="LastPaymentDate" sortable="true"
+                     headerText="#{bindings.MyContractHistoryVO1.hints.LastPaymentDate.label}"
+                     id="c1" width="70">
+            <af:outputText value="#{row.LastPaymentDate}" id="ot2">
+              <af:convertDateTime pattern="#{bindings.MyContractHistoryVO1.hints.LastPaymentDate.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </f:facet>
+    </af:panelStretchLayout>
+  </af:panelGroupLayout>
+</jsp:root>

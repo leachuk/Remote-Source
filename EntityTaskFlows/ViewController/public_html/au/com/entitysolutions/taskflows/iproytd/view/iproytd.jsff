@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
+    <af:panelGroupLayout id="pgl2" layout="horizontal">
+      <af:selectOneChoice label="Select Financial Year"
+                          value="#{backingBeanScope.IProYtdManagedBean.financialYear}"
+                          id="soc1">
+        <f:selectItems value="#{backingBeanScope.IProYtdManagedBean.years}"
+                       id="si1"/>
+      </af:selectOneChoice>
+      <af:spacer width="5" height="10" id="s1"/>
+      <af:commandButton text="Go" id="cb1" action="go"/>
+    </af:panelGroupLayout>
+    <dvt:barGraph id="barGraph1" value="#{bindings.MyYtdVO1.graphModel}"
+                  subType="BAR_VERT_CLUST"
+                  inlineStyle="width:768px; height:400.0px;">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER" rendered="false"/>
+      <dvt:y1Title text="YTD (AUD)"/>
+    </dvt:barGraph>
+    <af:spacer width="10" height="10" id="s5"/>
+    <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal">
+      <af:icon name="info" id="icon1"/>
+      <af:outputLabel value="Definitions:" id="outputLabel1"/>
+    </af:panelGroupLayout>
+    <af:spacer width="5" height="5" id="s2"/>
+    <af:panelList id="pl1" inlineStyle="line-height:150%">
+      <af:outputFormatted value="'Revenues' includes consulting fee and all Income items invoiced to your Billing Organisation."
+                          id="ot1"/>
+      <af:outputFormatted value="'Deductions' includes all pre-tax deductions and pre-tax add-back deductions."
+                     id="ot2"/>
+      <af:outputFormatted value="'Super &amp; Contributions' includes 9% statutory superannuation and any voluntary salary sacrifice."
+                     id="outputText1"/>
+      <af:outputFormatted value="'Tax' includes PayG, HELP &amp; SFSS."
+                     id="outputText2"/>
+      <af:outputFormatted value="'Bank Payments' includes net income, pre-tax add-back deductions, post tax deductions and any cash payments."
+                     id="outputText3"/>
+    </af:panelList>
+  </af:panelGroupLayout>
+</jsp:root>

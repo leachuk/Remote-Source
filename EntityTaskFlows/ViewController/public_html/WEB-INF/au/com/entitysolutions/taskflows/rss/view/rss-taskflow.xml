@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="rss-taskflow">
+    <default-activity id="__1">rssFeedReader</default-activity>
+    <managed-bean id="__4">
+      <managed-bean-name id="__5">msgs</managed-bean-name>
+      <managed-bean-class id="__3">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__2">pageFlow</managed-bean-scope>
+      <managed-property id="__10">
+        <property-name id="__11">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__12">au.com.entitysolutions.taskflows.rss.view.RSSFeedBundle</value>
+      </managed-property>
+    </managed-bean>
+    <view id="rssFeedReader">
+      <page>/au/com/entitysolutions/taskflows/rss/view/rssFeedReader.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

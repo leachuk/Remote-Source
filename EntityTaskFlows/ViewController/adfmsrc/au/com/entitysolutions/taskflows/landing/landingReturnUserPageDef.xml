@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="landingReturnUserPageDef"
+                Package="au.com.entitysolutions.taskflows.landing">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="myearningstaskflowdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/myearnings/view/my-earnings-task-flow-definition.xml#my-earnings-task-flow-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="personId" value="#{userSessionBean.personId}"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="mycontracthistorytaskflowdefinition1"
+              taskFlowId="/WEB-INF/au/com/entitysolutions/taskflows/mycontracthistory/view/my-contract-history-task-flow-definition.xml#my-contract-history-task-flow-definition"
+              activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="personId" value="#{userSessionBean.personId}"/>
+      </parameters>
+    </taskFlow>
+  </executables>
+  <bindings/>
+</pageDefinition>

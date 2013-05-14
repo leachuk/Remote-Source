@@ -1,0 +1,61 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="myiprosBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.myipros.MyIprosBundle']}"/>
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:pageTemplate id="pt1"
+                   viewId="/au/com/entitysolutions/taskflows/corporate/myipros/newIproTrainTemplate.jspx"
+                   value="#{bindings.pt1}">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:panelFormLayout id="pfl1">
+          <af:inputText label="#{myiprosBundle.END_USESR_NAME_LBL}" id="inputText1"
+                        value="#{pageFlowScope.NewIProManagedBean.endUserName}"/>
+        </af:panelFormLayout>
+        <af:panelHeader text="#{myiprosBundle.PHYSICAL_WORK_LOC_LBL}" id="ph2">
+          <af:panelFormLayout id="pfl2">
+            <af:inputText label="#{myiprosBundle.STREET_LBL}" id="it3"
+                          value="#{pageFlowScope.NewIProManagedBean.endUserStreet}"/>
+            <af:inputText label="#{myiprosBundle.SUBURB_LBL}" id="it4"
+                          value="#{pageFlowScope.NewIProManagedBean.endUserSuburb}"/>
+            <af:selectOneChoice label="#{myiprosBundle.STATE_LBL}"
+                                value="#{pageFlowScope.NewIProManagedBean.endUserState}"
+                                id="soc1">
+              <f:selectItems value="#{pageFlowScope.NewIProManagedBean.states}"
+                             id="si1"/>
+            </af:selectOneChoice>
+            <af:inputText label="#{myiprosBundle.POSTCODE_LBL}" id="it5"
+                          value="#{pageFlowScope.NewIProManagedBean.endUserPostcode}">
+              <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                                 hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                                 messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="10" id="s1"/>
+        </af:panelHeader>
+        <af:panelHeader text="#{myiprosBundle.WORKCOVER_LBL}" id="ph3">
+          <af:panelGroupLayout id="pgl4" layout="horizontal">
+            <af:icon name="info" id="i1"/>
+            <af:outputFormatted value="Applicable when IPro is working in Victoria only" id="of1"/>
+          </af:panelGroupLayout>
+          <af:panelFormLayout id="pfl3">
+            <af:inputText label="#{myiprosBundle.WIC_CODE_LBL}" id="it1"
+                          value="#{pageFlowScope.NewIProManagedBean.wicCode}"/>
+            <af:inputText label="#{myiprosBundle.WIC_RATE_LBL}" id="it2"
+                          value="#{pageFlowScope.NewIProManagedBean.wicRate}">
+              <f:validateDoubleRange/>
+            </af:inputText>
+          </af:panelFormLayout>
+          <af:spacer width="10" height="10" id="s2"/>
+        </af:panelHeader>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{myiprosBundle.END_USER_DETAILS_LBL}"/>
+    <f:attribute name="stopName" value="#{myiprosBundle.END_USER_DETAILS_LBL}"/>
+  </af:pageTemplate>
+</jsp:root>

@@ -1,0 +1,143 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/signup/common/view/signupStopTemplate.jspx"
+                   id="pt1">
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl3" layout="vertical">
+        <af:outputText value="#{pageFlowScope.msgs.bundle['CERTIFICATE_INFO']}"
+                       id="ot1"/>
+        <af:panelFormLayout id="pfl1">
+          <af:inputFile label="#{pageFlowScope.msgs.bundle['CERTIFICATE_INCORPORATION']}"
+                        value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].incorpCert}"
+                        binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].incorpCertIn}"
+                        showRequired="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].incorpCertRqd}"
+                        id="if1"/>
+          <af:spacer width="10" height="5" id="s4"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['CERTIFICATE_WORKCOVER']}"
+                                   showRequired="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].workCoverCertRqd}"
+                                   id="plam1">
+            <af:panelGroupLayout id="pgl4">
+              <af:inputDate label="#{pageFlowScope.msgs.bundle['CERTIFICATE_EXPIRY_DATE']}"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].workCoverExpiry}"
+                            id="id1">
+                <f:validator binding="#{bindings.WrkrsCompExpiry.validator}"/>
+                <af:convertDateTime pattern="#{bindings.WrkrsCompExpiry.format}"/>
+              </af:inputDate>
+              <af:inputFile simple="true"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].workCoverCert}"
+                            binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].workCoverCertIn}"
+                            label="#{pageFlowScope.msgs.bundle['CERTIFICATE_WORKCOVER']}"
+                            id="if2"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="5" id="s3"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['CERTIFICATE_PROF_INDEM']}"
+                                   showRequired="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].profIndemCertRqd}"
+                                   id="plam2">
+            <af:panelGroupLayout id="pgl5">
+              <af:inputDate label="#{pageFlowScope.msgs.bundle['CERTIFICATE_EXPIRY_DATE']}"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].profIndemExpiry}"
+                            id="id2">
+                <f:validator binding="#{bindings.ProfIndmExpiry.validator}"/>
+                <af:convertDateTime pattern="#{bindings.ProfIndmExpiry.format}"/>
+              </af:inputDate>
+              <af:inputFile simple="true"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].profIndemCert}"
+                            binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].profIndemCertIn}"
+                            label="#{pageFlowScope.msgs.bundle['CERTIFICATE_PROF_INDEM']}"
+                            id="if3"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="5" id="s2"/>
+          <af:panelLabelAndMessage label="#{pageFlowScope.msgs.bundle['CERTIFICATE_PUBL_LIAB']}"
+                                   showRequired="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].publicLiabRqd}"
+                                   id="plam3">
+            <af:panelGroupLayout id="pgl6">
+              <af:inputDate label="#{pageFlowScope.msgs.bundle['CERTIFICATE_EXPIRY_DATE']}"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].publicLiabExpiry}"
+                            id="id3">
+                <f:validator binding="#{bindings.PublLiabExpiry.validator}"/>
+                <af:convertDateTime pattern="#{bindings.PublLiabExpiry.format}"/>
+              </af:inputDate>
+              <af:inputFile simple="true"
+                            value="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].publicLiab}"
+                            binding="#{pageFlowScope.signUpBean.trainStops[pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']].publicLiabIn}"
+                            label="#{pageFlowScope.msgs.bundle['CERTIFICATE_PUBL_LIAB']}"
+                            id="if4"/>
+            </af:panelGroupLayout>
+          </af:panelLabelAndMessage>
+          <af:spacer width="10" height="10" id="s7"/>
+          <af:panelGroupLayout id="pgl7" layout="horizontal">
+            <af:selectBooleanCheckbox value="#{bindings.SendOffline.inputValue}"
+                                      label="#{bindings.SendOffline.label}" simple="true"
+                                      shortDesc="#{bindings.SendOffline.hints.tooltip}"
+                                      id="sbc1"/>
+            <af:outputText value="OR #{bindings.SendOffline.label}"
+                               id="ot4"/>                                      
+          </af:panelGroupLayout>
+        </af:panelFormLayout>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['CERTIFICATE_PREV_FILES_HDR']}"
+                       id="ot5" styleClass="headerOutputText"/>
+        <af:table value="#{bindings.PortalSignupIcCertificatesView.collectionModel}"
+                  var="row" autoHeightRows="1" contentDelivery="immediate"
+                  styleClass="AFStretchWidth"
+                  rows="#{bindings.PortalSignupIcCertificatesView.rangeSize}"
+                  emptyText="#{bindings.PortalSignupIcCertificatesView.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.PortalSignupIcCertificatesView.rangeSize}"
+                  rowBandingInterval="0" id="t2" columnStretching="column:c4">
+          <af:column sortProperty="IncorpCertUplName" sortable="false"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.IncorpCertUplName.label}"
+                     id="c2">
+            <af:outputText value="#{row.IncorpCertUplName}" id="ot8"/>
+          </af:column>
+          <af:column sortProperty="WorkCmpUplName" sortable="false"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.WorkCmpUplName.label}"
+                     id="c1">
+            <af:outputText value="#{row.WorkCmpUplName}" id="ot88"/>
+          </af:column>
+          <af:column sortProperty="WrkrsCompExpiry" sortable="false"
+                     width="65px"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.WrkrsCompExpiry.label}"
+                     id="c3">
+            <af:outputText value="#{row.WrkrsCompExpiry}" id="ot9">
+              <af:convertDateTime pattern="#{bindings.PortalSignupIcCertificatesView.hints.WrkrsCompExpiry.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="ProfIdmUplName" sortable="false"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.ProfIdmUplName.label}"
+                     id="c4">
+            <af:outputText value="#{row.ProfIdmUplName}" id="ot7"/>
+          </af:column>
+          <af:column sortProperty="ProfIndmExpiry" sortable="false"
+                     width="65px"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.ProfIndmExpiry.label}"
+                     id="c6">
+            <af:outputText value="#{row.ProfIndmExpiry}" id="ot3">
+              <af:convertDateTime pattern="#{bindings.PortalSignupIcCertificatesView.hints.ProfIndmExpiry.format}"/>
+            </af:outputText>
+          </af:column>
+          <af:column sortProperty="PubLiabUplName" sortable="false"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.PubLiabUplName.label}"
+                     id="c7">
+            <af:outputText value="#{row.PubLiabUplName}" id="ot6"/>
+          </af:column>
+          <af:column sortProperty="PublLiabExpiry" sortable="false"
+                     width="65px"
+                     headerText="#{bindings.PortalSignupIcCertificatesView.hints.PublLiabExpiry.label}"
+                     id="c5">
+            <af:outputText value="#{row.PublLiabExpiry}" id="ot2">
+              <af:convertDateTime pattern="#{bindings.PortalSignupIcCertificatesView.hints.PublLiabExpiry.format}"/>
+            </af:outputText>
+          </af:column>
+        </af:table>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['CERTIFICATES_HDR']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['CERTIFICATES_STEP_NAME']}"/>
+  </af:pageTemplate>
+</jsp:root>

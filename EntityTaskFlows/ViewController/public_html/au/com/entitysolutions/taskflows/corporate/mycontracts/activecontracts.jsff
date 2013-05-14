@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:dvt="http://xmlns.oracle.com/dss/adf/faces"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="mycontractsBundle"
+         value="#{adfBundle['au.com.entitysolutions.corporate.taskflows.mycontracts.MyContractsBundle']}"/>
+  <af:panelGroupLayout id="pgl1" layout="vertical" valign="top">
+    <af:outputLabel value="#{mycontractsBundle.ACTIVE_CONTRACTS_TITLE}" id="ol1"
+                    styleClass="widgetHeader" inlineStyle="margin-left:12px;"/>
+    <dvt:barGraph id="barGraph1"
+                  value="#{bindings.ActiveContractsVO1.graphModel}"
+                  subType="BAR_VERT_STACK"
+                  inlineStyle="width:400.0px; height:285.0px">
+      <dvt:background>
+        <dvt:specialEffects/>
+      </dvt:background>
+      <dvt:graphPlotArea/>
+      <dvt:seriesSet>
+        <dvt:series/>
+      </dvt:seriesSet>
+      <dvt:o1Axis/>
+      <dvt:y1Axis/>
+      <dvt:legendArea automaticPlacement="AP_NEVER"/>
+      <dvt:y1Title text="#{mycontractsBundle.NO_OF_CONTRACTS_LBL}"/>
+    </dvt:barGraph>
+  </af:panelGroupLayout>
+</jsp:root>

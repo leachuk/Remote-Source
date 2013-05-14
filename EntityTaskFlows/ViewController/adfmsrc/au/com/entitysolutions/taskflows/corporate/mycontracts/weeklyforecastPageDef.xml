@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="weeklyforecastPageDef"
+                Package="au.com.entitysolutions.taskflows.corporate.mycontracts">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="WeeklyForecastVO1" RangeSize="-1"
+              DataControl="MyContractsAppModuleDataControl"
+              id="WeeklyForecastVO1Iterator"/>
+  </executables>
+  <bindings>
+    <graph IterBinding="WeeklyForecastVO1Iterator" id="WeeklyForecastVO1"
+           xmlns="http://xmlns.oracle.com/adfm/dvt" type="LINE_VERT_ABS">
+      <graphDataMap leafOnly="true">
+        <series>
+          <data>
+            <item value="Beginning"/>
+            <item value="Ending"/>
+            <item value="Extended"/>
+          </data>
+        </series>
+        <groups>
+          <item value="ForecastWeek"/>
+        </groups>
+      </graphDataMap>
+    </graph>
+  </bindings>
+</pageDefinition>

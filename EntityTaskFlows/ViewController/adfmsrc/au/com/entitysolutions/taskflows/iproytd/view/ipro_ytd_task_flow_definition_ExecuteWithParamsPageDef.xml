@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="ipro_ytd_task_flow_definition_ipro_ytd_task_flow_definition_ExecuteWithParamsPageDef"
+                Package="au.com.entitysolutions.taskflows.iproytd"
+                SkipValidation="true">
+  <parameters/>
+  <executables>
+    <iterator Binds="MyYtdVO1" RangeSize="25"
+              DataControl="MyYTDAppModuleDataControl" id="MyYtdVO1Iterator"
+              Refresh="never"/>
+  </executables>
+  <bindings>
+    <action IterBinding="MyYtdVO1Iterator" id="ExecuteWithParams"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="in_year"
+                 NDValue="#{backingBeanScope.IProYtdManagedBean.financialYear}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="person_id" NDValue="#{pageFlowScope.person_id}"
+                 NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

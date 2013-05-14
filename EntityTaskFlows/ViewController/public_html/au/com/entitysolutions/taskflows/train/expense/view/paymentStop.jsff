@@ -1,0 +1,101 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+  <af:pageTemplate viewId="/au/com/entitysolutions/taskflows/train/expense/view/expenseStopTemplate.jspx"
+                   id="pt1" >
+    <f:facet name="content">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <af:table value="#{bindings.PortalExpenseItemView2.collectionModel}"
+                  var="row" rows="#{bindings.PortalExpenseItemView2.rangeSize}"
+                  emptyText="#{bindings.PortalExpenseItemView2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                  fetchSize="#{bindings.PortalExpenseItemView2.rangeSize}"
+                  rowBandingInterval="0" id="t11" varStatus="vs"
+                  styleClass="AFStretchWidth" autoHeightRows="6"
+                  columnStretching="last"
+                  selectionListener="#{bindings.PortalExpenseItemView2.collectionModel.makeCurrent}"
+                  width="100%" partialTriggers="if1">
+          <af:column sortProperty="ItemDescription" sortable="false"
+                     headerText="Item Type" id="c4" width="230" noWrap="false">
+            <af:panelGroupLayout id="pgl2" layout="vertical"
+                                 inlineStyle="width:232px">
+              <af:outputText value="#{row.bindings.ExpenseMeaning.inputValue}#{empty row.bindings.ItemType.inputValue ? '' : ','} #{row.bindings.ItemDescription.inputValue}"
+                             id="outputText2"
+                             rendered="#{not empty row.bindings.ItemType.attributeValue}"/>
+            </af:panelGroupLayout>
+          </af:column>
+          <af:column sortProperty="Amount" sortable="false"
+                     headerText="$ Amount" id="c2" width="73" minimumWidth="5">
+            <af:outputText value="#{row.bindings.Amount.inputValue}" id="ot1"
+                           rendered="#{not empty row.bindings.ItemType.attributeValue}"/>
+          </af:column>
+          <af:column sortProperty="PercentUse" sortable="false"
+                     headerText="% Business Use" id="c1" width="77">
+            <af:outputText value="#{row.bindings.PercentUse.inputValue}"
+                           id="outputText3"
+                           rendered="#{not empty row.bindings.ItemType.attributeValue}"/>
+          </af:column>
+          <af:column sortProperty="ItemId" sortable="false"
+                     headerText="Proof of Payments required"
+                     id="c3" width="250"
+                     inlineStyle="word-break:break-all;word-wrap: break-word;"
+                     noWrap="false">
+            <af:inputFile id="if1"
+                          valueChangeListener="#{pageFlowScope.trainBean.trainStops[pageFlowScope.msgs.bundle['PAYMENT_TRAIN_STEP_NAME']].fileUpdate}"
+                          autoSubmit="true" contentStyle="width:230px"
+                          columns="25">
+              <af:setPropertyListener from="#{row.bindings.ItemId.inputValue}"
+                                      to="#{requestScope.itemId}"
+                                      type="valueChange"/>
+              <af:clientListener type="click" method="showPopupFromAction"/>
+            </af:inputFile>
+          </af:column>
+          <af:column sortProperty="DocFilePath" sortable="false"
+                     headerText="File uploaded" id="column3" noWrap="false"
+                     width="85"
+                     inlineStyle="word-break:break-all;word-wrap: break-word;">
+            <af:outputText value="#{not empty row.DocFilePath ? (fn:startsWith(fn:replace(row.DocFilePath,'\\','/'), '/') ? fn:split(fn:replace(row.DocFilePath,'\\','/'), '/')[1] : fn:split(fn:replace(row.DocFilePath,'\\','/'), '/')[2]) : 'Not uploaded'}"
+                           id="outputText1" noWrap="false"/>
+          </af:column>
+          <af:clientListener type="mouseOver" method="registerPopup"/>
+        </af:table>
+        <af:spacer width="10" height="10" id="s2"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['INSTRUCTION_STEP4_HTML_TEXT1']}" id="ot4"
+                       escape="false"/>
+        <af:spacer width="10" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl7" layout="horizontal" valign="top">
+          <af:icon name="info" id="i1"/>
+          <af:panelGroupLayout id="pgl21111" layout="vertical" valign="top">
+            <af:outputText value="Instructions:" id="outputText4" escape="false"
+                           styleClass="strongText"/>
+            <af:outputText value="#{pageFlowScope.msgs.bundle['INSTRUCTION_STEP4_HTML_TEXT2']}"
+                           id="ot2" escape="false"/>
+          </af:panelGroupLayout>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="s5"/>
+          </f:facet>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="15" id="spacer1"/>
+        <af:panelGroupLayout id="panelGroupLayout2" layout="horizontal"
+                             valign="top">
+          <af:icon name="info" id="icon2"/>
+          <af:panelGroupLayout id="pgl3" layout="vertical">
+            <af:outputText value="Notes:" id="outputText5" escape="false"
+                           styleClass="strongText"/>
+            <af:outputText value="#{pageFlowScope.msgs.bundle['INSTRUCTION_STEP4_HTML_TEXT3']}"
+                           id="ot3" escape="false"/>
+          </af:panelGroupLayout>
+          <f:facet name="separator">
+            <af:spacer width="10" height="10" id="spacer2"/>
+          </f:facet>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:attribute name="headerText"
+                 value="#{pageFlowScope.msgs.bundle['PAYMENT_TRAIN_STEP_HEADERTEXT']}"/>
+    <f:attribute name="stopName"
+                 value="#{pageFlowScope.msgs.bundle['PAYMENT_TRAIN_STEP_NAME']}"/>
+    
+  </af:pageTemplate>
+</jsp:root>

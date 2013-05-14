@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="change-pwd-flow-definition">
+    <default-activity id="__1">changePassword</default-activity>
+    <managed-bean id="__3">
+      <managed-bean-name id="__2">msgs</managed-bean-name>
+      <managed-bean-class id="__5">au.com.entitysolutions.taskflows.common.view.MessageBundleBean</managed-bean-class>
+      <managed-bean-scope id="__4">pageFlow</managed-bean-scope>
+      <managed-property id="__6">
+        <property-name id="__8">resourceBundle</property-name>
+        <property-class>java.lang.String</property-class>
+        <value id="__7">au.com.entitysolutions.taskflows.changepassword.view.ChangePasswordBundle</value>
+      </managed-property>
+    </managed-bean>
+    <managed-bean id="__9">
+      <managed-bean-name id="__11">chgPwdManagedBean</managed-bean-name>
+      <managed-bean-class id="__12">au.com.entitysolutions.taskflows.changepassword.view.ChangePasswordBean</managed-bean-class>
+      <managed-bean-scope id="__10">pageFlow</managed-bean-scope>
+    </managed-bean>
+    <view id="changePassword">
+      <page>/au/com/entitysolutions/taskflows/changepassword/view/changePassword.jsff</page>
+    </view>
+    <url-view id="urlView1">
+      <url>/portal/faces/homepage</url>
+    </url-view>
+    <control-flow-rule id="__13">
+      <from-activity-id id="__14">changePassword</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome id="__17">cancel</from-outcome>
+        <to-activity-id id="__15">urlView1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

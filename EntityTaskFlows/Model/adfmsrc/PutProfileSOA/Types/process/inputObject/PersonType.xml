@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="PersonType" Package="PutProfileSOA.Types.process.inputObject"
+          BeanClass="PutProfileSOA.Types.process.inputObject.PersonType"
+          isJavaBased="false">
+  <AccessorAttribute id="BaseElement" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.BaseElement"/>
+  <AccessorAttribute id="PersonDetails" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.PersonDetails"/>
+  <AccessorAttribute id="ContactDetails" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails"/>
+  <AccessorAttribute id="EmergencyContact" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.EmergencyContact"/>
+</JavaBean>

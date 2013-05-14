@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" bottomHeight="113px">
+    <f:facet name="center">
+    <af:panelGroupLayout id="pgl1" layout="vertical" styleClass="widgets">
+        <!--<af:outputText value="#{pageFlowScope.msgs.bundle['RSS_FEED_PAGE_TITLE']}" id="ot1"
+                       inlineStyle="font-weight:bold;"/>-->
+        <!--<af:spacer width="10" height="10" id="s2"/>-->
+        <af:forEach items="#{bindings.Feed.rangeSet}" var="row" end="2"> 
+        <af:panelGroupLayout id="pgl3" layout="vertical" styleClass="widgetBlock">
+            <af:goLink text="#{row.title}" destination="#{row.link}" targetFrame="_blank"
+                      styleClass="embeddedLink" id="gl2"/>
+          <af:spacer width="10" height="5" id="s1"/>
+          <af:outputText value="#{row.description}" id="ot1"/>
+            <af:spacer width="10" height="10" id="s3"/>
+            </af:panelGroupLayout>
+        </af:forEach>
+        <!--<af:spacer width="10" height="10" id="s4"/>
+        <af:goLink text="#{pageFlowScope.msgs.bundle['BLOG_LINK_TEXT']}" targetFrame="_blank" 
+                   destination="#{pageFlowScope.msgs.bundle['ENTITY_BLOG_URL']}" styleClass="readLink"
+                   id="gl1"/>
+        <af:spacer width="10" height="3" id="s5"/>
+        <af:separator id="s2"/>
+        <af:outputText value="#{pageFlowScope.msgs.bundle['SOCIAL_MEDIA_LINK_TITLE']}" id="ot2" styleClass="letsConnect"/>
+        <af:spacer width="10" height="10" id="s6"/> -->
+      </af:panelGroupLayout>
+      <!-- id="af_one_column_stretched"   -->
+    </f:facet>
+        <f:facet name="bottom">
+            <af:panelGroupLayout id="pgl4" layout="vertical">
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:goLink text="#{pageFlowScope.msgs.bundle['BLOG_LINK_TEXT']}"
+                           targetFrame="_blank"
+                           destination="#{pageFlowScope.msgs.bundle['ENTITY_BLOG_URL']}"
+                           styleClass="readLink" id="goLink1"/>
+                <af:spacer width="10" height="3" id="s7"/>
+                <af:separator id="s8"/>
+                <af:outputText value="#{pageFlowScope.msgs.bundle['SOCIAL_MEDIA_LINK_TITLE']}" id="ot3"
+                               styleClass="strongText"/>
+                <af:spacer width="10" height="10" id="s9"/>
+                <af:panelGroupLayout id="pgl2" layout="horizontal">
+                    <af:goImageLink id="gil1" targetFrame="_blank"
+                                    styleClass="imgLink"
+                                    icon="/au/com/entitysolutions/taskflows/rss/images/es-facebook.jpg"
+                                    destination="#{pageFlowScope.msgs.bundle['ENTITY_FACEBOOK_URL']}"/>
+                    <af:goImageLink id="goImageLink1" targetFrame="_blank"
+                                    styleClass="imgLink"
+                                    icon="/au/com/entitysolutions/taskflows/rss/images/es-twitter.jpg"
+                                    destination="#{pageFlowScope.msgs.bundle['ENTITY_TWITTER_URL']}"/>
+                    <af:goImageLink id="goImageLink2" targetFrame="_blank"
+                                    styleClass="imgLink"
+                                    icon="/au/com/entitysolutions/taskflows/rss/images/es-rss.jpg"
+                                    destination="#{pageFlowScope.msgs.bundle['ENTITY_RSS_URL']}"/>
+                    <af:goImageLink id="goImageLink3" targetFrame="_blank"
+                                    styleClass="imgLink"
+                                    icon="/au/com/entitysolutions/taskflows/rss/images/es-linkedin.jpg"
+                                    destination="#{pageFlowScope.msgs.bundle['ENTITY_LINKEDIN_URL']}"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+        </f:facet>
+    </af:panelStretchLayout>
+</jsp:root>

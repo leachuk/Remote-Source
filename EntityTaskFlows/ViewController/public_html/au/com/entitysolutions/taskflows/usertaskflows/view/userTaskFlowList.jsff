@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="widgets" bottomHeight="20px">
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical">
+        <!--<af:outputText value="#{pageFlowScope.msgs.bundle['TASKFLOW_LIST_PAGE_TITLE']}" id="ot1"/>-->
+        <!--<af:spacer width="10" height="10" id="s1"/>-->
+        <af:iterator id="i1"
+                     value="#{bindings.PortalUserTaskFlowsView.collectionModel}"
+                     var="row">
+          <af:panelGroupLayout id="pgl2" layout="vertical">
+            <af:commandLink text="#{row.TfName}" id="cil1"
+                                 action="launchSelectedTaskFlow" styleClass="embeddedLink">
+              <af:setPropertyListener from="#{row.UserTfId}"
+                                      to="#{requestScope.portal_user_tf_id}"
+                                      type="action"/>
+            </af:commandLink>
+            <af:spacer width="10" height="5" id="s2"/>
+            <af:outputText value="#{row.TfDescription}" id="ot3"/>
+            <af:spacer width="10" height="10" id="s3"/>
+          </af:panelGroupLayout>        
+           </af:iterator>       
+      </af:panelGroupLayout>     
+    </f:facet>
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl3" layout="vertical" halign="right">
+        <af:commandLink text="more.." id="cil2"
+                        rendered="#{bindings.PortalUserTaskFlowsViewIterator.estimatedRowCount gt 0}"
+                        action="launchTaskFlowDetailedList"
+                        styleClass="moreLink"/>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

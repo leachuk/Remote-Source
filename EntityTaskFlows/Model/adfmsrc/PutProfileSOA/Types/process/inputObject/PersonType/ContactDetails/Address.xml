@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Address"
+          Package="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails"
+          BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.ContactDetails.Address"
+          isJavaBased="false">
+  <Attribute Name="Line1" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Line2" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Suburb" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="State" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="PostCode" IsNotNull="false" Type="java.lang.String"/>
+  <Attribute Name="Country" IsNotNull="false" Type="java.lang.String"/>
+  <AccessorAttribute id="BaseElement" IsCollection="false"
+                     BeanClass="PutProfileSOA.Types.process.inputObject.PersonType.BaseElement"/>
+</JavaBean>

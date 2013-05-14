@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="forgotUserNamePageDef"
+                Package="au.com.entitysolutions.taskflows.login.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator id="UserDetailsViewIterator" Binds="UserDetailsView"
+              DataControl="LoginAppModuleDataControl" RangeSize="25"/>
+  </executables>
+  <bindings>
+    <action IterBinding="UserDetailsViewIterator"
+            id="UserDetailsExecuteWithEmailParam"
+            InstanceName="LoginAppModuleDataControl.UserDetailsView"
+            DataControl="LoginAppModuleDataControl" RequiresUpdateModel="true"
+            Action="executeWithParams">
+      <NamedData NDName="p_user_name" NDType="java.lang.String"/>
+      <NamedData NDName="p_email_address"
+                 NDValue="#{pageFlowScope.entityLoginBean.fgtUserIdEmailAddressField.value}"
+                 NDType="java.lang.String"/>
+    </action>
+    <methodAction id="getGlobalVariable"
+                  InstanceName="SharedAppModuleDataControl.dataProvider"
+                  DataControl="SharedAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getGlobalVariable" IsViewObjectMethod="false"
+                  ReturnName="data.SharedAppModuleDataControl.methodResults.getGlobalVariable_SharedAppModuleDataControl_dataProvider_getGlobalVariable_result">
+      <NamedData NDName="globalVariable"
+                 NDValue="#{pageFlowScope.globalVariableKey}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="sendUserId"
+                  InstanceName="LoginAppModuleDataControl.dataProvider"
+                  DataControl="LoginAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="sendUserId" IsViewObjectMethod="false"
+                  ReturnName="data.LoginAppModuleDataControl.methodResults.sendUserId_LoginAppModuleDataControl_dataProvider_sendUserId_result">
+      <NamedData NDName="emailAddress"
+                 NDValue="#{pageFlowScope.entityLoginBean.fgtUserIdEmailAddressField.value}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="ipAddress"
+                 NDValue="#{facesContext.externalContext.request.remoteAddr}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>

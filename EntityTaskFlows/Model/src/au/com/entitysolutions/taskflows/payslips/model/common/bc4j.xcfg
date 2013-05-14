@@ -1,0 +1,14 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule">
+      <AppModuleConfig DeployPlatform="LOCAL" jbo.project="au.com.entitysolutions.taskflows.model.Model" name="PayslipsAppModuleLocal" ApplicationName="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule"/>
+         <Custom JDBCDataSource="jdbc/Perci"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="PayslipsAppModuleShared" ApplicationName="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule" DeployPlatform="LOCAL" JDBCName="Perci" jbo.project="au.com.entitysolutions.taskflows.model.Model">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Security AppModuleJndiName="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

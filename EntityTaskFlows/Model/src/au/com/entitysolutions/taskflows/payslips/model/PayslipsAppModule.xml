@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PayslipsAppModule"
+  Version="11.1.1.60.13"
+  ComponentClass="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModuleImpl"
+  ClearCacheOnRollback="true"
+  ComponentInterface="au.com.entitysolutions.taskflows.payslips.model.common.PayslipsAppModule"
+  ClientProxyName="au.com.entitysolutions.taskflows.payslips.model.client.PayslipsAppModuleClient">
+  <DesignTime>
+    <Attr Name="_deployType" Value="0"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.taskflows.payslips.model.PayslipsAppModule_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="PaylsipsView1"
+    ViewObjectName="au.com.entitysolutions.taskflows.payslips.model.PaylsipsView">
+    <ViewCriteriaUsage
+      Name="findByUserName"
+      FullName="au.com.entitysolutions.taskflows.payslips.model.PaylsipsView.findByUserName"/>
+  </ViewUsage>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

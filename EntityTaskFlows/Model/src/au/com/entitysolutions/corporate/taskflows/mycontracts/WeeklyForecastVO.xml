@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="WeeklyForecastVO"
+  Version="11.1.1.60.13"
+  BindingStyle="OracleName"
+  CustomQuery="true"
+  PageIterMode="Full"
+  UseGlueCode="false">
+  <DesignTime>
+    <Attr Name="_isExpertMode" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="au.com.entitysolutions.corporate.taskflows.mycontracts.WeeklyForecastVO_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <Variable
+    Name="orgId"
+    Kind="where"
+    Type="oracle.jbo.domain.Number"/>
+  <SQLQuery>
+    <![CDATA[with ds as (select 
+nbr_cntr_ending_two_weeks_ago,
+nbr_cntr_ending_previous_week,
+nbr_cntr_ending_current_week,
+nbr_cntr_ending_next_week,
+nbr_cntr_ending_second_week,
+nbr_cntr_ending_third_week,
+nbr_cntr_ending_fourth_week,
+nbr_cntr_ending_fifth_week,
+nbr_cntr_ending_sixth_week,
+
+nbr_cntr_begin_two_weeks_ago,
+nbr_cntr_begin_previous_week,
+nbr_cntr_begin_current_week,
+nbr_cntr_begin_next_week,
+nbr_cntr_begin_second_week,
+nbr_cntr_begin_third_week,
+nbr_cntr_begin_fourth_week,
+nbr_cntr_begin_fifth_week,
+nbr_cntr_begin_sixth_week,
+
+nbr_cntr_ext_two_weeks_ago,
+nbr_cntr_ext_previous_week,
+nbr_cntr_ext_current_week,
+nbr_cntr_ext_next_week,
+nbr_cntr_ext_second_week,
+nbr_cntr_ext_third_week,
+nbr_cntr_ext_fourth_week,
+nbr_cntr_ext_fifth_week,
+nbr_cntr_ext_sixth_week
+
+from edw_corp_rep.apl_my_billing_companies
+where billing_organisation_id = :orgId)
+
+select to_char(next_day(sysdate - 2*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_two_weeks_ago as ending, nbr_cntr_begin_two_weeks_ago as beginning, nbr_cntr_ext_two_weeks_ago as extended from ds
+union all
+select to_char(next_day(sysdate - 7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_previous_week as ending, nbr_cntr_begin_previous_week as beginning, nbr_cntr_ext_previous_week as extended from ds
+union all
+select to_char(next_day(sysdate, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_current_week as ending, nbr_cntr_begin_current_week as beginning, nbr_cntr_ext_current_week as extended from ds
+union all
+select to_char(next_day(sysdate + 7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_next_week as ending, nbr_cntr_begin_next_week as beginning, nbr_cntr_ext_next_week as extended from ds
+union all
+select to_char(next_day(sysdate + 2*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_second_week as ending, nbr_cntr_begin_second_week as beginning, nbr_cntr_ext_second_week as extended from ds
+union all
+select to_char(next_day(sysdate + 3*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_third_week as ending, nbr_cntr_begin_third_week as beginning, nbr_cntr_ext_third_week as extended from ds
+union all
+select to_char(next_day(sysdate + 4*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_fourth_week as ending, nbr_cntr_begin_fourth_week as beginning, nbr_cntr_ext_fourth_week as extended from ds
+union all
+select to_char(next_day(sysdate + 5*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_fifth_week as ending, nbr_cntr_begin_fifth_week as beginning, nbr_cntr_ext_fifth_week as extended from ds
+union all
+select to_char(next_day(sysdate + 6*7, 'Monday') - 7, 'dd-MON-yyyy') as forecast_week, nbr_cntr_ending_sixth_week as ending, nbr_cntr_begin_sixth_week as beginning, nbr_cntr_ext_sixth_week as extended from ds]]>
+  </SQLQuery>
+  <ViewAttribute
+    Name="ForecastWeek"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FORECAST_WEEK"
+    Expression="FORECAST_WEEK"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Ending"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="ENDING"
+    Expression="ENDING"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Beginning"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="BEGINNING"
+    Expression="BEGINNING"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="au.com.entitysolutions.corporate.taskflows.mycontracts.WeeklyForecastVO.Beginning_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Extended"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    AliasName="EXTENDED"
+    Expression="EXTENDED"
+    SQLType="NUMERIC">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="22"/>
+    </DesignTime>
+  </ViewAttribute>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="ForecastWeek"/>
+  </AttrArray>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="au.com.entitysolutions.taskflows.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewObject>

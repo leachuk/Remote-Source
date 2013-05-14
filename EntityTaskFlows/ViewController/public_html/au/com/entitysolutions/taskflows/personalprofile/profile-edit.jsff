@@ -1,0 +1,177 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:c="http://java.sun.com/jsp/jstl/core">
+  <c:set var="commonBundle"
+         value="#{adfBundle['au.com.entitysolutions.taskflows.common.view.CommonTaskflowMessageBundle']}"/>
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                         dimensionsFrom="auto">
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl4" layout="horizontal" valign="middle"
+                           halign="end" styleClass="AFStretchWidth">
+        <af:commandButton text="Cancel" id="cb1" action="back"
+                          immediate="true"/>
+        <af:spacer width="10" height="10" id="s6"/>
+        <af:commandButton text="Save" id="cb2"
+                          actionListener="#{pageFlowScope.PersonProfileManagedBean.saveActionListener}"
+                          action="save"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="vertical" valign="top">
+        <af:panelGroupLayout id="pgl5" layout="horizontal" valign="top">
+          <af:panelGroupLayout id="pgl2" valign="top" layout="vertical"
+                               styleClass="AFStretchWidth">
+            <af:panelBox text="Personal Details" id="ph1" showHeader="always"
+                         showDisclosure="false">
+              <af:outputText value="#{pageFlowScope.PersonProfileManagedBean.initLandlines}" id="ot3"
+                             visible="false"/>
+              <af:panelFormLayout id="pfl1" labelWidth="150">
+                <!--<af:selectOneChoice label="Prefix" id="soc1"
+                                    value="#{bindings.Prefix.inputValue}">
+                  <af:selectItem id="si1" value="Unknown" label="Unknown"></af:selectItem>
+                  <af:selectItem id="si2" value="Mr." label="Mr"></af:selectItem>
+                  <af:selectItem id="si3" value="Dr." label="Dr"></af:selectItem>
+                  <af:selectItem id="si4" value="Ms." label="Ms"></af:selectItem>
+                  <af:selectItem id="si5" value="Mrs." label="Mrs"></af:selectItem>
+                  <af:selectItem id="si6" value="Miss." label="Miss"></af:selectItem>
+                </af:selectOneChoice>-->
+                <af:selectOneChoice value="#{bindings.Prefix.inputValue}"
+                                    label="Prefix"
+                                    id="soc1">
+                  <f:selectItems value="#{bindings.Prefix.items}" id="si1"/>
+                </af:selectOneChoice>
+                <af:panelLabelAndMessage label="First Name"
+                                         id="panelLabelAndMessage1">
+                  <af:outputText value="#{bindings.FirstName.inputValue}"
+                                 id="outputText1"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Middle Name"
+                                         id="panelLabelAndMessage2">
+                  <af:outputText value="#{bindings.MiddelName.inputValue}"
+                                 id="outputText2"/>
+                </af:panelLabelAndMessage>
+                <af:panelLabelAndMessage label="Surname"
+                                         id="panelLabelAndMessage12">
+                  <af:outputText value="#{bindings.SurName.inputValue}"
+                                 id="outputText12"/>
+                </af:panelLabelAndMessage>
+                <af:inputText label="Preferred Name" id="it1"
+                              value="#{bindings.PreferredName.inputValue}"></af:inputText>
+                <af:inputDate label="Date of Birth" id="id1"
+                              value="#{bindings.DateOfBirth.inputValue}"
+                              maxValue="#{pageFlowScope.PersonProfileManagedBean.maxDate}"></af:inputDate>
+              </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s3"/>
+            <af:panelBox text="Address" id="panelBox1" showHeader="always"
+                         showDisclosure="false">
+              <af:panelFormLayout id="panelFormLayout1" labelWidth="150">
+                <af:inputText label="Street" id="it2"
+                              value="#{bindings.Street.inputValue}"></af:inputText>
+                <af:inputText label="Suburb" id="it3"
+                              value="#{bindings.Suburb.inputValue}"></af:inputText>
+                <!--<af:selectOneChoice label="State" id="soc2"
+                                    value="#{bindings.State.inputValue}">
+                  <af:selectItem label="New South Wales" value="New South Wales"
+                                 id="si7"/>
+                  <af:selectItem label="Australian Capital Territory"
+                                 value="Australian Capital Territory" id="si8"/>
+                  <af:selectItem label="Tasmania" value="Tasmania" id="si9"/>
+                  <af:selectItem label="Victoria" value="Victoria" id="si10"/>
+                  <af:selectItem label="Queensland" value="Queensland"
+                                 id="si11"/>
+                  <af:selectItem label="Northern Territory"
+                                 value="Northern Territory" id="si12"/>
+                  <af:selectItem label="Western Australia"
+                                 value="Western Australia" id="si13"/>
+                  <af:selectItem label="South Australia" value="South Australia"
+                                 id="si14"/>
+                  <af:selectItem label="Overseas Address"
+                                 value="Overseas Address" id="si15"/>
+                </af:selectOneChoice>-->
+                <af:selectOneChoice value="#{bindings.State.inputValue}"
+                                    label="State"
+                                    id="soc2">
+                  <f:selectItems value="#{bindings.State.items}" id="si2"/>
+                </af:selectOneChoice>
+                <af:inputText label="Postcode" id="it4"
+                              value="#{bindings.PostCode.inputValue}">
+                  <af:validateRegExp pattern="#{commonBundle.POSTCODE_PATTERN_REGEX}"
+                                     hint="#{commonBundle.POSTCODE_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.POSTCODE_PATTERN_ERROR}"/>
+                </af:inputText>
+                <af:inputText label="Country" id="inputText3" value="#{bindings.Country.inputValue}"/>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+          <af:spacer width="20" height="10" id="s1"/>
+          <af:panelGroupLayout id="pgl3" layout="vertical" valign="top"
+                               styleClass="AFStretchWidth">
+            <af:panelBox text="Contact Details" id="panelBox2"
+                         showDisclosure="false" showHeader="always">
+              <af:panelFormLayout id="panelFormLayout2" labelWidth="150">
+                <af:inputText label="Mobile" id="it5"
+                              value="#{bindings.MobileNumber.inputValue}">
+                  <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                                     hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+                </af:inputText>
+                <af:inputText label="Landline" id="it6"
+                              value="#{pageFlowScope.PersonProfileManagedBean.landline}">
+                  <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                                     hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+                </af:inputText>
+                <af:inputText label="Email" id="it7"
+                              value="#{bindings.Email.inputValue}"
+                              required="true">
+                  <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                     hint="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                                     messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelBox>
+            <af:spacer width="10" height="10" id="s4"/>
+            <af:panelBox text="Emergency Contact Details" id="panelBox3"
+                         showHeader="always" showDisclosure="false">
+              <af:panelFormLayout id="panelFormLayout3" labelWidth="150">
+                <af:inputText label="Name" id="it8"
+                              value="#{bindings.EmergencyName.inputValue}"></af:inputText>
+                <af:inputText label="Relationship" id="it9"
+                              value="#{bindings.EmergencyRelation.inputValue}"></af:inputText>
+                <af:inputText label="Phone" id="inputText1"
+                              value="#{pageFlowScope.PersonProfileManagedBean.emergencyLandline}">
+                  <af:validateRegExp pattern="#{commonBundle.PHONE_NO_PATTERN_REGEX}"
+                                     hint="#{commonBundle.PHONE_NO_PATTERN_HINT}"
+                                     messageDetailNoMatch="#{commonBundle.PHONE_NO_PATTERN_ERROR}"/>
+                </af:inputText>
+                <af:inputText label="Email" id="inputText2"
+                              value="#{bindings.EmergencyEmail.inputValue}">
+                  <af:validateRegExp pattern="#{commonBundle.EMAIL_ADDRESS_REGEX}"
+                                     hint="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"
+                                     messageDetailNoMatch="#{commonBundle.EMAIL_ADDRESS_VALIDATION_ERROR}"/>
+                </af:inputText>
+              </af:panelFormLayout>
+            </af:panelBox>
+          </af:panelGroupLayout>
+        </af:panelGroupLayout>
+        <af:spacer width="10" height="10" id="s5"/>
+        <af:panelGroupLayout id="panelGroupLayout1" layout="horizontal">
+          <af:icon name="info" id="icon1"/>
+          <af:outputLabel value="Notes:" id="outputLabel1"/>
+        </af:panelGroupLayout>
+        <af:spacer width="5" height="5" id="s2"/>
+        <af:panelList id="pl1" inlineStyle="line-height:150%">
+          <af:outputText value="Please note that you cannot make changes to your profile while a task flow that requests your personal details is pending completion. Updates submitted via the task flow will supersede changes made to your profile."
+                         id="outputText3"/>
+          <af:outputText value="Changes to your First, Middle or Surname must be supported by proper documentation. Please contact your IPro manager to report a change in your name."
+                         id="ot1"/>
+          <af:outputText value="One contact number is mandatory. The email address provided will be your Entity Online email address, and can be separate from the email your payslips are sent to."
+                         id="ot2"/>
+        </af:panelList>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

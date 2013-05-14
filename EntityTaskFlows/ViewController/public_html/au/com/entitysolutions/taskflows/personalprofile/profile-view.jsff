@@ -1,0 +1,119 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+  <af:panelStretchLayout id="psl1" styleClass="AFStretchWidth"
+                         dimensionsFrom="auto">
+    <f:facet name="bottom">
+      <af:panelGroupLayout id="pgl4" layout="horizontal" valign="middle"
+                           halign="end" styleClass="AFStretchWidth">
+        <af:commandButton text="Edit" id="cb1" action="edit"/>
+      </af:panelGroupLayout>
+    </f:facet>
+    <f:facet name="center">
+      <af:panelGroupLayout id="pgl1" layout="horizontal" valign="top"
+                           styleClass="AFStretchWidth">
+        <af:panelGroupLayout id="pgl2" valign="top"
+                             styleClass="AFStretchWidth" layout="vertical">
+          <af:panelBox text="Personal Details" id="pb2" showDisclosure="false"
+                       showHeader="always">
+            <af:panelFormLayout id="pfl1" labelWidth="150">
+              <af:panelLabelAndMessage label="Prefix" id="plam1">
+                <af:outputText value="#{bindings.Prefix.inputValue}" id="ot1"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="First Name"
+                                       id="panelLabelAndMessage1">
+                <af:outputText value="#{bindings.FirstName.inputValue}" id="outputText1"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Middle Name"
+                                       id="panelLabelAndMessage2">
+                <af:outputText value="#{bindings.MiddelName.inputValue}" id="outputText2"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Surname"
+                                       id="panelLabelAndMessage12">
+                <af:outputText value="#{bindings.SurName.inputValue}" id="outputText12"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Preferred Name"
+                                       id="panelLabelAndMessage13">
+                <af:outputText value="#{bindings.PreferredName.inputValue}" id="outputText13"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Date of Birth"
+                                       id="panelLabelAndMessage14">
+                <af:outputText value="#{bindings.DateOfBirth.inputValue}" id="outputText14">
+                </af:outputText>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </af:panelBox>
+          <af:spacer width="10" height="10" id="s3"/>
+          <af:panelBox text="Address" id="pb1" showDisclosure="false"
+                       showHeader="always">
+            <af:panelFormLayout id="panelFormLayout1" labelWidth="150">
+              <af:panelLabelAndMessage label="Street"
+                                       id="panelLabelAndMessage3">
+                <af:outputText value="#{bindings.Street.inputValue}" id="outputText3"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Suburb"
+                                       id="panelLabelAndMessage4">
+                <af:outputText value="#{bindings.Suburb.inputValue}" id="outputText4"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="State" id="panelLabelAndMessage5">
+                <af:outputText value="#{bindings.State.inputValue}" id="outputText5"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Postcode"
+                                       id="panelLabelAndMessage15">
+                <af:outputText value="#{bindings.PostCode.inputValue}" id="outputText15"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Country"
+                                       id="panelLabelAndMessage16">
+                <af:outputText value="#{bindings.Country.inputValue}" id="outputText16"/>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
+        <af:spacer width="20" height="10" id="s1"/>
+        <af:panelGroupLayout id="pgl3" layout="vertical" valign="top"
+                             styleClass="AFStretchWidth">
+          <af:panelBox text="Contact Details" id="pb3" showHeader="always"
+                       showDisclosure="false">
+            <af:panelFormLayout id="panelFormLayout2" labelWidth="150">
+              <af:panelLabelAndMessage label="Mobile"
+                                       id="panelLabelAndMessage6">
+                <af:outputText value="#{bindings.MobileNumber.inputValue}" id="outputText6"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Landline"
+                                       id="panelLabelAndMessage7">
+                <af:outputText value="#{bindings.LandlineAreaCode.inputValue}#{bindings.LandlineNumber.inputValue}" id="outputText7"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Email" id="panelLabelAndMessage8">
+                <af:outputText value="#{bindings.Email.inputValue}" id="outputText8"
+                               truncateAt="30"/>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </af:panelBox>
+          <af:spacer width="10" height="10" id="s2"/>
+          <af:panelBox text="Emergency Contact Details" id="pb4"
+                       showHeader="always" showDisclosure="false">
+            <af:panelFormLayout id="panelFormLayout3" labelWidth="150">
+              <af:panelLabelAndMessage label="Name" id="panelLabelAndMessage9">
+                <af:outputText value="#{bindings.EmergencyName.inputValue}" id="outputText9"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Relationship"
+                                       id="panelLabelAndMessage10">
+                <af:outputText value="#{bindings.EmergencyRelation.inputValue}" id="outputText10"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Phone"
+                                       id="panelLabelAndMessage11">
+                <af:outputText value="#{bindings.EmergencyAreaCode.inputValue}#{bindings.EmergencyNumber.inputValue}" id="outputText11"/>
+              </af:panelLabelAndMessage>
+              <af:panelLabelAndMessage label="Email"
+                                       id="panelLabelAndMessage17">
+                <af:outputText value="#{bindings.EmergencyEmail.inputValue}" id="outputText17"
+                               truncateAt="30"/>
+              </af:panelLabelAndMessage>
+            </af:panelFormLayout>
+          </af:panelBox>
+        </af:panelGroupLayout>
+      </af:panelGroupLayout>
+    </f:facet>
+  </af:panelStretchLayout>
+</jsp:root>

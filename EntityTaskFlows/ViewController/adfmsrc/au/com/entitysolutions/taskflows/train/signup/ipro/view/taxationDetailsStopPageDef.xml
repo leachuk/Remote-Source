@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="taxationDetailsStopPageDef"
+                Package="au.com.entitysolutions.taskflows.train.signup.ipro.view">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="PortalSignupTaxDetailsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalSignupTaxDetailsViewIterator"/>
+    <iterator Binds="PortalUserTFStepDownloadDocsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepDownloadDocsViewIterator"/>
+    <iterator Binds="PortalUserTFStepUploadedDocsView" RangeSize="25"
+              DataControl="IProSignUpTrainAppModuleDataControl"
+              id="PortalUserTFStepUploadedDocsViewIterator"/>
+  </executables>
+  <bindings>
+    <action id="Commit" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="true" Action="commitTransaction"/>
+    <action id="Rollback" InstanceName="IProSignUpTrainAppModuleDataControl"
+            DataControl="IProSignUpTrainAppModuleDataControl"
+            RequiresUpdateModel="false" Action="rollbackTransaction"/>
+    <attributeValues IterBinding="PortalSignupTaxDetailsViewIterator" id="Tfn">
+      <AttrNames>
+        <Item Value="Tfn"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="PortalSignupTaxDetailsViewIterator" StaticList="false"
+          Uses="LOV_NoTfnReason" id="NoTfnReason" DTSupportsMRU="false"/>
+    <list IterBinding="PortalSignupTaxDetailsViewIterator" StaticList="false"
+          Uses="LOV_AustResident" id="AustResident" DTSupportsMRU="false"/>
+    <list IterBinding="PortalSignupTaxDetailsViewIterator" StaticList="false"
+          Uses="LOV_TaxfreeThresholdClaimed" id="TaxfreeThresholdClaimed"
+          DTSupportsMRU="false"/>
+    <list IterBinding="PortalSignupTaxDetailsViewIterator" StaticList="false"
+          Uses="LOV_HecsDebt" id="HecsDebt" DTSupportsMRU="false"/>
+    <list IterBinding="PortalSignupTaxDetailsViewIterator" StaticList="false"
+          Uses="LOV_SupplementDebt" id="SupplementDebt" DTSupportsMRU="false"/>
+    <methodAction id="completeStep"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="completeStep" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName" NDValue="#{requestScope.stopName}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentMime">
+      <AttrNames>
+        <Item Value="DocContentMime"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PortalUserTFStepDownloadDocsViewIterator"
+                     id="DocContentName">
+      <AttrNames>
+        <Item Value="DocContentName"/>
+      </AttrNames>
+    </attributeValues>
+    <button IterBinding="PortalSignupTaxDetailsViewIterator"
+            id="TnfDocPostedOffline" DTSupportsMRU="false" StaticList="true">
+      <AttrNames>
+        <Item Value="TnfDocPostedOffline"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Y"/>
+        <Item Value="N"/>
+      </ValueList>
+    </button>
+    <methodAction id="uploadDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="uploadDoc" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileContent" NDValue="#{requestScope.file_content}"
+                 NDType="oracle.jbo.domain.BlobDomain"/>
+      <NamedData NDName="fileMime" NDValue="#{requestScope.file_mime}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileLength" NDValue="#{requestScope.file_length}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="fileName" NDValue="#{requestScope.file_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="removeDoc"
+                  InstanceName="IProSignUpTrainAppModuleDataControl.dataProvider"
+                  DataControl="IProSignUpTrainAppModuleDataControl"
+                  RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="removeDoc" IsViewObjectMethod="false">
+      <NamedData NDName="userTFId" NDValue="#{pageFlowScope.portal_user_tf_id}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="stepName"
+                 NDValue="#{pageFlowScope.msgs.bundle['TAX_DTLS_STEP_NAME']}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="docName" NDValue="#{requestScope.doc_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="PortalUserTFStepUploadedDocsViewIterator"
+          id="PortalUserTFStepUploadedDocsView">
+      <nodeDefinition DefName="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepUploadedDocsView"
+                      Name="PortalUserTFStepUploadedDocsView0">
+        <AttrNames>
+          <Item Value="DocName"/>
+          <Item Value="DocContentName"/>
+          <Item Value="DocContentBytesize"/>
+          <Item Value="DocContentMb"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

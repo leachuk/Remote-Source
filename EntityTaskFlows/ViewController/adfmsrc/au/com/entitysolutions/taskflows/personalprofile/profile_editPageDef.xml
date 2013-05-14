@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13" id="profile_editPageDef"
+                Package="au.com.entitysolutions.taskflows.personalprofile">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.Integer" Name="updateProcess_Return"
+                IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.updateProcess.result}"/>
+    </variableIterator>
+    <methodIterator Binds="process.result" DataControl="GetProfileSOA"
+                    RangeSize="25"
+                    BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process"
+                    id="processIterator"/>
+    <accessorIterator MasterBinding="processIterator" Binds="result"
+                      RangeSize="25" DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result"
+                      id="resultIterator"/>
+    <accessorIterator MasterBinding="resultIterator" Binds="PersonType"
+                      RangeSize="1" DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType"
+                      id="PersonTypeIterator"/>
+    <accessorIterator MasterBinding="PersonTypeIterator" Binds="PersonDetails"
+                      RangeSize="1" DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.PersonDetails"
+                      id="PersonDetailsIterator"/>
+    <accessorIterator MasterBinding="PersonTypeIterator" Binds="ContactDetails"
+                      RangeSize="25" DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails"
+                      id="ContactDetailsIterator"/>
+    <accessorIterator MasterBinding="ContactDetailsIterator" Binds="Address"
+                      RangeSize="10" DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.Address"
+                      id="AddressIterator"/>
+    <accessorIterator MasterBinding="ContactDetailsIterator"
+                      Binds="HomeTelephone" RangeSize="10"
+                      DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.HomeTelephone"
+                      id="HomeTelephoneIterator"/>
+    <accessorIterator MasterBinding="ContactDetailsIterator"
+                      Binds="HomeMobileTelephone" RangeSize="10"
+                      DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.HomeMobileTelephone"
+                      id="HomeMobileTelephoneIterator"/>
+    <accessorIterator MasterBinding="PersonTypeIterator"
+                      Binds="EmergencyContact" RangeSize="10"
+                      DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.EmergencyContact"
+                      id="EmergencyContactIterator"/>
+    <accessorIterator MasterBinding="EmergencyContactIterator"
+                      Binds="ContactDetails" RangeSize="25"
+                      DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails"
+                      id="EmergencyContactDetailsIterator"/>
+    <accessorIterator MasterBinding="EmergencyContactDetailsIterator"
+                      Binds="HomeTelephone" RangeSize="10"
+                      DataControl="GetProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetProfileSOA.process.result.PersonType.ContactDetails.HomeTelephone"
+                      id="EmergencyHomeTelephoneIterator"/>
+    <methodIterator Binds="updateProcess.result" DataControl="PutProfileSOA"
+                    RangeSize="25"
+                    BeanClass="au.com.entitysolutions.taskflows.model.PutProfileSOA.process"
+                    id="updateProcessIterator"/>
+    <accessorIterator MasterBinding="updateProcessIterator"
+                      Binds="process_Result" RangeSize="25"
+                      DataControl="PutProfileSOA"
+                      BeanClass="au.com.entitysolutions.taskflows.model.PutProfileSOA.process_Result"
+                      id="process_ResultIterator"/>
+    
+    <methodIterator Binds="getPrefix.result" DataControl="GetListOfValues"
+                    RangeSize="25"
+                    BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process"
+                    id="getPrefixIterator"/>
+    <accessorIterator MasterBinding="getPrefixIterator" Binds="result"
+                      RangeSize="25" DataControl="GetListOfValues"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result"
+                      id="getPrefixResultIterator"/>
+    <accessorIterator MasterBinding="getPrefixResultIterator" Binds="Item"
+                      RangeSize="-1" DataControl="GetListOfValues"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result.Item"
+                      id="PrefixItemIterator"/>
+                      
+    <methodIterator Binds="getStates.result" DataControl="GetListOfValues"
+                    RangeSize="25"
+                    BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process"
+                    id="getStatesIterator"/>
+    <accessorIterator MasterBinding="getStatesIterator" Binds="result"
+                      RangeSize="25" DataControl="GetListOfValues"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result"
+                      id="getStatesResultIterator"/>
+    <accessorIterator MasterBinding="getStatesResultIterator" Binds="Item"
+                      RangeSize="-1" DataControl="GetListOfValues"
+                      BeanClass="au.com.entitysolutions.taskflows.model.GetListOfValues.process.result.Item"
+                      id="StatesItemIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="process" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="process" IsViewObjectMethod="false"
+                  DataControl="GetProfileSOA" InstanceName="GetProfileSOA"
+                  ReturnName="data.GetProfileSOA.methodResults.process_GetProfileSOA_process_result">
+      <NamedData NDName="input" NDValue="#{pageFlowScope.user_name}"
+                 NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="PersonDetailsIterator" id="FirstName">
+      <AttrNames>
+        <Item Value="FirstName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PersonDetailsIterator" id="MiddelName">
+      <AttrNames>
+        <Item Value="MiddelName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PersonDetailsIterator" id="SurName">
+      <AttrNames>
+        <Item Value="SurName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PersonDetailsIterator" id="PreferredName">
+      <AttrNames>
+        <Item Value="PreferredName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="PersonDetailsIterator" id="DateOfBirth">
+      <AttrNames>
+        <Item Value="DateOfBirth"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="Return">
+      <AttrNames>
+        <Item Value="updateProcess_Return"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressIterator" id="Street">
+      <AttrNames>
+        <Item Value="Line1"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressIterator" id="Suburb">
+      <AttrNames>
+        <Item Value="Suburb"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressIterator" id="PostCode">
+      <AttrNames>
+        <Item Value="PostCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="AddressIterator" id="Country">
+      <AttrNames>
+        <Item Value="Country"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContactDetailsIterator" id="Email">
+      <AttrNames>
+        <Item Value="EntityEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HomeTelephoneIterator" id="LandlineAreaCode">
+      <AttrNames>
+        <Item Value="AreaCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HomeTelephoneIterator" id="LandlineNumber">
+      <AttrNames>
+        <Item Value="Number"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HomeMobileTelephoneIterator"
+                     id="MobileNumber">
+      <AttrNames>
+        <Item Value="Number"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmergencyContactIterator" id="EmergencyName">
+      <AttrNames>
+        <Item Value="PersonName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmergencyContactIterator"
+                     id="EmergencyRelation">
+      <AttrNames>
+        <Item Value="Relationship"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmergencyHomeTelephoneIterator"
+                     id="EmergencyAreaCode">
+      <AttrNames>
+        <Item Value="AreaCode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmergencyHomeTelephoneIterator"
+                     id="EmergencyNumber">
+      <AttrNames>
+        <Item Value="Number"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="EmergencyContactDetailsIterator"
+                     id="EmergencyEmail">
+      <AttrNames>
+        <Item Value="HomeEmail"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="updateProcess" InstanceName="PutProfileSOA"
+                  DataControl="PutProfileSOA" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="process"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.PutProfileSOA.methodResults.updateProcess_PutProfileSOA_process_result">
+      <NamedData NDName="inputId" NDValue="#{pageFlowScope.user_name}"
+                 NDType="java.lang.String"/>
+      <NamedData NDName="inputObject"
+                 NDValue="#{pageFlowScope.PersonProfileManagedBean.person}"
+                 NDType="java.lang.Object"/>
+    </methodAction>
+    <attributeValues IterBinding="process_ResultIterator" id="message">
+      <AttrNames>
+        <Item Value="message"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="process_ResultIterator" id="status">
+      <AttrNames>
+        <Item Value="status"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction id="getPrefix" InstanceName="GetListOfValues"
+                  DataControl="GetListOfValues" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="process"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.GetListOfValues.methodResults.getPrefix_GetListOfValues_process_result">
+      <NamedData NDName="input" NDValue="prefix" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="PersonDetailsIterator" id="Prefix" DTSupportsMRU="true"
+          StaticList="false" ListIter="PrefixItemIterator">
+      <AttrNames>
+        <Item Value="Prefix"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="Name"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Name"/>
+      </ListDisplayAttrNames>
+    </list>
+    <methodAction id="getStates" InstanceName="GetListOfValues"
+                  DataControl="GetListOfValues" RequiresUpdateModel="true"
+                  Action="invokeMethod" MethodName="process"
+                  IsViewObjectMethod="false"
+                  ReturnName="data.GetListOfValues.methodResults.getStates_GetListOfValues_process_result">
+      <NamedData NDName="input" NDValue="state/1" NDType="java.lang.String"/>
+    </methodAction>
+    <list IterBinding="AddressIterator" id="State" DTSupportsMRU="true"
+          StaticList="false" ListIter="StatesItemIterator">
+      <AttrNames>
+        <Item Value="State"/>
+      </AttrNames>
+      <ListAttrNames>
+        <Item Value="Name"/>
+      </ListAttrNames>
+      <ListDisplayAttrNames>
+        <Item Value="Name"/>
+      </ListDisplayAttrNames>
+    </list>
+  </bindings>
+</pageDefinition>

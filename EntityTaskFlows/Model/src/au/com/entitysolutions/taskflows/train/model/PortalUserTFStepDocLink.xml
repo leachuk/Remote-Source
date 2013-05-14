@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="PortalUserTFStepDocLink"
+  Version="11.1.1.60.13"
+  EntityAssociation="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocAssoc">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewLinkDefEnd
+    Name="PortalUserTFStepView"
+    Cardinality="1"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepView"
+    Source="true">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PortalUserTFStepView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepView.UserTfStepId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="PortalUserTFStepDocView"
+    Cardinality="-1"
+    Owner="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocView">
+    <DesignTime>
+      <Attr Name="_finderName" Value="PortalUserTFStepDocView"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item
+        Value="au.com.entitysolutions.taskflows.train.model.PortalUserTFStepDocView.UserTfStepId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

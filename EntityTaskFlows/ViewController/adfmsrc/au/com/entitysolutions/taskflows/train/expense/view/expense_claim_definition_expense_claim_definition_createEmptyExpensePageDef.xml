@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel"
+                version="11.1.1.60.13"
+                id="expense_claim_definition_expense_claim_definition_createEmptyExpensePageDef"
+                Package="au.com.entitysolutions.taskflows.train.expense.view"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <action id="createEmptyExpense" RequiresUpdateModel="true"
+            Action="invokeMethod" MethodName="createEmptyExpense"
+            IsViewObjectMethod="false"
+            DataControl="ExpenseTrainAppModuleDataControl"
+            InstanceName="ExpenseTrainAppModuleDataControl.dataProvider"/>
+  </bindings>
+</pageDefinition>

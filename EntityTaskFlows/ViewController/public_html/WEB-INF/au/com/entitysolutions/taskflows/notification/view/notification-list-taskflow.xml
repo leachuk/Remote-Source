@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="notification-list-taskflow">
+    <default-activity id="__1">notificationList</default-activity>
+    <view id="notificationList">
+      <page>/au/com/entitysolutions/taskflows/notification/view/notificationList.jsff</page>
+    </view>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>
