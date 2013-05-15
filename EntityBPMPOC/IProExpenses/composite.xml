@@ -15,42 +15,25 @@
           importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter"
           location="MessageWriter.wsdl" importType="wsdl"/>
-  <component name="IProExpensesSubmit">
-    <implementation.bpmn src="processes/IProExpensesSubmit.bpmn"/>
-  </component>
-  <component name="SayHello2">
-    <implementation.workflow src="SayHello2.task"/>
-  </component>
-  <component name="TestProcess">
-    <implementation.bpmn src="processes/TestProcess.bpmn"/>
+  <component name="NewHelloWorldTest">
+    <implementation.bpmn src="processes/NewHelloWorldTest.bpmn"/>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string"
               many="false">sync</property>
     <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
   </component>
-  <component name="HelloWorldTest">
-    <implementation.bpmn src="processes/HelloWorldTest.bpmn"/>
-    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string"
-              many="false">sync</property>
-    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+  <component name="SayHello">
+    <implementation.workflow src="SayHello.task"/>
   </component>
   <reference name="MessageWriter" ui:wsdlLocation="MessageWriter.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter#wsdl.interface(Write_ptt)"/>
     <binding.jca config="MessageWriter_file.jca"/>
   </reference>
   <wire>
-    <source.uri>TestProcess/HumanTasks.SayHello2.reference</source.uri>
-    <target.uri>SayHello2/TaskService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>TestProcess/Services.Externals.MessageWriter.reference</source.uri>
+    <source.uri>NewHelloWorldTest/Services.Externals.MessageWriter.reference</source.uri>
     <target.uri>MessageWriter</target.uri>
   </wire>
   <wire>
-    <source.uri>HelloWorldTest/HumanTasks.SayHello2.reference</source.uri>
-    <target.uri>SayHello2/TaskService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>HelloWorldTest/Services.Externals.MessageWriter.reference</source.uri>
-    <target.uri>MessageWriter</target.uri>
+    <source.uri>NewHelloWorldTest/HumanTasks.SayHello.reference</source.uri>
+    <target.uri>SayHello/TaskService</target.uri>
   </wire>
 </composite>

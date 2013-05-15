@@ -2,8 +2,8 @@
      name="MessageWriter"
      targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter"
      xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
-     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter"
      xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenses/MessageWriter"
      xmlns:imp1="http://xmlns.oracle.com/bpm/bpmobject/HelloWorldTypes/HelloWorldObject"
      xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
     >
