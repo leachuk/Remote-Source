@@ -1,0 +1,744 @@
+<?xml version="1.0"?>
+<RuleDictionary id="G}-9be16bc:12c8940774f:-7fff" xmlns="http://xmlns.oracle.com/rules/dictionary">
+    <Name>helloRules</Name>
+    <Alias>helloRules</Alias>
+    <Package>helloworldproject</Package>
+    <Version>11.1.1.0.0</Version>
+    <DataModel id="L}2">
+        <CreationUpdateNumber>2</CreationUpdateNumber>
+        <JaxbFactType id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType">
+            <Name>com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType</Name>
+            <Alias>ReviewObjectType</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>3</CreationUpdateNumber>
+            <Property id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}">
+                <Name>reason</Name>
+                <Alias>reason</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <IDofType>J}java.lang.String</IDofType>
+                <ListContentID>B}nil</ListContentID>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+                <Writable>true</Writable>
+                <Readable>true</Readable>
+                <Local>true</Local>
+                <Expression id="L}23">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <PrimaryKey>false</PrimaryKey>
+            </Property>
+            <Property id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}">
+                <Name>review</Name>
+                <Alias>review</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <IDofType>J}java.lang.String</IDofType>
+                <ListContentID>B}nil</ListContentID>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+                <Writable>true</Writable>
+                <Readable>true</Readable>
+                <Local>true</Local>
+                <Expression id="L}24">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <PrimaryKey>false</PrimaryKey>
+            </Property>
+            <Method id="J}public java.lang.String com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.getReason()">
+                <Name>getReason</Name>
+                <Alias>getReason</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <Modifiers id="L}16">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}java.lang.String</IDofType>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public java.lang.String com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.getReview()">
+                <Name>getReview</Name>
+                <Alias>getReview</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <Modifiers id="L}18">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}java.lang.String</IDofType>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public void com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.setReview(java.lang.String)">
+                <Name>setReview</Name>
+                <Alias>setReview</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <OverloadedParameter id="G}-9be16bc:12c8940774f:-7c41">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <IDsOfType>J}java.lang.String</IDsOfType>
+                </OverloadedParameter>
+                <Modifiers id="L}20">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}void</IDofType>
+                <Type>void</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public void com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.setReason(java.lang.String)">
+                <Name>setReason</Name>
+                <Alias>setReason</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <OverloadedParameter id="G}-9be16bc:12c8940774f:-7c40">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <IDsOfType>J}java.lang.String</IDsOfType>
+                </OverloadedParameter>
+                <Modifiers id="L}22">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}void</IDofType>
+                <Type>void</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Constructor id="J}public com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType()">
+                <Visible>true</Visible>
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <Modifiers id="L}14">
+                    <CreationUpdateNumber>3</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+            </Constructor>
+            <IDofSuperClass>J}java.lang.Object</IDofSuperClass>
+            <ValidationUpdateNumber>3</ValidationUpdateNumber>
+            <Source>xsd/ReviewObject.xsd</Source>
+            <IsArray>false</IsArray>
+            <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+            <SupportXPath>false</SupportXPath>
+            <IsInterface>false</IsInterface>
+            <Modifiers id="L}12">
+                <CreationUpdateNumber>3</CreationUpdateNumber>
+                <Access>1</Access>
+                <isStatic>false</isStatic>
+                <isFinal>false</isFinal>
+                <isAbstract>false</isAbstract>
+            </Modifiers>
+            <EnumBucketSetID>B}nil</EnumBucketSetID>
+            <Timestamp>0</Timestamp>
+            <ENUM>false</ENUM>
+            <XmlName>//xs:complexType[@name=&apos;ReviewObjectType&apos;]</XmlName>
+            <JAXB2.0>true</JAXB2.0>
+            <NodeName>ReviewObjectType</NodeName>
+            <Namespace>http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject</Namespace>
+        </JaxbFactType>
+        <JaxbFactType id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType">
+            <Name>com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType</Name>
+            <Alias>HelloObjectType</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>4</CreationUpdateNumber>
+            <Property id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.{date}">
+                <Name>date</Name>
+                <Alias>date</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <IDofType>J}javax.xml.datatype.XMLGregorianCalendar</IDofType>
+                <ListContentID>B}nil</ListContentID>
+                <Type>XMLGregorianCalendar</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+                <Writable>true</Writable>
+                <Readable>true</Readable>
+                <Local>true</Local>
+                <Expression id="L}41">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <PrimaryKey>false</PrimaryKey>
+            </Property>
+            <Property id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.{greeting}">
+                <Name>greeting</Name>
+                <Alias>greeting</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <IDofType>J}java.lang.String</IDofType>
+                <ListContentID>B}nil</ListContentID>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+                <Writable>true</Writable>
+                <Readable>true</Readable>
+                <Local>true</Local>
+                <Expression id="L}42">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <PrimaryKey>false</PrimaryKey>
+            </Property>
+            <Property id="J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.{message}">
+                <Name>message</Name>
+                <Alias>message</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <IDofType>J}java.lang.String</IDofType>
+                <ListContentID>B}nil</ListContentID>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+                <Writable>true</Writable>
+                <Readable>true</Readable>
+                <Local>true</Local>
+                <Expression id="L}43">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <PrimaryKey>false</PrimaryKey>
+            </Property>
+            <Method id="J}public java.lang.String com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.getMessage()">
+                <Name>getMessage</Name>
+                <Alias>getMessage</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <Modifiers id="L}30">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}java.lang.String</IDofType>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public javax.xml.datatype.XMLGregorianCalendar com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.getDate()">
+                <Name>getDate</Name>
+                <Alias>getDate</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <Modifiers id="L}32">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}javax.xml.datatype.XMLGregorianCalendar</IDofType>
+                <Type>XMLGregorianCalendar</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public void com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.setDate(javax.xml.datatype.XMLGregorianCalendar)">
+                <Name>setDate</Name>
+                <Alias>setDate</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <OverloadedParameter id="G}-9be16bc:12c8940774f:-7c3f">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <IDsOfType>J}javax.xml.datatype.XMLGregorianCalendar</IDsOfType>
+                </OverloadedParameter>
+                <Modifiers id="L}34">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}void</IDofType>
+                <Type>void</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public void com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.setMessage(java.lang.String)">
+                <Name>setMessage</Name>
+                <Alias>setMessage</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <OverloadedParameter id="G}-9be16bc:12c8940774f:-7c3e">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <IDsOfType>J}java.lang.String</IDsOfType>
+                </OverloadedParameter>
+                <Modifiers id="L}36">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}void</IDofType>
+                <Type>void</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public java.lang.String com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.getGreeting()">
+                <Name>getGreeting</Name>
+                <Alias>getGreeting</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <Modifiers id="L}38">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}java.lang.String</IDofType>
+                <Type>String</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Method id="J}public void com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.setGreeting(java.lang.String)">
+                <Name>setGreeting</Name>
+                <Alias>setGreeting</Alias>
+                <Visible>false</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <OverloadedParameter id="G}-9be16bc:12c8940774f:-7c3d">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <IDsOfType>J}java.lang.String</IDsOfType>
+                </OverloadedParameter>
+                <Modifiers id="L}40">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+                <Static>false</Static>
+                <IDofType>J}void</IDofType>
+                <Type>void</Type>
+                <IDofBucketSet>B}nil</IDofBucketSet>
+            </Method>
+            <Constructor id="J}public com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType()">
+                <Visible>true</Visible>
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <Modifiers id="L}28">
+                    <CreationUpdateNumber>4</CreationUpdateNumber>
+                    <Access>1</Access>
+                    <isStatic>false</isStatic>
+                    <isFinal>false</isFinal>
+                    <isAbstract>false</isAbstract>
+                </Modifiers>
+            </Constructor>
+            <IDofSuperClass>J}java.lang.Object</IDofSuperClass>
+            <ValidationUpdateNumber>4</ValidationUpdateNumber>
+            <Source>xsd/HelloObject.xsd</Source>
+            <IsArray>false</IsArray>
+            <IDofArrayComponentType>B}nil</IDofArrayComponentType>
+            <SupportXPath>false</SupportXPath>
+            <IsInterface>false</IsInterface>
+            <Modifiers id="L}26">
+                <CreationUpdateNumber>4</CreationUpdateNumber>
+                <Access>1</Access>
+                <isStatic>false</isStatic>
+                <isFinal>false</isFinal>
+                <isAbstract>false</isAbstract>
+            </Modifiers>
+            <EnumBucketSetID>B}nil</EnumBucketSetID>
+            <Timestamp>0</Timestamp>
+            <ENUM>false</ENUM>
+            <XmlName>//xs:complexType[@name=&apos;HelloObjectType&apos;]</XmlName>
+            <JAXB2.0>true</JAXB2.0>
+            <NodeName>HelloObjectType</NodeName>
+            <Namespace>http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject</Namespace>
+        </JaxbFactType>
+        <BucketSet id="G}-9be16bc:12c8940774f:-7c2d">
+            <Name>Lengths</Name>
+            <Alias>Lengths</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>16</CreationUpdateNumber>
+            <IDofType>J}int</IDofType>
+            <ListContentID>B}nil</ListContentID>
+            <Type>int</Type>
+            <Form>Range</Form>
+            <Bucket id="G}-9be16bc:12c8940774f:-7c2c">
+                <Name>&lt;5</Name>
+                <Alias>Short</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>16</CreationUpdateNumber>
+                <Inclusive>true</Inclusive>
+                <Otherwise>true</Otherwise>
+                <Excluded>false</Excluded>
+                <Expression id="L}67">
+                    <IsConstant>true</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+            </Bucket>
+            <Bucket id="G}-9be16bc:12c8940774f:-7c2b">
+                <Name>[5..50)</Name>
+                <Alias>Medium</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>19</CreationUpdateNumber>
+                <Inclusive>true</Inclusive>
+                <Otherwise>false</Otherwise>
+                <Excluded>false</Excluded>
+                <Expression id="L}68">
+                    <Value>5</Value>
+                    <ResolvedValue>5</ResolvedValue>
+                    <IsConstant>true</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+            </Bucket>
+            <Bucket id="G}-9be16bc:12c8940774f:-7c29">
+                <Name>&gt;=50</Name>
+                <Alias>Long</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>21</CreationUpdateNumber>
+                <Inclusive>true</Inclusive>
+                <Otherwise>false</Otherwise>
+                <Excluded>false</Excluded>
+                <Expression id="L}70">
+                    <Value>50</Value>
+                    <ResolvedValue>50</ResolvedValue>
+                    <IsConstant>true</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+            </Bucket>
+            <CalendarForm>Date</CalendarForm>
+            <Excluded>false</Excluded>
+            <ValidationUpdateNumber>60</ValidationUpdateNumber>
+        </BucketSet>
+        <SupportsXPathEnabled>false</SupportsXPathEnabled>
+        <DecisionFunction id="G}-9be16bc:12c8940774f:-7c3a">
+            <Name>helloRules_DecisionService_1</Name>
+            <Alias>helloRules_DecisionService_1</Alias>
+            <Visible>true</Visible>
+            <CreationUpdateNumber>4</CreationUpdateNumber>
+            <WebService>true</WebService>
+            <CheckRuleFlow>true</CheckRuleFlow>
+            <Stateless>true</Stateless>
+            <DecisionFunctionInput id="L}53">
+                <Name>HelloObjectType</Name>
+                <Alias>HelloObjectType</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>6</CreationUpdateNumber>
+                <IDofType>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType</IDofType>
+                <List>false</List>
+                <Tree>true</Tree>
+            </DecisionFunctionInput>
+            <DecisionFunctionRuleSet id="L}52">
+                <CreationUpdateNumber>5</CreationUpdateNumber>
+                <Form>rule set</Form>
+                <Ruleset>Ruleset_1</Ruleset>
+                <DecisionFunction>Ruleset_1</DecisionFunction>
+                <refID>G}-9be16bc:12c8940774f:-7c3b</refID>
+            </DecisionFunctionRuleSet>
+            <DecisionFunctionOutput id="L}54">
+                <Name>ReviewObjectType</Name>
+                <Alias>ReviewObjectType</Alias>
+                <Visible>true</Visible>
+                <CreationUpdateNumber>7</CreationUpdateNumber>
+                <IDofType>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType</IDofType>
+                <List>false</List>
+                <Tree>false</Tree>
+            </DecisionFunctionOutput>
+            <ValidationUpdateNumber>30</ValidationUpdateNumber>
+            <RuleFiringLimit>unlimited</RuleFiringLimit>
+        </DecisionFunction>
+        <UpdateNumber>62</UpdateNumber>
+        <ValidationUpdateNumber>62</ValidationUpdateNumber>
+    </DataModel>
+    <RuleSet id="G}-9be16bc:12c8940774f:-7c3b">
+        <Name>Ruleset_1</Name>
+        <Alias>Ruleset_1</Alias>
+        <ValidationUpdateNumber>62</ValidationUpdateNumber>
+        <Customizable>true</Customizable>
+        <Active>true</Active>
+        <CalendarForm>DateTime</CalendarForm>
+        <RuleSheet id="G}-9be16bc:12c8940774f:-7c33">
+            <Name>ReviewDecisionTable</Name>
+            <Alias>ReviewDecisionTable</Alias>
+            <ValidationUpdateNumber>62</ValidationUpdateNumber>
+            <Priority>medium</Priority>
+            <Customizable>true</Customizable>
+            <Active>true</Active>
+            <CalendarForm>DateTime</CalendarForm>
+            <Pattern id="L}58">
+                <Form>Fact Type</Form>
+                <FactType>HelloObjectType</FactType>
+                <IDofFactType>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType</IDofFactType>
+                <Connective>&amp;&amp;</Connective>
+                <TestForm>Simple</TestForm>
+                <Expression id="L}59">
+                    <IsConstant>false</IsConstant>
+                    <ParameterID>B}nil</ParameterID>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <Operator>(for each case where)</Operator>
+                <FactPath>HelloObjectType</FactPath>
+                <FactPathIDs>L}58</FactPathIDs>
+            </Pattern>
+            <ShowPatterns>false</ShowPatterns>
+            <TreeMode>false</TreeMode>
+            <Visible>true</Visible>
+            <Logical>false</Logical>
+            <Dimension id="L}55">
+                <Value>HelloObjectType.greeting.length()</Value>
+                <ResolvedValue>`L}58`.`J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.{greeting}`.`J}public int java.lang.String.length()`()</ResolvedValue>
+                <IsConstant>false</IsConstant>
+                <ParameterID>B}nil</ParameterID>
+                <Customizable>false</Customizable>
+                <DimensionNode id="L}56">
+                    <BucketIDTable>G}-9be16bc:12c8940774f:-7c2c</BucketIDTable>
+                    <ParentDimensionNode>B}nil</ParentDimensionNode>
+                    <ChildDimensionNodes>L}65</ChildDimensionNodes>
+                    <Values>Short</Values>
+                </DimensionNode>
+                <DimensionNode id="L}85">
+                    <BucketIDTable>G}-9be16bc:12c8940774f:-7c2b</BucketIDTable>
+                    <ParentDimensionNode>B}nil</ParentDimensionNode>
+                    <ChildDimensionNodes>L}86 L}100</ChildDimensionNodes>
+                    <Values>Medium</Values>
+                </DimensionNode>
+                <DimensionNode id="L}94">
+                    <BucketIDTable>G}-9be16bc:12c8940774f:-7c29</BucketIDTable>
+                    <ParentDimensionNode>B}nil</ParentDimensionNode>
+                    <ChildDimensionNodes>L}95</ChildDimensionNodes>
+                    <Values>Long</Values>
+                </DimensionNode>
+                <IDofSharedBucketSet>G}-9be16bc:12c8940774f:-7c2d</IDofSharedBucketSet>
+                <PrivateBucketSet id="G}-9be16bc:12c8940774f:-7c32">
+                    <Visible>true</Visible>
+                    <CreationUpdateNumber>11</CreationUpdateNumber>
+                    <IDofType>J}int</IDofType>
+                    <ListContentID>B}nil</ListContentID>
+                    <Type>int</Type>
+                    <Form>Default</Form>
+                    <Bucket id="G}-9be16bc:12c8940774f:-7c31">
+                        <Alias>otherwise</Alias>
+                        <Visible>true</Visible>
+                        <CreationUpdateNumber>12</CreationUpdateNumber>
+                        <Inclusive>true</Inclusive>
+                        <Otherwise>true</Otherwise>
+                        <Excluded>false</Excluded>
+                        <Expression id="L}60">
+                            <IsConstant>true</IsConstant>
+                            <ParameterID>B}nil</ParameterID>
+                            <Customizable>false</Customizable>
+                        </Expression>
+                    </Bucket>
+                    <CalendarForm>Date</CalendarForm>
+                    <Excluded>false</Excluded>
+                    <ValidationUpdateNumber>13</ValidationUpdateNumber>
+                </PrivateBucketSet>
+            </Dimension>
+            <Dimension id="L}64">
+                <Value>HelloObjectType.message.length()</Value>
+                <ResolvedValue>`L}58`.`J}com.oracle.xmlns.bpm.bpmobject.hellotypes.helloobject.HelloObjectType.{message}`.`J}public int java.lang.String.length()`()</ResolvedValue>
+                <IsConstant>false</IsConstant>
+                <ParameterID>B}nil</ParameterID>
+                <Customizable>false</Customizable>
+                <DimensionNode id="L}65">
+                    <BucketIDTable></BucketIDTable>
+                    <ParentDimensionNode>L}56</ParentDimensionNode>
+                    <ChildDimensionNodes></ChildDimensionNodes>
+                    <Values>-</Values>
+                </DimensionNode>
+                <DimensionNode id="L}86">
+                    <BucketIDTable>G}-9be16bc:12c8940774f:-7c2c</BucketIDTable>
+                    <ParentDimensionNode>L}85</ParentDimensionNode>
+                    <ChildDimensionNodes></ChildDimensionNodes>
+                    <Values>Short</Values>
+                </DimensionNode>
+                <DimensionNode id="L}100">
+                    <BucketIDTable>G}-9be16bc:12c8940774f:-7c2b G}-9be16bc:12c8940774f:-7c29</BucketIDTable>
+                    <ParentDimensionNode>L}85</ParentDimensionNode>
+                    <ChildDimensionNodes></ChildDimensionNodes>
+                    <Values>Medium Long</Values>
+                </DimensionNode>
+                <DimensionNode id="L}95">
+                    <BucketIDTable></BucketIDTable>
+                    <ParentDimensionNode>L}94</ParentDimensionNode>
+                    <ChildDimensionNodes></ChildDimensionNodes>
+                    <Values>-</Values>
+                </DimensionNode>
+                <IDofSharedBucketSet>G}-9be16bc:12c8940774f:-7c2d</IDofSharedBucketSet>
+                <PrivateBucketSet id="G}-9be16bc:12c8940774f:-7c30">
+                    <Visible>true</Visible>
+                    <CreationUpdateNumber>14</CreationUpdateNumber>
+                    <IDofType>J}int</IDofType>
+                    <ListContentID>B}nil</ListContentID>
+                    <Type>int</Type>
+                    <Form>Default</Form>
+                    <Bucket id="G}-9be16bc:12c8940774f:-7c2f">
+                        <Alias>otherwise</Alias>
+                        <Visible>true</Visible>
+                        <CreationUpdateNumber>15</CreationUpdateNumber>
+                        <Inclusive>true</Inclusive>
+                        <Otherwise>true</Otherwise>
+                        <Excluded>false</Excluded>
+                        <Expression id="L}66">
+                            <IsConstant>true</IsConstant>
+                            <ParameterID>B}nil</ParameterID>
+                            <Customizable>false</Customizable>
+                        </Expression>
+                    </Bucket>
+                    <CalendarForm>Date</CalendarForm>
+                    <Excluded>false</Excluded>
+                    <ValidationUpdateNumber>15</ValidationUpdateNumber>
+                </PrivateBucketSet>
+            </Dimension>
+            <DTAction id="L}73">
+                <Form>Assert New</Form>
+                <Target>ReviewObjectType</Target>
+                <ResolvedTarget>`J}public com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType()`</ResolvedTarget>
+                <Expression id="L}79">
+                    <IsConstant>true</IsConstant>
+                    <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}</ParameterID>
+                    <DTActionParameterName>reason</DTActionParameterName>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <Expression id="L}80">
+                    <IsConstant>true</IsConstant>
+                    <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}</ParameterID>
+                    <DTActionParameterName>review</DTActionParameterName>
+                    <Customizable>false</Customizable>
+                </Expression>
+                <DTActionNode id="L}74">
+                    <Selected>true</Selected>
+                    <Expression id="L}82">
+                        <Value>&quot;true&quot;</Value>
+                        <ResolvedValue>&quot;true&quot;</ResolvedValue>
+                        <IsConstant>false</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}</ParameterID>
+                        <DTActionParameterName>review</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                    <Expression id="L}81">
+                        <Value>&quot;Greeting is too short&quot;</Value>
+                        <ResolvedValue>&quot;Greeting is too short&quot;</ResolvedValue>
+                        <IsConstant>false</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}</ParameterID>
+                        <DTActionParameterName>reason</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                </DTActionNode>
+                <DTActionNode id="L}88">
+                    <Selected>true</Selected>
+                    <Expression id="L}89">
+                        <Value>&quot;true&quot;</Value>
+                        <ResolvedValue>&quot;true&quot;</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}</ParameterID>
+                        <DTActionParameterName>review</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                    <Expression id="L}90">
+                        <Value>&quot;Length is too short&quot;</Value>
+                        <ResolvedValue>&quot;Length is too short&quot;</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}</ParameterID>
+                        <DTActionParameterName>reason</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                </DTActionNode>
+                <DTActionNode id="L}102">
+                    <Selected>true</Selected>
+                    <Expression id="L}103">
+                        <Value>&quot;false&quot;</Value>
+                        <ResolvedValue>&quot;false&quot;</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}</ParameterID>
+                        <DTActionParameterName>review</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                    <Expression id="L}104">
+                        <Value>null</Value>
+                        <ResolvedValue>null</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}</ParameterID>
+                        <DTActionParameterName>reason</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                </DTActionNode>
+                <DTActionNode id="L}97">
+                    <Selected>true</Selected>
+                    <Expression id="L}98">
+                        <Value>&quot;false&quot;</Value>
+                        <ResolvedValue>&quot;false&quot;</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{review}</ParameterID>
+                        <DTActionParameterName>review</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                    <Expression id="L}99">
+                        <Value>null</Value>
+                        <ResolvedValue>null</ResolvedValue>
+                        <IsConstant>true</IsConstant>
+                        <ParameterID>J}com.oracle.xmlns.bpm.bpmobject.hellotypes.reviewobject.ReviewObjectType.{reason}</ParameterID>
+                        <DTActionParameterName>reason</DTActionParameterName>
+                        <Customizable>false</Customizable>
+                    </Expression>
+                </DTActionNode>
+                <AlwaysSelected>false</AlwaysSelected>
+            </DTAction>
+            <DTRule id="L}57">
+                <Override></Override>
+                <RunBefore></RunBefore>
+                <NoConflict></NoConflict>
+                <OverriddenBy></OverriddenBy>
+                <RunAfter></RunAfter>
+                <CreationUpdateNumber>11</CreationUpdateNumber>
+            </DTRule>
+            <DTRule id="L}87">
+                <Override></Override>
+                <RunBefore></RunBefore>
+                <NoConflict></NoConflict>
+                <OverriddenBy></OverriddenBy>
+                <RunAfter></RunAfter>
+                <CreationUpdateNumber>42</CreationUpdateNumber>
+            </DTRule>
+            <DTRule id="L}101">
+                <Override></Override>
+                <RunBefore></RunBefore>
+                <NoConflict></NoConflict>
+                <OverriddenBy></OverriddenBy>
+                <RunAfter></RunAfter>
+                <CreationUpdateNumber>57</CreationUpdateNumber>
+            </DTRule>
+            <DTRule id="L}96">
+                <Override></Override>
+                <RunBefore></RunBefore>
+                <NoConflict></NoConflict>
+                <OverriddenBy></OverriddenBy>
+                <RunAfter></RunAfter>
+                <CreationUpdateNumber>51</CreationUpdateNumber>
+            </DTRule>
+            <AllowGaps>true</AllowGaps>
+            <ConflictPolicy>manual</ConflictPolicy>
+        </RuleSheet>
+        <VisibilityFilterEnabled>false</VisibilityFilterEnabled>
+        <CreationUpdateNumber>4</CreationUpdateNumber>
+    </RuleSet>
+    <IDcounter>105</IDcounter>
+    <ValidationUpdateNumber>62</ValidationUpdateNumber>
+    <UpdateNumber>62</UpdateNumber>
+</RuleDictionary>

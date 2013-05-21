@@ -1,0 +1,582 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100225"?>
+<definitions xsi:schemaLocation="http://www.omg.org/bpmn20" xmlns:ns2="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns="http://www.omg.org/bpmn20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <peopleGroup name="Requester" id="Requester">
+        <ns2:OracleExtensions>
+            <ns2:GraphicsAttributes>
+                <ns2:Position y="0" x="0"/>
+                <ns2:Size height="0" width="200"/>
+            </ns2:GraphicsAttributes>
+        </ns2:OracleExtensions>
+    </peopleGroup>
+    <peopleGroup name="Reviewer" id="Reviewer">
+        <ns2:OracleExtensions>
+            <ns2:GraphicsAttributes>
+                <ns2:Position y="0" x="200"/>
+                <ns2:Size height="0" width="200"/>
+            </ns2:GraphicsAttributes>
+        </ns2:OracleExtensions>
+    </peopleGroup>
+    <process processType="executable" name="HelloWorldProcess" id="HelloWorldProcess">
+        <ns2:OracleExtensions>
+            <ns2:FeatureSet>
+                <ns2:BooleanFeature value="false" name="atomic"/>
+                <ns2:BooleanFeature value="false" name="instanceScreenflow"/>
+                <ns2:BooleanFeature value="false" name="isCallable"/>
+                <ns2:BooleanFeature value="false" name="isInterface"/>
+                <ns2:BooleanFeature value="true" name="sharePredefineVariables"/>
+                <ns2:StringFeature value="Administrator" name="AUTHOR"/>
+                <ns2:StringFeature value="default" name="GreedyExecutionMode"/>
+                <ns2:StringFeature value="http://xmlns.oracle.com/bpmn/bpmnProcess/HelloWorldProcess" name="NAMESPACE"/>
+                <ns2:StringFeature value="PROJECT_DEFAULT" name="generatesEvents"/>
+                <ns2:StringFeature value="HORIZONTAL_LAYOUT" name="process-layout"/>
+                <ns2:StringFeature value="1.0" name="scale"/>
+                <ns2:StringFeature value="REGULAR" name="sealType"/>
+            </ns2:FeatureSet>
+        </ns2:OracleExtensions>
+        <userTask implementation="other" isForCompensation="false" name="Request Hello" id="activity0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="220"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="reinitiate"/>
+                    <ns2:BooleanFeature value="true" name="manualCreation"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                    <ns2:StringFeature value="INITIATOR" name="humanTaskType"/>
+                    <ns2:IntegerFeature value="3" name="priority"/>
+                </ns2:FeatureSet>
+                <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.SayHello"/>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="helloObject" id="helloObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataOutput name="outcome" id="outcome">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="helloObject" id="helloObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <inputSet id="activity0_uniqueInputSet">
+                    <dataInput name="helloObject" id="helloObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+                <outputSet id="activity0_uniqueOutputSet">
+                    <dataOutput name="outcome" id="outcome">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="helloObject" id="helloObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                </outputSet>
+            </ioSpecification>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('helloObject')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</to>
+                </assignment>
+                <sourceRef>helloObject</sourceRef>
+                <targetRef>hello</targetRef>
+            </dataOutputAssociation>
+            <performer name="Requester" id="Requester"/>
+        </userTask>
+        <serviceTask operationRef="write" serviceRef="Services.Externals.MessageWriter" isForCompensation="false" name="Write Message" id="activity1">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="820"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="" name="associatedProcess"/>
+                    <ns2:StringFeature value="" name="associatedNode"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="helloObject" id="helloObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <inputSet id="activity1_uniqueInputSet">
+                    <dataInput name="helloObject" id="helloObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('helloObject')</to>
+                </assignment>
+                <sourceRef>hello</sourceRef>
+                <targetRef>helloObject</targetRef>
+            </dataInputAssociation>
+        </serviceTask>
+        <businessRuleTask isForCompensation="false" name="Review Needed" id="activity2">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="340"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+                <ns2:BusinessRuleTaskData functionName="helloRules_DecisionService_1" businessRuleName="Rules.Helloworldproject.HelloRules"/>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="helloObjectType" id="helloObjectType">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataOutput name="reviewObjectType" id="reviewObjectType">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ReviewObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <inputSet id="activity2_uniqueInputSet">
+                    <dataInput name="helloObjectType" id="helloObjectType">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+                <outputSet id="activity2_uniqueOutputSet">
+                    <dataOutput name="reviewObjectType" id="reviewObjectType">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ReviewObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                </outputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('helloObjectType')</to>
+                </assignment>
+                <sourceRef>hello</sourceRef>
+                <targetRef>helloObjectType</targetRef>
+            </dataInputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('reviewObjectType')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('review')</to>
+                </assignment>
+                <sourceRef>reviewObjectType</sourceRef>
+                <targetRef>review</targetRef>
+            </dataOutputAssociation>
+        </businessRuleTask>
+        <userTask implementation="other" isForCompensation="false" name="Review Message" id="activity3">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="300" x="580"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="reinitiate"/>
+                    <ns2:BooleanFeature value="false" name="manualCreation"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                    <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                    <ns2:IntegerFeature value="3" name="priority"/>
+                </ns2:FeatureSet>
+                <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.ReviewMessage"/>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="reviewObject" id="reviewObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ReviewObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="helloObject" id="helloObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataOutput name="outcome" id="outcome">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="helloObject" id="helloObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <inputSet id="activity3_uniqueInputSet">
+                    <dataInput name="reviewObject" id="reviewObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ReviewObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="helloObject" id="helloObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+                <outputSet id="activity3_uniqueOutputSet">
+                    <dataOutput name="outcome" id="outcome">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="helloObject" id="helloObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                </outputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('helloObject')</to>
+                </assignment>
+                <sourceRef>hello</sourceRef>
+                <targetRef>helloObject</targetRef>
+            </dataInputAssociation>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('review')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('reviewObject')</to>
+                </assignment>
+                <sourceRef>review</sourceRef>
+                <targetRef>reviewObject</targetRef>
+            </dataInputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('helloObject')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</to>
+                </assignment>
+                <sourceRef>helloObject</sourceRef>
+                <targetRef>hello</targetRef>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('outcome')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('reviewOutcome')</to>
+                </assignment>
+                <sourceRef>outcome</sourceRef>
+                <targetRef>reviewOutcome</targetRef>
+            </dataOutputAssociation>
+            <performer name="Reviewer" id="Reviewer"/>
+        </userTask>
+        <scriptTask isForCompensation="false" name="InitReview" id="activity4">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="580"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="true"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath">'ACCEPT'</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('reviewOutcome')</to>
+                </assignment>
+                <targetRef>reviewOutcome</targetRef>
+            </dataOutputAssociation>
+            <script/>
+        </scriptTask>
+        <startEvent isInterrupting="false" name="Start" id="startEvent0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="100"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <outputSet/>
+        </startEvent>
+        <endEvent name="End" id="endEvent0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="940"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <inputSet/>
+        </endEvent>
+        <exclusiveGateway gatewayDirection="unspecified" name="g1" id="gateway0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="460"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </exclusiveGateway>
+        <exclusiveGateway gatewayDirection="unspecified" name="g2" id="gateway1">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="102" x="700"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </exclusiveGateway>
+        <sequenceFlow targetRef="activity0" sourceRef="startEvent0" name="sf29" id="sf29">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity2" sourceRef="activity0" name="sf31" id="sf31">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="endEvent0" sourceRef="activity1" name="sf33" id="sf33">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway0" sourceRef="activity2" name="sf35" id="sf35">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity4" sourceRef="gateway0" name="sf37" id="sf37">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity1" sourceRef="gateway1" name="sf39" id="sf39">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity3" sourceRef="gateway0" name="sf42" id="sf42">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="Review Needed" name="userName"/>
+                    <ns2:IntegerFeature value="0" name="order"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('review')/review = 'true')
+                <ns2:OracleExtensions>
+                    <ns2:Expression mode="simple"/>
+                </ns2:OracleExtensions>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway1" sourceRef="activity3" name="sf45" id="sf45">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity0" sourceRef="gateway1" name="sf48" id="sf48">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes>
+                    <ns2:Positions y="32" x="460"/>
+                </ns2:SequenceFlowAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="460,32" name="curve"/>
+                    <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    <ns2:StringFeature value="Message Rejected" name="userName"/>
+                    <ns2:IntegerFeature value="0" name="order"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('reviewOutcome') = 'REJECT')
+                <ns2:OracleExtensions>
+                    <ns2:Expression mode="simple"/>
+                </ns2:OracleExtensions>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway1" sourceRef="activity4" name="sf50" id="sf50">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <dataObject name="hello" id="hello">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="review" id="review">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ReviewObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="reviewOutcome" id="reviewOutcome">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+    </process>
+</definitions>

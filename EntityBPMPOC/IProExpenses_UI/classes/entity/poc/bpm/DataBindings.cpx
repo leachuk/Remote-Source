@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="entity.poc.bpm" ClientType="Generic">
+  <pageMap>
+    <page path="/taskDetails1.jspx"
+          usageId="entity_poc_bpm_taskDetails1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="entity_poc_bpm_taskDetails1PageDef"
+          path="entity.poc.bpm.pageDefs.taskDetails1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="IProExpenses_UI_SayHello"
+        path="entity.poc.bpm.IProExpenses_UI_SayHello"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<decisionServices xmlns="http://xmlns.oracle.com/bpel/rules" name="helloRules">
+    <ruleEngineProvider name="OracleRulesSDK" provider="Oracle_11.0.0.0.0">
+        <repository type="SCA-Archive">
+            <path>HelloWorldProject/oracle/rules/helloworldproject/helloRules.rules</path>
+        </repository>
+    </ruleEngineProvider>
+    <decisionService targetNamespace="http://xmlns.oracle.com/helloRules/helloRules_DecisionService_1" ruleEngineProviderReference="OracleRulesSDK" name="helloRules_DecisionService_1">
+        <catalog>helloRules</catalog>
+        <pattern name="CallFunctionStateless">
+            <arguments>
+                <call>helloworldproject.helloRules.helloRules_DecisionService_1</call>
+            </arguments>
+        </pattern>
+        <pattern name="CallFunctionStateful">
+            <arguments>
+                <call>helloworldproject.helloRules.helloRules_DecisionService_1</call>
+            </arguments>
+        </pattern>
+    </decisionService>
+</decisionServices>

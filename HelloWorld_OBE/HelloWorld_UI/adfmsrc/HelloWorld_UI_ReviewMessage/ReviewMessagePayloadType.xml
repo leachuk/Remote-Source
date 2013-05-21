@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.56.60"
+          id="ReviewMessagePayloadType" Package="HelloWorld_UI_ReviewMessage"
+          BeanClass="HelloWorld_UI_ReviewMessage.ReviewMessagePayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="HelloObject" IsCollection="true"
+                     BeanClass="HelloWorld_UI_ReviewMessage.HelloObjectType"
+                     CollectionBeanClass="HelloWorld_UI_ReviewMessage.HelloObjectType_HelloObject_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+      <Property Name="nextSibling" Value="ReviewObject"/>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Hello Object"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="HelloObject"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="ReviewObject" IsCollection="true"
+                     BeanClass="HelloWorld_UI_ReviewMessage.ReviewObjectType"
+                     CollectionBeanClass="HelloWorld_UI_ReviewMessage.ReviewObjectType_ReviewObject_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Review Object"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ReviewObject"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/ReviewObject"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

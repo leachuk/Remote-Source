@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100225"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="HelloWorldProcess">
+        <topicDocumentations>
+            <topicDocumentation name="HelloWorldProcess">
+                <labels>
+                    <label locale="en">HelloWorldProcess</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">Request Hello</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">Write Message</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity2">
+                <labels>
+                    <label locale="en">Review Needed</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity3">
+                <labels>
+                    <label locale="en">Review Message</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway0">
+                <labels>
+                    <label locale="en">g1</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway1">
+                <labels>
+                    <label locale="en">g2</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity4">
+                <labels>
+                    <label locale="en">InitReview</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf29"/>
+            <topicDocumentation name="sf31"/>
+            <topicDocumentation name="sf33"/>
+            <topicDocumentation name="sf35"/>
+            <topicDocumentation name="sf37"/>
+            <topicDocumentation name="sf39"/>
+            <topicDocumentation name="sf42">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf45"/>
+            <topicDocumentation name="sf48">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf50"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>
