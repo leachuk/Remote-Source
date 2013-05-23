@@ -1,0 +1,16 @@
+<adapter-config name="FileReader" adapter="File Adapter" wsdlLocation="FileReader.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/FileAdapter" UIincludeWildcard="Input*.zip"/>
+  <endpoint-activation portType="Read_ptt" operation="Read">
+    <activation-spec className="oracle.tip.adapter.file.inbound.ScalableFileActivationSpec">
+      <property name="DeleteFile" value="true"/>
+      <property name="MinimumAge" value="0"/>
+      <property name="PhysicalDirectory" value="/tmp"/>
+      <property name="Recursive" value="false"/>
+      <property name="PollingFrequency" value="1"/>
+      <property name="IncludeFiles" value="Input.*\.zip"/>
+      <property name="UseHeaders" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

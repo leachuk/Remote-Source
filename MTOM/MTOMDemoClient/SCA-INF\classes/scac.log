@@ -1,0 +1,21 @@
+May 23, 2013 5:29:37 PM oracle.mds
+WARNING: The default CharSet MacRoman is not a unicode character set. File names with non-ASCII characters may not operate as expected. Check locale settings.
+Load of wsdl "http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl" failed
+oracle.fabric.common.FabricException: Error in getting XML input stream: http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl: Server returned HTTP response code: 500 for URL: http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl
+	at oracle.fabric.common.metadata.MetadataManagerImpl.getInputStreamFromAbsoluteURL(MetadataManagerImpl.java:280)
+	at oracle.integration.platform.common.MDSMetadataManagerImpl.getInputStreamFromAbsoluteURL(MDSMetadataManagerImpl.java:557)
+	at oracle.fabric.common.metadata.MetadataManagerImpl.getDocumentAsInputStream(MetadataManagerImpl.java:159)
+	at oracle.integration.platform.common.MDSMetadataManagerImpl.getDocumentAsInputStream(MDSMetadataManagerImpl.java:419)
+	at oracle.fabric.common.wsdl.WSDLManager.loadWSDL(WSDLManager.java:244)
+	at oracle.fabric.common.wsdl.WSDLManager.loadWSDL(WSDLManager.java:308)
+	at oracle.soa.scac.ValidateComposite.loadWSDLs(ValidateComposite.java:934)
+	at oracle.soa.scac.ValidateComposite.doValidation(ValidateComposite.java:491)
+	at oracle.soa.scac.ValidateComposite.run(ValidateComposite.java:150)
+	at oracle.soa.scac.ValidateComposite.main(ValidateComposite.java:135)
+Caused by: java.io.IOException: Server returned HTTP response code: 500 for URL: http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl
+	at sun.net.www.protocol.http.HttpURLConnection.getInputStream(HttpURLConnection.java:1436)
+	at java.net.URL.openStream(URL.java:1010)
+	at oracle.fabric.common.metadata.MetadataManagerImpl.getInputStreamFromAbsoluteURL(MetadataManagerImpl.java:276)
+	... 9 more
+May 23, 2013 5:29:38 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions name="SwAService"
+             targetNamespace="http://xmlns.oracle.com/AttachmentContentApp/SwADemo/SwAService"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+             xmlns:client="http://xmlns.oracle.com/AttachmentContentApp/SwADemo/SwAService"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+             xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+             xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/">
+	<wsdl:types>
+		<schema xmlns="http://www.w3.org/2001/XMLSchema">
+			<import namespace="http://xmlns.oracle.com/AttachmentContentApp/SwADemo/SwAService" schemaLocation="xsd/SwAService.xsd" />
+		</schema>
+	</wsdl:types>
+	<wsdl:message name="SwAServiceRequestMessage">
+		<wsdl:part name="payload" element="client:process"/>
+                <wsdl:part name="attach" type="xsd:base64Binary"/>
+	</wsdl:message>
+	<wsdl:portType name="SwAService">
+		<wsdl:operation name="process">
+			<wsdl:input  message="client:SwAServiceRequestMessage" />
+		</wsdl:operation>
+	</wsdl:portType>
+
+       <wsdl:binding name="MIMEServiceBinding" type="client:SwAService">
+        <soap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="process">
+            <soap:operation style="rpc" soapAction="service-process"/>
+            <wsdl:input>
+                <mime:multipartRelated>
+                    <mime:part>
+                        <soap:body use="literal" parts="payload"/>
+                    </mime:part>
+                    <mime:part>
+                        <mime:content part="attach" type="application/octet-stream"/>
+                    </mime:part>
+                </mime:multipartRelated>
+            </wsdl:input>
+            </wsdl:operation>
+            </wsdl:binding>
+	<!-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+	PARTNER LINK TYPE DEFINITION
+	~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ --> 
+	<plnk:partnerLinkType name="SwAService">
+		<plnk:role name="SwAServiceProvider">
+			<plnk:portType name="client:SwAService"/>
+		</plnk:role>
+	</plnk:partnerLinkType>
+</wsdl:definitions>

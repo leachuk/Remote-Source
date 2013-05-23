@@ -1,0 +1,58 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Oct 12 17:39:52 PDT 2011
+  Author:  ramkmeno
+  Type: BPEL 1.1 Process
+  Purpose: Empty BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="SwAClient"
+               targetNamespace="http://xmlns.oracle.com/AttachmentContentApp/SwADemoClient/SwAClient"
+               xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+               xmlns:client="http://xmlns.oracle.com/AttachmentContentApp/SwADemoClient/SwAClient"
+               xmlns:ora="http://schemas.oracle.com/xpath/extension"
+               xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/file/AttachmentContentApp/SwADemoClient/ReadAttachmentFile"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:ns2="http://xmlns.oracle.com/AttachmentContentApp/SwADemo/SwAService"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/">
+
+  <!-- 
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     ORCHESTRATION LOGIC                                               
+     Set of activities coordinating the flow of messages across the    
+     services integrated within this business process                  
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  -->
+  <partnerLinks>
+    <partnerLink name="ReadAttachmentFile" partnerLinkType="ns1:Read_plt"
+                 myRole="Read_role"/>
+    <partnerLink name="SwAService" partnerLinkType="ns2:SwAService"
+                 partnerRole="SwAServiceProvider"/>
+  </partnerLinks>
+  <variables>
+    <variable name="Receive1_Read_InputVariable" messageType="ns1:Read_msg"/>
+    <variable name="Invoke1_process_InputVariable"
+              messageType="ns2:SwAServiceRequestMessage"/>
+  </variables>
+  <sequence name="main">
+    <receive name="Receive1" createInstance="yes"
+             variable="Receive1_Read_InputVariable"
+             partnerLink="ReadAttachmentFile" portType="ns1:Read_ptt"
+             operation="Read"/>
+    <assign name="Assign1">
+      <copy>
+        <from variable="Receive1_Read_InputVariable" part="attach"
+              query="/ns3:attachmentElement"/>
+        <to variable="Invoke1_process_InputVariable" part="attach"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke1" bpelx:invokeAsDetail="no"
+            inputVariable="Invoke1_process_InputVariable"
+            partnerLink="SwAService" portType="ns2:SwAService"
+            operation="process"/>
+  </sequence>
+</process>

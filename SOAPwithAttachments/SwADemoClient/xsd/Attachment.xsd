@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://xmlns.oracle.com/attachment"
+            targetNamespace="http://xmlns.oracle.com/attachment"
+            elementFormDefault="qualified">
+            <xsd:element name="attach">
+              <xsd:complexType>
+                 <xsd:attribute name="href" type="xsd:string"/>
+              </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

@@ -1,0 +1,13 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>63</line>
+      <col/>
+      <file>SwAService.bpel</file>
+      <msg>
+         <![CDATA[<from> value type "{http://www.w3.org/2001/XMLSchema}base64Binary" is not compatible with <to> value type "{http://xmlns.oracle.com/attachment}attach anonymous type"]]>
+      </msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,23 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl']</loc>
+      <line>17</line>
+      <col>30</col>
+      <file/>
+      <msg>
+         <![CDATA[Load of wsdl "http://adc4110219.us.oracle.com:7001/soa-infra/services/default/MTOMDemo/MTOMDemoProcess.wsdl" failed]]>
+      </msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:reference[@name='MTOMDemoService']</loc>
+      <line>26</line>
+      <col>126</col>
+      <file/>
+      <msg>
+         <![CDATA[Cannot find Port Type "{http://xmlns.oracle.com/AttachmentContentApp/MTOMDemo/MTOMDemoProcess}MTOMDemoProcess" for "MTOMDemoService" in WSDL Manager]]>
+      </msg>
+   </Fault>
+</Faults>

@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:import[@location='ExpenseUploadWS.wsdl']</loc>
+      <line>21</line>
+      <col>62</col>
+      <file/>
+      <msg>
+         <![CDATA[Load of wsdl "ExpenseUploadWS.wsdl" failed]]>
+      </msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:service[@name='expenseuploadws_client_ep']</loc>
+      <line>27</line>
+      <col>51</col>
+      <file/>
+      <msg>
+         <![CDATA[Service "expenseuploadws_client_ep" does not exist in wsdl]]>
+      </msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite</loc>
+      <line/>
+      <col/>
+      <file/>
+      <msg>
+         <![CDATA[SCAC-50012]]>
+      </msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>SwAClient.bpel</file>
+      <msg>
+         <![CDATA[XML parsing failed because "Error in getting XML input stream: file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/SOAPwithAttachments/SwADemoClient/ExpenseUploadWS.wsdl: /Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/SOAPwithAttachments/SwADemoClient/ExpenseUploadWS.wsdl (No such file or directory)"]]>
+      </msg>
+   </Fault>
+   <Fault>
+      <severity>error</severity>
+      <loc>/ns:composite/ns:wire/ns:target.uri[.='ExpenseUploadWS/expenseuploadws_client']</loc>
+      <line>56</line>
+      <col>17</col>
+      <file/>
+      <msg>
+         <![CDATA[Cannot find service name "expenseuploadws_client" in component "ExpenseUploadWS" for wire definition ]]>
+      </msg>
+   </Fault>
+</Faults>

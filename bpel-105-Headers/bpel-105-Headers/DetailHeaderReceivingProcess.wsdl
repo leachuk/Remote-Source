@@ -1,0 +1,40 @@
+<wsdl:definitions
+     name="DetailHeaderReceivingProcess"
+     targetNamespace="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+     xmlns:ns1="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="DetailHeaderReceivingProcess">
+        <plnk:role name="DetailHeaderReceivingProcessProvider">
+            <plnk:portType name="client:DetailHeaderReceivingProcess"/>
+        </plnk:role>
+        <plnk:role name="DetailHeaderReceivingProcessRequester">
+            <plnk:portType name="client:DetailHeaderReceivingProcessCallback"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+             xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:client="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+             xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://example.com/bpel_105_Headers/MasterHeaderProcess" schemaLocation="xsd/MasterHeaderProcess.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="DetailHeaderReceivingProcessResponseMessage">
+        <wsdl:part name="payload" element="ns1:processResponse"/>
+    </wsdl:message>
+    <wsdl:message name="DetailHeaderReceivingProcessRequestMessage">
+        <wsdl:part name="payload" element="ns1:process"/>
+    </wsdl:message>
+    <wsdl:portType name="DetailHeaderReceivingProcessCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:DetailHeaderReceivingProcessResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="DetailHeaderReceivingProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:DetailHeaderReceivingProcessRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

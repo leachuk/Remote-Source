@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<schema attributeFormDefault="unqualified"
+	elementFormDefault="qualified"
+	targetNamespace="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+	xmlns="http://www.w3.org/2001/XMLSchema">
+	<element name="process">
+		<complexType>
+			<sequence>
+				<element name="input" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="customHeader">
+		<complexType>
+			<sequence>
+				<element name="message" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="infraHeader">
+		<complexType>
+			<sequence>
+				<element name="origin" type="string"/>
+				<element name="sendDate" type="string"/>
+        <element name="instanceId" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+	<element name="processResponse">
+		<complexType>
+			<sequence>
+				<element name="result" type="string"/>
+			</sequence>
+		</complexType>
+	</element>
+</schema>

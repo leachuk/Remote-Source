@@ -1,0 +1,114 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Dec 02 16:22:23 PST 2009
+  Author:  cutschig
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="MasterHeaderProcess"
+         targetNamespace="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+         xmlns:ns7="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:ns2="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ns5="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ns4="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:ns6="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:xpath20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"         
+         xmlns:ns3="http://schemas.oracle.com/xpath/extension/ldap">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="masterheaderprocess_client"
+                     partnerLinkType="client:MasterHeaderProcess"
+                     myRole="MasterHeaderProcessProvider"/>
+        <partnerLink myRole="DetailHeaderReceivingProcessRequester"
+                     name="DetailHeaderReceivingProcess.detailheaderreceivingprocess_client"
+                     partnerRole="DetailHeaderReceivingProcessProvider"
+                     partnerLinkType="ns1:DetailHeaderReceivingProcess"/>
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable"
+                  messageType="client:MasterHeaderProcessRequestMessage"/>
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="Variable_customHeader" element="client:customHeader"/>
+        <variable name="Variable_infraHeader" element="client:infraHeader"/>
+        <variable name="Invoke_detail_process_InputVariable"
+                  messageType="ns1:DetailHeaderReceivingProcessRequestMessage"/>
+        <variable name="gReceive_Response"
+                  messageType="ns1:DetailHeaderReceivingProcessResponseMessage"/>
+    </variables>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in MasterHeaderProcess.wsdl) -->
+        <receive name="receiveInput" partnerLink="masterheaderprocess_client"
+                 portType="client:MasterHeaderProcess" operation="process"
+                 variable="inputVariable" createInstance="yes"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <assign name="Assign_HeaderData">
+            <copy>
+                <from expression="ora:getComponentName()"/>
+                <to variable="Variable_infraHeader"
+                    query="/client:infraHeader/client:origin"/>
+            </copy>
+            <copy>
+                <from expression="ora:getCompositeInstanceId()"/>
+                <to variable="Variable_infraHeader"
+                    query="/client:infraHeader/client:instanceId"/>
+            </copy>
+            <copy>
+                <from expression="xpath20:current-dateTime()"/>
+                <to variable="Variable_infraHeader"
+                    query="/client:infraHeader/client:sendDate"/>
+            </copy>
+        </assign>
+        <assign name="Assign_MessageIntoCustomHeader">
+            <copy>
+                <from variable="inputVariable" part="payload"
+                      query="/client:process/client:input"/>
+                <to variable="Variable_customHeader"
+                    query="/client:customHeader/client:message"/>
+            </copy>
+        </assign>
+        <invoke name="Invoke_detail"
+                inputVariable="Invoke_detail_process_InputVariable"
+                partnerLink="DetailHeaderReceivingProcess.detailheaderreceivingprocess_client"
+                portType="ns1:DetailHeaderReceivingProcess" operation="process"
+                bpelx:inputHeaderVariable="Variable_customHeader,Variable_infraHeader"/>
+        <receive name="gReceive_Response" createInstance="no"
+                 partnerLink="DetailHeaderReceivingProcess.detailheaderreceivingprocess_client"
+                 portType="ns1:DetailHeaderReceivingProcessCallback"
+                 operation="processResponse" variable="gReceive_Response"/>
+    </sequence>
+</process>

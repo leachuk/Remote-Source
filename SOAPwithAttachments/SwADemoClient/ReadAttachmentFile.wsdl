@@ -1,0 +1,34 @@
+<wsdl:definitions
+     name="ReadAttachmentFile"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/AttachmentContentApp/SwADemoClient/ReadAttachmentFile"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/file/AttachmentContentApp/SwADemoClient/ReadAttachmentFile"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:attach="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/"
+     xmlns:pc="http://xmlns.oracle.com/pcbpel/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+    >
+  <plt:partnerLinkType name="Read_plt" >
+    <plt:role name="Read_role" >
+      <plt:portType name="tns:Read_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+    <schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/file/attachment/" xmlns="http://www.w3.org/2001/XMLSchema"
+            elementFormDefault="qualified" >
+      <element name="attachmentElement" >
+         <complexType>
+           <attribute name="href" type="string" />
+         </complexType>
+      </element>
+    </schema>
+    </wsdl:types>
+    <wsdl:message name="Read_msg">
+        <wsdl:part name="attach" element="attach:attachmentElement"/>
+    </wsdl:message>
+    <wsdl:portType name="Read_ptt">
+        <wsdl:operation name="Read">
+            <wsdl:input message="tns:Read_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

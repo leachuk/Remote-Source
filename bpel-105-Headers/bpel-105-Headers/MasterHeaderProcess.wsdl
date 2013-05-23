@@ -1,0 +1,27 @@
+<wsdl:definitions
+     name="MasterHeaderProcess"
+     targetNamespace="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="MasterHeaderProcess">
+        <plnk:role name="MasterHeaderProcessProvider">
+            <plnk:portType name="client:MasterHeaderProcess"/>
+        </plnk:role>        
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+             xmlns:client="http://example.com/bpel_105_Headers/MasterHeaderProcess" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+            <import namespace="http://example.com/bpel_105_Headers/MasterHeaderProcess" schemaLocation="xsd/MasterHeaderProcess.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="MasterHeaderProcessRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="MasterHeaderProcess">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:MasterHeaderProcessRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

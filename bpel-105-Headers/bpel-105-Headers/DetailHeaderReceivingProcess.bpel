@@ -1,0 +1,81 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Dec 02 16:29:05 PST 2009
+  Author:  cutschig
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="DetailHeaderReceivingProcess"
+         targetNamespace="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://example.com/bpel_105_Headers/DetailHeaderReceivingProcess"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://example.com/bpel_105_Headers/MasterHeaderProcess"
+         xmlns:xpath20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="detailheaderreceivingprocess_client" partnerLinkType="client:DetailHeaderReceivingProcess" myRole="DetailHeaderReceivingProcessProvider" partnerRole="DetailHeaderReceivingProcessRequester"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:DetailHeaderReceivingProcessRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:DetailHeaderReceivingProcessResponseMessage"/>
+        <variable name="Variable_customHeader" element="ns1:customHeader"/>
+        <variable name="Variable_infraHeader" element="ns1:infraHeader"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in DetailHeaderReceivingProcess.wsdl) -->
+        <receive name="receiveInput" partnerLink="detailheaderreceivingprocess_client" portType="client:DetailHeaderReceivingProcess" operation="process" variable="inputVariable" createInstance="yes"
+                 bpelx:headerVariable="Variable_customHeader,Variable_infraHeader"/>
+
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <assign name="Assign_HeaderIntoPayload">
+            <copy>
+                <from expression="concat('origin: ', bpws:getVariableData('Variable_infraHeader','/ns1:infraHeader/ns1:origin'), ' message: ', bpws:getVariableData('Variable_customHeader','/ns1:customHeader/ns1:message'))"/>
+                <to variable="outputVariable" part="payload"
+                    query="/ns1:processResponse/ns1:result"/>
+            </copy>
+        </assign>
+        <invoke name="callbackClient" partnerLink="detailheaderreceivingprocess_client" portType="client:DetailHeaderReceivingProcessCallback" operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>
