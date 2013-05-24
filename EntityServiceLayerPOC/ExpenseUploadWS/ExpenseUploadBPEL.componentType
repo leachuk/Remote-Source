@@ -11,4 +11,7 @@
   <reference name="writeFile" ui:wsdlLocation="writeFile.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/EntityServiceLayerPOC/ExpenseUploadWS/writeFile#wsdl.interface(Write_ptt)"/>
   </reference>
+  <reference name="ExpenseToDB.ExpenseToDB" ui:wsdlLocation="BPELProcess1.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseService/BPELProcess1#wsdl.interface(BPELProcess1)"/>
+  </reference>
 </componentType>

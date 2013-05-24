@@ -28,7 +28,10 @@
          xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
          xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
          xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
-         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap">
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/pcbpel/adapter/db/EntityServiceLayerPOC/ExpenseUploadWS/writeExpenseToDB"
+         xmlns:ns4="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseService/BPELProcess1"
+         xmlns:ns5="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseService/submitExpense">
 
   <!-- 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -45,6 +48,9 @@
     <partnerLink name="expenseuploadbpel_client" partnerLinkType="client:ExpenseUploadBPEL" myRole="ExpenseUploadBPELProvider"/>
     <partnerLink name="writeFile" partnerLinkType="ns1:Write_plt"
                  partnerRole="Write_role"/>
+    <partnerLink name="ExpenseToDB.ExpenseToDB"
+                 partnerLinkType="ns4:BPELProcess1"
+                 partnerRole="BPELProcess1Provider"/>
   </partnerLinks>
 
   <!-- 
@@ -57,6 +63,8 @@
     <!-- Reference to the message passed as input during initiation -->
     <variable name="inputVariable" messageType="client:ExpenseUploadBPELRequestMessage"/>
     <variable name="Invoke1_Write_InputVariable" messageType="ns1:Write_msg"/>
+    <variable name="Invoke2_process_InputVariable"
+              messageType="ns4:BPELProcess1RequestMessage"/>
   </variables>
 
   <!-- 
@@ -82,5 +90,29 @@
             inputVariable="Invoke1_Write_InputVariable" partnerLink="writeFile"
             portType="ns1:Write_ptt" operation="Write"
             bpelx:invokeAsDetail="no"/>
+    <assign name="Assign2">
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:amount"/>
+        <to variable="Invoke2_process_InputVariable" part="payload"
+            query="/ns5:expenses/ns5:amount"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:description"/>
+        <to variable="Invoke2_process_InputVariable" part="payload"
+            query="/ns5:expenses/ns5:description"/>
+      </copy>
+      <copy>
+        <from variable="inputVariable" part="payload"
+              query="/client:process/client:date"/>
+        <to variable="Invoke2_process_InputVariable" part="payload"
+            query="/ns5:expenses/ns5:date"/>
+      </copy>
+    </assign>
+    <invoke name="Invoke2"
+            inputVariable="Invoke2_process_InputVariable"
+            partnerLink="ExpenseToDB.ExpenseToDB" portType="ns4:BPELProcess1"
+            operation="process" bpelx:invokeAsDetail="no"/>
   </sequence>
 </process>

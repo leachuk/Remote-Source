@@ -1,0 +1,31 @@
+<?binding.jca writeExpenseToDB_db.jca?>
+<wsdl:definitions name="writeExpenseToDB" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EntityServiceLayerPOC/ExpenseUploadWS/writeExpenseToDB" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EntityServiceLayerPOC/ExpenseUploadWS/writeExpenseToDB" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/writeExpenseToDB">
+    <plt:partnerLinkType name="writeExpenseToDB_plt">
+        <plt:role name="writeExpenseToDB_role">
+            <plt:portType name="tns:writeExpenseToDB_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/writeExpenseToDB" schemaLocation="xsd/writeExpenseToDB_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="EntityExpensesSubmittedCollection_msg">
+        <wsdl:part name="EntityExpensesSubmittedCollection" element="top:EntityExpensesSubmittedCollection"/>
+    </wsdl:message>
+    <wsdl:message name="writeExpenseToDBSelect_inputParameters">
+        <wsdl:part name="writeExpenseToDBSelect_inputParameters" element="top:writeExpenseToDBSelect_useridInputParameters"/>
+    </wsdl:message>
+    <wsdl:portType name="writeExpenseToDB_ptt">
+        <wsdl:operation name="merge">
+            <wsdl:input message="tns:EntityExpensesSubmittedCollection_msg"/>
+        </wsdl:operation>
+        <wsdl:operation name="insert">
+            <wsdl:input message="tns:EntityExpensesSubmittedCollection_msg"/>
+        </wsdl:operation>
+        <wsdl:operation name="writeExpenseToDBSelect">
+            <wsdl:input message="tns:writeExpenseToDBSelect_inputParameters"/>
+            <wsdl:output message="tns:EntityExpensesSubmittedCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

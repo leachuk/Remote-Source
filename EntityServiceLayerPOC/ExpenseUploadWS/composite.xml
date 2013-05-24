@@ -14,6 +14,10 @@
           location="ExpenseUploadBPEL.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/EntityServiceLayerPOC/ExpenseUploadWS/writeFile"
           location="writeFile.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/EntityServiceLayerPOC/ExpenseUploadWS/writeExpenseToDB"
+          location="writeExpenseToDB.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseService/BPELProcess1"
+          location="BPELProcess1.wsdl" importType="wsdl"/>
   <service name="expenseuploadbpel_client_ep"
            ui:wsdlLocation="ExpenseUploadBPEL.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.interface(ExpenseUploadBPEL)"/>
@@ -25,9 +29,23 @@
   <component name="ExpenseUploadBPEL" version="1.1">
     <implementation.bpel src="ExpenseUploadBPEL.bpel"/>
   </component>
+  <component name="ExpenseToDB">
+    <implementation.mediator src="ExpenseToDB.mplan"/>
+  </component>
   <reference name="writeFile" ui:wsdlLocation="writeFile.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/EntityServiceLayerPOC/ExpenseUploadWS/writeFile#wsdl.interface(Write_ptt)"/>
     <binding.jca config="writeFile_file.jca"/>
+  </reference>
+  <reference name="writeExpenseToDB" ui:wsdlLocation="writeExpenseToDB.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/EntityServiceLayerPOC/ExpenseUploadWS/writeExpenseToDB#wsdl.interface(writeExpenseToDB_ptt)"/>
+    <binding.jca config="writeExpenseToDB_db.jca"/>
+    <property name="jca.retry.count" type="xs:int" many="false" override="may">4</property>
+    <property name="jca.retry.interval" type="xs:int" many="false"
+              override="may">1</property>
+    <property name="jca.retry.backoff" type="xs:int" many="false"
+              override="may">2</property>
+    <property name="jca.retry.maxInterval" type="xs:string" many="false"
+              override="may">120</property>
   </reference>
   <wire>
     <source.uri>expenseuploadbpel_client_ep</source.uri>
@@ -36,5 +54,13 @@
   <wire>
     <source.uri>ExpenseUploadBPEL/writeFile</source.uri>
     <target.uri>writeFile</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ExpenseUploadBPEL/ExpenseToDB.ExpenseToDB</source.uri>
+    <target.uri>ExpenseToDB/ExpenseToDB</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ExpenseToDB/writeExpenseToDB</source.uri>
+    <target.uri>writeExpenseToDB</target.uri>
   </wire>
 </composite>
