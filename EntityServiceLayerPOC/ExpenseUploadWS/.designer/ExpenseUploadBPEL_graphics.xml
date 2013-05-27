@@ -8,7 +8,7 @@
       <partnerlink name="writeFile" x="930" y="278" side="right"/>
       <partnerlink name="ExpenseToDB.ExpenseToDB" x="930" y="461" side="right"/>
    </partnerlink_locations>
-   <graph_layout viewport="0,117,1061,496" show_swimlanes="true">
+   <graph_layout viewport="0,0,1061,496" show_swimlanes="true">
       <layout_item collapsed="false" xpath="/process" type="process" showhandlers="true"/>
       <layout_item collapsed="false" xpath="/process/sequence" type="sequence"/>
    </graph_layout>
