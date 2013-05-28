@@ -1,0 +1,21 @@
+<?binding.jca readExpenses_db.jca?>
+<wsdl:definitions name="readExpenses" targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/EntityBPMPOC/IProExpenseProcess/readExpenses" xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/EntityBPMPOC/IProExpenseProcess/readExpenses" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/" xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/readExpenses">
+    <plt:partnerLinkType name="readExpenses_plt">
+        <plt:role name="readExpenses_role">
+            <plt:portType name="tns:readExpenses_ptt"/>
+        </plt:role>
+    </plt:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/readExpenses" schemaLocation="xsd/readExpenses_table.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="EntityExpensesSubmittedCollection_msg">
+        <wsdl:part name="EntityExpensesSubmittedCollection" element="top:EntityExpensesSubmittedCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="readExpenses_ptt">
+        <wsdl:operation name="receive">
+            <wsdl:input message="tns:EntityExpensesSubmittedCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

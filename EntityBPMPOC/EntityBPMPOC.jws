@@ -26,8 +26,8 @@
       <value n="oracle.webcenter.internal.dt.migration.WebCenterWorkspaceMigrator" v="11.1.1.4.0.101019.0800"/>
    </hash>
    <list n="listOfChildren">
-      <hash><url n="URL" path="IProExpenses_UI/IProExpenses_UI.jpr"/></hash>
-      <hash><url n="URL" path="IProExpenses/IProExpenses.jpr"/></hash>
+      <hash><url n="URL" path="IProExpenseProcess/IProExpenseProcess.jpr"/></hash>
+      <hash><url n="URL" path="../EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadWS.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">

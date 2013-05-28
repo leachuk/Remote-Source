@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.example.org/writeFileDataModel"
+            targetNamespace="http://www.example.org/writeFileDataModel"
+            elementFormDefault="qualified">
+  <xsd:element name="writeExpenseFileElement">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="amount" type="xsd:string"/>
+        <xsd:element name="description" type="xsd:string"/>
+        <xsd:element name="user_id" type="xsd:string"/>
+        <xsd:element name="reference_id" type="xsd:string"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
