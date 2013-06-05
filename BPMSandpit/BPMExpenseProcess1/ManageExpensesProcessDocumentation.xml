@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100611"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="ManageExpensesProcess">
+        <topicDocumentations>
+            <topicDocumentation name="ManageExpensesProcess">
+                <labels>
+                    <label locale="en">ManageExpensesProcess</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">ManageExpensesProcess</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">WriteExpenseToFile</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">UserTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf29"/>
+            <topicDocumentation name="sf39"/>
+            <topicDocumentation name="sf28"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>

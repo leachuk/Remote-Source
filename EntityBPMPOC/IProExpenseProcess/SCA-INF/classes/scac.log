@@ -1,0 +1,4 @@
+Jun 3, 2013 12:52:46 PM oracle.mds
+WARNING: The default CharSet MacRoman is not a unicode character set. File names with non-ASCII characters may not operate as expected. Check locale settings.
+Jun 3, 2013 12:52:47 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+INFO: XMLSchema incremental build enabled.

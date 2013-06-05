@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
+                    version="11.1.1.60.13" id="DataControls"
+                    Package="test1.poc.bpm">
+  <AdapterDataControl id="HumanTaskFlow_Test1_UI_1_InitiateHumanTask"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition"
+                      SupportsTransactions="true" SupportsSortCollection="false"
+                      SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false"
+                      Definition="HumanTaskFlow_Test1_UI_1_InitiateHumanTask"
+                      BeanClass="HumanTaskFlow_Test1_UI_1_InitiateHumanTask"
+                      xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/BPMTestApplication1/HumanTaskFlow_Test1/xsd/InitiateHumanTaskWorkflowTask.xsd"
+                      RootElement="task"
+                      rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/BPMTestApplication1/HumanTaskFlow_Test1/InitiateHumanTask.task"
+                      InitiationTask="true" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

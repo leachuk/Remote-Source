@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100611"?>
+<definitions xsi:schemaLocation="http://www.omg.org/bpmn20" xmlns:ns2="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns="http://www.omg.org/bpmn20" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <peopleGroup name="IProManager" id="lane1">
+        <ns2:OracleExtensions>
+            <ns2:GraphicsAttributes backgroundColor="-1761607681">
+                <ns2:Position y="0" x="0"/>
+                <ns2:Size height="0" width="216"/>
+            </ns2:GraphicsAttributes>
+            <ns2:LaneAttributes roleId="IProManager"/>
+        </ns2:OracleExtensions>
+    </peopleGroup>
+    <process processType="executable" name="ManageExpensesProcess" id="ManageExpensesProcess">
+        <ns2:OracleExtensions>
+            <ns2:FeatureSet>
+                <ns2:BooleanFeature value="false" name="atomic"/>
+                <ns2:BooleanFeature value="false" name="instanceScreenflow"/>
+                <ns2:BooleanFeature value="false" name="isCallable"/>
+                <ns2:BooleanFeature value="true" name="sharePredefineVariables"/>
+                <ns2:StringFeature value="" name="AUTHOR"/>
+                <ns2:StringFeature value="default" name="GreedyExecutionMode"/>
+                <ns2:StringFeature value="http://xmlns.oracle.com/bpmn/bpmnProcess/ManageExpensesProcess" name="NAMESPACE"/>
+                <ns2:StringFeature value="PROJECT_DEFAULT" name="generatesEvents"/>
+                <ns2:StringFeature value="HORIZONTAL_LAYOUT" name="process-layout"/>
+                <ns2:StringFeature value="1.0" name="scale"/>
+                <ns2:StringFeature value="REGULAR" name="sealType"/>
+            </ns2:FeatureSet>
+        </ns2:OracleExtensions>
+        <serviceTask operationRef="write" serviceRef="Services.Externals.WriteExpenseToFile" isForCompensation="false" name="WriteExpenseToFile" id="activity1">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="107" x="246"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="" name="associatedProcess"/>
+                    <ns2:StringFeature value="" name="associatedNode"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="expensesToFileObject" id="expensesToFileObject">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpensesToFileObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesToFileObject"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <inputSet id="activity1_uniqueInputSet">
+                    <dataInput name="expensesToFileObject" id="expensesToFileObject">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpensesToFileObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesToFileObject"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="processExpensesToFileDataObj_body.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>processExpensesToFileDataObj</sourceRef>
+                <targetRef>expensesToFileObject</targetRef>
+            </dataInputAssociation>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="processExpensesToFileDataObj_processExpensesHumanTaskflow.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>processExpensesToFileDataObj</sourceRef>
+                <targetRef>processExpensesHumanTaskflow</targetRef>
+            </dataOutputAssociation>
+        </serviceTask>
+        <userTask implementation="other" isForCompensation="false" name="UserTask" id="activity0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="108" x="416"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="reinitiate"/>
+                    <ns2:BooleanFeature value="false" name="manualCreation"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                    <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                </ns2:FeatureSet>
+                <ns2:HumanTask usesTransformations="true" humanTaskReference="HumanTasks.Initiate_Humantask"/>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="task" id="task">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <inputSet id="activity0_uniqueInputSet">
+                    <dataInput name="task" id="task">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="processExpensesHumanTaskflow_task.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>processExpensesHumanTaskflow</sourceRef>
+                <targetRef>task</targetRef>
+            </dataInputAssociation>
+            <performer name="IProManager" id="lane1"/>
+        </userTask>
+        <startEvent isInterrupting="false" name="Start" id="startEvent0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="108" x="108"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="sync"/>
+                    <ns2:BooleanFeature value="false" name="catchAllErrors"/>
+                    <ns2:BooleanFeature value="false" name="catchAllSystemExceptions"/>
+                    <ns2:StringFeature value="" name="associatedProcess"/>
+                    <ns2:StringFeature value="" name="associatedNode"/>
+                    <ns2:StringFeature value="" name="initiator"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+                <ns2:Participant id="References.Externals.ReadExpensesFromDb"/>
+            </ns2:OracleExtensions>
+            <dataOutput name="entityExpensesSubmittedCollection" id="entityExpensesSubmittedCollection">
+                <ns2:OracleExtensions>
+                    <ns2:TypeRef isArray="false" element="EntityExpensesSubmittedCollection" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/readExpensesFromDb"/>
+                </ns2:OracleExtensions>
+            </dataOutput>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="EntityExpensesSubmittedCollection_processExpensesToFileDataObj.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>entityExpensesSubmittedCollection</sourceRef>
+                <targetRef>processExpensesToFileDataObj</targetRef>
+            </dataOutputAssociation>
+            <outputSet id="startEvent0_uniqueOutputSet">
+                <dataOutput name="entityExpensesSubmittedCollection" id="entityExpensesSubmittedCollection">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="EntityExpensesSubmittedCollection" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/readExpensesFromDb"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+            </outputSet>
+            <messageEventDefinition>
+                <operationRef>receive</operationRef>
+            </messageEventDefinition>
+        </startEvent>
+        <endEvent name="End" id="endEvent0">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="104" x="584"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <inputSet/>
+        </endEvent>
+        <sequenceFlow targetRef="activity1" sourceRef="startEvent0" name="sf29" id="sf29">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity0" sourceRef="activity1" name="sf39" id="sf39">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="endEvent0" sourceRef="activity0" name="sf28" id="sf28">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <dataObject name="processExpensesToFileDataObj" id="processExpensesToFileDataObj">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ExpensesToFileObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesToFileObject"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="processExpensesFromDbDataObj" id="processExpensesFromDbDataObj">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ExpensesFromDbObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesFromDbObject"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="processExpensesHumanTaskflow" id="processExpensesHumanTaskflow">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ExpensesToHumanTaskflow" namespace="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesToHumanTaskflow"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+    </process>
+</definitions>

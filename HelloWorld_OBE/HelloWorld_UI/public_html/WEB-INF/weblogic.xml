@@ -51,4 +51,8 @@
   <session-descriptor>
      <persistent-store-type>replicated_if_clustered</persistent-store-type>
    </session-descriptor>
+    <library-ref>
+        <library-name>oracle.soa.worklist.webapp</library-name>
+        <specification-version>11.1.1</specification-version>
+    </library-ref>
 </weblogic-web-app>

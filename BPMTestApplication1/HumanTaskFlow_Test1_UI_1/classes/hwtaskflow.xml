@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName/>
+      <httpPort/>
+      <httpsPort/>
+   </TaskFlowServer>
+<hwTaskFlow><WorkflowName>InitiateHumanTask</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/BPMTestApplication1/HumanTaskFlow_Test1/InitiateHumanTask</TaskDefinitionNamespace><TaskFlowId>InitiateHumanTask_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/InitiateHumanTask_TaskFlow.xml</TaskFlowFileName></hwTaskFlow></hwTaskFlows>

@@ -22,6 +22,27 @@
             </ns1:member>
             <ns1:processRole name="IProManager" id="IProManager"/>
         </ns1:applicationRole>
+        <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.ManagerOfCustomerExecutives">
+            <ns5:name>IProExpenseProcess.ManagerOfCustomerExecutives</ns5:name>
+            <ns1:member type="USER">
+                <ns1:name>weblogic</ns1:name>
+            </ns1:member>
+            <ns1:processRole name="ManagerOfCustomerExecutives" id="ManagerOfCustomerExecutives"/>
+        </ns1:applicationRole>
+        <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.OperationsSupport">
+            <ns5:name>IProExpenseProcess.OperationsSupport</ns5:name>
+            <ns1:member type="USER">
+                <ns1:name>weblogic</ns1:name>
+            </ns1:member>
+            <ns1:processRole name="OperationsSupport" id="OperationsSupport"/>
+        </ns1:applicationRole>
+        <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.BillingAndRemuneration">
+            <ns5:name>IProExpenseProcess.BillingAndRemuneration</ns5:name>
+            <ns1:member type="USER">
+                <ns1:name>weblogic</ns1:name>
+            </ns1:member>
+            <ns1:processRole name="BillingAndRemuneration" id="BillingAndRemuneration"/>
+        </ns1:applicationRole>
     </ns1:applicationRoles>
     <ns1:applicationRoleOrgUnitCalendarAssociations/>
     <ns1:holidayRules/>

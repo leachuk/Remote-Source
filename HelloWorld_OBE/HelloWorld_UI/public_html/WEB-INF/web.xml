@@ -161,4 +161,8 @@
     <servlet-name>secureNotificationServlet</servlet-name>
     <url-pattern>/notification/secure</url-pattern>
   </servlet-mapping>
+  <mime-mapping>
+    <extension>swf</extension>
+    <mime-type>application/x-shockwave-flash</mime-type>
+  </mime-mapping>
 </web-app>

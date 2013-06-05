@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ConvertExpenseDocumentationToPDFPayloadType"
+          Package="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF"
+          BeanClass="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF.ConvertExpenseDocumentationToPDFPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="ExpensesOpsSupport" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF.ExpensesOpsSupportType"
+                     CollectionBeanClass="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF.ExpensesOpsSupportType_ExpensesOpsSupport_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesNotes"/>
+      <Property Name="nextSibling" Value="ExpensesNotes"/>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expenses Ops Support"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpensesOpsSupport"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesOpsSupport"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="ExpensesNotes" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF.ExpensesNotesType"
+                     CollectionBeanClass="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF.ExpensesNotesType_ExpensesNotes_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expenses Notes"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpensesNotes"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesNotes"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

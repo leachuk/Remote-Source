@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="helloworld_ui2" ClientType="Generic">
+  <pageMap>
+    <page path="/taskDetails1.jspx"
+          usageId="helloworld_ui2_taskDetails1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="helloworld_ui2_taskDetails1PageDef"
+          path="helloworld_ui2.pageDefs.taskDetails1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="HelloWorld_UI2_SayHello"
+        path="helloworld_ui2.HelloWorld_UI2_SayHello"/>
+  </dataControlUsages>
+</Application>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="InitiateHumanTaskPayloadType"
+          Package="HumanTaskFlow_Test1_UI_1_InitiateHumanTask"
+          BeanClass="HumanTaskFlow_Test1_UI_1_InitiateHumanTask.InitiateHumanTaskPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="HumanTaskflow_Data1" IsCollection="true"
+                     BeanClass="HumanTaskFlow_Test1_UI_1_InitiateHumanTask.HumanTaskflow_Data1Type"
+                     CollectionBeanClass="HumanTaskFlow_Test1_UI_1_InitiateHumanTask.HumanTaskflow_Data1Type_HumanTaskflow_Data1_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Human Taskflow Data "/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="HumanTaskflow_Data1"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/TestData/HumanTaskflow_Data1"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

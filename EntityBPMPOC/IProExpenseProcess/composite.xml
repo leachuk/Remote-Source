@@ -10,24 +10,31 @@
            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
            xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy"
            xmlns:ui="http://xmlns.oracle.com/soa/designer/">
-  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/EntityBPMPOC/IProExpenseProcess/readExpenses"
-          location="readExpenses.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenseProcess/writeTestExpenseFromDbToFile"
           location="writeTestExpenseFromDbToFile.wsdl" importType="wsdl"/>
-  <service name="readExpenses" ui:wsdlLocation="readExpenses.wsdl">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/EntityBPMPOC/IProExpenseProcess/readExpenses#wsdl.interface(readExpenses_ptt)"/>
-    <binding.jca config="readExpenses_db.jca"/>
-    <property name="user_id" type="xs:string" many="false" override="may"></property>
-    <property name="jca.retry.count" type="xs:int" many="false" override="may">2147483647</property>
-    <property name="jca.retry.interval" type="xs:int" many="false"
-              override="may">1</property>
-    <property name="jca.retry.backoff" type="xs:int" many="false"
-              override="may">2</property>
-    <property name="jca.retry.maxInterval" type="xs:string" many="false"
-              override="may">120</property>
+  <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+          location="ExpenseUploadBPEL.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/bpel/workflow/taskService"
+          location="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl"
+          importType="wsdl"/>
+  <service name="readExpenseWS" ui:wsdlLocation="ExpenseUploadBPEL.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.interface(ExpenseUploadBPEL)"/>
+    <binding.ws port="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.endpoint(readExpenseWS/ExpenseUploadBPEL_pt)">
+      <property name="weblogic.wsee.wsat.transaction.flowOption"
+                type="xs:string" many="false">NEVER</property>
+    </binding.ws>
   </service>
   <component name="IProExpenseManage">
     <implementation.bpmn src="processes/IProExpenseManage.bpmn"/>
+  </component>
+  <component name="IproManagerApproveExpense">
+    <implementation.workflow src="IproManagerApproveExpense.task"/>
+  </component>
+  <component name="ConvertExpenseDocumentationToPDF">
+    <implementation.workflow src="ConvertExpenseDocumentationToPDF.task"/>
+  </component>
+  <component name="BillingAndRemuneration">
+    <implementation.workflow src="BillingAndRemuneration.task"/>
   </component>
   <reference name="writeTestExpenseFromDbToFile"
              ui:wsdlLocation="writeTestExpenseFromDbToFile.wsdl">
@@ -35,11 +42,23 @@
     <binding.jca config="writeTestExpenseFromDbToFile_file.jca"/>
   </reference>
   <wire>
-    <source.uri>readExpenses</source.uri>
-    <target.uri>IProExpenseManage/References.Externals.ReadExpenses.service</target.uri>
-  </wire>
-  <wire>
     <source.uri>IProExpenseManage/Services.Externals.WriteTestExpenseFromDbToFile.reference</source.uri>
     <target.uri>writeTestExpenseFromDbToFile</target.uri>
+  </wire>
+  <wire>
+    <source.uri>readExpenseWS</source.uri>
+    <target.uri>IProExpenseManage/References.Externals.ReadExpenseWS.service</target.uri>
+  </wire>
+  <wire>
+    <source.uri>IProExpenseManage/HumanTasks.IproManagerApproveExpense.reference</source.uri>
+    <target.uri>IproManagerApproveExpense/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>IProExpenseManage/HumanTasks.ConvertExpenseDocumentationToPDF.reference</source.uri>
+    <target.uri>ConvertExpenseDocumentationToPDF/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>IProExpenseManage/HumanTasks.BillingAndRemuneration.reference</source.uri>
+    <target.uri>BillingAndRemuneration/TaskService</target.uri>
   </wire>
 </composite>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100611"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="ExpenseProcess2">
+        <topicDocumentations>
+            <topicDocumentation name="ExpenseProcess2">
+                <labels>
+                    <label locale="en">ExpenseProcess2</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">ExpenseProcess2</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">UserTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf34"/>
+            <topicDocumentation name="sf36"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>

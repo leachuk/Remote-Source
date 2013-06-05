@@ -353,6 +353,16 @@
          </list>
       </hash>
    </hash>
+   <hash n="oracle.toplink.workbench.addin">
+      <hash n="toplinkContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="toplink/"/>
+         </list>
+      </hash>
+   </hash>
    <value n="ProcessName" v="setExpenseData"/>
    <url n="setExpenseData_bpelFileURL" path="setExpenseData.bpel"/>
    <value n="setExpenseData_Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/setExpenseData"/>

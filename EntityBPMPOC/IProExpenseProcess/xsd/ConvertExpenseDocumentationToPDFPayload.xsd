@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesNotes" xmlns:ns0="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesOpsSupport">
+   <import namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesOpsSupport" schemaLocation="../businessCatalog/IProExpenses/ExpensesOpsSupport.xsd"/>
+   <import namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesNotes" schemaLocation="../businessCatalog/IProExpenses/ExpensesNotes.xsd"/>
+   <complexType name="ConvertExpenseDocumentationToPDFPayloadType">
+      <sequence>
+         <element ref="ns0:ExpensesOpsSupport"/>
+         <element ref="ns1:ExpensesNotes"/>
+      </sequence>
+   </complexType>
+</schema>

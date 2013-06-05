@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<?oracleBPM version="11.1.1" fileRevision="20100611"?>
+<processDocumentation xmlns="http://xmlns.oracle.com/bpm/taskMetadataService/processDocumentation">
+    <component name="HumanTaskflowProcess1">
+        <topicDocumentations>
+            <topicDocumentation name="HumanTaskflowProcess1">
+                <labels>
+                    <label locale="en">HumanTaskflow_Process1</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">HumanTaskflow_Process1</description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">InitiateUserTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">WriteFile</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf41"/>
+            <topicDocumentation name="sf43"/>
+            <topicDocumentation name="sf35"/>
+        </topicDocumentations>
+    </component>
+</processDocumentation>

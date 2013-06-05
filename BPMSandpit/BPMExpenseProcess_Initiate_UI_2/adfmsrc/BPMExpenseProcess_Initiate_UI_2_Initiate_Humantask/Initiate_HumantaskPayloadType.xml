@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="Initiate_HumantaskPayloadType"
+          Package="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask"
+          BeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.Initiate_HumantaskPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="ExpensesToHumanTaskflow" IsCollection="true"
+                     BeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.ExpensesToHumanTaskflowType"
+                     CollectionBeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.ExpensesToHumanTaskflowType_ExpensesToHumanTaskflow_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expenses To Human Taskflow"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpensesToHumanTaskflow"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/Expenses/ExpensesToHumanTaskflow"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

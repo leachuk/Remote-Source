@@ -19,6 +19,30 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">ManagerReceivesExpense</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity2">
+                <labels>
+                    <label locale="en">OperationsSupport</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity3">
+                <labels>
+                    <label locale="en">BillingAndRemunerationNotified</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -34,6 +58,9 @@
             </topicDocumentation>
             <topicDocumentation name="sf23"/>
             <topicDocumentation name="sf34"/>
+            <topicDocumentation name="sf41"/>
+            <topicDocumentation name="sf43"/>
+            <topicDocumentation name="sf45"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

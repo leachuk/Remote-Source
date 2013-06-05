@@ -1,0 +1,21 @@
+<adapter-config name="readExpensesFromDb" adapter="Database Adapter" wsdlLocation="readExpensesFromDb.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory location="eis/DB/SOADemo" UIConnectionName="localEntityVM" adapterRef=""/>
+  <endpoint-activation portType="readExpensesFromDb_ptt" operation="receive">
+    <activation-spec className="oracle.tip.adapter.db.DBActivationSpec">
+      <property name="DescriptorName" value="readExpensesFromDb.EntityExpensesSubmitted"/>
+      <property name="QueryName" value="readExpensesFromDbSelect"/>
+      <property name="MappingsMetaDataURL" value="readExpensesFromDb-or-mappings.xml"/>
+      <property name="PollingStrategy" value="LogicalDeletePollingStrategy"/>
+      <property name="MarkReadColumn" value="INITIALISED_EXPENSE"/>
+      <property name="MarkReadValue" value="1"/>
+      <property name="MarkUnreadValue" value="0"/>
+      <property name="PollingInterval" value="5"/>
+      <property name="MaxRaiseSize" value="1"/>
+      <property name="MaxTransactionSize" value="10"/>
+      <property name="NumberOfThreads" value="1"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+    </activation-spec>
+  </endpoint-activation>
+
+</adapter-config>

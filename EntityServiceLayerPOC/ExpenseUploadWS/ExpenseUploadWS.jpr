@@ -356,6 +356,16 @@
          </list>
       </hash>
    </hash>
+   <hash n="oracle.toplink.workbench.addin">
+      <hash n="toplinkContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="toplink/"/>
+         </list>
+      </hash>
+   </hash>
    <value n="ProcessName" v="ExpenseUploadBPEL"/>
    <value n="Template" v="BPEL_ONE_WAY_PROCESS"/>
 </jpr:project>

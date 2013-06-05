@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application"
+             version="11.1.1.60.13" id="DataBindings" SeparateXMLFiles="false"
+             Package="test1.poc.bpm" ClientType="Generic">
+  <pageMap>
+    <page path="/taskDetails1.jspx"
+          usageId="test1_poc_bpm_taskDetails1PageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="test1_poc_bpm_taskDetails1PageDef"
+          path="test1.poc.bpm.pageDefs.taskDetails1PageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="HumanTaskFlow_Test1_UI_1_InitiateHumanTask"
+        path="test1.poc.bpm.HumanTaskFlow_Test1_UI_1_InitiateHumanTask"/>
+  </dataControlUsages>
+</Application>
