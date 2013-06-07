@@ -27,13 +27,14 @@
          <groupNotificationConfiguration>SEND_INDIVIDUAL_NOTIFICATION</groupNotificationConfiguration>
       </notification>
    </routingSlip>
-   <workflowConfiguration xmlns="http://xmlns.oracle.com/bpel/workflow/configuration" xmlns:ns0="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject">
+   <workflowConfiguration xmlns="http://xmlns.oracle.com/bpel/workflow/configuration" xmlns:ns0="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"
+                          xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject">
       <outcomes>
          <outcome>SUBMIT</outcome>
       </outcomes>
       <payload xmlSchemaDefinition="xsd/SayHelloPayload.xsd">
-         <messageAttribute name="HelloObject" attributeType="ELEMENT"
-                           type="ns0:HelloObject" updatable="true"
+         <messageAttribute name="TestDataObject" attributeType="ELEMENT"
+                           type="ns1:TestDataObject" updatable="true"
                            external="false"/>
       </payload>
       <bpelEventListener>false</bpelEventListener>
@@ -44,7 +45,7 @@
       <allowInitiatorEditParticipants>false</allowInitiatorEditParticipants>
       <allowParticipantsEditParticipants>false</allowParticipantsEditParticipants>
       <globalCreationTask>true</globalCreationTask>
-      <taskFlowFileLocation>file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/HelloWorld2_OBE/HelloWorld_UI2/public_html/WEB-INF/SayHello_TaskFlow.xml</taskFlowFileLocation>
+      <taskFlowFileLocation>file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/HelloWorld2_OBE/HelloWorld_UI3/public_html/WEB-INF/SayHello_TaskFlow.xml</taskFlowFileLocation>
       <enableAutoClaim>true</enableAutoClaim>
       <workflowConditions/>
    </workflowConfiguration>

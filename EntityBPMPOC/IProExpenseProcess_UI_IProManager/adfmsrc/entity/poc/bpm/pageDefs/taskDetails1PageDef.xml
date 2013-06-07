@@ -6,78 +6,78 @@
   <executables>
     <variableIterator id="variables"/>
     <methodIterator Binds="getTaskDetails.result"
-                    DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                    DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                     RangeSize="25"
-                    BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.getTaskDetails"
+                    BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.getTaskDetails"
                     id="getTaskDetailsIterator"/>
     <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.task"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.task"
                       id="taskIterator" StateValidation="false"/>
     <accessorIterator MasterBinding="taskIterator" Binds="systemAttributes"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.systemAttributesType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.systemAttributesType"
                       id="systemAttributesIterator"/>
     <accessorIterator MasterBinding="systemAttributesIterator"
                       Binds="systemActions" RangeSize="50"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.actionType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.actionType"
                       id="systemActionsIterator" StateValidation="false"/>
     <accessorIterator MasterBinding="systemAttributesIterator"
                       Binds="customActions" RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.actionType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.actionType"
                       id="customActionsIterator"/>
     <accessorIterator MasterBinding="systemAttributesIterator" Binds="fromUser"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
                       id="fromUserIterator"/>
     <accessorIterator MasterBinding="systemAttributesIterator" Binds="assignees"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
                       id="assigneesIterator" StateValidation="false"/>
     <accessorIterator MasterBinding="taskIterator" Binds="payload"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.IproManagerApproveExpensePayloadType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.IProExpense_Manager_HTPayloadType"
                       id="payloadIterator"/>
     <accessorIterator MasterBinding="payloadIterator"
                       Binds="ExpenseIProManagerConfirm" RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.ExpenseIProManagerConfirmType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerConfirmType"
                       id="ExpenseIProManagerConfirmIterator"/>
     <accessorIterator MasterBinding="payloadIterator"
                       Binds="ExpenseIProManagerNotes" RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.ExpenseIProManagerNotesType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerNotesType"
                       id="ExpenseIProManagerNotesIterator"/>
     <accessorIterator MasterBinding="taskIterator" Binds="userComment"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.commentType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType"
                       id="userCommentIterator" StateValidation="false"/>
     <accessorIterator MasterBinding="userCommentIterator" Binds="updatedBy"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
                       id="updatedByIterator" StateValidation="false"/>
     <accessorIterator MasterBinding="taskIterator" Binds="attachment"
                       RangeSize="25"
-                      DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.attachmentType"
+                      DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType"
                       id="attachmentIterator" StateValidation="false"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true"
                   Action="invokeMethod" MethodName="getTaskDetails"
                   IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                  InstanceName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                  ReturnName="data.IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.methodResults.getTaskDetails_IProExpenseProcess_UI_IProManager_IproManagerApproveExpense_getTaskDetails_result">
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                  InstanceName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                  ReturnName="data.IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.methodResults.getTaskDetails_IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT_getTaskDetails_result">
       <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"
                  NDValue=""/>
       <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"
@@ -88,7 +88,7 @@
     <methodAction IterBinding="taskIterator" id="UpdateAction"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="UpdateAction" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true">
       <NamedData NDName="action" NDType="java.lang.String" NDValue=""/>
@@ -101,7 +101,7 @@
     <methodAction IterBinding="taskIterator" id="update"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="update" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <navigationlist IterBinding="systemActionsIterator"
@@ -135,37 +135,37 @@
     <methodAction IterBinding="taskIterator" id="Claim"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="Claim" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <methodAction IterBinding="taskIterator" id="Acknowledge"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="Acknowledge" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <methodAction IterBinding="taskIterator" id="Resume"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="Resume" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <methodAction IterBinding="taskIterator" id="Withdraw"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="Withdraw" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <methodAction IterBinding="taskIterator" id="APPROVE"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="APPROVE" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <methodAction IterBinding="taskIterator" id="REJECT"
                   RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="REJECT" IsViewObjectMethod="false"
-                  DataControl="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                  DataControl="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider"
                   IsLocalObjectReference="true"/>
     <attributeValues IterBinding="taskIterator" id="creator">
@@ -266,7 +266,7 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="assigneesIterator" id="assignees">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -311,7 +311,7 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="userCommentIterator" id="userComment">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.commentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType">
         <AttrNames>
           <Item Value="comment"/>
           <Item Value="updatedDate"/>
@@ -327,7 +327,7 @@
           <Item Value="updatedBy"/>
         </Accessors>
       </nodeDefinition>
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -346,7 +346,7 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="updatedByIterator" id="updatedBy">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -356,7 +356,7 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="attachmentIterator" id="attachment">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.attachmentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType">
         <AttrNames>
           <Item Value="content"/>
           <Item Value="mimeType"/>
@@ -411,7 +411,7 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="userCommentIterator" id="userComment1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.commentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType">
         <AttrNames>
           <Item Value="comment"/>
           <Item Value="updatedDate"/>
@@ -427,7 +427,7 @@
           <Item Value="updatedBy"/>
         </Accessors>
       </nodeDefinition>
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -437,7 +437,7 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="updatedByIterator" id="updatedBy1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -447,7 +447,7 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="attachmentIterator" id="attachment1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense.attachmentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType">
         <AttrNames>
           <Item Value="content"/>
           <Item Value="mimeType"/>

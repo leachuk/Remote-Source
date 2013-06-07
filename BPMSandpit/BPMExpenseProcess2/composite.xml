@@ -13,17 +13,29 @@
   <import namespace="http://xmlns.oracle.com/bpel/workflow/taskService"
           location="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl"
           importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+          location="ExpenseUploadBPEL.wsdl" importType="wsdl"/>
+  <service name="ExpenseSubmitReadWS" ui:wsdlLocation="ExpenseUploadBPEL.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.interface(ExpenseUploadBPEL)"/>
+    <binding.ws port="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.endpoint(ExpenseSubmitReadWS/ExpenseUploadBPEL_pt)">
+      <wsp:PolicyReference URI="oracle/wsmtom_policy" orawsp:category="mtom"
+                           orawsp:status="enabled"/>
+      <property name="weblogic.wsee.wsat.transaction.flowOption"
+                type="xs:string" many="false">NEVER</property>
+    </binding.ws>
+  </service>
   <component name="ExpenseProcess2">
     <implementation.bpmn src="processes/ExpenseProcess2.bpmn"/>
-    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string"
-              many="false">sync</property>
-    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
   </component>
-  <component name="Expense2_HT">
-    <implementation.workflow src="Expense2_HT.task"/>
+  <component name="ManagerApproveExpense3_HT">
+    <implementation.workflow src="ManagerApproveExpense3_HT.task"/>
   </component>
   <wire>
-    <source.uri>ExpenseProcess2/HumanTasks.Expense2_HT.reference</source.uri>
-    <target.uri>Expense2_HT/TaskService</target.uri>
+    <source.uri>ExpenseSubmitReadWS</source.uri>
+    <target.uri>ExpenseProcess2/References.Externals.ExpenseSubmitReadWS.service</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ExpenseProcess2/HumanTasks.ManagerApproveExpense3_HT.reference</source.uri>
+    <target.uri>ManagerApproveExpense3_HT/TaskService</target.uri>
   </wire>
 </composite>

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="IProExpense_Manager_HTPayloadType"
+          Package="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+          BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.IProExpense_Manager_HTPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="ExpenseIProManagerConfirm" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerConfirmType"
+                     CollectionBeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerConfirmType_ExpenseIProManagerConfirm_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+      <Property Name="nextSibling" Value="ExpenseIProManagerNotes"/>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expense IP Ro Manager Confirm"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpenseIProManagerConfirm"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="ExpenseIProManagerNotes" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerNotesType"
+                     CollectionBeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.ExpenseIProManagerNotesType_ExpenseIProManagerNotes_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expense IP Ro Manager Notes"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpenseIProManagerNotes"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

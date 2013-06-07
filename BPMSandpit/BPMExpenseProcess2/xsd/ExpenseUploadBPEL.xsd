@@ -1,0 +1,14 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+     xmlns="http://www.w3.org/2001/XMLSchema">
+    <element name="process">
+        <complexType>
+            <sequence>
+                <element name="amount" type="string"/>
+                <element name="description" type="string"/>
+                <element name="date" type="string"/>
+                <element name="fileattach" type="base64Binary"/>
+            </sequence>
+        </complexType>
+    </element>
+</schema>

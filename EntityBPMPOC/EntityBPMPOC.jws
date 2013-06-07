@@ -187,9 +187,9 @@
          </hash>
       </hash>
       <list n="profileList">
+         <string v="IProExpenseProcess_UI_OpsSupport"/>
          <string v="IProExpenses_UI"/>
          <string v="IProExpenseProcess_UI_IProManager"/>
-         <string v="IProExpenseProcess_UI_OpsSupport"/>
       </list>
    </hash>
    <hash n="oracle.mds.internal.dt.ide.CustOptions">

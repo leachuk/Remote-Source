@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="TestDataObjectType" Package="HelloWorld_UI3_SayHello"
+          BeanClass="HelloWorld_UI3_SayHello.TestDataObjectType"
+          isJavaBased="false">
+  <Attribute Name="input1" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace"
+                  Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
+        <Property Name="nextSibling" Value="input2"/>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Input "/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="input1"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="input2" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="1"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Input "/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="true"/>
+        <Property Name="originalName" Value="input2"/>
+        <Property Name="targetNamespace"
+                  Value="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>

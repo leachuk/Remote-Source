@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+     name="ExpenseUploadBPEL"
+     targetNamespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:client="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+    <plnk:partnerLinkType name="ExpenseUploadBPEL">
+        <plnk:role name="ExpenseUploadBPELProvider">
+            <plnk:portType name="client:ExpenseUploadBPEL"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
+                 schemaLocation="xsd/ExpenseUploadBPEL_1.xsd"/>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="ExpenseUploadBPELRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:portType name="ExpenseUploadBPEL">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ExpenseUploadBPELRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

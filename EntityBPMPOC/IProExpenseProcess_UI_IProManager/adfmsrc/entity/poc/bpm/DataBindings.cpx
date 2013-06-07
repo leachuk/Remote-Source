@@ -11,7 +11,7 @@
           path="entity.poc.bpm.pageDefs.taskDetails1PageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
-    <dc id="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-        path="entity.poc.bpm.IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"/>
+    <dc id="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+        path="entity.poc.bpm.IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"/>
   </dataControlUsages>
 </Application>

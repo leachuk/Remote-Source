@@ -2,21 +2,21 @@
 <DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
                     version="11.1.1.60.13" id="DataControls"
                     Package="entity.poc.bpm">
-  <AdapterDataControl id="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+  <AdapterDataControl id="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                       FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                       ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition"
                       SupportsTransactions="true" SupportsSortCollection="false"
                       SupportsResetState="false" SupportsRangesize="false"
                       SupportsFindMode="false" SupportsUpdates="false"
-                      Definition="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
-                      BeanClass="IProExpenseProcess_UI_IProManager_IproManagerApproveExpense"
+                      Definition="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
+                      BeanClass="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT"
                       xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
       <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
-                      SchemaLocation="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/xsd/IproManagerApproveExpenseWorkflowTask.xsd"
+                      SchemaLocation="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/xsd/IProExpense_Manager_HTWorkflowTask.xsd"
                       RootElement="task"
                       rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
-                      taskLoc="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/IproManagerApproveExpense.task"
+                      taskLoc="file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/IProExpense_Manager_HT.task"
                       InitiationTask="false"
                       DocumentStoreConfiguration="false"/>
     </Source>

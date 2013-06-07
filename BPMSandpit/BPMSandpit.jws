@@ -6,6 +6,7 @@
       <value n="runtime-application-name" v=""/>
    </hash>
    <value n="application-package-prefix" v="entity.poc.bpm"/>
+   <url n="application-source-directory" path="src/"/>
    <value n="appTemplateId" v="BPMApplicationTemplate"/>
    <hash n="appWebServicePolicy">
       <value n="location"/>
@@ -27,27 +28,26 @@
    <list n="listOfChildren">
       <hash><url n="URL" path="BPMExpenseProcess_Initiate_UI_2/BPMExpenseProcess_Initiate_UI_2.jpr"/></hash>
       <hash><url n="URL" path="BPMExpenseProcess1/BPMExpenseProcess1.jpr"/></hash>
-      <hash><url n="URL" path="BPMExpenseProcess2_UI/BPMExpenseProcess2_UI.jpr"/></hash>
+      <hash><url n="URL" path="BPMExpenseProcess2_UI4/BPMExpenseProcess2_UI4.jpr"/></hash>
       <hash><url n="URL" path="BPMExpenseProcess2/BPMExpenseProcess2.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="BPMExpenseProcess_Initiate_UI_2">
+         <hash n="BPMExpenseProcess2_UI4">
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="defaultConnection"/>
             <hash n="dependencies">
                <list n="dependencyList">
                   <hash>
                      <value n="adapterClass" v="oracle.jdevimpl.deploy.common.DefaultProfileDependable"/>
-                     <url n="ownerURL" path="BPMExpenseProcess_Initiate_UI_2/BPMExpenseProcess_Initiate_UI_2.jpr"/>
-                     <value n="profileName" v="BPMExpenseProcess_Initiate_UI_2"/>
+                     <url n="ownerURL" path="BPMExpenseProcess2_UI4/BPMExpenseProcess2_UI4.jpr"/>
+                     <value n="profileName" v="BPMExpenseProcess2_UI4"/>
                   </hash>
                </list>
             </hash>
-            <url n="earURL" path="deploy/BPMExpenseProcess_Initiate_UI_2.ear"/>
-            <value n="enterpriseAppName" v="BPMExpenseProcess_Initiate_UI_2"/>
+            <url n="earURL" path="deploy/BPMExpenseProcess2_UI4.ear"/>
+            <value n="enterpriseAppName" v="BPMExpenseProcess2_UI4"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>
@@ -82,11 +82,11 @@
                <value n="IncludeLibrariesFromOtherContainers" v="true"/>
             </hash>
             <value n="profileClass" v="oracle.jdeveloper.deploy.ear.EarProfile"/>
-            <value n="profileName" v="BPMExpenseProcess_Initiate_UI_2"/>
+            <value n="profileName" v="BPMExpenseProcess2_UI4"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="BPMExpenseProcess_Initiate_UI_2"/>
+         <string v="BPMExpenseProcess2_UI4"/>
       </list>
    </hash>
 </jws:workspace>

@@ -67,10 +67,10 @@
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
-         <string v="Java"/>
+         <string v="ADF_FACES"/>
          <string v="JSP"/>
          <string v="JSF"/>
-         <string v="ADF_FACES"/>
+         <string v="Java"/>
          <string v="HTML"/>
       </list>
    </hash>

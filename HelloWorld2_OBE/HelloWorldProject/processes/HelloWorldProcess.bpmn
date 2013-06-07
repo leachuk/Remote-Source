@@ -49,14 +49,18 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="INITIATOR" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
+                    <ns2:AttributeExpression attributeName="priorityExpressionFeature" language="http://www.w3.org/1999/XPath">3
+                        <ns2:OracleExtensions>
+                            <ns2:Expression mode="number"/>
+                        </ns2:OracleExtensions>
+                    </ns2:AttributeExpression>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.SayHello"/>
             </ns2:OracleExtensions>
             <ioSpecification>
-                <dataInput name="helloObject" id="helloObject">
+                <dataInput name="testDataObject" id="testDataObject">
                     <ns2:OracleExtensions>
-                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        <ns2:TypeRef isArray="false" element="TestDataObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
                     </ns2:OracleExtensions>
                 </dataInput>
                 <dataInput name="execData" id="execData">
@@ -69,9 +73,9 @@
                         <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
                     </ns2:OracleExtensions>
                 </dataOutput>
-                <dataOutput name="helloObject" id="helloObject">
+                <dataOutput name="testDataObject" id="testDataObject">
                     <ns2:OracleExtensions>
-                        <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                        <ns2:TypeRef isArray="false" element="TestDataObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
                     </ns2:OracleExtensions>
                 </dataOutput>
                 <dataOutput name="execData" id="execData">
@@ -80,9 +84,9 @@
                     </ns2:OracleExtensions>
                 </dataOutput>
                 <inputSet id="activity0_uniqueInputSet">
-                    <dataInput name="helloObject" id="helloObject">
+                    <dataInput name="testDataObject" id="testDataObject">
                         <ns2:OracleExtensions>
-                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                            <ns2:TypeRef isArray="false" element="TestDataObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
                         </ns2:OracleExtensions>
                     </dataInput>
                     <dataInput name="execData" id="execData">
@@ -97,9 +101,9 @@
                             <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
                         </ns2:OracleExtensions>
                     </dataOutput>
-                    <dataOutput name="helloObject" id="helloObject">
+                    <dataOutput name="testDataObject" id="testDataObject">
                         <ns2:OracleExtensions>
-                            <ns2:TypeRef isArray="false" element="HelloObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/HelloObject"/>
+                            <ns2:TypeRef isArray="false" element="TestDataObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
                         </ns2:OracleExtensions>
                     </dataOutput>
                     <dataOutput name="execData" id="execData">
@@ -115,11 +119,11 @@
                     <ns2:OracleExtensions>
                         <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('helloObject')</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('hello')</to>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('testDataObject')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('testDO')</to>
                 </assignment>
-                <sourceRef>helloObject</sourceRef>
-                <targetRef>hello</targetRef>
+                <sourceRef>testDataObject</sourceRef>
+                <targetRef>testDO</targetRef>
             </dataOutputAssociation>
             <performer name="Requester" id="lane0"/>
         </userTask>
@@ -240,6 +244,13 @@
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
                     <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="testDO" id="testDO">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="TestDataObject" namespace="http://xmlns.oracle.com/bpm/bpmobject/HelloTypes/TestDataObject"/>
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>

@@ -11,10 +11,21 @@
                     <description locale="en">ExpenseProcess2</description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">ManagerApproveExpense</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
                 </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
             </topicDocumentation>
             <topicDocumentation name="endEvent0">
                 <labels>
@@ -23,14 +34,15 @@
             </topicDocumentation>
             <topicDocumentation name="activity0">
                 <labels>
-                    <label locale="en">UserTask</label>
+                    <label locale="en">ScriptTask</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf34"/>
-            <topicDocumentation name="sf36"/>
+            <topicDocumentation name="sf40"/>
+            <topicDocumentation name="sf33"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

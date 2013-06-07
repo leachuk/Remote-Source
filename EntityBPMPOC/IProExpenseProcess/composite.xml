@@ -27,14 +27,14 @@
   <component name="IProExpenseManage">
     <implementation.bpmn src="processes/IProExpenseManage.bpmn"/>
   </component>
-  <component name="IproManagerApproveExpense">
-    <implementation.workflow src="IproManagerApproveExpense.task"/>
-  </component>
   <component name="ConvertExpenseDocumentationToPDF">
     <implementation.workflow src="ConvertExpenseDocumentationToPDF.task"/>
   </component>
   <component name="BillingAndRemuneration">
     <implementation.workflow src="BillingAndRemuneration.task"/>
+  </component>
+  <component name="IProExpense_Manager_HT">
+    <implementation.workflow src="IProExpense_Manager_HT.task"/>
   </component>
   <reference name="writeTestExpenseFromDbToFile"
              ui:wsdlLocation="writeTestExpenseFromDbToFile.wsdl">
@@ -42,16 +42,8 @@
     <binding.jca config="writeTestExpenseFromDbToFile_file.jca"/>
   </reference>
   <wire>
-    <source.uri>IProExpenseManage/Services.Externals.WriteTestExpenseFromDbToFile.reference</source.uri>
-    <target.uri>writeTestExpenseFromDbToFile</target.uri>
-  </wire>
-  <wire>
     <source.uri>readExpenseWS</source.uri>
     <target.uri>IProExpenseManage/References.Externals.ReadExpenseWS.service</target.uri>
-  </wire>
-  <wire>
-    <source.uri>IProExpenseManage/HumanTasks.IproManagerApproveExpense.reference</source.uri>
-    <target.uri>IproManagerApproveExpense/TaskService</target.uri>
   </wire>
   <wire>
     <source.uri>IProExpenseManage/HumanTasks.ConvertExpenseDocumentationToPDF.reference</source.uri>
@@ -60,5 +52,9 @@
   <wire>
     <source.uri>IProExpenseManage/HumanTasks.BillingAndRemuneration.reference</source.uri>
     <target.uri>BillingAndRemuneration/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>IProExpenseManage/HumanTasks.IProExpense_Manager_HT.reference</source.uri>
+    <target.uri>IProExpense_Manager_HT/TaskService</target.uri>
   </wire>
 </composite>

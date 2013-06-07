@@ -624,6 +624,8 @@
             </hash>
             <value n="jspVersion" v="1.2"/>
             <value n="name" v="ADF Faces Components"/>
+            <value n="runInEditor" v="false"/>
+            <value n="showInPalette" v="true"/>
             <value n="tldURL" v="@oracle.home@../oracle_common/modules/oracle.adf.view_11.1.1/adf-richclient-impl-11.jar!/META-INF/afu.tld"/>
             <value n="URI" v="http://xmlns.oracle.com/adf/faces/rich"/>
             <value n="version" v="11"/>

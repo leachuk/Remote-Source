@@ -2,7 +2,7 @@
 <hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
    <ApplicationName>worklist</ApplicationName>
    <LookupType>LOCAL</LookupType>
-   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowDeploy>true</TaskFlowDeploy>
    <TaskFlowServer>
       <hostName/>
       <httpPort/>

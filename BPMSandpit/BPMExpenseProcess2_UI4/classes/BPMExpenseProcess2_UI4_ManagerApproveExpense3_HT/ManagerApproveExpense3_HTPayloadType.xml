@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="ManagerApproveExpense3_HTPayloadType"
+          Package="BPMExpenseProcess2_UI4_ManagerApproveExpense3_HT"
+          BeanClass="BPMExpenseProcess2_UI4_ManagerApproveExpense3_HT.ManagerApproveExpense3_HTPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="Expense2BO" IsCollection="true"
+                     BeanClass="BPMExpenseProcess2_UI4_ManagerApproveExpense3_HT.Expense2BOType"
+                     CollectionBeanClass="BPMExpenseProcess2_UI4_ManagerApproveExpense3_HT.Expense2BOType_Expense2BO_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expense 2BO"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="Expense2BO"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/Expense2/Expense2BO"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

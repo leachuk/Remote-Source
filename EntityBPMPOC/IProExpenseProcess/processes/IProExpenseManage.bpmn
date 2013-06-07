@@ -53,48 +53,10 @@
                 <ns2:StringFeature value="REGULAR" name="sealType"/>
             </ns2:FeatureSet>
         </ns2:OracleExtensions>
-        <serviceTask operationRef="write" serviceRef="Services.Externals.WriteTestExpenseFromDbToFile" isForCompensation="false" name="InitialiseExpenseForApproval" id="activity1">
-            <ns2:OracleExtensions>
-                <ns2:GraphicsAttributes>
-                    <ns2:Position y="88" x="326"/>
-                    <ns2:Size height="21" width="21"/>
-                </ns2:GraphicsAttributes>
-                <ns2:FeatureSet>
-                    <ns2:StringFeature value="" name="associatedProcess"/>
-                    <ns2:StringFeature value="" name="associatedNode"/>
-                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
-                    <ns2:StringFeature value="Begin Level" name="level"/>
-                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
-                </ns2:FeatureSet>
-            </ns2:OracleExtensions>
-            <ioSpecification>
-                <dataInput name="writeExpenseFileElement" id="writeExpenseFileElement">
-                    <ns2:OracleExtensions>
-                        <ns2:TypeRef isArray="false" element="writeExpenseFileElement" namespace="http://www.example.org/writeFileDataModel"/>
-                    </ns2:OracleExtensions>
-                </dataInput>
-                <inputSet id="activity1_uniqueInputSet">
-                    <dataInput name="writeExpenseFileElement" id="writeExpenseFileElement">
-                        <ns2:OracleExtensions>
-                            <ns2:TypeRef isArray="false" element="writeExpenseFileElement" namespace="http://www.example.org/writeFileDataModel"/>
-                        </ns2:OracleExtensions>
-                    </dataInput>
-                </inputSet>
-            </ioSpecification>
-            <dataInputAssociation>
-                <transformation language="xsl">
-                    <ns2:OracleExtensions>
-                        <ns2:ExternalTransformation resource="expensesListDataObj_body.xsl"/>
-                    </ns2:OracleExtensions>
-                </transformation>
-                <sourceRef>expensesListDataObj</sourceRef>
-                <targetRef>writeExpenseFileElement</targetRef>
-            </dataInputAssociation>
-        </serviceTask>
         <userTask implementation="other" isForCompensation="false" name="ManagerReceivesExpense" id="activity0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="87" x="530"/>
+                    <ns2:Position y="85" x="403"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -105,33 +67,111 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="MANAGEMENT" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
-                <ns2:HumanTask usesTransformations="true" humanTaskReference="HumanTasks.IproManagerApproveExpense"/>
+                <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.IProExpense_Manager_HT"/>
             </ns2:OracleExtensions>
             <ioSpecification>
-                <dataInput name="task" id="task">
+                <dataInput name="expenseIProManagerConfirm" id="expenseIProManagerConfirm">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpenseIProManagerConfirm" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="expenseIProManagerNotes" id="expenseIProManagerNotes">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpenseIProManagerNotes" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="execData" id="execData">
                     <ns2:OracleExtensions>
                         <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
                     </ns2:OracleExtensions>
                 </dataInput>
+                <dataOutput name="outcome" id="outcome">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="expenseIProManagerNotes" id="expenseIProManagerNotes">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpenseIProManagerNotes" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
                 <inputSet id="activity0_uniqueInputSet">
-                    <dataInput name="task" id="task">
+                    <dataInput name="expenseIProManagerConfirm" id="expenseIProManagerConfirm">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpenseIProManagerConfirm" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="expenseIProManagerNotes" id="expenseIProManagerNotes">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpenseIProManagerNotes" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="execData" id="execData">
                         <ns2:OracleExtensions>
                             <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
                         </ns2:OracleExtensions>
                     </dataInput>
                 </inputSet>
+                <outputSet id="activity0_uniqueOutputSet">
+                    <dataOutput name="outcome" id="outcome">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="expenseIProManagerNotes" id="expenseIProManagerNotes">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpenseIProManagerNotes" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                </outputSet>
             </ioSpecification>
             <dataInputAssociation>
-                <transformation language="xsl">
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
                     <ns2:OracleExtensions>
-                        <ns2:ExternalTransformation resource="expensesSubmitReadWSDataObject_task.xsl"/>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
-                </transformation>
-                <sourceRef>expensesSubmitReadWSDataObject</sourceRef>
-                <targetRef>task</targetRef>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerConfirmDO')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expenseIProManagerConfirm')</to>
+                </assignment>
+                <sourceRef>expenseIproManagerConfirmDO</sourceRef>
+                <targetRef>expenseIProManagerConfirm</targetRef>
             </dataInputAssociation>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expenseIProManagerNotes')</to>
+                </assignment>
+                <sourceRef>expenseIproManagerNotesDO</sourceRef>
+                <targetRef>expenseIProManagerNotes</targetRef>
+            </dataInputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('expenseIProManagerNotes')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</to>
+                </assignment>
+                <sourceRef>expenseIProManagerNotes</sourceRef>
+                <targetRef>expenseIproManagerNotesDO</targetRef>
+            </dataOutputAssociation>
             <performer name="IProManager" id="lane0"/>
         </userTask>
         <userTask implementation="other" isForCompensation="false" name="OperationsSupport" id="activity2">
@@ -234,6 +274,30 @@
             </ioSpecification>
             <performer name="BillingAndRemuneration" id="lane3"/>
         </userTask>
+        <scriptTask isForCompensation="false" name="MapWSToManagerTaskflow" id="activity1">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="85" x="242"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expensesSubmitReadWSDO_expenseIproManagerConfirmDO.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expensesSubmitReadWSDO</sourceRef>
+                <targetRef>expenseIproManagerConfirmDO</targetRef>
+            </dataOutputAssociation>
+            <script/>
+        </scriptTask>
         <startEvent isInterrupting="false" name="Start" id="startEvent0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
@@ -264,25 +328,11 @@
                     <ns2:OracleExtensions>
                         <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('process')/ns:amount</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesSubmitReadWS" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expensesSubmitReadWSDataObject')/ns:amount</to>
-                </assignment>
-                <assignment language="http://www.w3.org/1999/XPath">
-                    <ns2:OracleExtensions>
-                        <ns2:DataAssignment mode="simple" isCustom="false"/>
-                    </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('process')/ns:date</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesSubmitReadWS" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expensesSubmitReadWSDataObject')/ns:date_incured</to>
-                </assignment>
-                <assignment language="http://www.w3.org/1999/XPath">
-                    <ns2:OracleExtensions>
-                        <ns2:DataAssignment mode="simple" isCustom="false"/>
-                    </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('process')/ns:description</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesSubmitReadWS" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expensesSubmitReadWSDataObject')/ns:description</to>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('process')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expensesSubmitReadWSDO')</to>
                 </assignment>
                 <sourceRef>process</sourceRef>
-                <targetRef>expensesSubmitReadWSDataObject</targetRef>
+                <targetRef>expensesSubmitReadWSDO</targetRef>
             </dataOutputAssociation>
             <outputSet id="startEvent0_uniqueOutputSet">
                 <dataOutput name="process" id="process">
@@ -310,16 +360,6 @@
             <inputSet/>
         </endEvent>
         <sequenceFlow targetRef="activity1" sourceRef="startEvent0" name="sf23" id="sf23">
-            <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes/>
-                <ns2:FeatureSet>
-                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
-                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
-                </ns2:FeatureSet>
-            </ns2:OracleExtensions>
-        </sequenceFlow>
-        <sequenceFlow targetRef="activity0" sourceRef="activity1" name="sf34" id="sf34">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes/>
                 <ns2:FeatureSet>
@@ -359,6 +399,16 @@
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
+        <sequenceFlow targetRef="activity0" sourceRef="activity1" name="sf37" id="sf37">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
         <dataObject name="expensesListDataObj" id="expensesListDataObj">
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
@@ -380,10 +430,10 @@
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>
-        <dataObject name="expensesSubmitReadWSDataObject" id="expensesSubmitReadWSDataObject">
+        <dataObject name="expensesSubmitReadWSDO" id="expensesSubmitReadWSDO">
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
-                    <ns2:TypeRef isArray="false" element="ExpensesSubmitReadWS" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesSubmitReadWS"/>
+                    <ns2:TypeRef isArray="false" element="process" namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"/>
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>

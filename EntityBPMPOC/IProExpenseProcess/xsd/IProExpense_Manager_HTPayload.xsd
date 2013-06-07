@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns1="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes" xmlns:ns0="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm">
+   <import namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm" schemaLocation="../businessCatalog/IProExpenses/ExpenseIProManagerConfirm.xsd"/>
+   <import namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerNotes" schemaLocation="../businessCatalog/IProExpenses/ExpenseIProManagerNotes.xsd"/>
+   <complexType name="IProExpense_Manager_HTPayloadType">
+      <sequence>
+         <element ref="ns0:ExpenseIProManagerConfirm"/>
+         <element ref="ns1:ExpenseIProManagerNotes"/>
+      </sequence>
+   </complexType>
+</schema>

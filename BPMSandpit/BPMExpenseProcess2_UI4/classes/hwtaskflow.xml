@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName/>
+      <httpPort/>
+      <httpsPort/>
+   </TaskFlowServer>
+<hwTaskFlow><WorkflowName>ManagerApproveExpense3_HT</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/ManagerApproveExpense3_HT</TaskDefinitionNamespace><TaskFlowId>ManagerApproveExpense3_HT_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/ManagerApproveExpense3_HT_TaskFlow.xml</TaskFlowFileName></hwTaskFlow></hwTaskFlows>
