@@ -1,35 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <References xmlns="http://xmlns.oracle.com/adf/jndi">
-   <Reference name="Local_Dev_SOA_VM" className="oracle.rc.asadapter.connection.AppServerProvider" credentialStoreKey="Local_Dev_SOA_VM" xmlns="">
-      <Factory className="oracle.rc.asadapter.connection.AppServerProviderFactory"/>
-      <RefAddresses>
-         <StringRefAddr addrType="JMX_CONNECTOR_SSL_PORT">
-            <Contents>7002</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="ConnectionType">
-            <Contents>WebLogic_10.x</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="DeployPassword">
-            <Contents>false</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="user">
-            <Contents>weblogic</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="weblogic.domain">
-            <Contents>SOAOSBPS4DevDomain</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="JMX_CONNECTOR_HOST">
-            <Contents>192.168.216.128</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="USE_SSL">
-            <Contents>false</Contents>
-         </StringRefAddr>
-         <StringRefAddr addrType="JMX_CONNECTOR_PORT">
-            <Contents>7001</Contents>
-         </StringRefAddr>
-         <SecureRefAddr addrType="password"/>
-      </RefAddresses>
-   </Reference>
    <Reference name="Entity DEV SOA" className="oracle.jdeveloper.db.adapter.DatabaseProvider" credentialStoreKey="Entity DEV SOA" xmlns="">
       <Factory className="oracle.jdeveloper.db.adapter.DatabaseProviderFactory"/>
       <RefAddresses>
@@ -55,6 +25,36 @@
          <StringRefAddr addrType="oraDriverType">
             <Contents>thin</Contents>
          </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+   <Reference name="Local_Dev_SOA_VM" className="oracle.rc.asadapter.connection.AppServerProvider" credentialStoreKey="Local_Dev_SOA_VM" xmlns="">
+      <Factory className="oracle.rc.asadapter.connection.AppServerProviderFactory"/>
+      <RefAddresses>
+         <StringRefAddr addrType="JMX_CONNECTOR_SSL_PORT">
+            <Contents>7002</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="ConnectionType">
+            <Contents>WebLogic_10.x</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DeployPassword">
+            <Contents>false</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="user">
+            <Contents>weblogic</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="weblogic.domain">
+            <Contents>dev_domain</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="JMX_CONNECTOR_HOST">
+            <Contents>localhost.localdomain</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="USE_SSL">
+            <Contents>false</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="JMX_CONNECTOR_PORT">
+            <Contents>7001</Contents>
+         </StringRefAddr>
+         <SecureRefAddr addrType="password"/>
       </RefAddresses>
    </Reference>
 </References>

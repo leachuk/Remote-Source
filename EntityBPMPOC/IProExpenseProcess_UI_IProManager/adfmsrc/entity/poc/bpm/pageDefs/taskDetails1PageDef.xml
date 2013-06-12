@@ -266,7 +266,8 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="assigneesIterator" id="assignees">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
+                      Name="assignees0">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -311,7 +312,8 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="userCommentIterator" id="userComment">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType"
+                      Name="userComment0">
         <AttrNames>
           <Item Value="comment"/>
           <Item Value="updatedDate"/>
@@ -327,7 +329,8 @@
           <Item Value="updatedBy"/>
         </Accessors>
       </nodeDefinition>
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
+                      Name="userComment1">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -346,7 +349,8 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="updatedByIterator" id="updatedBy">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
+                      Name="updatedBy0">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -356,7 +360,8 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="attachmentIterator" id="attachment">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType"
+                      Name="attachment0">
         <AttrNames>
           <Item Value="content"/>
           <Item Value="mimeType"/>
@@ -411,7 +416,8 @@
       </AttrNames>
     </attributeValues>
     <tree IterBinding="userCommentIterator" id="userComment1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.commentType"
+                      Name="userComment10">
         <AttrNames>
           <Item Value="comment"/>
           <Item Value="updatedDate"/>
@@ -427,7 +433,8 @@
           <Item Value="updatedBy"/>
         </Accessors>
       </nodeDefinition>
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
+                      Name="userComment11">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -437,7 +444,8 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="updatedByIterator" id="updatedBy1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.identityType"
+                      Name="updatedBy10">
         <AttrNames>
           <Item Value="id"/>
           <Item Value="displayName"/>
@@ -447,7 +455,8 @@
       </nodeDefinition>
     </tree>
     <tree IterBinding="attachmentIterator" id="attachment1">
-      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType">
+      <nodeDefinition DefName="IProExpenseProcess_UI_IProManager_IProExpense_Manager_HT.attachmentType"
+                      Name="attachment10">
         <AttrNames>
           <Item Value="content"/>
           <Item Value="mimeType"/>

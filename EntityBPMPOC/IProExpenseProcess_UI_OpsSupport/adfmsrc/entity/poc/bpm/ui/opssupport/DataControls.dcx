@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration"
                     version="11.1.1.60.13" id="DataControls"
-                    Package="entity.poc.bpm">
+                    Package="entity.poc.bpm.ui.opssupport">
   <AdapterDataControl id="IProExpenseProcess_UI_OpsSupport_ConvertExpenseDocumentationToPDF"
                       FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
                       ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition"

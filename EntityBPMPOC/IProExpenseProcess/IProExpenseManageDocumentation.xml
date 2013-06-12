@@ -35,6 +35,14 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity1">
+                <labels>
+                    <label locale="en">MapWSToManagerTaskflow</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -48,9 +56,9 @@
                     <label locale="en">End</label>
                 </labels>
             </topicDocumentation>
-            <topicDocumentation name="activity1">
+            <topicDocumentation name="activity4">
                 <labels>
-                    <label locale="en">MapWSToManagerTaskflow</label>
+                    <label locale="en">MapManagerDataToOpsSupport</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -61,6 +69,7 @@
             <topicDocumentation name="sf43"/>
             <topicDocumentation name="sf45"/>
             <topicDocumentation name="sf37"/>
+            <topicDocumentation name="sf40"/>
         </topicDocumentations>
     </component>
 </processDocumentation>
