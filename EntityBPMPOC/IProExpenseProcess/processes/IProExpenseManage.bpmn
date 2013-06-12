@@ -67,7 +67,6 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="MANAGEMENT" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.IProExpense_Manager_HT"/>
             </ns2:OracleExtensions>
@@ -155,24 +154,12 @@
                     <ns2:OracleExtensions>
                         <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expenseIProManagerNotes')</to>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('attachmentDO')/ns:task/ns:attachment</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('execData')/ns:attachment</to>
                 </assignment>
-                <sourceRef>expenseIproManagerNotesDO</sourceRef>
-                <targetRef>expenseIProManagerNotes</targetRef>
+                <sourceRef>attachmentDO</sourceRef>
+                <targetRef>execData</targetRef>
             </dataInputAssociation>
-            <dataOutputAssociation>
-                <ns2:OracleExtensions/>
-                <assignment language="http://www.w3.org/1999/XPath">
-                    <ns2:OracleExtensions>
-                        <ns2:DataAssignment mode="simple" isCustom="false"/>
-                    </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('expenseIProManagerNotes')</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</to>
-                </assignment>
-                <sourceRef>expenseIProManagerNotes</sourceRef>
-                <targetRef>expenseIproManagerNotesDO</targetRef>
-            </dataOutputAssociation>
             <performer name="IProManager" id="lane0"/>
         </userTask>
         <userTask implementation="other" isForCompensation="false" name="OperationsSupport" id="activity2">
@@ -370,6 +357,16 @@
                 </transformation>
                 <sourceRef>expensesSubmitReadWSDO</sourceRef>
                 <targetRef>expenseOpsSupportDO</targetRef>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expensesSubmitReadWSDO_attachmentDO.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expensesSubmitReadWSDO</sourceRef>
+                <sourceRef>attachmentFullPayloadDO</sourceRef>
+                <targetRef>attachmentDO</targetRef>
             </dataOutputAssociation>
             <script></script>
         </scriptTask>
@@ -581,6 +578,27 @@
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
                     <ns2:TypeRef isArray="false" element="ExpensesNotes" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesNotes"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="attachmentFullPayloadDO" id="attachmentFullPayloadDO">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="fullPayload" namespace="http://blogs.oracle.com/sample/bpm"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="attachmentPartialPayloadDO" id="attachmentPartialPayloadDO">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="partialPayload" namespace="http://blogs.oracle.com/sample/bpm"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="attachmentDO" id="attachmentDO">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="Attachment" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/Attachment"/>
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>

@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ExpenseIProManagerConfirm xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/businessCatalog/IProExpenses/ExpenseIProManagerConfirm.xsd" xmlns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseIProManagerConfirm">
+   <amount>amount1</amount>
+   <business_percentage>business_percentage2</business_percentage>
+   <description>description3</description>
+   <date_incured>date_incured4</date_incured>
+   <ipro_user>ipro_user5</ipro_user>
+</ExpenseIProManagerConfirm>

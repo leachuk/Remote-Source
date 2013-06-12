@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<tns:task xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.oracle.com/bpel/workflow/task file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/xsd/ConvertExpenseDocumentationToPDFWorkflowTask.xsd">
+   <tns:payload>
+      <ns3:ExpensesOpsSupport xmlns:ns3="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesOpsSupport">
+         <ns3:entry_id>amount1</ns3:entry_id>
+         <ns3:ipro_user>ipro_user5</ns3:ipro_user>
+         <ns3:receipt_id>TODO Receipt ID</ns3:receipt_id>
+      </ns3:ExpensesOpsSupport>
+   </tns:payload>
+   <tns:attachment>
+      <tns:content>MTA=</tns:content>
+      <tns:mimeType>mimetype9</tns:mimeType>
+      <tns:name>filename8</tns:name>
+      <tns:updatedBy>weblogic</tns:updatedBy>
+      <tns:doesBelongToParent>false</tns:doesBelongToParent>
+      <tns:updatedDate>17:01:41+10:00</tns:updatedDate>
+   </tns:attachment>
+</tns:task>

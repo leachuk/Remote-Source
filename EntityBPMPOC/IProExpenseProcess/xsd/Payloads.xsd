@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://blogs.oracle.com/sample/bpm"
+            targetNamespace="http://blogs.oracle.com/sample/bpm"
+            elementFormDefault="qualified">
+  <xsd:element name="partialPayload">
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="payload" type="payloadType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:element name="fullPayload">
+    <xsd:annotation>
+      <xsd:documentation>
+        A sample element
+      </xsd:documentation>
+    </xsd:annotation>
+    <xsd:complexType>
+      <xsd:sequence>
+        <xsd:element name="payload" type="payloadType"/>
+        <xsd:element name="attachment" type="attachmentType"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+  <xsd:complexType name="payloadType">
+    <xsd:sequence>
+      <xsd:element name="title" type="xsd:string"/>
+      <xsd:element name="description" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="attachmentType">
+    <xsd:sequence>
+      <xsd:element name="filename" type="xsd:string"/>
+      <xsd:element name="mimetype" type="xsd:string"/>
+      <xsd:element name="content" type="xsd:base64Binary"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</xsd:schema>

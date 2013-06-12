@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<fullPayload xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://blogs.oracle.com/sample/bpm file:/Users/stewartleach/Logicaltech/clients/entity/projects/finance-proof-of-concept/Source/EntityBPMPOC/IProExpenseProcess/xsd/Payloads.xsd" xmlns="http://blogs.oracle.com/sample/bpm">
+   <payload>
+      <title>title6</title>
+      <description>description7</description>
+   </payload>
+   <attachment>
+      <filename>filename8</filename>
+      <mimetype>mimetype9</mimetype>
+      <content>MTA=</content>
+   </attachment>
+</fullPayload>
