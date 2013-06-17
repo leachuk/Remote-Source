@@ -10,8 +10,6 @@
            xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy"
            xmlns:orawsp="http://schemas.oracle.com/ws/2006/01/policy"
            xmlns:ui="http://xmlns.oracle.com/soa/designer/">
-  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenseProcess/writeTestExpenseFromDbToFile"
-          location="writeTestExpenseFromDbToFile.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
           location="ExpenseUploadBPEL.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/bpel/workflow/taskService"
@@ -36,11 +34,9 @@
   <component name="IProExpense_Manager_HT">
     <implementation.workflow src="IProExpense_Manager_HT.task"/>
   </component>
-  <reference name="writeTestExpenseFromDbToFile"
-             ui:wsdlLocation="writeTestExpenseFromDbToFile.wsdl">
-    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/file/EntityBPMPOC/IProExpenseProcess/writeTestExpenseFromDbToFile#wsdl.interface(Write_ptt)"/>
-    <binding.jca config="writeTestExpenseFromDbToFile_file.jca"/>
-  </reference>
+  <component name="NotifyManagerOfCustomerExecutives">
+    <implementation.workflow src="NotifyManagerOfCustomerExecutives.task"/>
+  </component>
   <wire>
     <source.uri>readExpenseWS</source.uri>
     <target.uri>IProExpenseManage/References.Externals.ReadExpenseWS.service</target.uri>
@@ -56,5 +52,9 @@
   <wire>
     <source.uri>IProExpenseManage/HumanTasks.IProExpense_Manager_HT.reference</source.uri>
     <target.uri>IProExpense_Manager_HT/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>IProExpenseManage/HumanTasks.NotifyManagerOfCustomerExecutives.reference</source.uri>
+    <target.uri>NotifyManagerOfCustomerExecutives/TaskService</target.uri>
   </wire>
 </composite>

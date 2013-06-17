@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="NotifyManagerOfCustomerExecutivesPayloadType"
+          Package="IProExpenseProcess_UI_ManagerOfCustomerExecutives_NotifyManagerOfCustomerExecutives"
+          BeanClass="IProExpenseProcess_UI_ManagerOfCustomerExecutives_NotifyManagerOfCustomerExecutives.NotifyManagerOfCustomerExecutivesPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="ExpenseManagerOfCustomerExecutives" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_ManagerOfCustomerExecutives_NotifyManagerOfCustomerExecutives.ExpenseManagerOfCustomerExecutivesType"
+                     CollectionBeanClass="IProExpenseProcess_UI_ManagerOfCustomerExecutives_NotifyManagerOfCustomerExecutives.ExpenseManagerOfCustomerExecutivesType_ExpenseManagerOfCustomerExecutives_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expense Manager Of Customer Executives"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpenseManagerOfCustomerExecutives"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseManagerOfCustomerExecutives"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

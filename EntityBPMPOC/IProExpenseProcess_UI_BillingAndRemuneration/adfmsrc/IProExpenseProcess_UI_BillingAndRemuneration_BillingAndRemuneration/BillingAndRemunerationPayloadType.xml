@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="BillingAndRemunerationPayloadType"
+          Package="IProExpenseProcess_UI_BillingAndRemuneration_BillingAndRemuneration"
+          BeanClass="IProExpenseProcess_UI_BillingAndRemuneration_BillingAndRemuneration.BillingAndRemunerationPayloadType"
+          isJavaBased="false">
+  <AccessorAttribute id="ExpensesBillingAndRemuneration" IsCollection="true"
+                     BeanClass="IProExpenseProcess_UI_BillingAndRemuneration_BillingAndRemuneration.ExpensesBillingAndRemunerationType"
+                     CollectionBeanClass="IProExpenseProcess_UI_BillingAndRemuneration_BillingAndRemuneration.ExpensesBillingAndRemunerationType_ExpensesBillingAndRemuneration_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Expenses Billing And Remuneration"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="ExpensesBillingAndRemuneration"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesBillingAndRemuneration"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

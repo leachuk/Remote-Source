@@ -1,6 +1,9 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema">
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesBillingAndRemuneration">
+   <import namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesBillingAndRemuneration" schemaLocation="../businessCatalog/IProExpenses/ExpensesBillingAndRemuneration.xsd"/>
    <complexType name="BillingAndRemunerationPayloadType">
-      <sequence/>
+      <sequence>
+         <element ref="ns0:ExpensesBillingAndRemuneration"/>
+      </sequence>
    </complexType>
 </schema>

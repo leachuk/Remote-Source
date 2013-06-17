@@ -7,23 +7,25 @@
             <ns5:name>IProExpenseProcess.ProcessOwner</ns5:name>
             <ns1:processRole name="Process Owner" id="ProcessOwner"/>
         </ns1:applicationRole>
-        <ns1:applicationRole isProcessRole="false" id="IProExpenseProcess.Role">
-            <ns5:name>IProExpenseProcess.Role</ns5:name>
-            <ns1:processRole name="Role" id="Role"/>
-        </ns1:applicationRole>
         <ns1:applicationRole isProcessRole="false" id="IProExpenseProcess.IProConsultant">
             <ns5:name>IProExpenseProcess.IProConsultant</ns5:name>
             <ns1:processRole name="IProConsultant" id="IProConsultant"/>
         </ns1:applicationRole>
-        <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.IProManager">
-            <ns5:name>IProExpenseProcess.IProManager</ns5:name>
+        <ns1:applicationRole isProcessRole="true" id="IProManager">
+            <ns5:name>IProManager</ns5:name>
             <ns1:member type="USER">
                 <ns1:name>weblogic</ns1:name>
+            </ns1:member>
+            <ns1:member type="USER">
+                <ns1:name>stewart</ns1:name>
             </ns1:member>
             <ns1:processRole name="IProManager" id="IProManager"/>
         </ns1:applicationRole>
         <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.ManagerOfCustomerExecutives">
             <ns5:name>IProExpenseProcess.ManagerOfCustomerExecutives</ns5:name>
+            <ns1:member type="USER">
+                <ns1:name>stewart</ns1:name>
+            </ns1:member>
             <ns1:member type="USER">
                 <ns1:name>weblogic</ns1:name>
             </ns1:member>
@@ -31,6 +33,9 @@
         </ns1:applicationRole>
         <ns1:applicationRole isProcessRole="true" id="IProExpenseProcess.OperationsSupport">
             <ns5:name>IProExpenseProcess.OperationsSupport</ns5:name>
+            <ns1:member type="USER">
+                <ns1:name>stewart</ns1:name>
+            </ns1:member>
             <ns1:member type="USER">
                 <ns1:name>weblogic</ns1:name>
             </ns1:member>

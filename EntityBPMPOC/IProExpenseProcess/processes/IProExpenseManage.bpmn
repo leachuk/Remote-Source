@@ -154,18 +154,30 @@
                     <ns2:OracleExtensions>
                         <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('attachmentDO')/ns:task/ns:attachment</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('execData')/ns:attachment</to>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expenseIProManagerNotes')</to>
                 </assignment>
-                <sourceRef>attachmentDO</sourceRef>
-                <targetRef>execData</targetRef>
+                <sourceRef>expenseIproManagerNotesDO</sourceRef>
+                <targetRef>expenseIProManagerNotes</targetRef>
             </dataInputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('expenseIProManagerNotes')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</to>
+                </assignment>
+                <sourceRef>expenseIProManagerNotes</sourceRef>
+                <targetRef>expenseIproManagerNotesDO</targetRef>
+            </dataOutputAssociation>
             <performer name="IProManager" id="lane0"/>
         </userTask>
         <userTask implementation="other" isForCompensation="false" name="OperationsSupport" id="activity2">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="435" x="708"/>
+                    <ns2:Position y="433" x="889"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -257,24 +269,12 @@
                 <sourceRef>expenseOpsSupportDO</sourceRef>
                 <targetRef>expensesOpsSupport</targetRef>
             </dataInputAssociation>
-            <dataOutputAssociation>
-                <ns2:OracleExtensions/>
-                <assignment language="http://www.w3.org/1999/XPath">
-                    <ns2:OracleExtensions>
-                        <ns2:DataAssignment mode="simple" isCustom="false"/>
-                    </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('expensesNotes')</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseNotesDO')</to>
-                </assignment>
-                <sourceRef>expensesNotes</sourceRef>
-                <targetRef>expenseNotesDO</targetRef>
-            </dataOutputAssociation>
             <performer name="OperationsSupport" id="lane2"/>
         </userTask>
         <userTask implementation="other" isForCompensation="false" name="BillingAndRemunerationNotified" id="activity3">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="584" x="788"/>
+                    <ns2:Position y="609" x="1154"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -285,11 +285,15 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.BillingAndRemuneration"/>
             </ns2:OracleExtensions>
             <ioSpecification>
+                <dataInput name="expensesBillingAndRemuneration" id="expensesBillingAndRemuneration">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpensesBillingAndRemuneration" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesBillingAndRemuneration"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
                 <dataInput name="execData" id="execData">
                     <ns2:OracleExtensions>
                         <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
@@ -306,6 +310,11 @@
                     </ns2:OracleExtensions>
                 </dataOutput>
                 <inputSet id="activity3_uniqueInputSet">
+                    <dataInput name="expensesBillingAndRemuneration" id="expensesBillingAndRemuneration">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpensesBillingAndRemuneration" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpensesBillingAndRemuneration"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
                     <dataInput name="execData" id="execData">
                         <ns2:OracleExtensions>
                             <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
@@ -325,6 +334,18 @@
                     </dataOutput>
                 </outputSet>
             </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseBillingRemunerationDO')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expensesBillingAndRemuneration')</to>
+                </assignment>
+                <sourceRef>expenseBillingRemunerationDO</sourceRef>
+                <targetRef>expensesBillingAndRemuneration</targetRef>
+            </dataInputAssociation>
             <performer name="BillingAndRemuneration" id="lane3"/>
         </userTask>
         <scriptTask isForCompensation="false" name="MapWSToManagerTaskflow" id="activity1">
@@ -373,7 +394,7 @@
         <scriptTask isForCompensation="false" name="MapManagerDataToOpsSupport" id="activity4">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="436" x="584"/>
+                    <ns2:Position y="434" x="765"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -392,6 +413,133 @@
                 <sourceRef>expenseIproManagerConfirmDO</sourceRef>
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseOpsSupportDO</targetRef>
+            </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
+        <userTask implementation="other" isForCompensation="false" name="AlertManagerOfCustomerExecutives" id="activity5">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="250" x="648"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="reinitiate"/>
+                    <ns2:BooleanFeature value="false" name="manualCreation"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
+                    <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                </ns2:FeatureSet>
+                <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.NotifyManagerOfCustomerExecutives"/>
+            </ns2:OracleExtensions>
+            <ioSpecification>
+                <dataInput name="expenseManagerOfCustomerExecutives" id="expenseManagerOfCustomerExecutives">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="ExpenseManagerOfCustomerExecutives" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseManagerOfCustomerExecutives"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataInput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataInput>
+                <dataOutput name="outcome" id="outcome">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <dataOutput name="execData" id="execData">
+                    <ns2:OracleExtensions>
+                        <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                    </ns2:OracleExtensions>
+                </dataOutput>
+                <inputSet id="activity5_uniqueInputSet">
+                    <dataInput name="expenseManagerOfCustomerExecutives" id="expenseManagerOfCustomerExecutives">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="ExpenseManagerOfCustomerExecutives" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseManagerOfCustomerExecutives"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                    <dataInput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataInput>
+                </inputSet>
+                <outputSet id="activity5_uniqueOutputSet">
+                    <dataOutput name="outcome" id="outcome">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" type="string" namespace="http://www.w3.org/2001/XMLSchema"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                    <dataOutput name="execData" id="execData">
+                        <ns2:OracleExtensions>
+                            <ns2:TypeRef isArray="false" element="task" namespace="http://xmlns.oracle.com/bpel/workflow/task"/>
+                        </ns2:OracleExtensions>
+                    </dataOutput>
+                </outputSet>
+            </ioSpecification>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseManagerOfCustomerExecs')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('expenseManagerOfCustomerExecutives')</to>
+                </assignment>
+                <sourceRef>expenseManagerOfCustomerExecs</sourceRef>
+                <targetRef>expenseManagerOfCustomerExecutives</targetRef>
+            </dataInputAssociation>
+            <performer name="ManagerOfCustomerExecutives" id="lane1"/>
+        </userTask>
+        <scriptTask isForCompensation="false" name="MapConfirmToOverdue" id="activity6">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="251" x="519"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expenseIproManagerConfirmDO_expenseManagerOfCustomerExecs.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expenseIproManagerConfirmDO</sourceRef>
+                <sourceRef>expenseIproManagerNotesDO</sourceRef>
+                <targetRef>expenseManagerOfCustomerExecs</targetRef>
+            </dataOutputAssociation>
+            <script/>
+        </scriptTask>
+        <scriptTask isForCompensation="false" name="MapDataToBilling" id="activity7">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="608" x="1031"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expenseIproManagerConfirmDO_expenseBillingRemunerationDO.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expenseIproManagerConfirmDO</sourceRef>
+                <sourceRef>expenseIproManagerNotesDO</sourceRef>
+                <targetRef>expenseBillingRemunerationDO</targetRef>
             </dataOutputAssociation>
             <script/>
         </scriptTask>
@@ -445,7 +593,7 @@
         <endEvent name="End" id="endEvent0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="585" x="979"/>
+                    <ns2:Position y="610" x="1275"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -466,25 +614,27 @@
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
-        <sequenceFlow targetRef="activity4" sourceRef="activity0" name="sf41" id="sf41">
+        <sequenceFlow targetRef="activity6" sourceRef="activity0" name="sf41" id="sf41">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes>
-                    <ns2:Positions y="288" x="507"/>
+                    <ns2:Positions y="225" x="413"/>
                 </ns2:SequenceFlowAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="507,288" name="curve"/>
+                    <ns2:StringFeature value="413,225" name="curve"/>
                     <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
-        <sequenceFlow targetRef="activity3" sourceRef="activity2" name="sf43" id="sf43">
+        <sequenceFlow targetRef="activity7" sourceRef="activity2" name="sf43" id="sf43">
             <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes/>
+                <ns2:SequenceFlowAttributes>
+                    <ns2:Positions y="555" x="896"/>
+                </ns2:SequenceFlowAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
-                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="896,555" name="curve"/>
+                    <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
@@ -509,6 +659,38 @@
             </ns2:OracleExtensions>
         </sequenceFlow>
         <sequenceFlow targetRef="activity2" sourceRef="activity4" name="sf40" id="sf40">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity4" sourceRef="activity5" name="sf44" id="sf44">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes>
+                    <ns2:Positions y="425" x="695"/>
+                </ns2:SequenceFlowAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="695,425" name="curve"/>
+                    <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity5" sourceRef="activity6" name="sf47" id="sf47">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity3" sourceRef="activity7" name="sf50" id="sf50">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes/>
                 <ns2:FeatureSet>
@@ -599,6 +781,13 @@
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
                     <ns2:TypeRef isArray="false" element="Attachment" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/Attachment"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="expenseManagerOfCustomerExecs" id="expenseManagerOfCustomerExecs">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ExpenseManagerOfCustomerExecutives" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseManagerOfCustomerExecutives"/>
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>

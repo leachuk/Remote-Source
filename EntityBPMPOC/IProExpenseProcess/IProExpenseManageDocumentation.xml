@@ -43,6 +43,22 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity4">
+                <labels>
+                    <label locale="en">MapManagerDataToOpsSupport</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity5">
+                <labels>
+                    <label locale="en">AlertManagerOfCustomerExecutives</label>
+                </labels>
+                <descriptions>
+                    <description locale="en">The Manager of Customer Executives is to be notifued if the IPro Manager hasn't acted on the expense submition within 24 hours</description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -56,9 +72,17 @@
                     <label locale="en">End</label>
                 </labels>
             </topicDocumentation>
-            <topicDocumentation name="activity4">
+            <topicDocumentation name="activity6">
                 <labels>
-                    <label locale="en">MapManagerDataToOpsSupport</label>
+                    <label locale="en">MapConfirmToOverdue</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity7">
+                <labels>
+                    <label locale="en">MapDataToBilling</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -70,6 +94,9 @@
             <topicDocumentation name="sf45"/>
             <topicDocumentation name="sf37"/>
             <topicDocumentation name="sf40"/>
+            <topicDocumentation name="sf44"/>
+            <topicDocumentation name="sf47"/>
+            <topicDocumentation name="sf50"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="11.1.1.60.13"
+          id="keyListType"
+          Package="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask"
+          BeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.keyListType"
+          isJavaBased="false">
+  <AccessorAttribute id="key" IsCollection="true"
+                     BeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.keyType"
+                     CollectionBeanClass="BPMExpenseProcess_Initiate_UI_2_Initiate_Humantask.keyType_key_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="1"/>
+      <Property Name="maxOccurs" Value="2147483640"/>
+      <Property Name="LABEL" Value="Key"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="key"/>
+      <Property Name="targetNamespace"
+                Value="http://xmlns.oracle.com/bpel/workflow/task"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>
