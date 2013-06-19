@@ -23,9 +23,9 @@
       </globalConfiguration>
       <participants isAdhocRoutingSupported="false">
          <stage name="Stage1">
-            <participant name="default.DefaultPerformer">
+            <fyi name="default.DefaultPerformer">
                <resource type="XPATH" identityType="application_role">bpm:getPerformer()</resource>
-            </participant>
+            </fyi>
          </stage>
       </participants>
       <notification includeTaskAttachments="false" actionable="false"

@@ -13,7 +13,7 @@
       <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
       <af:form id="f1" usesUpload="true">
         <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;"
-                             id="pgl8">
+                             id="pgl3">
           <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
             <f:facet name="info"/>
             <f:facet name="legend"/>
@@ -78,14 +78,14 @@
                 <af:switcher id="customActionButtons"
                              facetName="#{actionAvailable.isCustomActionButtons}">
                   <f:facet name="true">
-                    <af:panelGroupLayout layout="horizontal" id="pgl9">
+                    <af:panelGroupLayout layout="horizontal" id="pgl1">
                       <af:commandToolbarButton actionListener="#{invokeActionBean.setOperation}"
                                                text="#{wf:getResourceValue('APPROVE', 'bindings.customActions')}"
                                                disabled="#{!bindings.APPROVE.enabled}"
                                                action="#{invokeActionBean.invokeOperation}"
                                                partialSubmit="false"
                                                visible="#{wf:isCustomActionAvailable('APPROVE', 'bindings.customActions')}"
-                                               id="ctb1">
+                                               id="ctb2">
                         <f:attribute name="DC_OPERATION_BINDING"
                                      value="bindings.APPROVE"/>
                       </af:commandToolbarButton>
@@ -95,7 +95,7 @@
                                                action="#{invokeActionBean.invokeOperation}"
                                                partialSubmit="false"
                                                visible="#{wf:isCustomActionAvailable('REJECT', 'bindings.customActions')}"
-                                               id="ctb2">
+                                               id="ctb1">
                         <f:attribute name="DC_OPERATION_BINDING"
                                      value="bindings.REJECT"/>
                       </af:commandToolbarButton>
@@ -131,9 +131,9 @@
               </af:toolbar>
             </f:facet>
             <f:facet name="context"/>
-            <af:panelGroupLayout layout="vertical" id="pgl6">
+            <af:panelGroupLayout layout="vertical" id="pgl5">
               <f:facet name="separator">
-                <af:spacer width="15" height="15" id="s4"/>
+                <af:spacer width="15" height="15" id="s3"/>
               </f:facet>
               <af:showDetailHeader size="2" id="dtHead"
                                    text="#{resources.DETAILS}"
@@ -150,9 +150,9 @@
                 <!--trh:tableLayout id="detailTableLayout" width="98%">
                         <trh:rowLayout>
                             <trh:cellFormat width="50%" valign="top"-->
-                <af:panelFormLayout maxColumns="3" rows="4" id="pfl5">
+                <af:panelFormLayout maxColumns="3" rows="4" id="pfl2">
                   <af:switcher facetName="#{bindings.taskViewContext == 'FYI'}"
-                               id="s7">
+                               id="s9">
                     <f:facet name="false">
                       <af:panelLabelAndMessage id="assignees"
                                                label="#{resources.ASSIGNEES}">
@@ -160,16 +160,16 @@
                                      value="#{bindings.assignees.collectionModel}"
                                      id="i1">
                           <af:switcher facetName="#{!empty assignees.displayName}"
-                                       id="s9">
+                                       id="s8">
                             <f:facet name="true">
                               <af:outputText value="#{assignees.displayName}"
-                                             id="ot11"/>
+                                             id="ot14"/>
                             </f:facet>
                             <f:facet name="false">
-                              <af:outputText value="#{assignees.id}" id="ot3"/>
+                              <af:outputText value="#{assignees.id}" id="ot7"/>
                             </f:facet>
                           </af:switcher>
-                          <af:spacer width="2" id="s2"/>
+                          <af:spacer width="2" id="s6"/>
                         </af:iterator>
                       </af:panelLabelAndMessage>
                     </f:facet>
@@ -177,12 +177,12 @@
                   <af:panelLabelAndMessage id="creator"
                                            label="#{resources.CREATOR}">
                     <af:outputText value="#{bindings.creator.inputValue}"
-                                   id="ot9"/>
+                                   id="ot2"/>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage id="createdDate"
                                            label="#{resources.CREATE_DATE}">
                     <af:outputText value="#{bindings.createdDate.inputValue}"
-                                   noWrap="true" id="ot2">
+                                   noWrap="true" id="ot4">
                       <f:convertDateTime type="#{pageFlowScope.dt}"
                                          timeZone="#{pageFlowScope.tz}"
                                          dateStyle="#{pageFlowScope.df}"
@@ -193,7 +193,7 @@
                   <af:panelLabelAndMessage id="updatedDate"
                                            label="#{resources.UPDATE_DATE}">
                     <af:outputText value="#{bindings.updatedDate.inputValue}"
-                                   noWrap="true" id="ot12">
+                                   noWrap="true" id="ot1">
                       <f:convertDateTime type="#{pageFlowScope.dt}"
                                          timeZone="#{pageFlowScope.tz}"
                                          dateStyle="#{pageFlowScope.df}"
@@ -204,7 +204,7 @@
                   <af:panelLabelAndMessage id="expirationDate"
                                            label="#{resources.EXPIRATION_DATE}">
                     <af:outputText value="#{bindings.expirationDate.inputValue}"
-                                   id="ot8">
+                                   id="ot6">
                       <f:convertDateTime type="#{pageFlowScope.dt}"
                                          timeZone="#{pageFlowScope.tz}"
                                          dateStyle="#{pageFlowScope.df}"
@@ -215,13 +215,13 @@
                   <af:panelLabelAndMessage id="acquiredBy"
                                            label="#{resources.ACQUIRED_BY}">
                     <af:outputText value="#{bindings.acquiredBy.inputValue}"
-                                   id="ot6"/>
+                                   id="ot13"/>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage id="dueDate"
                                            label="#{resources.DUE_DATE}"
                                            rendered="#{!empty bindings.dueDate.inputValue}">
                     <af:outputText value="#{bindings.dueDate.inputValue}"
-                                   noWrap="true" id="ot4">
+                                   noWrap="true" id="ot3">
                       <f:convertDateTime type="#{pageFlowScope.dt}"
                                          timeZone="#{pageFlowScope.tz}"
                                          dateStyle="#{pageFlowScope.df}"
@@ -233,12 +233,12 @@
                                            label="#{resources.OUTCOME}"
                                            rendered="#{!empty bindings.actionDisplayName.inputValue}">
                     <af:outputText value="#{bindings.actionDisplayName.inputValue}"
-                                   id="ot1"/>
+                                   id="ot9"/>
                   </af:panelLabelAndMessage>
                   <af:panelLabelAndMessage id="taskNumber"
                                            label="#{resources.TASK_NUMBER}">
                     <af:outputText value="#{bindings.taskNumber.inputValue}"
-                                   id="ot5"/>
+                                   id="ot8"/>
                   </af:panelLabelAndMessage>
                   <af:inputText id="priority"
                                 value="#{bindings.priority.inputValue}"
@@ -249,7 +249,7 @@
                   <af:panelLabelAndMessage id="state"
                                            label="#{resources.STATE}">
                     <af:outputText value="#{resources[bindings.state.inputValue]}"
-                                   id="ot7"/>
+                                   id="ot5"/>
                   </af:panelLabelAndMessage>
                 </af:panelFormLayout>
                 <!--/trh:cellFormat>
@@ -269,14 +269,14 @@
                                    disclosed="#{actionAvailable.discloseContents}">
                 <af:panelGroupLayout id="plPnl76" layout="vertical"
                                      shortDesc="#{resources.CONTENTS}">
-                  <af:panelFormLayout id="pfl3">
+                  <af:panelFormLayout id="pfl4">
                     <af:inputText value="#{bindings.amount.inputValue}"
                                   label="#{bindings.amount.hints.label}"
                                   required="#{bindings.amount.hints.mandatory}"
                                   columns="#{bindings.amount.hints.displayWidth}"
                                   maximumLength="#{bindings.amount.hints.precision}"
                                   shortDesc="#{bindings.amount.hints.tooltip}"
-                                  id="it3">
+                                  id="it5">
                       <f:validator binding="#{bindings.amount.validator}"/>
                     </af:inputText>
                     <af:inputText value="#{bindings.ipro_user.inputValue}"
@@ -285,8 +285,17 @@
                                   columns="#{bindings.ipro_user.hints.displayWidth}"
                                   maximumLength="#{bindings.ipro_user.hints.precision}"
                                   shortDesc="#{bindings.ipro_user.hints.tooltip}"
-                                  id="it2">
+                                  id="it1">
                       <f:validator binding="#{bindings.ipro_user.validator}"/>
+                    </af:inputText>
+                    <af:inputText value="#{bindings.ipro_manager.inputValue}"
+                                  label="#{bindings.ipro_manager.hints.label}"
+                                  required="#{bindings.ipro_manager.hints.mandatory}"
+                                  columns="#{bindings.ipro_manager.hints.displayWidth}"
+                                  maximumLength="#{bindings.ipro_manager.hints.precision}"
+                                  shortDesc="#{bindings.ipro_manager.hints.tooltip}"
+                                  id="it3">
+                      <f:validator binding="#{bindings.ipro_manager.validator}"/>
                     </af:inputText>
                     <af:inputText value="#{bindings.date_incured.inputValue}"
                                   label="#{bindings.date_incured.hints.label}"
@@ -303,7 +312,7 @@
                                   columns="#{bindings.notes.hints.displayWidth}"
                                   maximumLength="#{bindings.notes.hints.precision}"
                                   shortDesc="#{bindings.notes.hints.tooltip}"
-                                  id="it1">
+                                  id="it2">
                       <f:validator binding="#{bindings.notes.validator}"/>
                     </af:inputText>
                   </af:panelFormLayout>
@@ -311,7 +320,7 @@
               </af:showDetailHeader>
               <!-- use "choose" to control history visibility. Do not use
                              "visible" or "rendered" flag -->
-              <af:switcher facetName="#{actionAvailable.showHistory}" id="s8">
+              <af:switcher facetName="#{actionAvailable.showHistory}" id="s2">
                 <f:facet name="true">
                   <af:showDetailHeader size="2" id="histHd"
                                        text="#{resources.HISTORY}"
@@ -333,7 +342,7 @@
               </af:switcher>
               <trh:tableLayout id="cmAtTbL" width="98%">
                 <trh:rowLayout id="rl1">
-                  <trh:cellFormat width="50%" valign="top" id="cf3">
+                  <trh:cellFormat width="50%" valign="top" id="cf2">
                     <af:showDetailHeader size="2" id="chHd"
                                          text="#{resources.COMMENTS}"
                                          disclosed="#{actionAvailable.discloseCommentsAttach}"
@@ -344,7 +353,7 @@
                       <f:facet name="menuBar"/>
                       <f:facet name="toolbar">
                         <af:toolbar visible="#{actionAvailable.isCommentUpdatable}"
-                                    id="t2">
+                                    id="t1">
                           <af:commandImageLink id="adCmtBt" partialSubmit="true"
                                                actionListener="#{bindings.CreateInsert.execute}"
                                                action="#{popupBean.showCommentDialog}"
@@ -375,33 +384,33 @@
                         <af:column noWrap="false" separateRows="true"
                                    headerText="#{null}" rowHeader="unstyled"
                                    id="c2">
-                          <af:panelGroupLayout layout="horizontal" id="pgl3">
+                          <af:panelGroupLayout layout="horizontal" id="pgl6">
                             <af:outputText value="#{row.updatedDate}"
                                            truncateAt="9999"
                                            inlineStyle="font-weight:bold"
-                                           id="ot14">
+                                           id="ot11">
                               <f:convertDateTime type="#{pageFlowScope.dt}"
                                                  timeZone="#{pageFlowScope.tz}"
                                                  dateStyle="#{pageFlowScope.df}"
                                                  timeStyle="#{pageFlowScope.tf}"
                                                  pattern="#{pageFlowScope.dateTimePattern}"/>
                             </af:outputText>
-                            <af:spacer width="12" id="s3"/>
+                            <af:spacer width="12" id="s5"/>
                             <af:outputText value="#{row.updatedBy.id}"
                                            truncateAt="9999"
                                            inlineStyle="font-weight:bold"
-                                           id="ot13"/>
+                                           id="ot10"/>
                           </af:panelGroupLayout>
                           <af:outputText value="#{row.comment}"
-                                         truncateAt="9999" id="ot10"/>
+                                         truncateAt="9999" id="ot12"/>
                         </af:column>
                       </af:table>
                     </af:showDetailHeader>
                   </trh:cellFormat>
-                  <trh:cellFormat id="cf1">
-                    <af:spacer width="15" height="15" id="s6"/>
+                  <trh:cellFormat id="cf3">
+                    <af:spacer width="15" height="15" id="s7"/>
                   </trh:cellFormat>
-                  <trh:cellFormat width="50%" valign="top" id="cf2">
+                  <trh:cellFormat width="50%" valign="top" id="cf1">
                     <af:showDetailHeader size="2" id="attHd"
                                          text="#{resources.ATTACHMENTS}"
                                          disclosed="#{actionAvailable.discloseCommentsAttach}"
@@ -412,7 +421,7 @@
                       <f:facet name="menuBar"/>
                       <f:facet name="toolbar">
                         <af:toolbar visible="#{actionAvailable.isAttachmentUpdatable}"
-                                    id="t1">
+                                    id="t2">
                           <af:commandImageLink id="adAttBt" partialSubmit="true"
                                                actionListener="#{bindings.CreateInsert1.execute}"
                                                action="#{popupBean.showAttachmentDialog}"
@@ -456,7 +465,7 @@
                                 rowSelection="single">
                         <af:column noWrap="false" headerText="#{null}"
                                    rowHeader="unstyled" id="c1">
-                          <af:panelGroupLayout id="pgl1">
+                          <af:panelGroupLayout id="pgl10">
                             <af:goLink text="#{row.name}"
                                        destination="#{pageFlowScope.readAttachmentBean.URL}"
                                        targetFrame="_blank" id="gl1"/>
@@ -474,7 +483,7 @@
                 <af:dialog title="#{resources.CREATE_COMMENT}" type="none"
                            modal="true" id="cmtDlg">
                   <f:facet name="buttonBar">
-                    <af:panelGroupLayout id="pgl11">
+                    <af:panelGroupLayout id="pgl9">
                       <af:commandButton textAndAccessKey="#{resources.OK_AK}"
                                         id="cmtOk"
                                         action="#{popupBean.hideCommentDialog}"
@@ -486,8 +495,8 @@
                                         action="#{popupBean.hideCommentDialog}"/>
                     </af:panelGroupLayout>
                   </f:facet>
-                  <af:panelGroupLayout id="pgl5">
-                    <af:panelFormLayout id="pfl4">
+                  <af:panelGroupLayout id="pgl4">
+                    <af:panelFormLayout id="pfl1">
                       <f:facet name="footer"/>
                       <af:inputText id="cmtBox" rows="3" columns="80"
                                     value="#{bindings.comment.inputValue}"
@@ -503,7 +512,7 @@
                 <af:dialog title="#{resources.ADD_ATTACHMENT}" type="none"
                            id="d2">
                   <f:facet name="buttonBar">
-                    <af:panelGroupLayout id="pgl10">
+                    <af:panelGroupLayout id="pgl8">
                       <af:commandButton id="adAtBt2"
                                         textAndAccessKey="#{resources.OK_AK}"
                                         visible="#{pageFlowScope.readAttachmentBean.selectedAttachmentType == 'url'}"
@@ -525,20 +534,20 @@
                                         partialTriggers="attTb"/>
                     </af:panelGroupLayout>
                   </f:facet>
-                  <af:panelGroupLayout id="pgl4">
+                  <af:panelGroupLayout id="pgl11">
                     <f:facet name="separator">
-                      <af:spacer width="15" height="15" id="s5"/>
+                      <af:spacer width="15" height="15" id="s4"/>
                     </f:facet>
-                    <af:panelFormLayout id="pfl2">
+                    <af:panelFormLayout id="pfl5">
                       <af:selectOneRadio label="#{resources.ATTACH_TYPE}"
                                          value="#{pageFlowScope.readAttachmentBean.selectedAttachmentType}"
                                          valueChangeListener="#{pageFlowScope.readAttachmentBean.toggle}"
                                          autoSubmit="true" id="edAttTy"
                                          layout="horizontal" immediate="true">
                         <af:selectItem label="#{resources.DESKTOP_FILE}"
-                                       value="file" id="si1"/>
+                                       value="file" id="si2"/>
                         <af:selectItem label="#{resources.URL}" value="url"
-                                       id="si2"/>
+                                       id="si1"/>
                       </af:selectOneRadio>
                       <af:inputText id="attName" label="#{resources.NAME}"
                                     value="#{bindings.name.inputValue}"
@@ -608,7 +617,7 @@
                            affirmativeTextAndAccessKey="#{resources.OK_AK}"
                            closeIconVisible="false" id="pwdDlg">
                   <af:panelGroupLayout id="pgl7">
-                    <af:panelFormLayout id="pfl1">
+                    <af:panelFormLayout id="pfl3">
                       <af:inputText id="pwdBox" rows="1" columns="50"
                                     value="#{invokeActionBean.password}"
                                     label="#{resources.PASSWORD}" secret="true"

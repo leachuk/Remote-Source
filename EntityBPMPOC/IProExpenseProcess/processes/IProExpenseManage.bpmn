@@ -5,7 +5,7 @@
         <ns2:OracleExtensions>
             <ns2:GraphicsAttributes backgroundColor="-1761607681">
                 <ns2:Position y="0" x="0"/>
-                <ns2:Size height="0" width="154"/>
+                <ns2:Size height="0" width="203"/>
             </ns2:GraphicsAttributes>
             <ns2:LaneAttributes roleId="IProManager"/>
         </ns2:OracleExtensions>
@@ -13,7 +13,7 @@
     <peopleGroup name="ManagerOfCustomerExecutives" id="lane1">
         <ns2:OracleExtensions>
             <ns2:GraphicsAttributes backgroundColor="-1761607681">
-                <ns2:Position y="0" x="154"/>
+                <ns2:Position y="0" x="203"/>
                 <ns2:Size height="0" width="216"/>
             </ns2:GraphicsAttributes>
             <ns2:LaneAttributes roleId="ManagerOfCustomerExecutives"/>
@@ -22,7 +22,7 @@
     <peopleGroup name="OperationsSupport" id="lane2">
         <ns2:OracleExtensions>
             <ns2:GraphicsAttributes backgroundColor="-1761607681">
-                <ns2:Position y="0" x="370"/>
+                <ns2:Position y="0" x="419"/>
                 <ns2:Size height="0" width="152"/>
             </ns2:GraphicsAttributes>
             <ns2:LaneAttributes roleId="OperationsSupport"/>
@@ -31,7 +31,7 @@
     <peopleGroup name="BillingAndRemuneration" id="lane3">
         <ns2:OracleExtensions>
             <ns2:GraphicsAttributes backgroundColor="-1761607681">
-                <ns2:Position y="0" x="522"/>
+                <ns2:Position y="0" x="571"/>
                 <ns2:Size height="0" width="200"/>
             </ns2:GraphicsAttributes>
             <ns2:LaneAttributes roleId="BillingAndRemuneration"/>
@@ -56,14 +56,14 @@
         <userTask implementation="other" isForCompensation="false" name="ManagerReceivesExpense" id="activity0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="85" x="403"/>
+                    <ns2:Position y="79" x="480"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="reinitiate"/>
                     <ns2:BooleanFeature value="false" name="manualCreation"/>
                     <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
-                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="MANAGEMENT" name="humanTaskType"/>
@@ -166,6 +166,18 @@
                     <ns2:OracleExtensions>
                         <ns2:DataAssignment mode="simple" isCustom="false"/>
                     </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('outcome')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseManagerOutcome')/ns:outcome</to>
+                </assignment>
+                <sourceRef>outcome</sourceRef>
+                <targetRef>expenseManagerOutcome</targetRef>
+            </dataOutputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
                     <from language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataOutput('expenseIProManagerNotes')</from>
                     <to language="http://www.w3.org/1999/XPath" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('expenseIproManagerNotesDO')</to>
                 </assignment>
@@ -177,7 +189,7 @@
         <userTask implementation="other" isForCompensation="false" name="OperationsSupport" id="activity2">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="433" x="889"/>
+                    <ns2:Position y="477" x="927"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -188,6 +200,7 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.ConvertExpenseDocumentationToPDF"/>
             </ns2:OracleExtensions>
@@ -274,7 +287,7 @@
         <userTask implementation="other" isForCompensation="false" name="BillingAndRemunerationNotified" id="activity3">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="609" x="1154"/>
+                    <ns2:Position y="658" x="1154"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -285,6 +298,7 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.BillingAndRemuneration"/>
             </ns2:OracleExtensions>
@@ -351,12 +365,12 @@
         <scriptTask isForCompensation="false" name="MapWSToManagerTaskflow" id="activity1">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="85" x="242"/>
+                    <ns2:Position y="80" x="352"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
                     <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
-                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
@@ -394,7 +408,7 @@
         <scriptTask isForCompensation="false" name="MapManagerDataToOpsSupport" id="activity4">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="434" x="765"/>
+                    <ns2:Position y="476" x="800"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -419,17 +433,18 @@
         <userTask implementation="other" isForCompensation="false" name="AlertManagerOfCustomerExecutives" id="activity5">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="250" x="648"/>
+                    <ns2:Position y="371" x="552"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="reinitiate"/>
                     <ns2:BooleanFeature value="false" name="manualCreation"/>
                     <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
-                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
-                    <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                    <ns2:StringFeature value="FYI" name="humanTaskType"/>
+                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.NotifyManagerOfCustomerExecutives"/>
             </ns2:OracleExtensions>
@@ -496,12 +511,12 @@
         <scriptTask isForCompensation="false" name="MapConfirmToOverdue" id="activity6">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="251" x="519"/>
+                    <ns2:Position y="367" x="426"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
                     <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
-                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
@@ -516,12 +531,12 @@
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseManagerOfCustomerExecs</targetRef>
             </dataOutputAssociation>
-            <script/>
+            <script></script>
         </scriptTask>
         <scriptTask isForCompensation="false" name="MapDataToBilling" id="activity7">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="608" x="1031"/>
+                    <ns2:Position y="656" x="1062"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -541,12 +556,36 @@
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseBillingRemunerationDO</targetRef>
             </dataOutputAssociation>
+            <script></script>
+        </scriptTask>
+        <scriptTask isForCompensation="false" name="setExpenseSubmitStatus" id="activity8">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="80" x="606"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <ioSpecification/>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expenseManagerOutcome_expenseManagerOutcome.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expenseManagerOutcome</sourceRef>
+                <targetRef>expenseManagerOutcome</targetRef>
+            </dataOutputAssociation>
             <script/>
         </scriptTask>
         <startEvent isInterrupting="false" name="Start" id="startEvent0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="87" x="104"/>
+                    <ns2:Position y="81" x="116"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -593,7 +632,7 @@
         <endEvent name="End" id="endEvent0">
             <ns2:OracleExtensions>
                 <ns2:GraphicsAttributes>
-                    <ns2:Position y="610" x="1275"/>
+                    <ns2:Position y="659" x="1275"/>
                     <ns2:Size height="21" width="21"/>
                 </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
@@ -604,51 +643,97 @@
             </ns2:OracleExtensions>
             <inputSet/>
         </endEvent>
-        <sequenceFlow targetRef="activity1" sourceRef="startEvent0" name="sf23" id="sf23">
+        <intermediateCatchEvent name="24HourTimerCatch" id="catchEvent0">
             <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes/>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="169" x="264"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
-                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
-                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
-        </sequenceFlow>
-        <sequenceFlow targetRef="activity6" sourceRef="activity0" name="sf41" id="sf41">
+            <timerEventDefinition>
+                <timeCycle xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath">'PT30S'
+                    <ns2:OracleExtensions>
+                        <ns2:Expression mode="xpath"/>
+                    </ns2:OracleExtensions>
+                </timeCycle>
+            </timerEventDefinition>
+        </intermediateCatchEvent>
+        <parallelGateway gatewayDirection="diverging" name="ParallelGateway" id="gateway0">
             <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes>
-                    <ns2:Positions y="225" x="413"/>
-                </ns2:SequenceFlowAttributes>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="81" x="211"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
                 <ns2:FeatureSet>
-                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="413,225" name="curve"/>
-                    <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
-        </sequenceFlow>
+        </parallelGateway>
+        <complexGateway gatewayDirection="converging" name="ComplexGateway" id="gateway1">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="81" x="795"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="true" name="isAbortPendingFlows"/>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <activationCondition xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('expenseManagerOutcome')/ns:isAssigned = true())
+                <ns2:OracleExtensions>
+                    <ns2:Expression mode="simple"/>
+                </ns2:OracleExtensions>
+            </activationCondition>
+        </complexGateway>
+        <exclusiveGateway gatewayDirection="unspecified" name="ExclusiveGateway1" id="gateway3">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="268" x="796"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="Begin Level" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </exclusiveGateway>
+        <exclusiveGateway gatewayDirection="unspecified" name="ExclusiveGateway" id="gateway2">
+            <ns2:OracleExtensions>
+                <ns2:GraphicsAttributes>
+                    <ns2:Position y="251" x="327"/>
+                    <ns2:Size height="21" width="21"/>
+                </ns2:GraphicsAttributes>
+                <ns2:FeatureSet>
+                    <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                    <ns2:StringFeature value="gateway0" name="level"/>
+                    <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </exclusiveGateway>
         <sequenceFlow targetRef="activity7" sourceRef="activity2" name="sf43" id="sf43">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes>
-                    <ns2:Positions y="555" x="896"/>
+                    <ns2:Positions y="558" x="984"/>
                 </ns2:SequenceFlowAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="896,555" name="curve"/>
+                    <ns2:StringFeature value="984,558" name="curve"/>
                     <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
         <sequenceFlow targetRef="endEvent0" sourceRef="activity3" name="sf45" id="sf45">
-            <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes/>
-                <ns2:FeatureSet>
-                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
-                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
-                </ns2:FeatureSet>
-            </ns2:OracleExtensions>
-        </sequenceFlow>
-        <sequenceFlow targetRef="activity0" sourceRef="activity1" name="sf37" id="sf37">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes/>
                 <ns2:FeatureSet>
@@ -665,18 +750,6 @@
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
                     <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
                     <ns2:StringFeature value="STRAIGHT" name="routing"/>
-                </ns2:FeatureSet>
-            </ns2:OracleExtensions>
-        </sequenceFlow>
-        <sequenceFlow targetRef="activity4" sourceRef="activity5" name="sf44" id="sf44">
-            <ns2:OracleExtensions>
-                <ns2:SequenceFlowAttributes>
-                    <ns2:Positions y="425" x="695"/>
-                </ns2:SequenceFlowAttributes>
-                <ns2:FeatureSet>
-                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="695,425" name="curve"/>
-                    <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
@@ -697,6 +770,157 @@
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
                     <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
                     <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity0" sourceRef="activity1" name="sf98" id="sf98">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity8" sourceRef="activity0" name="sf101" id="sf101">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway0" sourceRef="startEvent0" name="sf23" id="sf23">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity1" sourceRef="gateway0" name="sf74" id="sf74">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="assigning to manager" name="userName"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="catchEvent0" sourceRef="gateway0" name="sf80" id="sf80">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway3" sourceRef="gateway1" name="sf86" id="sf86">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="Manager Acted On Expense" name="userName"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway1" sourceRef="activity8" name="sf82" id="sf82">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway1" sourceRef="activity5" name="sf85" id="sf85">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity4" sourceRef="gateway3" name="sf88" id="sf88">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="endEvent0" sourceRef="gateway3" name="sf91" id="sf91">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes>
+                    <ns2:Positions y="381" x="1195"/>
+                </ns2:SequenceFlowAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="1195,381" name="curve"/>
+                    <ns2:StringFeature value="CURVED" name="routing"/>
+                    <ns2:StringFeature value="Manager Rejected" name="userName"/>
+                    <ns2:IntegerFeature value="0" name="order"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('expenseManagerOutcome')/ns:outcome = 'REJECT')
+                <ns2:OracleExtensions>
+                    <ns2:Expression mode="simple"/>
+                </ns2:OracleExtensions>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway2" sourceRef="catchEvent0" name="sf73" id="sf73">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+        </sequenceFlow>
+        <sequenceFlow targetRef="gateway1" sourceRef="gateway2" name="sf69" id="sf69">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes>
+                    <ns2:Positions y="308" x="535"/>
+                </ns2:SequenceFlowAttributes>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="535,308" name="curve"/>
+                    <ns2:StringFeature value="CURVED" name="routing"/>
+                    <ns2:StringFeature value="Manager Has Acted" name="userName"/>
+                    <ns2:IntegerFeature value="0" name="order"/>
+                </ns2:FeatureSet>
+            </ns2:OracleExtensions>
+            <conditionExpression xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome" xmlns:bpmn="http://www.omg.org/bpmn20">(bpmn:getDataObject('expenseManagerOutcome')/ns:isAssigned = true())
+                <ns2:OracleExtensions>
+                    <ns2:Expression mode="xpath"/>
+                </ns2:OracleExtensions>
+            </conditionExpression>
+        </sequenceFlow>
+        <sequenceFlow targetRef="activity6" sourceRef="gateway2" name="sf75" id="sf75">
+            <ns2:OracleExtensions>
+                <ns2:SequenceFlowAttributes/>
+                <ns2:FeatureSet>
+                    <ns2:BooleanFeature value="false" name="collapseMessage"/>
+                    <ns2:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                    <ns2:StringFeature value="STRAIGHT" name="routing"/>
+                    <ns2:StringFeature value="Expense submittion not acted on" name="userName"/>
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
@@ -788,6 +1012,13 @@
             <ns2:OracleExtensions>
                 <ns2:DataObjectType initialize="true">
                     <ns2:TypeRef isArray="false" element="ExpenseManagerOfCustomerExecutives" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ExpenseManagerOfCustomerExecutives"/>
+                </ns2:DataObjectType>
+            </ns2:OracleExtensions>
+        </dataObject>
+        <dataObject name="expenseManagerOutcome" id="expenseManagerOutcome">
+            <ns2:OracleExtensions>
+                <ns2:DataObjectType initialize="true">
+                    <ns2:TypeRef isArray="false" element="ManagerOutcome" namespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome"/>
                 </ns2:DataObjectType>
             </ns2:OracleExtensions>
         </dataObject>

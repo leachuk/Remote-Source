@@ -59,19 +59,6 @@
                     <description locale="en">The Manager of Customer Executives is to be notifued if the IPro Manager hasn't acted on the expense submition within 24 hours</description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="startEvent0">
-                <labels>
-                    <label locale="en">Start</label>
-                </labels>
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
-            <topicDocumentation name="endEvent0">
-                <labels>
-                    <label locale="en">End</label>
-                </labels>
-            </topicDocumentation>
             <topicDocumentation name="activity6">
                 <labels>
                     <label locale="en">MapConfirmToOverdue</label>
@@ -88,15 +75,105 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="sf23"/>
-            <topicDocumentation name="sf41"/>
+            <topicDocumentation name="startEvent0">
+                <labels>
+                    <label locale="en">Start</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="endEvent0">
+                <labels>
+                    <label locale="en">End</label>
+                </labels>
+            </topicDocumentation>
+            <topicDocumentation name="catchEvent0">
+                <labels>
+                    <label locale="en">24HourTimerCatch</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway0">
+                <labels>
+                    <label locale="en">ParallelGateway</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway1">
+                <labels>
+                    <label locale="en">ComplexGateway</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity8">
+                <labels>
+                    <label locale="en">setExpenseSubmitStatus</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway3">
+                <labels>
+                    <label locale="en">ExclusiveGateway1</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway2">
+                <labels>
+                    <label locale="en">ExclusiveGateway</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="sf43"/>
             <topicDocumentation name="sf45"/>
-            <topicDocumentation name="sf37"/>
             <topicDocumentation name="sf40"/>
-            <topicDocumentation name="sf44"/>
             <topicDocumentation name="sf47"/>
             <topicDocumentation name="sf50"/>
+            <topicDocumentation name="sf98"/>
+            <topicDocumentation name="sf101"/>
+            <topicDocumentation name="sf23"/>
+            <topicDocumentation name="sf74">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf80"/>
+            <topicDocumentation name="sf86">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf82"/>
+            <topicDocumentation name="sf85"/>
+            <topicDocumentation name="sf88"/>
+            <topicDocumentation name="sf91">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf73"/>
+            <topicDocumentation name="sf69">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf75">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
         </topicDocumentations>
     </component>
 </processDocumentation>

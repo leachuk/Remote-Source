@@ -24,6 +24,7 @@
   </service>
   <component name="IProExpenseManage">
     <implementation.bpmn src="processes/IProExpenseManage.bpmn"/>
+    <business-events/>
   </component>
   <component name="ConvertExpenseDocumentationToPDF">
     <implementation.workflow src="ConvertExpenseDocumentationToPDF.task"/>

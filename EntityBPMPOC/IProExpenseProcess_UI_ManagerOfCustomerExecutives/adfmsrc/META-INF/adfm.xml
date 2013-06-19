@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <MetadataDirectory xmlns="http://xmlns.oracle.com/adfm/metainf"
                    version="11.1.1.0.0">
-  <DataControlRegistry path="iproexpenseprocess_ui_managerofcustomerexecutives/DataControls.dcx"/>
-  <DataBindingRegistry path="iproexpenseprocess_ui_managerofcustomerexecutives/DataBindings.cpx"/>
+  <DataControlRegistry path="entity/poc/bpm/ui/moec/DataControls.dcx"/>
+  <DataBindingRegistry path="entity/poc/bpm/ui/moec/DataBindings.cpx"/>
 </MetadataDirectory>

@@ -61,16 +61,16 @@
       <string v="oracle.tip.tools.ide.fabric.addin.SCAContentSetProvider/sca-content"/>
       <string v="oracle.bpm.fusion.repository.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
-   <value n="defaultPackage" v="iproexpenseprocess_ui_managerofcustomerexecutives"/>
+   <value n="defaultPackage" v="entity.poc.bpm.ui.moec"/>
    <hash n="oracle.adfdtinternal.model.ide.settings.ADFMSettings">
       <value n="hasDataControls" v="true"/>
    </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
-         <string v="JSP"/>
          <string v="JSF"/>
          <string v="ADF_FACES"/>
          <string v="Java"/>
+         <string v="JSP"/>
          <string v="HTML"/>
       </list>
    </hash>

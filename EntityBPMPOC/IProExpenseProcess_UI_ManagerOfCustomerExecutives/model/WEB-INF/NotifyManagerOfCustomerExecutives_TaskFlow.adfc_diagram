@@ -7,23 +7,8 @@
       <property
          name="x">91.65625</property>
    </OverallProperties>
-   <TaskFlowReturn
-      id="TaskFlowReturn2">
-      <property
-         name="activityId">taskReturn</property>
-      <property
-         name="finish">true</property>
-      <property
-         name="description">&lt;html>&lt;p>&lt;b>taskReturn&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  done&lt;/p></property>
-      <property
-         name="exceptionHandler">false</property>
-      <property
-         name="y">262.4336</property>
-      <property
-         name="x">274.8125</property>
-   </TaskFlowReturn>
    <WildcardControlFlowRule
-      id="WildcardControlFlowRule3">
+      id="WildcardControlFlowRule2">
       <property
          name="activityId">*</property>
       <property
@@ -32,7 +17,7 @@
          name="x">91.65625</property>
    </WildcardControlFlowRule>
    <View
-      id="View4">
+      id="View3">
       <property
          name="activityId">taskDetails1_jspx</property>
       <property
@@ -48,11 +33,26 @@
       <property
          name="x">91.65625</property>
    </View>
+   <TaskFlowReturn
+      id="TaskFlowReturn4">
+      <property
+         name="activityId">taskReturn</property>
+      <property
+         name="finish">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>taskReturn&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Return&lt;/p>&lt;p>Outcome:  done&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">262.4336</property>
+      <property
+         name="x">274.8125</property>
+   </TaskFlowReturn>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase5"
-      from="WildcardControlFlowRule3"
-      to="TaskFlowReturn2">
+      from="WildcardControlFlowRule2"
+      to="TaskFlowReturn4">
       <property
          name="fromOutcome">closeTaskFlow</property>
       <property
