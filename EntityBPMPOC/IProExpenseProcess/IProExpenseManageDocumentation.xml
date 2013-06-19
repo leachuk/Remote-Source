@@ -128,14 +128,6 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="gateway2">
-                <labels>
-                    <label locale="en">ExclusiveGateway</label>
-                </labels>
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
             <topicDocumentation name="sf43"/>
             <topicDocumentation name="sf45"/>
             <topicDocumentation name="sf40"/>
@@ -163,17 +155,7 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="sf73"/>
-            <topicDocumentation name="sf69">
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
-            <topicDocumentation name="sf75">
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
+            <topicDocumentation name="sf97"/>
         </topicDocumentations>
     </component>
 </processDocumentation>
