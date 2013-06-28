@@ -19,6 +19,14 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity0">
+                <labels>
+                    <label locale="en">ScriptTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -32,9 +40,17 @@
                     <label locale="en">End</label>
                 </labels>
             </topicDocumentation>
-            <topicDocumentation name="activity0">
+            <topicDocumentation name="activity2">
                 <labels>
-                    <label locale="en">ScriptTask</label>
+                    <label locale="en">SendTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity3">
+                <labels>
+                    <label locale="en">ScriptTask1</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -43,6 +59,8 @@
             <topicDocumentation name="sf34"/>
             <topicDocumentation name="sf40"/>
             <topicDocumentation name="sf33"/>
+            <topicDocumentation name="sf59"/>
+            <topicDocumentation name="sf61"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema attributeFormDefault="unqualified" elementFormDefault="qualified"
+        targetNamespace="http://xmlns.oracle.com/bpelCustomEmailTemplate"
+        xmlns:tns="http://xmlns.oracle.com/bpelCustomEmailTemplate"
+        xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+        xmlns="http://www.w3.org/2001/XMLSchema">
+  <element name="process">
+    <complexType>
+      <sequence>
+        <element name="input" type="tns:Contact"/>
+      </sequence>
+    </complexType>
+  </element>
+  <element name="processResponse">
+    <complexType>
+      <sequence>
+        <element name="result" type="string"/>
+      </sequence>
+    </complexType>
+  </element>
+  <xsd:complexType name="Contact">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ContactId"
+                   type="xsd:string"/>
+      <!--Added by Siebel team on 4th of FEB-->
+      <xsd:element name="AHSExternalNumber" maxOccurs="1" minOccurs="0"
+                   type="xsd:string"></xsd:element>
+      <xsd:element name="AHSLicenseNumber" maxOccurs="1" minOccurs="0"
+                   type="xsd:string"></xsd:element>
+      <xsd:element name="AHSMyAccountUserFlag" maxOccurs="1" minOccurs="0"
+                   type="xsd:string"></xsd:element>
+      <xsd:element name="AHSNRDSNumber" maxOccurs="1" minOccurs="0"
+                   type="xsd:string"></xsd:element>
+      <!--End Add-->
+      <xsd:element maxOccurs="1" minOccurs="0" name="EmailAddress"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="FirstName"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="LastName"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="PhoneNumber"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="PhoneType"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="ContactPersonalAddress"
+                   type="tns:ContactPersonalAddress"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="ContactPersonalAddress">
+    <xsd:sequence>
+      <xsd:element maxOccurs="1" minOccurs="0" name="IsPrimaryAddress"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="City" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="Country"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="PostalCode"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="State" type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="1" name="StreetAddress"
+                   type="xsd:string"/>
+      <xsd:element maxOccurs="1" minOccurs="0" name="County" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="NotifyElement" type="tns:NotifyElementType"/>
+  <xsd:complexType name="NotifyElementType">
+    <xsd:sequence>
+      <xsd:element name="toAddress" type="xsd:string"/>
+      <xsd:element name="ccAddress" type="xsd:string"/>
+      <xsd:element name="bccAddress" type="xsd:string"/>
+      <xsd:element name="Subject" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+</schema>

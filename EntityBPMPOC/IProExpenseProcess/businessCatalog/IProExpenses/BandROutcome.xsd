@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?bpmo version="11.1.1" build="0174" fullName="IProExpenses.BandROutcome" modifiers="0"?>
+<!--########################################################################################-->
+<!--####                                                                                ####-->
+<!--####          THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT MANUALLY MODIFY         ####-->
+<!--#### CHANGES TO THIS FILE MAY PRODUCE UNEXPECTED BEHAVIOR AND WOULD BE OVERWRITTEN  ####-->
+<!--####                                                                                ####-->
+<!--########################################################################################-->
+<xs:schema targetNamespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/BandROutcome" elementFormDefault="qualified" xmlns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/BandROutcome"  xmlns:xs="http://www.w3.org/2001/XMLSchema"  xmlns:bpmo="http://xmlns.oracle.com/bpm/bpmobject/" >
+    <xs:complexType name="BandROutcomeType">
+        <xs:sequence>
+            <xs:element name="outcome" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="BandROutcome" type="BandROutcomeType"/>
+</xs:schema>

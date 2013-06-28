@@ -1,5 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <url n="BPELEmail_bpelFileURL" path="BPELEmail.bpel"/>
+   <value n="BPELEmail_Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail"/>
+   <value n="BPELEmail_ProcessName" v="BPELEmail"/>
+   <value n="BPELEmail_Template" v="BPEL_ASYNC_PROCESS"/>
+   <value n="BPELEmail_wsdl" v="BPELEmail.wsdl"/>
    <hash n="component-versions">
       <value n="oracle.adfdt.controller.adfc.source.migration.AdfControllerSchemaMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdt.controller.common.migrator.ProjectMigrator" v="11.1.1.1.0"/>
@@ -62,7 +67,12 @@
       <string v="oracle.bpm.fusion.repository.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
    <value n="defaultPackage" v="entity.poc.bpm"/>
-   <value n="Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/setExpenseData"/>
+   <url n="EmailBPEL_bpelFileURL" path="EmailBPEL.bpel"/>
+   <value n="EmailBPEL_Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/EmailBPEL"/>
+   <value n="EmailBPEL_ProcessName" v="EmailBPEL"/>
+   <value n="EmailBPEL_Template" v="BPEL_ONE_WAY_PROCESS"/>
+   <value n="EmailBPEL_wsdl" v="EmailBPEL.wsdl"/>
+   <value n="Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail"/>
    <hash n="oracle.ide.model.ResourcePaths">
       <hash n="resourcesContentSet">
          <list n="url-path"/>
@@ -363,11 +373,11 @@
          </list>
       </hash>
    </hash>
-   <value n="ProcessName" v="setExpenseData"/>
+   <value n="ProcessName" v="BPELEmail"/>
    <url n="setExpenseData_bpelFileURL" path="setExpenseData.bpel"/>
    <value n="setExpenseData_Namespace" v="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/setExpenseData"/>
    <value n="setExpenseData_ProcessName" v="setExpenseData"/>
    <value n="setExpenseData_Template" v="BPEL_ONE_WAY_PROCESS"/>
    <value n="setExpenseData_wsdl" v="setExpenseData.wsdl"/>
-   <value n="Template" v="BPEL_ONE_WAY_PROCESS"/>
+   <value n="Template" v="BPEL_ASYNC_PROCESS"/>
 </jpr:project>

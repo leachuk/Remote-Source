@@ -62,7 +62,12 @@
       <string v="oracle.bpm.fusion.repository.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
    </list>
    <value n="defaultPackage" v="entity.poc.bpm"/>
-   <value n="Namespace" v="http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/ReadExpenseSubmitWS_BPEL"/>
+   <url n="EmailBPEL_bpelFileURL" path="EmailBPEL.bpel"/>
+   <value n="EmailBPEL_Namespace" v="http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/EmailBPEL"/>
+   <value n="EmailBPEL_ProcessName" v="EmailBPEL"/>
+   <value n="EmailBPEL_Template" v="BPEL_ASYNC_PROCESS"/>
+   <value n="EmailBPEL_wsdl" v="EmailBPEL.wsdl"/>
+   <value n="Namespace" v="http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/EmailBPEL"/>
    <hash n="oracle.ide.model.ResourcePaths">
       <hash n="resourcesContentSet">
          <list n="url-path"/>
@@ -405,7 +410,7 @@
          </list>
       </hash>
    </hash>
-   <value n="ProcessName" v="ReadExpenseSubmitWS_BPEL"/>
+   <value n="ProcessName" v="EmailBPEL"/>
    <url n="ReadExpenseSubmitWS_BPEL_bpelFileURL" path="ReadExpenseSubmitWS_BPEL.bpel"/>
    <value n="ReadExpenseSubmitWS_BPEL_Namespace" v="http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/ReadExpenseSubmitWS_BPEL"/>
    <value n="ReadExpenseSubmitWS_BPEL_ProcessName" v="ReadExpenseSubmitWS_BPEL"/>

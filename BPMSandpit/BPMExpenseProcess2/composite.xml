@@ -15,6 +15,10 @@
           importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL"
           location="ExpenseUploadBPEL.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/BPMSandpit/BPMExpenseProcess2/EmailBPEL"
+          location="EmailBPEL.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+          location="NotificationService.wsdl" importType="wsdl"/>
   <service name="ExpenseSubmitReadWS" ui:wsdlLocation="ExpenseUploadBPEL.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.interface(ExpenseUploadBPEL)"/>
     <binding.ws port="http://xmlns.oracle.com/EntityServiceLayerPOC/ExpenseUploadWS/ExpenseUploadBPEL#wsdl.endpoint(ExpenseSubmitReadWS/ExpenseUploadBPEL_pt)">
@@ -30,6 +34,15 @@
   <component name="ManagerApproveExpense3_HT">
     <implementation.workflow src="ManagerApproveExpense3_HT.task"/>
   </component>
+  <component name="EmailBPEL" version="1.1">
+    <implementation.bpel src="EmailBPEL.bpel"/>
+  </component>
+  <reference name="NotificationService1"
+             ui:wsdlLocation="NotificationService.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+    <binding.wsif port="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.endpoint(NotificationService/JavaPort)"
+                  location="NotificationService.wsdl"/>
+  </reference>
   <wire>
     <source.uri>ExpenseSubmitReadWS</source.uri>
     <target.uri>ExpenseProcess2/References.Externals.ExpenseSubmitReadWS.service</target.uri>
@@ -37,5 +50,13 @@
   <wire>
     <source.uri>ExpenseProcess2/HumanTasks.ManagerApproveExpense3_HT.reference</source.uri>
     <target.uri>ManagerApproveExpense3_HT/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>EmailBPEL/NotificationService1</source.uri>
+    <target.uri>NotificationService1</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ExpenseProcess2/Services.BPEL.EmailBPEL.Emailbpel_client.reference</source.uri>
+    <target.uri>EmailBPEL/emailbpel_client</target.uri>
   </wire>
 </composite>

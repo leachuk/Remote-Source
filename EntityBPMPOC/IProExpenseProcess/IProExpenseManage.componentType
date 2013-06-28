@@ -28,4 +28,9 @@
     <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
                     callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
   </reference>
+  <reference name="Services.BPEL.BPELEmail.Bpelemail_client.reference"
+             ui:wsdlLocation="BPELEmail.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail#wsdl.interface(BPELEmail)"
+                    callbackInterface="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail#wsdl.interface(BPELEmailCallback)"/>
+  </reference>
 </componentType>

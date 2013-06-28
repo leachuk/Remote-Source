@@ -75,6 +75,14 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity8">
+                <labels>
+                    <label locale="en">setExpenseSubmitStatus</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -112,17 +120,41 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="activity8">
+            <topicDocumentation name="gateway3">
                 <labels>
-                    <label locale="en">setExpenseSubmitStatus</label>
+                    <label locale="en">ExclusiveGateway1</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
-            <topicDocumentation name="gateway3">
+            <topicDocumentation name="gateway2">
                 <labels>
-                    <label locale="en">ExclusiveGateway1</label>
+                    <label locale="en">ExclusiveGateway</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="gateway4">
+                <labels>
+                    <label locale="en">ExclusiveGateway2</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity10">
+                <labels>
+                    <label locale="en">ScriptTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity9">
+                <labels>
+                    <label locale="en">EmailSendTask</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>
@@ -149,13 +181,39 @@
             </topicDocumentation>
             <topicDocumentation name="sf82"/>
             <topicDocumentation name="sf85"/>
-            <topicDocumentation name="sf88"/>
+            <topicDocumentation name="sf88">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="sf91">
                 <descriptions>
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
             <topicDocumentation name="sf97"/>
+            <topicDocumentation name="sf100">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf104">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf58">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf64">
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="sf57"/>
+            <topicDocumentation name="sf63"/>
         </topicDocumentations>
     </component>
 </processDocumentation>

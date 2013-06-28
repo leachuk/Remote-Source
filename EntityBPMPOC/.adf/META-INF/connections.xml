@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<References xmlns="http://xmlns.oracle.com/adf/jndi">
+   <Reference name="MDSEntityTest" className="oracle.tip.tools.ide.common.resourcepalette.adapter.mds.MDSProvider" credentialStoreKey="MDSEntityTest" xmlns="">
+      <Factory className="oracle.tip.tools.ide.common.resourcepalette.adapter.mds.MDSProviderFactory"/>
+      <RefAddresses>
+         <SecureRefAddr addrType="DBMDSJDBCPASSWORD"/>
+         <StringRefAddr addrType="ConnectionName">
+            <Contents>MDSEntityTest</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DBMDS_JDBC_USERID">
+            <Contents>DEV_MDS</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="ConnectionType">
+            <Contents>oracle.mds.persistence.stores.db.DBMetadataStore</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="MDS_PARTITION_NAME">
+            <Contents>soa-infra</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DBMDSDBCONNECTIONNAME">
+            <Contents>DBEntityTest</Contents>
+         </StringRefAddr>
+         <StringRefAddr addrType="DBMDS_JDBC_URL">
+            <Contents>jdbc:oracle:thin:@//10.0.3.106:1521/DEV</Contents>
+         </StringRefAddr>
+      </RefAddresses>
+   </Reference>
+</References>

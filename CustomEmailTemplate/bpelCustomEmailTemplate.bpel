@@ -1,0 +1,161 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed Feb 22 04:27:02 CST 2012
+  Author:  80003509
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="bpelCustomEmailTemplate"
+         targetNamespace="http://xmlns.oracle.com/bpelCustomEmailTemplate"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://xmlns.oracle.com/bpelCustomEmailTemplate"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:socket="http://www.oracle.com/XSL/Transform/java/oracle.tip.adapter.socket.ProtocolTranslator"
+         xmlns:bpel2="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:bpmn="http://schemas.oracle.com/bpm/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:med="http://schemas.oracle.com/mediator/xpath"
+         xmlns:mhdr="http://www.oracle.com/XSL/Transform/java/oracle.tip.mediator.service.common.functions.MediatorExtnFunction"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ns1="http://xmlns.oracle.com/ias/pcbpel/NotificationService">
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="bpelcustomemailtemplate_client"
+                     partnerLinkType="client:bpelCustomEmailTemplate"
+                     myRole="bpelCustomEmailTemplateProvider"
+                     partnerRole="bpelCustomEmailTemplateRequester"/>
+        <partnerLink name="NotificationService_1"
+                     partnerLinkType="ns1:NotificationServiceLink"
+                     partnerRole="NotificationServiceProvider"/>
+    </partnerLinks>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable"
+                  messageType="client:bpelCustomEmailTemplateRequestMessage"/>
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable"
+                  messageType="client:bpelCustomEmailTemplateResponseMessage"/>
+        <variable name="varNotify" messageType="client:NotifyMsg"/>
+    </variables>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in bpelCustomEmailTemplate.wsdl) -->
+        <receive name="receiveInput"
+                 partnerLink="bpelcustomemailtemplate_client"
+                 portType="client:bpelCustomEmailTemplate" operation="process"
+                 variable="inputVariable" createInstance="yes"/>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <assign name="XformToVarNotify">
+            <bpelx:annotation>
+                <bpelx:pattern>transformation</bpelx:pattern>
+            </bpelx:annotation>
+            <copy>
+                <from expression="ora:processXSLT('xsl/XformToVarNotify.xsl',bpws:getVariableData('inputVariable','payload'))"/>
+                <to variable="varNotify" part="payload"/>
+            </copy>
+        </assign>
+        <scope name="Email_2">
+            <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:email"></bpelx:pattern>
+            </bpelx:annotation>
+            <variables>
+                <variable name="varNotificationReq"
+                          messageType="ns1:EmailNotificationRequest"/>
+                <variable name="varNotificationResponse"
+                          messageType="ns1:ArrayOfResponse"/>
+                <variable name="NotificationServiceFaultVariable"
+                          messageType="ns1:NotificationServiceErrorMessage"/>
+            </variables>
+            <sequence name="Sequence_1">
+                <assign name="EmailParamsAssign">
+                    <copy>
+                        <from expression="string('Default')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:FromAccountName"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Bcc"/>
+                    </copy>
+                    <copy>
+                        <from expression="bpws:getVariableData('varNotify','payload','/client:NotifyElement/client:ccAddress')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Cc"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:ReplyToAddress"/>
+                    </copy>
+                    <copy>
+                        <from expression="bpws:getVariableData('varNotify','payload','/client:NotifyElement/client:Subject')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Subject"/>
+                    </copy>
+                    <copy>
+                        <from expression="bpws:getVariableData('varNotify','payload','/client:NotifyElement/client:toAddress')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:To"/>
+                    </copy>
+                    <copy>
+                        <from expression="ora:processXSLT('xsl/GenerateEmailContect.xsl',bpws:getVariableData('inputVariable','payload'))"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('text/html; charset=UTF-8')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Content/ns1:MimeType"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokeNotificationService"
+                        portType="ns1:NotificationService"
+                        partnerLink="NotificationService_1"
+                        inputVariable="varNotificationReq"
+                        outputVariable="varNotificationResponse"
+                        operation="sendEmailNotification"/>
+            </sequence>
+        </scope>
+        <invoke name="callbackClient"
+                partnerLink="bpelcustomemailtemplate_client"
+                portType="client:bpelCustomEmailTemplateCallback"
+                operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

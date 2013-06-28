@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?bpmo version="11.1.1" build="0174" fullName="IProExpenses.EmailSubmissionConfirm" modifiers="0"?>
+<!--########################################################################################-->
+<!--####                                                                                ####-->
+<!--####          THIS IS AN AUTO GENERATED FILE. PLEASE DO NOT MANUALLY MODIFY         ####-->
+<!--#### CHANGES TO THIS FILE MAY PRODUCE UNEXPECTED BEHAVIOR AND WOULD BE OVERWRITTEN  ####-->
+<!--####                                                                                ####-->
+<!--########################################################################################-->
+<xs:schema targetNamespace="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/EmailSubmissionConfirm" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema"  xmlns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/EmailSubmissionConfirm"  xmlns:bpmo="http://xmlns.oracle.com/bpm/bpmobject/" >
+    <xs:complexType name="EmailSubmissionConfirmType">
+        <xs:sequence>
+            <xs:element name="ipro_user" nillable="true" type="xs:string"/>
+            <xs:element name="amount" nillable="true" type="xs:string"/>
+            <xs:element name="date_expense_incured" nillable="true" type="xs:string"/>
+            <xs:element name="expense_type" nillable="true" type="xs:string"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:element name="EmailSubmissionConfirm" type="EmailSubmissionConfirmType"/>
+</xs:schema>

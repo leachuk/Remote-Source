@@ -1,0 +1,132 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Fri Jun 28 17:31:11 EST 2013
+  Author:  stewartleach
+  Type: BPEL 1.1 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="BPELEmail"
+         targetNamespace="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail"
+         xmlns="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:client="http://xmlns.oracle.com/EntityBPMPOC/IProExpenseProcess/BPELEmail"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:ns1="http://xmlns.oracle.com/ias/pcbpel/NotificationService">
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="bpelemail_client" partnerLinkType="client:BPELEmail" myRole="BPELEmailProvider" partnerRole="BPELEmailRequester"/>
+        <partnerLink name="NotificationService1"
+                     partnerLinkType="ns1:NotificationServiceLink"
+                     partnerRole="NotificationServiceProvider"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:BPELEmailRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:BPELEmailResponseMessage"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in BPELEmail.wsdl) -->
+        <receive name="receiveInput" partnerLink="bpelemail_client" portType="client:BPELEmail" operation="process" variable="inputVariable" createInstance="yes"/>
+
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <scope name="Email1">
+            <bpelx:annotation>
+                <bpelx:pattern patternName="bpelx:email"></bpelx:pattern>
+            </bpelx:annotation>
+            <variables>
+                <variable name="varNotificationReq"
+                          messageType="ns1:EmailNotificationRequest"/>
+                <variable name="varNotificationResponse"
+                          messageType="ns1:ArrayOfResponse"/>
+                <variable name="NotificationServiceFaultVariable"
+                          messageType="ns1:NotificationServiceErrorMessage"/>
+            </variables>
+            <sequence name="Sequence1">
+                <assign name="EmailParamsAssign">
+                    <copy>
+                        <from expression="string('Default')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:FromAccountName"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Bcc"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Cc"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:ReplyToAddress"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('test')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Subject"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('stew.leach@gmail.com')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:To"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('test')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
+                    </copy>
+                    <copy>
+                        <from expression="string('text/html; charset=UTF-8')"/>
+                        <to variable="varNotificationReq" part="EmailPayload"
+                            query="/EmailPayload/ns1:Content/ns1:MimeType"/>
+                    </copy>
+                </assign>
+                <invoke name="InvokeNotificationService"
+                        portType="ns1:NotificationService"
+                        partnerLink="NotificationService1"
+                        inputVariable="varNotificationReq"
+                        outputVariable="varNotificationResponse"
+                        operation="sendEmailNotification"/>
+            </sequence>
+        </scope>
+        <invoke name="callbackClient" partnerLink="bpelemail_client" portType="client:BPELEmailCallback" operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

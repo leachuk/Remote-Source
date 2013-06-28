@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<projectSimulation inflightFinish="false" startTime="1372379569027000" name="SimulationDefinition" duration="1h" useCalendarRules="false" xmlns="http://www.bea.com/aqualogic/bpm/simulation" >
+    <categoryProbabilities>
+        <categoryProbability value="0.2"/>
+        <categoryProbability value="0.2"/>
+        <categoryProbability value="0.2"/>
+        <categoryProbability value="0.2"/>
+        <categoryProbability value="0.2"/>
+    </categoryProbabilities>
+    <resources/>
+    <modelSimulations>
+        <modelSimulation modelId="/IProExpenseManage.xpdl" modelVariation="" modelSimulationId="IProExpenseSimulationModel"/>
+    </modelSimulations>
+</projectSimulation>
