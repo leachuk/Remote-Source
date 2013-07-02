@@ -67,7 +67,6 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="MANAGEMENT" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.IProExpense_Manager_HT"/>
             </ns2:OracleExtensions>
@@ -161,6 +160,18 @@
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseIProManagerNotes</targetRef>
             </dataInputAssociation>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('attachmentDO')/ns:task/ns:attachment</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('execData')/ns:attachment</to>
+                </assignment>
+                <sourceRef>attachmentDO</sourceRef>
+                <targetRef>execData</targetRef>
+            </dataInputAssociation>
             <dataOutputAssociation>
                 <ns2:OracleExtensions/>
                 <assignment language="http://www.w3.org/1999/XPath">
@@ -201,7 +212,6 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
-                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.ConvertExpenseDocumentationToPDF"/>
             </ns2:OracleExtensions>
@@ -644,7 +654,16 @@
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
             <ioSpecification/>
-            <script/>
+            <dataOutputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="expenseBillingRemunerationDO_emailNotifyDO.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>expenseBillingRemunerationDO</sourceRef>
+                <targetRef>emailNotifyDO</targetRef>
+            </dataOutputAssociation>
+            <script></script>
         </scriptTask>
         <sendTask operationRef="process" messageRef="Services.BPEL.BPELEmail.Bpelemail_client" isForCompensation="false" name="EmailSendTask" id="activity9">
             <ns2:OracleExtensions>
@@ -675,6 +694,15 @@
                     </dataInput>
                 </inputSet>
             </ioSpecification>
+            <dataInputAssociation>
+                <transformation language="xsl">
+                    <ns2:OracleExtensions>
+                        <ns2:ExternalTransformation resource="emailNotifyDO_payload.xsl"/>
+                    </ns2:OracleExtensions>
+                </transformation>
+                <sourceRef>emailNotifyDO</sourceRef>
+                <targetRef>process</targetRef>
+            </dataInputAssociation>
         </sendTask>
         <startEvent isInterrupting="false" name="Start" id="startEvent0">
             <ns2:OracleExtensions>
@@ -785,7 +813,7 @@
             </ns2:OracleExtensions>
             <activationCondition xsi:type="tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/ManagerOutcome" xmlns:bpmn="http://www.omg.org/bpmn20" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20">(xp20:matches(string(bpmn:getDataObject('expenseManagerOutcome')/ns:isAssigned), '\s*(?i:true|1)\s*') = true())
                 <ns2:OracleExtensions>
-                    <ns2:Expression mode="simple"/>
+                    <ns2:Expression mode="xpath"/>
                 </ns2:OracleExtensions>
             </activationCondition>
         </complexGateway>
@@ -1032,14 +1060,14 @@
                 </ns2:FeatureSet>
             </ns2:OracleExtensions>
         </sequenceFlow>
-        <sequenceFlow targetRef="activity4" sourceRef="gateway4" name="sf58" id="sf58">
+        <sequenceFlow targetRef="gateway0" sourceRef="gateway4" name="sf58" id="sf58">
             <ns2:OracleExtensions>
                 <ns2:SequenceFlowAttributes>
-                    <ns2:Positions y="746" x="836"/>
+                    <ns2:Positions y="737" x="1073"/>
                 </ns2:SequenceFlowAttributes>
                 <ns2:FeatureSet>
                     <ns2:BooleanFeature value="false" name="collapseMessage"/>
-                    <ns2:StringFeature value="836,746" name="curve"/>
+                    <ns2:StringFeature value="1073,737" name="curve"/>
                     <ns2:StringFeature value="ORTHOGONAL" name="routing"/>
                     <ns2:StringFeature value="BandR Reject" name="userName"/>
                 </ns2:FeatureSet>

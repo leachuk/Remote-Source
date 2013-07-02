@@ -83,6 +83,22 @@
                     <description locale="en"></description>
                 </descriptions>
             </topicDocumentation>
+            <topicDocumentation name="activity10">
+                <labels>
+                    <label locale="en">ScriptTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
+            <topicDocumentation name="activity9">
+                <labels>
+                    <label locale="en">EmailSendTask</label>
+                </labels>
+                <descriptions>
+                    <description locale="en"></description>
+                </descriptions>
+            </topicDocumentation>
             <topicDocumentation name="startEvent0">
                 <labels>
                     <label locale="en">Start</label>
@@ -139,22 +155,6 @@
             <topicDocumentation name="gateway4">
                 <labels>
                     <label locale="en">ExclusiveGateway2</label>
-                </labels>
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
-            <topicDocumentation name="activity10">
-                <labels>
-                    <label locale="en">ScriptTask</label>
-                </labels>
-                <descriptions>
-                    <description locale="en"></description>
-                </descriptions>
-            </topicDocumentation>
-            <topicDocumentation name="activity9">
-                <labels>
-                    <label locale="en">EmailSendTask</label>
                 </labels>
                 <descriptions>
                     <description locale="en"></description>

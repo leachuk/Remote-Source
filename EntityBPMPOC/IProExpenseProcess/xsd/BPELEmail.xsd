@@ -6,8 +6,10 @@
 	<element name="process">
 		<complexType>
 			<sequence>
-				<element name="input" type="string"/>
-			</sequence>
+				<element name="ipro_user" type="string"/>
+    <element name="amount" type="string"/>
+    <element name="current_user_email" type="string"/>
+   </sequence>
 		</complexType>
 	</element>
 	<element name="processResponse">

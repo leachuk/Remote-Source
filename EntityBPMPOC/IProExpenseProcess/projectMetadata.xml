@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:metadata xmlns="http://xmlns.oracle.com/bpm/pml/projectLock.xsd" xmlns:ns2="http://xmlns.oracle.com/obpm/pml/projectMetadata.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:type="ns2:publicShareMetadata">
+    <ns2:name>IProExpenseProcess</ns2:name>
+    <ns2:description></ns2:description>
+    <ns2:creator>BPM Studio</ns2:creator>
+    <ns2:timestamp>2013-07-01T16:47:35.681+10:00</ns2:timestamp>
+    <ns2:updateTimestamp>2013-07-01T16:47:32.462+10:00</ns2:updateTimestamp>
+    <ns2:projectType>PUBLIC_SHARED</ns2:projectType>
+    <ns2:topology>
+        <ns2:filesystem>
+            <ns2:simpleFilesystem>/IProExpenses</ns2:simpleFilesystem>
+        </ns2:filesystem>
+    </ns2:topology>
+    <ns2:allowShare>true</ns2:allowShare>
+    <ns2:isFromScratch>false</ns2:isFromScratch>
+    <ns2:hasWorkflowAproval>false</ns2:hasWorkflowAproval>
+</ns2:metadata>

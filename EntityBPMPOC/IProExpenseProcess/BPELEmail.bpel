@@ -16,7 +16,18 @@
          xmlns:ora="http://schemas.oracle.com/xpath/extension"
          xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
          xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
-         xmlns:ns1="http://xmlns.oracle.com/ias/pcbpel/NotificationService">
+         xmlns:ns1="http://xmlns.oracle.com/ias/pcbpel/NotificationService"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ns2="http://www.w3.org/2001/XMLSchema-instance">
 
     <!-- 
       ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -99,7 +110,7 @@
                             query="/EmailPayload/ns1:ReplyToAddress"/>
                     </copy>
                     <copy>
-                        <from expression="string('test')"/>
+                        <from expression="string('Notification of expense submission to payroll')"/>
                         <to variable="varNotificationReq" part="EmailPayload"
                             query="/EmailPayload/ns1:Subject"/>
                     </copy>
@@ -109,7 +120,7 @@
                             query="/EmailPayload/ns1:To"/>
                     </copy>
                     <copy>
-                        <from expression="string('test')"/>
+                        <from expression="concat(string('IPro User:'), bpws:getVariableData('inputVariable','payload','/client:process/client:ipro_user'), string(' &lt;BR> Amount:'), bpws:getVariableData('inputVariable','payload','/client:process/client:amount'), string(' &lt;BR> This user email:'))"/>
                         <to variable="varNotificationReq" part="EmailPayload"
                             query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
                     </copy>
