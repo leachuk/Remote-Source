@@ -81,7 +81,7 @@
                         <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:To"/>
                     </copy>
                     <copy>
-                        <from expression="concat(string('IPro User:'), bpws:getVariableData('inputVariable','payload','/client:process/client:ipro_user'), string(' &lt;BR> Amount:'), bpws:getVariableData('inputVariable','payload','/client:process/client:amount'), string(' &lt;BR> This user email:'))"/>
+                        <from expression="concat(string('IPro User:'), bpws:getVariableData('inputVariable','payload','/client:process/client:ipro_user'), string(' &lt;BR> Amount:'), bpws:getVariableData('inputVariable','payload','/client:process/client:amount'), string(' &lt;BR> This user email:'), bpws:getVariableData('inputVariable','payload','/client:process/client:current_user_email'))"/>
                         <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Content/ns1:ContentBody"/>
                     </copy>
                     <copy>

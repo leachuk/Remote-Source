@@ -160,18 +160,6 @@
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseIProManagerNotes</targetRef>
             </dataInputAssociation>
-            <dataInputAssociation>
-                <ns2:OracleExtensions/>
-                <assignment language="http://www.w3.org/1999/XPath">
-                    <ns2:OracleExtensions>
-                        <ns2:DataAssignment mode="simple" isCustom="false"/>
-                    </ns2:OracleExtensions>
-                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('attachmentDO')/ns:task/ns:attachment</from>
-                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('execData')/ns:attachment</to>
-                </assignment>
-                <sourceRef>attachmentDO</sourceRef>
-                <targetRef>execData</targetRef>
-            </dataInputAssociation>
             <dataOutputAssociation>
                 <ns2:OracleExtensions/>
                 <assignment language="http://www.w3.org/1999/XPath">
@@ -196,6 +184,18 @@
                 <sourceRef>expenseIProManagerNotes</sourceRef>
                 <targetRef>expenseIproManagerNotesDO</targetRef>
             </dataOutputAssociation>
+            <dataOutputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="xpath" isCustom="true"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20" xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath">ids:getUserProperty(bpmn:getDataOutput('execData')/ns:systemAttributes/ns:updatedBy/ns:id,'mail')</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpm/bpmobject/IProExpenses/EmailNotifyModel" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('emailNotifyDO')/ns:ipromanager_email</to>
+                </assignment>
+                <sourceRef>execData</sourceRef>
+                <targetRef>emailNotifyDO</targetRef>
+            </dataOutputAssociation>
             <performer name="IProManager" id="lane0"/>
         </userTask>
         <userTask implementation="other" isForCompensation="false" name="OperationsSupport" id="activity2">
@@ -212,6 +212,7 @@
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                     <ns2:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                     <ns2:StringFeature value="SIMPLE" name="humanTaskType"/>
+                    <ns2:StringFeature value="" name="reinitiateSource"/>
                 </ns2:FeatureSet>
                 <ns2:HumanTask usesTransformations="false" humanTaskReference="HumanTasks.ConvertExpenseDocumentationToPDF"/>
             </ns2:OracleExtensions>
@@ -661,6 +662,7 @@
                     </ns2:OracleExtensions>
                 </transformation>
                 <sourceRef>expenseBillingRemunerationDO</sourceRef>
+                <sourceRef>emailNotifyDO</sourceRef>
                 <targetRef>emailNotifyDO</targetRef>
             </dataOutputAssociation>
             <script></script>
@@ -675,6 +677,7 @@
                     <ns2:BooleanFeature value="false" name="sync"/>
                     <ns2:StringFeature value="" name="associatedProcess"/>
                     <ns2:StringFeature value="" name="associatedNode"/>
+                    <ns2:StringFeature value="" name="initiator"/>
                     <ns2:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
                     <ns2:StringFeature value="Begin Level" name="level"/>
                     <ns2:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
