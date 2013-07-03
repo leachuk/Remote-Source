@@ -160,6 +160,18 @@
                 <sourceRef>expenseIproManagerNotesDO</sourceRef>
                 <targetRef>expenseIProManagerNotes</targetRef>
             </dataInputAssociation>
+            <dataInputAssociation>
+                <ns2:OracleExtensions/>
+                <assignment language="http://www.w3.org/1999/XPath">
+                    <ns2:OracleExtensions>
+                        <ns2:DataAssignment mode="simple" isCustom="false"/>
+                    </ns2:OracleExtensions>
+                    <from language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataObject('attachmentDO')/ns:task/ns:attachment</from>
+                    <to language="http://www.w3.org/1999/XPath" xmlns:ns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:bpmn="http://www.omg.org/bpmn20">bpmn:getDataInput('execData')/ns:attachment</to>
+                </assignment>
+                <sourceRef>attachmentDO</sourceRef>
+                <targetRef>execData</targetRef>
+            </dataInputAssociation>
             <dataOutputAssociation>
                 <ns2:OracleExtensions/>
                 <assignment language="http://www.w3.org/1999/XPath">

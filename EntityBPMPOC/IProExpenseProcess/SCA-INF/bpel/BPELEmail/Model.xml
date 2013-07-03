@@ -77,7 +77,7 @@
                         <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:Subject"/>
                     </copy>
                     <copy>
-                        <from expression="string('stew.leach@gmail.com')"/>
+                        <from expression="bpws:getVariableData('inputVariable','payload','/client:process/client:current_user_email')"/>
                         <to variable="varNotificationReq" part="EmailPayload" query="/EmailPayload/ns1:To"/>
                     </copy>
                     <copy>
